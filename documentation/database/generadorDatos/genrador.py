@@ -20,7 +20,7 @@ with open('Nombres.csv', newline='') as File:
 def generarUsuarios(id, tipo):
     registro = list()
     determinarSexo = random.randint(0,1)
-    registro.append(id) #id
+    registro.append(i) #id
     nombre = choice(nombres)[determinarSexo].title()
     registro.append(nombre) #nombre
     registro.append(choice(nombres)[2].title()) #apellido1
@@ -63,7 +63,7 @@ def registrarEstudiante(id, grado):
     registro = list()
     registro.append(id)
     registro.append(generarDireccion())
-    TipoSangre = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']
+    TipoSangre = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', '0+', '0-']
     registro.append(choice(TipoSangre))
     registro.append(0)
     registro.append(grado)
@@ -97,7 +97,7 @@ for i in range(4,12):
 indiceGrado = -1
 
 # GENERAR REGISTROS USUARIOS
-for i in range(517):
+for i in range(1,518):
     
     if (i < 480):
         registroUsuario = generarUsuarios(i, 1)
