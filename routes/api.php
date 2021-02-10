@@ -14,6 +14,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*Route::get('/usuarios', 'UsuariosController@obtener');
+Route::put('/usuarios', 'UsuariosController@insertar');
+Route::patch('/usuarios/{idUsuario}', 'UsuariosController@actualizar');
+Route::delete('/usuarios/{idUsuario}', 'UsuariosController@borrar');
+*/
+Route::group([
+    'prefix' => 'publico',
+    'namespace' => 'API\Publico',
+], function () {
+
+    Route::apiResource('publicaciones', 'PublicacionController');
+
+});
+
+Route::group([
+    'prefix' => 'directivo',
+    'namespace' => 'API\Directivo',
+], function () {
+
+    Route::apiResource('publicaciones', 'PublicacionController');
+
+});
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
