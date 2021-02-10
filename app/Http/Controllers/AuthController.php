@@ -63,4 +63,13 @@ class AuthController extends Controller
         return response()->json($request->user());
     }
 
+    /**
+     * No esta autorizado
+     */
+    public function notAuth(){
+        return response()->json([
+            'message' => 'Unauthorized'
+        ], 401);
+    }
+
 }

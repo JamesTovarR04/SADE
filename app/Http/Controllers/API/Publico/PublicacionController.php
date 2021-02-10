@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\Publico;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PublicacionController extends Controller
 {
@@ -14,7 +15,7 @@ class PublicacionController extends Controller
      */
     public function index()
     {
-        return response()->json('Hizo get');
+        return response()->json(Hash::make('123456'));
     }
 
     /**
