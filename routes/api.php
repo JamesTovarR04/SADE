@@ -45,3 +45,27 @@ Route::group([
     Route::apiResource('publicaciones', 'PublicacionController');
 
 });
+
+Route::group([
+    'prefix' => 'publico',
+    'namespace' => 'API\Publico',
+], function () {
+
+    Route::apiResource('publicaciones', 'PublicacionController');
+
+});
+
+
+//Aquí van las rutas de los Profesores
+
+Route::group([
+    'prefix' => 'profesor',
+    'namespace' => 'API\Profesor',
+    'middleware' => 'auth:api'
+], function () {
+
+    Route::apiResource('publicaciones', 'PublicacionController');
+    Route::apiResource('eventos', 'EventoController');
+
+});
+
