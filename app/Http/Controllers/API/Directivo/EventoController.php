@@ -47,6 +47,32 @@ class EventoController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function enMes(Request $request)
+    {
+        $validacion = Validator::make($request->all(),[
+            'mes' => 'required|date_format:Y-m',
+        ]);
+
+        if($validacion->fails()){
+            return response(['errors' => $validacion->errors()->all()], 422);
+        }
+
+        $anhoMes = explode('-',$request['mes']);
+
+        $anho = $anhoMes[0];
+        $mes  = $anhoMes[1];
+
+        $eventos = DB::connection('directivo')
+            ->select('CALL p_dir_eventosMes(?,?,?)',[$request->user()->idUsuario,$mes,$anho]);
+
+        return response()->json($eventos);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

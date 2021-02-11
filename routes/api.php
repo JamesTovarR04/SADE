@@ -51,6 +51,8 @@ Route::group([
 
     Route::apiResource('publicaciones', 'PublicacionController');
     Route::apiResource('eventos', 'EventoController');
+    Route::get('eventosmes', 'EventoController@enMes');
+    Route::apiResource('estudiantes', 'EstudianteController');
 
 });
 
