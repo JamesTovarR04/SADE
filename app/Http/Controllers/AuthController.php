@@ -105,7 +105,7 @@ class AuthController extends Controller
      */
     public function notAuth(){
         return response()->json([
-            'message' => 'Unauthorized'
+            'message' => 'Este recurso es solo para usuarios autenticados.'
         ], 401);
     }
 

@@ -46,20 +46,19 @@ Route::group([
 Route::group([
     'prefix' => 'directivo',
     'namespace' => 'API\Directivo',
-    'middleware' => 'auth:api'
+    'middleware' => ['auth:api','role:directivo']
 ], function () {
 
     Route::apiResource('publicaciones', 'PublicacionController');
     Route::apiResource('eventos', 'EventoController');
 
 });
-
 
 //Aquí van las rutas de los Profesores
 Route::group([
     'prefix' => 'profesor',
     'namespace' => 'API\Profesor',
-    'middleware' => 'auth:api'
+    'middleware' => ['auth:api','role:profesor']
 ], function () {
 
     Route::apiResource('publicaciones', 'PublicacionController');
@@ -67,3 +66,13 @@ Route::group([
 
 });
 
+//Aquí van las rutas de los Estudiantes
+Route::group([
+    'prefix' => 'estudiante',
+    'namespace' => 'API\Estudiante',
+    'middleware' => ['auth:api','role:estudiante']
+], function () {
+
+    //
+
+});

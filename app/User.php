@@ -58,6 +58,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Determinar rol
+     * 
+     * @param string role
+     * @return boolean
+     */
+    public function hasRole($role){
+        return ($role == $this->rol());
+    }
+
+    /**
      * The attributes that should be cast to native types.
      *
      * @var array
