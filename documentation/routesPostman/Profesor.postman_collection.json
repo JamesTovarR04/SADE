@@ -1,0 +1,256 @@
+{
+	"info": {
+		"_postman_id": "34e4c635-f2f7-4790-83fc-e44868239519",
+		"name": "Profesor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Publicaciones",
+			"item": [
+				{
+					"name": "agregar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/profesor/publicaciones?titulo=ESTO ES UN TITULO&contenido=Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.&publico=1&directivo=1&profesor=1&estudiante=1",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"publicaciones"
+							],
+							"query": [
+								{
+									"key": "titulo",
+									"value": "ESTO ES UN TITULO"
+								},
+								{
+									"key": "contenido",
+									"value": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+								},
+								{
+									"key": "publico",
+									"value": "1"
+								},
+								{
+									"key": "directivo",
+									"value": "1"
+								},
+								{
+									"key": "profesor",
+									"value": "1"
+								},
+								{
+									"key": "estudiante",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZjc1OTYwODY4Y2Q2NGUwZTQ4YjM1MDRmNzY2NDE3Nzc5YjlmZjU2ZGViMWZkN2Y3M2EzNGY2MDc0ZGE1MWIwNTQ3NGEzZTE0YjI0OGZhZGMiLCJpYXQiOjE2MTMwMTIwNzUsIm5iZiI6MTYxMzAxMjA3NSwiZXhwIjoxNjQ0NTQ4MDc1LCJzdWIiOiI0ODYiLCJzY29wZXMiOltdfQ.CEQvk_atItlhXfIyQEuhaV1BODHAF1QUmFZZVq5MVFpgm-LklBqrJlLc8Oq5_oaMsgUD1hBWkGHjuKXTPxBkXS0yEzm5gVJoWZYfxCGJMKR7-7qDpyuaDUj9spAoTmdAS8Nd93k3X5-M8UckOG5kA4Pt386ZGmXCelfiyloTg_hxkbHOs0tJN7AGSrgBS1Xy16urv2jNMvNM5hwGruSdoNadbqZzXR9EyqeHlaFq07r4IvaWKyHSsp61OTasiZ99Zj3R1lhF09al06WEk9LOhjtMOHuw9RbfGYq9-WqV0L7gxEaNFKS4-L7Es3S3hBJcK_08Qw7IBkvsK6CHdzquJmWsYjijbcmHRZSAjiCriF3R-iNGOPwAgsinRIQLCaCXJOQVW61basAaG8LUL2UW9m96cRDKFVQ7ZcZzS3NUojZJCehc4RlXsS_eHyTOv2jU-EU3WGOrcRAlksCjyjhR3nYeZcBF0I7clZbxlAfiHZ0d1hYeVQHAheOhCcP0PnAg2fTZVkC5EVdHsCBvaObrDcZr4anBllkdofI0ADAMmV4kuKHryWY5DSdIbymfwdnTKPkfK2C0Ct41741lrSDUhz_uLaEaIy1xqOb5wD9IwFUyZRWhKzAGHqoW9fSIndvBpPIunCcPqJ4yHviWFQoKqzSD1zGJsjTkX_n8i68bF40",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/profesor/publicaciones/36?titulo=Este titulo fue modificado otra vez&contenido=Este contenido fue modificado de nuevo",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"publicaciones",
+								"36"
+							],
+							"query": [
+								{
+									"key": "titulo",
+									"value": "Este titulo fue modificado otra vez"
+								},
+								{
+									"key": "contenido",
+									"value": "Este contenido fue modificado de nuevo"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "VistaPublicacion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "login-profesor",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZjc1OTYwODY4Y2Q2NGUwZTQ4YjM1MDRmNzY2NDE3Nzc5YjlmZjU2ZGViMWZkN2Y3M2EzNGY2MDc0ZGE1MWIwNTQ3NGEzZTE0YjI0OGZhZGMiLCJpYXQiOjE2MTMwMTIwNzUsIm5iZiI6MTYxMzAxMjA3NSwiZXhwIjoxNjQ0NTQ4MDc1LCJzdWIiOiI0ODYiLCJzY29wZXMiOltdfQ.CEQvk_atItlhXfIyQEuhaV1BODHAF1QUmFZZVq5MVFpgm-LklBqrJlLc8Oq5_oaMsgUD1hBWkGHjuKXTPxBkXS0yEzm5gVJoWZYfxCGJMKR7-7qDpyuaDUj9spAoTmdAS8Nd93k3X5-M8UckOG5kA4Pt386ZGmXCelfiyloTg_hxkbHOs0tJN7AGSrgBS1Xy16urv2jNMvNM5hwGruSdoNadbqZzXR9EyqeHlaFq07r4IvaWKyHSsp61OTasiZ99Zj3R1lhF09al06WEk9LOhjtMOHuw9RbfGYq9-WqV0L7gxEaNFKS4-L7Es3S3hBJcK_08Qw7IBkvsK6CHdzquJmWsYjijbcmHRZSAjiCriF3R-iNGOPwAgsinRIQLCaCXJOQVW61basAaG8LUL2UW9m96cRDKFVQ7ZcZzS3NUojZJCehc4RlXsS_eHyTOv2jU-EU3WGOrcRAlksCjyjhR3nYeZcBF0I7clZbxlAfiHZ0d1hYeVQHAheOhCcP0PnAg2fTZVkC5EVdHsCBvaObrDcZr4anBllkdofI0ADAMmV4kuKHryWY5DSdIbymfwdnTKPkfK2C0Ct41741lrSDUhz_uLaEaIy1xqOb5wD9IwFUyZRWhKzAGHqoW9fSIndvBpPIunCcPqJ4yHviWFQoKqzSD1zGJsjTkX_n8i68bF40",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/auth/login?email=saray786@gmail.com&password=123456",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "saray786@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Eventos",
+			"item": [
+				{
+					"name": "agregar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/profesor/eventos",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"eventos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTM3M2FhNjgxODY4YjZkODNkMDVlNzE2NjA2MjI3OGQ5Yjk0MjM2ODU4ZjBkOTdiZjFkMzY5ODNjOTk4NjljYTE2OWE5YzQxNTUyMWVjYmUiLCJpYXQiOjE2MTMwMjA4MTIsIm5iZiI6MTYxMzAyMDgxMiwiZXhwIjoxNjQ0NTU2ODEyLCJzdWIiOiI0ODEiLCJzY29wZXMiOltdfQ.YPtmkSUPzHHSe58gzBntPTmCO5r_OIUMavF6l_kz_5PXaBSVZfS2EUqyJwV_ffRVAnwmEQ8SDSrXVgAKCBnrF9zGdRSfNL8PJa38wX6ReC75tU8j11rHyTkurAw6jDMUciFCNJK3PDvwGzE5RrGVez0hZ-oOq_txxxTYMMX6r-_WvyaKdyLnYknGoI1sOZddKiec-3jE10CdZQ60C1tKQXJ6fMJ6Wfd4fwU-eRzrHgYL9HtEzXqS0CnCu4X7FN4J9NfFe7G19kv4IS5Gj4fK60AG1VvnhIEbB_GdxOI41KUSaXc-6gMCF905y69Vg0T4IcdhnS6iOlPleot80-t7BHb8ZJi5wM0iqdZ_nScaQDMK9gv1hEWtFZE_7XKNuwaqditwHQ4i2mzHhru7g5SfjM-VtETnNJsyRtmEDLgCrsRIEuisS-yg9y9zY51Rz7tJ2YJYEeJR9kiNVqiKk7CMf11K85fkMqgbsVu-pbLAdMkql3eGd0RGP4_29oGGWS5ZkRqabcBqn4xkvjBoy56GkDEleRTwFPMGGw0bpe7z7gSCbxRiCssaYOC7V1kB5-lcdt5vAn_rPB2n35KVa_L37BvAivHixYoWtOcUCJ0CWYSWblB-Wu_rcuP2-q113Udl-OhtdFIOwDU9QC-WFLHRvrGBgQm53G2cXpq3eaibTio",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/profesor/eventos/3",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"eventos",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "VistaEvento",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTM3M2FhNjgxODY4YjZkODNkMDVlNzE2NjA2MjI3OGQ5Yjk0MjM2ODU4ZjBkOTdiZjFkMzY5ODNjOTk4NjljYTE2OWE5YzQxNTUyMWVjYmUiLCJpYXQiOjE2MTMwMjA4MTIsIm5iZiI6MTYxMzAyMDgxMiwiZXhwIjoxNjQ0NTU2ODEyLCJzdWIiOiI0ODEiLCJzY29wZXMiOltdfQ.YPtmkSUPzHHSe58gzBntPTmCO5r_OIUMavF6l_kz_5PXaBSVZfS2EUqyJwV_ffRVAnwmEQ8SDSrXVgAKCBnrF9zGdRSfNL8PJa38wX6ReC75tU8j11rHyTkurAw6jDMUciFCNJK3PDvwGzE5RrGVez0hZ-oOq_txxxTYMMX6r-_WvyaKdyLnYknGoI1sOZddKiec-3jE10CdZQ60C1tKQXJ6fMJ6Wfd4fwU-eRzrHgYL9HtEzXqS0CnCu4X7FN4J9NfFe7G19kv4IS5Gj4fK60AG1VvnhIEbB_GdxOI41KUSaXc-6gMCF905y69Vg0T4IcdhnS6iOlPleot80-t7BHb8ZJi5wM0iqdZ_nScaQDMK9gv1hEWtFZE_7XKNuwaqditwHQ4i2mzHhru7g5SfjM-VtETnNJsyRtmEDLgCrsRIEuisS-yg9y9zY51Rz7tJ2YJYEeJR9kiNVqiKk7CMf11K85fkMqgbsVu-pbLAdMkql3eGd0RGP4_29oGGWS5ZkRqabcBqn4xkvjBoy56GkDEleRTwFPMGGw0bpe7z7gSCbxRiCssaYOC7V1kB5-lcdt5vAn_rPB2n35KVa_L37BvAivHixYoWtOcUCJ0CWYSWblB-Wu_rcuP2-q113Udl-OhtdFIOwDU9QC-WFLHRvrGBgQm53G2cXpq3eaibTio",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/profesor/eventos?dia=2021-02-09",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"eventos"
+							],
+							"query": [
+								{
+									"key": "dia",
+									"value": "2021-02-09"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

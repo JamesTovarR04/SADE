@@ -1,0 +1,335 @@
+{
+	"info": {
+		"_postman_id": "0168efe2-df6b-4b84-8d0e-bb5229e859e5",
+		"name": "Directivo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Publicaciones",
+			"item": [
+				{
+					"name": "agregar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODgwOGJiZjE3ODFlNjAzODRlYmQ4ZDczZTI0NWFlYTA5Mzg5ZThiMjc0YjY1NDY2YzA4NzhjYWMwMTc2NzIxNDI4YTY2ODE2MGUzMzBiNTEiLCJpYXQiOiIxNjEzMDEwNjA1LjI3MDg3NSIsIm5iZiI6IjE2MTMwMTA2MDUuMjcwODgzIiwiZXhwIjoiMTY0NDU0NjYwNS4yNTI0ODMiLCJzdWIiOiI1MTAiLCJzY29wZXMiOltdfQ.KcYg-K7HvejcSZO5AitjgnIke8RycwzspyIoYo8c93mpjaLYh3Klmw9XrXjDE1zx9cAXSrB2cHhfJ9nBYHl-VDYzOhSmf7s950hY27kbzD5j2qxhbincF-EOH64jWYHyACJiiuGkOa9vOEwIGEYmTJW0cN4IhnFOPYZt6Gl3ZpKPGNI3zZaBe2Imuge2UDaQ0SFPXrDLrnYzQXGPBscBgslDGw40xM_-8qQw7RRHL4VTfUsD795KIxO0W4IAxJanQSSb2M2yoI1rWS3ixAmNLiLUe7ONyBYLg1rVDN0IN2Ci2AQ5soUh09vKi4gCxTclsuuCN-g8z1vptYkzAzfEDrSmlxsoGzMrVEdRI2sxaOhgD4riJ9LGPdZ9OWJAXBLQxK6P6DVvh29kOOeoQBKn6ykCATxHlvfmnDufUjO34RQGZzC5WHW9wQ3O1aT_vKMWJHX1N9lvTdx-voJBHyNp6Z6fFKLD8IKJjb9m8xIU1MeDdxW2Im_ET5PtHOX0N3XnS9VjjU3o9h68gLxzVR3_cGBXGVEC_wtnmS4GLTXieV7VUiwPcaV1WZvEMOPa20xazonQkODOLP-_gvhMKyBkNU0H6uczRD1NeneDfsC9SaQHGwfsLpEzC3_Y4Qv2Uyvzz0i4TIH7NNRtH7ziz-SY_ek_oaEJ7WnaXJPgcrs0PiU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/directivo/publicaciones?titulo=Ejemplo titulo&contenido=Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en demostraciones de tipografías o de borradores de diseño para probar el diseño visual antes de insertar el texto final.&publico=0&directivo=0&profesor=1&estudiante=0",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"publicaciones"
+							],
+							"query": [
+								{
+									"key": "titulo",
+									"value": "Ejemplo titulo"
+								},
+								{
+									"key": "contenido",
+									"value": "Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en demostraciones de tipografías o de borradores de diseño para probar el diseño visual antes de insertar el texto final."
+								},
+								{
+									"key": "publico",
+									"value": "0"
+								},
+								{
+									"key": "directivo",
+									"value": "0"
+								},
+								{
+									"key": "profesor",
+									"value": "1"
+								},
+								{
+									"key": "estudiante",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODgwOGJiZjE3ODFlNjAzODRlYmQ4ZDczZTI0NWFlYTA5Mzg5ZThiMjc0YjY1NDY2YzA4NzhjYWMwMTc2NzIxNDI4YTY2ODE2MGUzMzBiNTEiLCJpYXQiOiIxNjEzMDEwNjA1LjI3MDg3NSIsIm5iZiI6IjE2MTMwMTA2MDUuMjcwODgzIiwiZXhwIjoiMTY0NDU0NjYwNS4yNTI0ODMiLCJzdWIiOiI1MTAiLCJzY29wZXMiOltdfQ.KcYg-K7HvejcSZO5AitjgnIke8RycwzspyIoYo8c93mpjaLYh3Klmw9XrXjDE1zx9cAXSrB2cHhfJ9nBYHl-VDYzOhSmf7s950hY27kbzD5j2qxhbincF-EOH64jWYHyACJiiuGkOa9vOEwIGEYmTJW0cN4IhnFOPYZt6Gl3ZpKPGNI3zZaBe2Imuge2UDaQ0SFPXrDLrnYzQXGPBscBgslDGw40xM_-8qQw7RRHL4VTfUsD795KIxO0W4IAxJanQSSb2M2yoI1rWS3ixAmNLiLUe7ONyBYLg1rVDN0IN2Ci2AQ5soUh09vKi4gCxTclsuuCN-g8z1vptYkzAzfEDrSmlxsoGzMrVEdRI2sxaOhgD4riJ9LGPdZ9OWJAXBLQxK6P6DVvh29kOOeoQBKn6ykCATxHlvfmnDufUjO34RQGZzC5WHW9wQ3O1aT_vKMWJHX1N9lvTdx-voJBHyNp6Z6fFKLD8IKJjb9m8xIU1MeDdxW2Im_ET5PtHOX0N3XnS9VjjU3o9h68gLxzVR3_cGBXGVEC_wtnmS4GLTXieV7VUiwPcaV1WZvEMOPa20xazonQkODOLP-_gvhMKyBkNU0H6uczRD1NeneDfsC9SaQHGwfsLpEzC3_Y4Qv2Uyvzz0i4TIH7NNRtH7ziz-SY_ek_oaEJ7WnaXJPgcrs0PiU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/directivo/publicaciones/8",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"publicaciones",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODgwOGJiZjE3ODFlNjAzODRlYmQ4ZDczZTI0NWFlYTA5Mzg5ZThiMjc0YjY1NDY2YzA4NzhjYWMwMTc2NzIxNDI4YTY2ODE2MGUzMzBiNTEiLCJpYXQiOiIxNjEzMDEwNjA1LjI3MDg3NSIsIm5iZiI6IjE2MTMwMTA2MDUuMjcwODgzIiwiZXhwIjoiMTY0NDU0NjYwNS4yNTI0ODMiLCJzdWIiOiI1MTAiLCJzY29wZXMiOltdfQ.KcYg-K7HvejcSZO5AitjgnIke8RycwzspyIoYo8c93mpjaLYh3Klmw9XrXjDE1zx9cAXSrB2cHhfJ9nBYHl-VDYzOhSmf7s950hY27kbzD5j2qxhbincF-EOH64jWYHyACJiiuGkOa9vOEwIGEYmTJW0cN4IhnFOPYZt6Gl3ZpKPGNI3zZaBe2Imuge2UDaQ0SFPXrDLrnYzQXGPBscBgslDGw40xM_-8qQw7RRHL4VTfUsD795KIxO0W4IAxJanQSSb2M2yoI1rWS3ixAmNLiLUe7ONyBYLg1rVDN0IN2Ci2AQ5soUh09vKi4gCxTclsuuCN-g8z1vptYkzAzfEDrSmlxsoGzMrVEdRI2sxaOhgD4riJ9LGPdZ9OWJAXBLQxK6P6DVvh29kOOeoQBKn6ykCATxHlvfmnDufUjO34RQGZzC5WHW9wQ3O1aT_vKMWJHX1N9lvTdx-voJBHyNp6Z6fFKLD8IKJjb9m8xIU1MeDdxW2Im_ET5PtHOX0N3XnS9VjjU3o9h68gLxzVR3_cGBXGVEC_wtnmS4GLTXieV7VUiwPcaV1WZvEMOPa20xazonQkODOLP-_gvhMKyBkNU0H6uczRD1NeneDfsC9SaQHGwfsLpEzC3_Y4Qv2Uyvzz0i4TIH7NNRtH7ziz-SY_ek_oaEJ7WnaXJPgcrs0PiU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/directivo/publicaciones/9?titulo=Titulo que ha sido cambiado&contenido=Contenido modificado",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"publicaciones",
+								"9"
+							],
+							"query": [
+								{
+									"key": "titulo",
+									"value": "Titulo que ha sido cambiado"
+								},
+								{
+									"key": "contenido",
+									"value": "Contenido modificado"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "leer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODgwOGJiZjE3ODFlNjAzODRlYmQ4ZDczZTI0NWFlYTA5Mzg5ZThiMjc0YjY1NDY2YzA4NzhjYWMwMTc2NzIxNDI4YTY2ODE2MGUzMzBiNTEiLCJpYXQiOiIxNjEzMDEwNjA1LjI3MDg3NSIsIm5iZiI6IjE2MTMwMTA2MDUuMjcwODgzIiwiZXhwIjoiMTY0NDU0NjYwNS4yNTI0ODMiLCJzdWIiOiI1MTAiLCJzY29wZXMiOltdfQ.KcYg-K7HvejcSZO5AitjgnIke8RycwzspyIoYo8c93mpjaLYh3Klmw9XrXjDE1zx9cAXSrB2cHhfJ9nBYHl-VDYzOhSmf7s950hY27kbzD5j2qxhbincF-EOH64jWYHyACJiiuGkOa9vOEwIGEYmTJW0cN4IhnFOPYZt6Gl3ZpKPGNI3zZaBe2Imuge2UDaQ0SFPXrDLrnYzQXGPBscBgslDGw40xM_-8qQw7RRHL4VTfUsD795KIxO0W4IAxJanQSSb2M2yoI1rWS3ixAmNLiLUe7ONyBYLg1rVDN0IN2Ci2AQ5soUh09vKi4gCxTclsuuCN-g8z1vptYkzAzfEDrSmlxsoGzMrVEdRI2sxaOhgD4riJ9LGPdZ9OWJAXBLQxK6P6DVvh29kOOeoQBKn6ykCATxHlvfmnDufUjO34RQGZzC5WHW9wQ3O1aT_vKMWJHX1N9lvTdx-voJBHyNp6Z6fFKLD8IKJjb9m8xIU1MeDdxW2Im_ET5PtHOX0N3XnS9VjjU3o9h68gLxzVR3_cGBXGVEC_wtnmS4GLTXieV7VUiwPcaV1WZvEMOPa20xazonQkODOLP-_gvhMKyBkNU0H6uczRD1NeneDfsC9SaQHGwfsLpEzC3_Y4Qv2Uyvzz0i4TIH7NNRtH7ziz-SY_ek_oaEJ7WnaXJPgcrs0PiU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/directivo/publicaciones",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"publicaciones"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "login-directivo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/auth/login?email=miguelalejandro183@gmail.com&password=123456",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "miguelalejandro183@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Eventos",
+			"item": [
+				{
+					"name": "agregar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODgwOGJiZjE3ODFlNjAzODRlYmQ4ZDczZTI0NWFlYTA5Mzg5ZThiMjc0YjY1NDY2YzA4NzhjYWMwMTc2NzIxNDI4YTY2ODE2MGUzMzBiNTEiLCJpYXQiOiIxNjEzMDEwNjA1LjI3MDg3NSIsIm5iZiI6IjE2MTMwMTA2MDUuMjcwODgzIiwiZXhwIjoiMTY0NDU0NjYwNS4yNTI0ODMiLCJzdWIiOiI1MTAiLCJzY29wZXMiOltdfQ.KcYg-K7HvejcSZO5AitjgnIke8RycwzspyIoYo8c93mpjaLYh3Klmw9XrXjDE1zx9cAXSrB2cHhfJ9nBYHl-VDYzOhSmf7s950hY27kbzD5j2qxhbincF-EOH64jWYHyACJiiuGkOa9vOEwIGEYmTJW0cN4IhnFOPYZt6Gl3ZpKPGNI3zZaBe2Imuge2UDaQ0SFPXrDLrnYzQXGPBscBgslDGw40xM_-8qQw7RRHL4VTfUsD795KIxO0W4IAxJanQSSb2M2yoI1rWS3ixAmNLiLUe7ONyBYLg1rVDN0IN2Ci2AQ5soUh09vKi4gCxTclsuuCN-g8z1vptYkzAzfEDrSmlxsoGzMrVEdRI2sxaOhgD4riJ9LGPdZ9OWJAXBLQxK6P6DVvh29kOOeoQBKn6ykCATxHlvfmnDufUjO34RQGZzC5WHW9wQ3O1aT_vKMWJHX1N9lvTdx-voJBHyNp6Z6fFKLD8IKJjb9m8xIU1MeDdxW2Im_ET5PtHOX0N3XnS9VjjU3o9h68gLxzVR3_cGBXGVEC_wtnmS4GLTXieV7VUiwPcaV1WZvEMOPa20xazonQkODOLP-_gvhMKyBkNU0H6uczRD1NeneDfsC9SaQHGwfsLpEzC3_Y4Qv2Uyvzz0i4TIH7NNRtH7ziz-SY_ek_oaEJ7WnaXJPgcrs0PiU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/directivo/eventos?hora=2021-02-06 12:30:00&descripcion=Nuevo evento 2&publico=1&directivo=0&profesor=0&estudiante=0",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"eventos"
+							],
+							"query": [
+								{
+									"key": "hora",
+									"value": "2021-02-06 12:30:00"
+								},
+								{
+									"key": "descripcion",
+									"value": "Nuevo evento 2"
+								},
+								{
+									"key": "publico",
+									"value": "1"
+								},
+								{
+									"key": "directivo",
+									"value": "0"
+								},
+								{
+									"key": "profesor",
+									"value": "0"
+								},
+								{
+									"key": "estudiante",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODgwOGJiZjE3ODFlNjAzODRlYmQ4ZDczZTI0NWFlYTA5Mzg5ZThiMjc0YjY1NDY2YzA4NzhjYWMwMTc2NzIxNDI4YTY2ODE2MGUzMzBiNTEiLCJpYXQiOiIxNjEzMDEwNjA1LjI3MDg3NSIsIm5iZiI6IjE2MTMwMTA2MDUuMjcwODgzIiwiZXhwIjoiMTY0NDU0NjYwNS4yNTI0ODMiLCJzdWIiOiI1MTAiLCJzY29wZXMiOltdfQ.KcYg-K7HvejcSZO5AitjgnIke8RycwzspyIoYo8c93mpjaLYh3Klmw9XrXjDE1zx9cAXSrB2cHhfJ9nBYHl-VDYzOhSmf7s950hY27kbzD5j2qxhbincF-EOH64jWYHyACJiiuGkOa9vOEwIGEYmTJW0cN4IhnFOPYZt6Gl3ZpKPGNI3zZaBe2Imuge2UDaQ0SFPXrDLrnYzQXGPBscBgslDGw40xM_-8qQw7RRHL4VTfUsD795KIxO0W4IAxJanQSSb2M2yoI1rWS3ixAmNLiLUe7ONyBYLg1rVDN0IN2Ci2AQ5soUh09vKi4gCxTclsuuCN-g8z1vptYkzAzfEDrSmlxsoGzMrVEdRI2sxaOhgD4riJ9LGPdZ9OWJAXBLQxK6P6DVvh29kOOeoQBKn6ykCATxHlvfmnDufUjO34RQGZzC5WHW9wQ3O1aT_vKMWJHX1N9lvTdx-voJBHyNp6Z6fFKLD8IKJjb9m8xIU1MeDdxW2Im_ET5PtHOX0N3XnS9VjjU3o9h68gLxzVR3_cGBXGVEC_wtnmS4GLTXieV7VUiwPcaV1WZvEMOPa20xazonQkODOLP-_gvhMKyBkNU0H6uczRD1NeneDfsC9SaQHGwfsLpEzC3_Y4Qv2Uyvzz0i4TIH7NNRtH7ziz-SY_ek_oaEJ7WnaXJPgcrs0PiU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/directivo/eventos/3",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"eventos",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "leer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODgwOGJiZjE3ODFlNjAzODRlYmQ4ZDczZTI0NWFlYTA5Mzg5ZThiMjc0YjY1NDY2YzA4NzhjYWMwMTc2NzIxNDI4YTY2ODE2MGUzMzBiNTEiLCJpYXQiOiIxNjEzMDEwNjA1LjI3MDg3NSIsIm5iZiI6IjE2MTMwMTA2MDUuMjcwODgzIiwiZXhwIjoiMTY0NDU0NjYwNS4yNTI0ODMiLCJzdWIiOiI1MTAiLCJzY29wZXMiOltdfQ.KcYg-K7HvejcSZO5AitjgnIke8RycwzspyIoYo8c93mpjaLYh3Klmw9XrXjDE1zx9cAXSrB2cHhfJ9nBYHl-VDYzOhSmf7s950hY27kbzD5j2qxhbincF-EOH64jWYHyACJiiuGkOa9vOEwIGEYmTJW0cN4IhnFOPYZt6Gl3ZpKPGNI3zZaBe2Imuge2UDaQ0SFPXrDLrnYzQXGPBscBgslDGw40xM_-8qQw7RRHL4VTfUsD795KIxO0W4IAxJanQSSb2M2yoI1rWS3ixAmNLiLUe7ONyBYLg1rVDN0IN2Ci2AQ5soUh09vKi4gCxTclsuuCN-g8z1vptYkzAzfEDrSmlxsoGzMrVEdRI2sxaOhgD4riJ9LGPdZ9OWJAXBLQxK6P6DVvh29kOOeoQBKn6ykCATxHlvfmnDufUjO34RQGZzC5WHW9wQ3O1aT_vKMWJHX1N9lvTdx-voJBHyNp6Z6fFKLD8IKJjb9m8xIU1MeDdxW2Im_ET5PtHOX0N3XnS9VjjU3o9h68gLxzVR3_cGBXGVEC_wtnmS4GLTXieV7VUiwPcaV1WZvEMOPa20xazonQkODOLP-_gvhMKyBkNU0H6uczRD1NeneDfsC9SaQHGwfsLpEzC3_Y4Qv2Uyvzz0i4TIH7NNRtH7ziz-SY_ek_oaEJ7WnaXJPgcrs0PiU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/directivo/eventos?dia=2021-02-07",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"eventos"
+							],
+							"query": [
+								{
+									"key": "dia",
+									"value": "2021-02-07"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,18 +31,43 @@ Route::group([
     'prefix' => 'publico',
     'namespace' => 'API\Publico',
 ], function () {
-
-    Route::apiResource('publicaciones', 'PublicacionController');
-
+    Route::get('publicaciones', 'PublicacionController@index');
+    Route::get('eventos', 'EventoController@index');
+    Route::get('eventos/mes', 'EventoController@enMes');
+    Route::group([
+        'prefix' => 'info',
+    ], function () {
+        Route::get('directivos', 'InfoSchoolController@directivos');
+        Route::get('usuarios', 'InfoSchoolController@numeroUsuarios');
+    });
 });
 
+// Aqui van las rutas de los directivos
 Route::group([
     'prefix' => 'directivo',
     'namespace' => 'API\Directivo',
+    'middleware' => 'auth:api'
 ], function () {
 
     Route::apiResource('publicaciones', 'PublicacionController');
+    Route::apiResource('eventos', 'EventoController');
 
+});
+
+
+//Aquí van las rutas de los Profesores
+Route::group([
+    'prefix' => 'profesor',
+    'namespace' => 'API\Profesor',
+    'middleware' => 'auth:api'
+], function () {
+
+    Route::apiResource('publicaciones', 'PublicacionController');
+    Route::apiResource('eventos', 'EventoController');
+
+});
+
+<<<<<<< HEAD
 });
 
 //rutas estudiantes
@@ -55,3 +79,5 @@ Route::group([
     Route::apiResource('publicaciones', 'PublicacionController');
 
 });
+=======
+>>>>>>> f0335c0cf8b6541e2f6c998cc3d17585a46a4694

@@ -8,6 +8,12 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\API\\Directivo\\EventoController' => $baseDir . '/app/Http/Controllers/API/Directivo/EventoController.php',
+    'App\\Http\\Controllers\\API\\Directivo\\PublicacionController' => $baseDir . '/app/Http/Controllers/API/Directivo/PublicacionController.php',
+    'App\\Http\\Controllers\\API\\Profesor\\EventoController' => $baseDir . '/app/Http/Controllers/API/Profesor/EventoController.php',
+    'App\\Http\\Controllers\\API\\Profesor\\PublicacionController' => $baseDir . '/app/Http/Controllers/API/Profesor/PublicacionController.php',
+    'App\\Http\\Controllers\\API\\Publico\\PublicacionController' => $baseDir . '/app/Http/Controllers/API/Publico/PublicacionController.php',
+    'App\\Http\\Controllers\\AuthController' => $baseDir . '/app/Http/Controllers/AuthController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
