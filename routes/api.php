@@ -37,12 +37,15 @@ Route::group([
 
 });
 
+// Aqui van las rutas de los directivos
 Route::group([
     'prefix' => 'directivo',
     'namespace' => 'API\Directivo',
+    'middleware' => 'auth:api'
 ], function () {
 
     Route::apiResource('publicaciones', 'PublicacionController');
+    Route::apiResource('eventos', 'EventoController');
 
 });
 
