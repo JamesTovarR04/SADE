@@ -42,6 +42,22 @@ class User extends Authenticatable
     }
 
     /**
+     * @return string rolTexto
+     */
+    public function rol(){
+        switch ($this->tipo) {
+            case 1:
+                return 'estudiante';
+            case 2:
+                return 'profesor';
+            case 3:
+                return 'directivo';
+            default:
+                return 'error';
+        }
+    }
+
+    /**
      * The attributes that should be cast to native types.
      *
      * @var array

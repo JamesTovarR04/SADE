@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'f21bf20b20ff01493b7fab80284ab789773112b5',
+    'reference' => '7ccb300ad8a5ee8c991d312d0e26c033ae1f6644',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -458,7 +458,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'f21bf20b20ff01493b7fab80284ab789773112b5',
+      'reference' => '7ccb300ad8a5ee8c991d312d0e26c033ae1f6644',
     ),
     'laravel/passport' => 
     array (
@@ -478,14 +478,23 @@
       ),
       'reference' => 'daae1c43f1300fe88c05d83db6f3d8f76677ad88',
     ),
-    'lcobucci/jwt' => 
+    'lcobucci/clock' => 
     array (
-      'pretty_version' => '3.4.4',
-      'version' => '3.4.4.0',
+      'pretty_version' => '2.0.0',
+      'version' => '2.0.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'ff92156cd27d3abe7fc8814516ae0615215f01ae',
+      'reference' => '353d83fe2e6ae95745b16b3d911813df6a05bfb3',
+    ),
+    'lcobucci/jwt' => 
+    array (
+      'pretty_version' => '4.0.1',
+      'version' => '4.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'b80c4876a010cd8bfa9c78de64c930bb2fc8fb9a',
     ),
     'league/commonmark' => 
     array (

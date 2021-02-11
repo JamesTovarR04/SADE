@@ -1,0 +1,58 @@
+{
+	"info": {
+		"_postman_id": "015f1a20-74f8-46e7-b87d-8c6907b5aa17",
+		"name": "Estudiante",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "publicaciones",
+			"item": [
+				{
+					"name": "publicaciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "login-estudiante",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/auth/login?email&password",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": null
+								},
+								{
+									"key": "password",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

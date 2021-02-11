@@ -4,7 +4,8 @@ namespace App\Http\Controllers\API\Publico;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class PublicacionController extends Controller
 {
@@ -13,53 +14,25 @@ class PublicacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json(Hash::make('123456'));
+        $validacion = Validator::make($request->all(),[
+            'buscar' => 'string|min:4|max:150',
+        ]);
+
+        if($validacion->fails()){
+            return response(['errors' => $validacion->errors()->all()], 422);
+        }
+
+        if($request['buscar']=='')
+            $publicaciones = DB::connection('publico')
+                ->table('vs_pub_publicaciones')
+                ->get();
+        else
+            $publicaciones = DB::connection('publico')
+                ->select('CALL p_pub_buscarPublicacion(?)',[$request['buscar']]);
+        
+        return response()->json($publicaciones);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        return response()->json('Hizo post');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return response()->json('Hizo show');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        return response()->json('Hizo patch');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        return response()->json('Hizo delete');
-    }
 }

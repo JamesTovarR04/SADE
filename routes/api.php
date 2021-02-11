@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,9 +31,15 @@ Route::group([
     'prefix' => 'publico',
     'namespace' => 'API\Publico',
 ], function () {
-
-    Route::apiResource('publicaciones', 'PublicacionController');
-
+    Route::get('publicaciones', 'PublicacionController@index');
+    Route::get('eventos', 'EventoController@index');
+    Route::get('eventos/mes', 'EventoController@enMes');
+    Route::group([
+        'prefix' => 'info',
+    ], function () {
+        Route::get('directivos', 'InfoSchoolController@directivos');
+        Route::get('usuarios', 'InfoSchoolController@numeroUsuarios');
+    });
 });
 
 // Aqui van las rutas de los directivos
@@ -49,18 +54,8 @@ Route::group([
 
 });
 
-Route::group([
-    'prefix' => 'publico',
-    'namespace' => 'API\Publico',
-], function () {
-
-    Route::apiResource('publicaciones', 'PublicacionController');
-
-});
-
 
 //Aquí van las rutas de los Profesores
-
 Route::group([
     'prefix' => 'profesor',
     'namespace' => 'API\Profesor',

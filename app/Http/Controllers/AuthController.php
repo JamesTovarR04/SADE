@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -15,18 +17,51 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $request->validate([
-            'email' => 'required|string|email',
+        $validacion = Validator::make($request->all(),[
+            'user' => 'required|string',
             'password' => 'required|string',
             'remember_me' => 'boolean'
         ]);
 
-        $credentials = request(['email', 'password']);
+        if($validacion->fails()){
+            return response(['errors' => $validacion->errors()->all()], 422);
+        }
+
+        /**
+         * Llamar a procedimiento para buscar idUusario por email o numero de documento
+         */
+        $dataLogin = DB::select('CALL p_pub_login(?)',[$request['user']]);
+
+        if(count($dataLogin)==0){
+            return response()
+                    ->json([
+                        'code'=>2,
+                        'Message'=>'Usuario o contraseña incorrectos.'
+                    ], 401);
+        }
+
+        if($dataLogin[0]->intentosConexion == 8){
+            return response()
+                    ->json([
+                        'code'=>3,
+                        'Message'=>'El usuario fue bloqueado por realizar demasiados intentos sin exito.'
+                    ], 401);
+        }
+
+        $credentials = ['idUsuario'=>$dataLogin[0]->idUsuario,'password'=>$request['password']];
 
         if (!Auth::attempt($credentials))
             return response()->json([
-                'message' => 'Unauthorized'
+                'code'=>2,
+                'Message'=>'Usuario o contraseña incorrectos.'
             ], 401);
+
+        // Reiniciar conteo de intentos
+        DB::table('Usuarios')
+            ->where('idUsuario',$dataLogin[0]->idUsuario)
+            ->update([
+                'intentosConexion' => 0
+            ]);
 
         $user = $request->user();
         $tokenResult = $user->createToken('Personal Access Token');
@@ -37,9 +72,11 @@ class AuthController extends Controller
         $token->save();
 
         return response()->json([
-            'access_token' => $tokenResult->accessToken,
-            'token_type' => 'Bearer',
-            'expires_at' => Carbon::parse($token->expires_at)->toDateTimeString()
+            'rol'           => $user->rol(),
+            'usuario'       => $user->nombres,
+            'access_token'  => $tokenResult->accessToken,
+            'token_type'    => 'Bearer',
+            'expires_at'    => Carbon::parse($token->expires_at)->toDateTimeString()
         ]);
     }
 
