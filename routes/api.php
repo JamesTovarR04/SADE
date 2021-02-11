@@ -45,3 +45,13 @@ Route::group([
     Route::apiResource('publicaciones', 'PublicacionController');
 
 });
+
+//rutas estudiantes
+Route::group([
+    'prefix' => 'estudiante',
+    'namespace' => 'API\Estudiante',
+], function () {
+
+    Route::apiResource('publicaciones', 'PublicacionController');
+
+});
