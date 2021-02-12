@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "015f1a20-74f8-46e7-b87d-8c6907b5aa17",
+		"_postman_id": "2721d9c4-77f7-4226-80b8-d37f362250ad",
 		"name": "Estudiante",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -9,8 +9,142 @@
 			"name": "publicaciones",
 			"item": [
 				{
-					"name": "publicaciones",
+					"name": "crear",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTVkYmQ1Y2ZkYjE4ZGU5MDVjODBlMWY4MmY3NmVmMWU2M2M2ZDYwZDhmMDNiMDFjYmM1M2Q0OTkwODI0MWI1NTk0ZjVlZjQ1ODJjZjNiZWMiLCJpYXQiOiIxNjEzMDgwNjU5LjY2ODA2NCIsIm5iZiI6IjE2MTMwODA2NTkuNjY4MDY4IiwiZXhwIjoiMTY0NDYxNjY1OC45MzY1NjQiLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.KlhUaskxmXVbad5LujvoNyUxvZrTs_yagjXGpenAAPstxpdTUeqIE0jaIkCNRt6Ds-YB8wwaU5fJaR6l0OpIMCoMGVPWTaVPtO1cXU6WshKGdUALW0yST14zhDiIyyZuSYc63suYNNhIXoCHJinipHNiK26xgQGm16sSrPd1JvZVTDoj4-A72XY4XJT8WiWOv4-Mu2EcgMZ6GyzdDde1VvHN_Q-BcXjHl1WOxOdFs9WEvdI-RfbxllXBErcrQuL3fYvhiPDWD4KpOHOHy2DhJszOopIIQQWI2wFslP6ToMZ4n1v2eQy1HcVW6u7bnDL7KFHyxiI1kc56NSPwqEYKpMTmVJpiLsnGTcgAMc-zTw4CCk6obbcBXtGbWioM6FBG3G4w3ap0lbx9CMCqsbRKdrxc7qHRBB7jjE2tiq0cVa5FnLZ_mF_XXb_mpdaFBfMKzuK_pOVRYya0hw1sa-yA25kJtmz9CsuLA1TkcAMfbOjRxKFDmu7CtHcyf8S62XoMq8PpIdj6ykKaaxrw4qFmZUJ9xmkeRWoOK83lFdmF4LGY8dENJdfOexjznyKiPfI541S9VpD0O-bjqtmZ5iqalZQMmR5w55YAsv0fS1PvpBtmXJuDEwFkm7AE1wMEjLrHDAlDgPyh-2BWnE0-qWq6Tc8Pqg0fnxCJJmqiyvrvG9Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/estudiante/publicaciones?titulo=titulo edit&contenido=contenido editado2&estudiante=1&profesor=1&directivo=1",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"publicaciones"
+							],
+							"query": [
+								{
+									"key": "titulo",
+									"value": "titulo edit"
+								},
+								{
+									"key": "contenido",
+									"value": "contenido editado2"
+								},
+								{
+									"key": "estudiante",
+									"value": "1"
+								},
+								{
+									"key": "profesor",
+									"value": "1"
+								},
+								{
+									"key": "directivo",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTVkYmQ1Y2ZkYjE4ZGU5MDVjODBlMWY4MmY3NmVmMWU2M2M2ZDYwZDhmMDNiMDFjYmM1M2Q0OTkwODI0MWI1NTk0ZjVlZjQ1ODJjZjNiZWMiLCJpYXQiOiIxNjEzMDgwNjU5LjY2ODA2NCIsIm5iZiI6IjE2MTMwODA2NTkuNjY4MDY4IiwiZXhwIjoiMTY0NDYxNjY1OC45MzY1NjQiLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.KlhUaskxmXVbad5LujvoNyUxvZrTs_yagjXGpenAAPstxpdTUeqIE0jaIkCNRt6Ds-YB8wwaU5fJaR6l0OpIMCoMGVPWTaVPtO1cXU6WshKGdUALW0yST14zhDiIyyZuSYc63suYNNhIXoCHJinipHNiK26xgQGm16sSrPd1JvZVTDoj4-A72XY4XJT8WiWOv4-Mu2EcgMZ6GyzdDde1VvHN_Q-BcXjHl1WOxOdFs9WEvdI-RfbxllXBErcrQuL3fYvhiPDWD4KpOHOHy2DhJszOopIIQQWI2wFslP6ToMZ4n1v2eQy1HcVW6u7bnDL7KFHyxiI1kc56NSPwqEYKpMTmVJpiLsnGTcgAMc-zTw4CCk6obbcBXtGbWioM6FBG3G4w3ap0lbx9CMCqsbRKdrxc7qHRBB7jjE2tiq0cVa5FnLZ_mF_XXb_mpdaFBfMKzuK_pOVRYya0hw1sa-yA25kJtmz9CsuLA1TkcAMfbOjRxKFDmu7CtHcyf8S62XoMq8PpIdj6ykKaaxrw4qFmZUJ9xmkeRWoOK83lFdmF4LGY8dENJdfOexjznyKiPfI541S9VpD0O-bjqtmZ5iqalZQMmR5w55YAsv0fS1PvpBtmXJuDEwFkm7AE1wMEjLrHDAlDgPyh-2BWnE0-qWq6Tc8Pqg0fnxCJJmqiyvrvG9Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/estudiante/publicaciones/31?titulo=titulo editado&contenido=contenido editado",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"publicaciones",
+								"31"
+							],
+							"query": [
+								{
+									"key": "titulo",
+									"value": "titulo editado"
+								},
+								{
+									"key": "contenido",
+									"value": "contenido editado"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTVkYmQ1Y2ZkYjE4ZGU5MDVjODBlMWY4MmY3NmVmMWU2M2M2ZDYwZDhmMDNiMDFjYmM1M2Q0OTkwODI0MWI1NTk0ZjVlZjQ1ODJjZjNiZWMiLCJpYXQiOiIxNjEzMDgwNjU5LjY2ODA2NCIsIm5iZiI6IjE2MTMwODA2NTkuNjY4MDY4IiwiZXhwIjoiMTY0NDYxNjY1OC45MzY1NjQiLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.KlhUaskxmXVbad5LujvoNyUxvZrTs_yagjXGpenAAPstxpdTUeqIE0jaIkCNRt6Ds-YB8wwaU5fJaR6l0OpIMCoMGVPWTaVPtO1cXU6WshKGdUALW0yST14zhDiIyyZuSYc63suYNNhIXoCHJinipHNiK26xgQGm16sSrPd1JvZVTDoj4-A72XY4XJT8WiWOv4-Mu2EcgMZ6GyzdDde1VvHN_Q-BcXjHl1WOxOdFs9WEvdI-RfbxllXBErcrQuL3fYvhiPDWD4KpOHOHy2DhJszOopIIQQWI2wFslP6ToMZ4n1v2eQy1HcVW6u7bnDL7KFHyxiI1kc56NSPwqEYKpMTmVJpiLsnGTcgAMc-zTw4CCk6obbcBXtGbWioM6FBG3G4w3ap0lbx9CMCqsbRKdrxc7qHRBB7jjE2tiq0cVa5FnLZ_mF_XXb_mpdaFBfMKzuK_pOVRYya0hw1sa-yA25kJtmz9CsuLA1TkcAMfbOjRxKFDmu7CtHcyf8S62XoMq8PpIdj6ykKaaxrw4qFmZUJ9xmkeRWoOK83lFdmF4LGY8dENJdfOexjznyKiPfI541S9VpD0O-bjqtmZ5iqalZQMmR5w55YAsv0fS1PvpBtmXJuDEwFkm7AE1wMEjLrHDAlDgPyh-2BWnE0-qWq6Tc8Pqg0fnxCJJmqiyvrvG9Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/estudiante/publicaciones/31",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"publicaciones",
+								"31"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vista",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTVkYmQ1Y2ZkYjE4ZGU5MDVjODBlMWY4MmY3NmVmMWU2M2M2ZDYwZDhmMDNiMDFjYmM1M2Q0OTkwODI0MWI1NTk0ZjVlZjQ1ODJjZjNiZWMiLCJpYXQiOiIxNjEzMDgwNjU5LjY2ODA2NCIsIm5iZiI6IjE2MTMwODA2NTkuNjY4MDY4IiwiZXhwIjoiMTY0NDYxNjY1OC45MzY1NjQiLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.KlhUaskxmXVbad5LujvoNyUxvZrTs_yagjXGpenAAPstxpdTUeqIE0jaIkCNRt6Ds-YB8wwaU5fJaR6l0OpIMCoMGVPWTaVPtO1cXU6WshKGdUALW0yST14zhDiIyyZuSYc63suYNNhIXoCHJinipHNiK26xgQGm16sSrPd1JvZVTDoj4-A72XY4XJT8WiWOv4-Mu2EcgMZ6GyzdDde1VvHN_Q-BcXjHl1WOxOdFs9WEvdI-RfbxllXBErcrQuL3fYvhiPDWD4KpOHOHy2DhJszOopIIQQWI2wFslP6ToMZ4n1v2eQy1HcVW6u7bnDL7KFHyxiI1kc56NSPwqEYKpMTmVJpiLsnGTcgAMc-zTw4CCk6obbcBXtGbWioM6FBG3G4w3ap0lbx9CMCqsbRKdrxc7qHRBB7jjE2tiq0cVa5FnLZ_mF_XXb_mpdaFBfMKzuK_pOVRYya0hw1sa-yA25kJtmz9CsuLA1TkcAMfbOjRxKFDmu7CtHcyf8S62XoMq8PpIdj6ykKaaxrw4qFmZUJ9xmkeRWoOK83lFdmF4LGY8dENJdfOexjznyKiPfI541S9VpD0O-bjqtmZ5iqalZQMmR5w55YAsv0fS1PvpBtmXJuDEwFkm7AE1wMEjLrHDAlDgPyh-2BWnE0-qWq6Tc8Pqg0fnxCJJmqiyvrvG9Q",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": null
@@ -28,7 +162,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "sade.edu/api/auth/login?email&password",
+							"raw": "sade.edu/api/auth/login?user=edilberto234@gmail.com&password=123456",
 							"host": [
 								"sade",
 								"edu"
@@ -40,13 +174,243 @@
 							],
 							"query": [
 								{
-									"key": "email",
-									"value": null
+									"key": "user",
+									"value": "edilberto234@gmail.com"
 								},
 								{
 									"key": "password",
-									"value": null
+									"value": "123456"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "evento",
+			"item": [
+				{
+					"name": "vista",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTVkYmQ1Y2ZkYjE4ZGU5MDVjODBlMWY4MmY3NmVmMWU2M2M2ZDYwZDhmMDNiMDFjYmM1M2Q0OTkwODI0MWI1NTk0ZjVlZjQ1ODJjZjNiZWMiLCJpYXQiOiIxNjEzMDgwNjU5LjY2ODA2NCIsIm5iZiI6IjE2MTMwODA2NTkuNjY4MDY4IiwiZXhwIjoiMTY0NDYxNjY1OC45MzY1NjQiLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.KlhUaskxmXVbad5LujvoNyUxvZrTs_yagjXGpenAAPstxpdTUeqIE0jaIkCNRt6Ds-YB8wwaU5fJaR6l0OpIMCoMGVPWTaVPtO1cXU6WshKGdUALW0yST14zhDiIyyZuSYc63suYNNhIXoCHJinipHNiK26xgQGm16sSrPd1JvZVTDoj4-A72XY4XJT8WiWOv4-Mu2EcgMZ6GyzdDde1VvHN_Q-BcXjHl1WOxOdFs9WEvdI-RfbxllXBErcrQuL3fYvhiPDWD4KpOHOHy2DhJszOopIIQQWI2wFslP6ToMZ4n1v2eQy1HcVW6u7bnDL7KFHyxiI1kc56NSPwqEYKpMTmVJpiLsnGTcgAMc-zTw4CCk6obbcBXtGbWioM6FBG3G4w3ap0lbx9CMCqsbRKdrxc7qHRBB7jjE2tiq0cVa5FnLZ_mF_XXb_mpdaFBfMKzuK_pOVRYya0hw1sa-yA25kJtmz9CsuLA1TkcAMfbOjRxKFDmu7CtHcyf8S62XoMq8PpIdj6ykKaaxrw4qFmZUJ9xmkeRWoOK83lFdmF4LGY8dENJdfOexjznyKiPfI541S9VpD0O-bjqtmZ5iqalZQMmR5w55YAsv0fS1PvpBtmXJuDEwFkm7AE1wMEjLrHDAlDgPyh-2BWnE0-qWq6Tc8Pqg0fnxCJJmqiyvrvG9Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/estudiante/eventos?dia=2021-02-18",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"eventos"
+							],
+							"query": [
+								{
+									"key": "dia",
+									"value": "2021-02-18"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EvenMes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTVkYmQ1Y2ZkYjE4ZGU5MDVjODBlMWY4MmY3NmVmMWU2M2M2ZDYwZDhmMDNiMDFjYmM1M2Q0OTkwODI0MWI1NTk0ZjVlZjQ1ODJjZjNiZWMiLCJpYXQiOiIxNjEzMDgwNjU5LjY2ODA2NCIsIm5iZiI6IjE2MTMwODA2NTkuNjY4MDY4IiwiZXhwIjoiMTY0NDYxNjY1OC45MzY1NjQiLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.KlhUaskxmXVbad5LujvoNyUxvZrTs_yagjXGpenAAPstxpdTUeqIE0jaIkCNRt6Ds-YB8wwaU5fJaR6l0OpIMCoMGVPWTaVPtO1cXU6WshKGdUALW0yST14zhDiIyyZuSYc63suYNNhIXoCHJinipHNiK26xgQGm16sSrPd1JvZVTDoj4-A72XY4XJT8WiWOv4-Mu2EcgMZ6GyzdDde1VvHN_Q-BcXjHl1WOxOdFs9WEvdI-RfbxllXBErcrQuL3fYvhiPDWD4KpOHOHy2DhJszOopIIQQWI2wFslP6ToMZ4n1v2eQy1HcVW6u7bnDL7KFHyxiI1kc56NSPwqEYKpMTmVJpiLsnGTcgAMc-zTw4CCk6obbcBXtGbWioM6FBG3G4w3ap0lbx9CMCqsbRKdrxc7qHRBB7jjE2tiq0cVa5FnLZ_mF_XXb_mpdaFBfMKzuK_pOVRYya0hw1sa-yA25kJtmz9CsuLA1TkcAMfbOjRxKFDmu7CtHcyf8S62XoMq8PpIdj6ykKaaxrw4qFmZUJ9xmkeRWoOK83lFdmF4LGY8dENJdfOexjznyKiPfI541S9VpD0O-bjqtmZ5iqalZQMmR5w55YAsv0fS1PvpBtmXJuDEwFkm7AE1wMEjLrHDAlDgPyh-2BWnE0-qWq6Tc8Pqg0fnxCJJmqiyvrvG9Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/estudiante/eventos/mes?mes=2021-02",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"eventos",
+								"mes"
+							],
+							"query": [
+								{
+									"key": "mes",
+									"value": "2021-02"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "notificaciones",
+			"item": [
+				{
+					"name": "ver",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTVkYmQ1Y2ZkYjE4ZGU5MDVjODBlMWY4MmY3NmVmMWU2M2M2ZDYwZDhmMDNiMDFjYmM1M2Q0OTkwODI0MWI1NTk0ZjVlZjQ1ODJjZjNiZWMiLCJpYXQiOiIxNjEzMDgwNjU5LjY2ODA2NCIsIm5iZiI6IjE2MTMwODA2NTkuNjY4MDY4IiwiZXhwIjoiMTY0NDYxNjY1OC45MzY1NjQiLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.KlhUaskxmXVbad5LujvoNyUxvZrTs_yagjXGpenAAPstxpdTUeqIE0jaIkCNRt6Ds-YB8wwaU5fJaR6l0OpIMCoMGVPWTaVPtO1cXU6WshKGdUALW0yST14zhDiIyyZuSYc63suYNNhIXoCHJinipHNiK26xgQGm16sSrPd1JvZVTDoj4-A72XY4XJT8WiWOv4-Mu2EcgMZ6GyzdDde1VvHN_Q-BcXjHl1WOxOdFs9WEvdI-RfbxllXBErcrQuL3fYvhiPDWD4KpOHOHy2DhJszOopIIQQWI2wFslP6ToMZ4n1v2eQy1HcVW6u7bnDL7KFHyxiI1kc56NSPwqEYKpMTmVJpiLsnGTcgAMc-zTw4CCk6obbcBXtGbWioM6FBG3G4w3ap0lbx9CMCqsbRKdrxc7qHRBB7jjE2tiq0cVa5FnLZ_mF_XXb_mpdaFBfMKzuK_pOVRYya0hw1sa-yA25kJtmz9CsuLA1TkcAMfbOjRxKFDmu7CtHcyf8S62XoMq8PpIdj6ykKaaxrw4qFmZUJ9xmkeRWoOK83lFdmF4LGY8dENJdfOexjznyKiPfI541S9VpD0O-bjqtmZ5iqalZQMmR5w55YAsv0fS1PvpBtmXJuDEwFkm7AE1wMEjLrHDAlDgPyh-2BWnE0-qWq6Tc8Pqg0fnxCJJmqiyvrvG9Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/estudiante/notificaciones",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"notificaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "visto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTVkYmQ1Y2ZkYjE4ZGU5MDVjODBlMWY4MmY3NmVmMWU2M2M2ZDYwZDhmMDNiMDFjYmM1M2Q0OTkwODI0MWI1NTk0ZjVlZjQ1ODJjZjNiZWMiLCJpYXQiOiIxNjEzMDgwNjU5LjY2ODA2NCIsIm5iZiI6IjE2MTMwODA2NTkuNjY4MDY4IiwiZXhwIjoiMTY0NDYxNjY1OC45MzY1NjQiLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.KlhUaskxmXVbad5LujvoNyUxvZrTs_yagjXGpenAAPstxpdTUeqIE0jaIkCNRt6Ds-YB8wwaU5fJaR6l0OpIMCoMGVPWTaVPtO1cXU6WshKGdUALW0yST14zhDiIyyZuSYc63suYNNhIXoCHJinipHNiK26xgQGm16sSrPd1JvZVTDoj4-A72XY4XJT8WiWOv4-Mu2EcgMZ6GyzdDde1VvHN_Q-BcXjHl1WOxOdFs9WEvdI-RfbxllXBErcrQuL3fYvhiPDWD4KpOHOHy2DhJszOopIIQQWI2wFslP6ToMZ4n1v2eQy1HcVW6u7bnDL7KFHyxiI1kc56NSPwqEYKpMTmVJpiLsnGTcgAMc-zTw4CCk6obbcBXtGbWioM6FBG3G4w3ap0lbx9CMCqsbRKdrxc7qHRBB7jjE2tiq0cVa5FnLZ_mF_XXb_mpdaFBfMKzuK_pOVRYya0hw1sa-yA25kJtmz9CsuLA1TkcAMfbOjRxKFDmu7CtHcyf8S62XoMq8PpIdj6ykKaaxrw4qFmZUJ9xmkeRWoOK83lFdmF4LGY8dENJdfOexjznyKiPfI541S9VpD0O-bjqtmZ5iqalZQMmR5w55YAsv0fS1PvpBtmXJuDEwFkm7AE1wMEjLrHDAlDgPyh-2BWnE0-qWq6Tc8Pqg0fnxCJJmqiyvrvG9Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/estudiante/notificaciones/1",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"notificaciones",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "grupos",
+			"item": [
+				{
+					"name": "vista",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTVkYmQ1Y2ZkYjE4ZGU5MDVjODBlMWY4MmY3NmVmMWU2M2M2ZDYwZDhmMDNiMDFjYmM1M2Q0OTkwODI0MWI1NTk0ZjVlZjQ1ODJjZjNiZWMiLCJpYXQiOiIxNjEzMDgwNjU5LjY2ODA2NCIsIm5iZiI6IjE2MTMwODA2NTkuNjY4MDY4IiwiZXhwIjoiMTY0NDYxNjY1OC45MzY1NjQiLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.KlhUaskxmXVbad5LujvoNyUxvZrTs_yagjXGpenAAPstxpdTUeqIE0jaIkCNRt6Ds-YB8wwaU5fJaR6l0OpIMCoMGVPWTaVPtO1cXU6WshKGdUALW0yST14zhDiIyyZuSYc63suYNNhIXoCHJinipHNiK26xgQGm16sSrPd1JvZVTDoj4-A72XY4XJT8WiWOv4-Mu2EcgMZ6GyzdDde1VvHN_Q-BcXjHl1WOxOdFs9WEvdI-RfbxllXBErcrQuL3fYvhiPDWD4KpOHOHy2DhJszOopIIQQWI2wFslP6ToMZ4n1v2eQy1HcVW6u7bnDL7KFHyxiI1kc56NSPwqEYKpMTmVJpiLsnGTcgAMc-zTw4CCk6obbcBXtGbWioM6FBG3G4w3ap0lbx9CMCqsbRKdrxc7qHRBB7jjE2tiq0cVa5FnLZ_mF_XXb_mpdaFBfMKzuK_pOVRYya0hw1sa-yA25kJtmz9CsuLA1TkcAMfbOjRxKFDmu7CtHcyf8S62XoMq8PpIdj6ykKaaxrw4qFmZUJ9xmkeRWoOK83lFdmF4LGY8dENJdfOexjznyKiPfI541S9VpD0O-bjqtmZ5iqalZQMmR5w55YAsv0fS1PvpBtmXJuDEwFkm7AE1wMEjLrHDAlDgPyh-2BWnE0-qWq6Tc8Pqg0fnxCJJmqiyvrvG9Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/estudiante/grupos",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"grupos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vergrupo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTVkYmQ1Y2ZkYjE4ZGU5MDVjODBlMWY4MmY3NmVmMWU2M2M2ZDYwZDhmMDNiMDFjYmM1M2Q0OTkwODI0MWI1NTk0ZjVlZjQ1ODJjZjNiZWMiLCJpYXQiOiIxNjEzMDgwNjU5LjY2ODA2NCIsIm5iZiI6IjE2MTMwODA2NTkuNjY4MDY4IiwiZXhwIjoiMTY0NDYxNjY1OC45MzY1NjQiLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.KlhUaskxmXVbad5LujvoNyUxvZrTs_yagjXGpenAAPstxpdTUeqIE0jaIkCNRt6Ds-YB8wwaU5fJaR6l0OpIMCoMGVPWTaVPtO1cXU6WshKGdUALW0yST14zhDiIyyZuSYc63suYNNhIXoCHJinipHNiK26xgQGm16sSrPd1JvZVTDoj4-A72XY4XJT8WiWOv4-Mu2EcgMZ6GyzdDde1VvHN_Q-BcXjHl1WOxOdFs9WEvdI-RfbxllXBErcrQuL3fYvhiPDWD4KpOHOHy2DhJszOopIIQQWI2wFslP6ToMZ4n1v2eQy1HcVW6u7bnDL7KFHyxiI1kc56NSPwqEYKpMTmVJpiLsnGTcgAMc-zTw4CCk6obbcBXtGbWioM6FBG3G4w3ap0lbx9CMCqsbRKdrxc7qHRBB7jjE2tiq0cVa5FnLZ_mF_XXb_mpdaFBfMKzuK_pOVRYya0hw1sa-yA25kJtmz9CsuLA1TkcAMfbOjRxKFDmu7CtHcyf8S62XoMq8PpIdj6ykKaaxrw4qFmZUJ9xmkeRWoOK83lFdmF4LGY8dENJdfOexjznyKiPfI541S9VpD0O-bjqtmZ5iqalZQMmR5w55YAsv0fS1PvpBtmXJuDEwFkm7AE1wMEjLrHDAlDgPyh-2BWnE0-qWq6Tc8Pqg0fnxCJJmqiyvrvG9Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/estudiante/grupos/701",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"grupos",
+								"701"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "migrupo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/estudiante/migrupo",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"migrupo"
 							]
 						}
 					},

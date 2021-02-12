@@ -75,6 +75,14 @@ Route::group([
     'middleware' => ['auth:api','role:estudiante']
 ], function () {
 
-    //
+    Route::apiResource('publicaciones', 'PublicacionController');
+    Route::get('eventos', 'EventoController@index');
+    route::get('eventos/mes', 'EventoController@enMes');
+    Route::get('notificaciones', 'NotificacionController@index');
+    Route::get('notificaciones/{id}', 'NotificacionController@visto');
+    Route::get('grupos', 'GrupoController@index');
+    Route::get('grupos/{id}', 'GrupoController@show');
+    Route::get('migrupo', 'GrupoController@miGrupo');
+
 
 });
