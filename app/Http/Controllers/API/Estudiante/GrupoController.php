@@ -33,7 +33,7 @@ class GrupoController extends Controller
 
     }
     //ver grupo
-    public function show (Request $request, $idGrupo)
+    public function show ($idGrupo)
     {
         $grupo['info'] = DB::connection('estudiante')
             ->table('grupos')

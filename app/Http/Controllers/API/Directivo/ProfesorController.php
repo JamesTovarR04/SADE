@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-class EstudianteController extends Controller
+class ProfesorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,14 +27,14 @@ class EstudianteController extends Controller
         }
 
         if($request['buscar'] == '')
-            $estudiante = DB::connection('directivo')
-                ->table('vs_infoestudiantes')
+            $profesor = DB::connection('directivo')
+                ->table('vs_infodocentes')
                 ->paginate(15);
         else
-            $estudiante = DB::connection('directivo')
-                ->select('CALL p_dir_buscarEstudiante(?)',[$request['buscar']]);
+            $profesor = DB::connection('directivo')
+                ->select('CALL p_dir_buscarDocente(?)',[$request['buscar']]);
         
-        return response()->json($estudiante);
+        return response()->json($profesor);
     }
 
     /**
@@ -53,15 +53,13 @@ class EstudianteController extends Controller
             'contrasena'=> 'string|min:5|max:25',
             'sexo'      => ['required', Rule::in(['M','F'])],
             'fechaNacimiento' => 'required|date_format:Y-m-d',
-            'direccion' => 'required|string|min:4|max:45',
-            'rh'        => ['required', Rule::in(['A+','A-','0+','0-','B+','B-','AB+','AB-'])],
-            'tipoDocumento'     => ['required', Rule::in(['CC','CE','RC','TI','NS'])],
-            'numeroDocumento'   => 'required|integer',
-            'fechaExpedicion'   => 'required|date_format:Y-m-d',
-            'lugarExpedicion'   => 'required|string|max:45',
-            'idGrupo'           => 'exists:directivo.grupos,idGrupo',
+            'direccion'         => 'string|min:4|max:45',
+            'perfil'            => 'string|min:4|max:255',
+            'tipoDocumento'     => ['required_with:numeroDocumento', Rule::in(['CC','CE','RC','TI','NS'])],
+            'numeroDocumento'   => 'required_with:tipoDocumento|integer',
+            'fechaExpedicion'   => 'required_with:numeroDocumento|date_format:Y-m-d',
+            'lugarExpedicion'   => 'required_with:fechaExpedicion|string|max:45',
             'telefonos'         => 'Array',
-            'egresado'          => 'boolean'
         ]);
 
         if($validacion->fails()){
@@ -83,7 +81,7 @@ class EstudianteController extends Controller
                     'nombres'       => $request['nombres'],
                     'apellido1'     => $request['apellido1'],
                     'apellido2'     => $request['apellido2'],
-                    'tipo'          => 1,
+                    'tipo'          => 2,
                     'email'         => $request['email'],
                     'sexo'          => $request['sexo'],
                     'intentosConexion'=> 0,
@@ -91,27 +89,26 @@ class EstudianteController extends Controller
                     'contrasenia'     => Hash::make($contrasena),
                 ]);
  
-        // Crea el estudiante
+        // Crea el profesor
         DB::connection('directivo')
-                ->table('estudiantes')
+                ->table('docentes')
                 ->insert([
-                    'idUsuario'     => $idUsuario,
-                    'direccion'     => $request['direccion'],
-                    'RH'            => $request['rh'],
-                    'egresado'      => (is_null($request['boolean'])) ? 0 : $request['boolean'],
-                    'idGrupo'       => $request['idGrupo']
+                    'idUsuario'       => $idUsuario,
+                    'direccion'       => $request['direccion'],
+                    'perfilAcademico' => $request['perfil']
                 ]);
 
         // Crear documento
-        DB::connection('directivo')
-                ->table('documentoidentidad')
-                ->insert([
-                    'idUsuario'         => $idUsuario,
-                    'tipodocumento'     => $request['tipoDocumento'],
-                    'numero'            => $request['numeroDocumento'],
-                    'fechaExpedicion'   => $request['fechaExpedicion'],
-                    'lugarExpedicion'   => $request['lugarExpedicion']
-                ]); 
+        if($request['tipoDocumento'] != '')
+            DB::connection('directivo')
+                    ->table('documentoidentidad')
+                    ->insert([
+                        'idUsuario'         => $idUsuario,
+                        'tipodocumento'     => $request['tipoDocumento'],
+                        'numero'            => $request['numeroDocumento'],
+                        'fechaExpedicion'   => $request['fechaExpedicion'],
+                        'lugarExpedicion'   => $request['lugarExpedicion']
+                    ]); 
 
         // Insertar telefonos
         if(!is_null($request['telefonos'])){
@@ -129,42 +126,41 @@ class EstudianteController extends Controller
         DB::connection('directivo')->commit();
 
         return response()->json([
-            'message'   => 'El estudiante '.$request['nombres'].' fue registrado con exito'
+            'message'   => 'El profesor '.$request['nombres'].' fue registrado con exito'
         ]);
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $idUsuario
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($idUsuario)
+    public function show($idProfesor)
     {
-        $estudiante['data'] = DB::connection('directivo')
-            ->table('vs_datosestudiantes')
-            ->where('idUsuario',$idUsuario)
+        $docente['data'] = DB::connection('directivo')
+            ->table('vs_datosdocentes')
+            ->where('idUsuario',$idProfesor)
             ->first();
-        if(is_null( $estudiante['data'])){
+        if(is_null( $docente['data'])){
             return response()->json([
-                'message'   => 'El estudiante no existe'
+                'message'   => 'El profesor no existe'
             ],404);
         }
         $telefonos = DB::connection('directivo')
             ->table('telefono')
             ->select('telefono')
-            ->where('idUsuario',$idUsuario)
+            ->where('idUsuario',$idProfesor)
             ->get();
 
         $c = 0;
-        $estudiante['telefonos'] = [];
+        $docente['telefonos'] = [];
         foreach ($telefonos as $value) {
-            $estudiante['telefonos'][$c] = $value->telefono;
+            $docente['telefonos'][$c] = $value->telefono;
             $c++;
         }
 
-        return response()->json($estudiante);
+        return response()->json($docente);
     }
 
     /**
@@ -185,13 +181,11 @@ class EstudianteController extends Controller
             'sexo'      => [Rule::in(['M','F'])],
             'fechaNacimiento' => 'date_format:Y-m-d',
             'direccion' => 'string|min:4|max:45',
-            'rh'        => [Rule::in(['A+','A-','0+','0-','B+','B-','AB+','AB-'])],
+            'perfil'            => 'string|min:4|max:255',
             'tipoDocumento'     => [Rule::in(['CC','CE','RC','TI','NS'])],
             'numeroDocumento'   => 'integer',
             'fechaExpedicion'   => 'date_format:Y-m-d',
             'fechaExpedicion'   => 'string|max:45',
-            'idGrupo'           => 'exists:directivo.grupos,idGrupo',
-            'egresado'          => 'boolean'
         ]);
 
         if($validacion->fails()){
@@ -211,10 +205,8 @@ class EstudianteController extends Controller
         $actualizar2['fechaExpedicion'] = $request['fechaExpedicion'];
         $actualizar2['lugarExpedicion'] = $request['lugarExpedicion'];
 
-        $actualizar3['direccion']   = $request['direccion'];
-        $actualizar3['RH']          = $request['rh'];
-        $actualizar3['egresado']    = $request['egresado'];
-        $actualizar3['idGrupo']     = $request['idGrupo'];
+        $actualizar3['direccion']           = $request['direccion'];
+        $actualizar3['perfilAcademico']     = $request['perfil'];
 
         foreach ($actualizar1 as $key => $value) {
             if(is_null($value))
@@ -247,19 +239,18 @@ class EstudianteController extends Controller
 
         if(count($actualizar3) > 0)
             $cambiado += DB::connection('directivo')
-                ->table('Estudiantes')
+                ->table('Docentes')
                 ->where('idUsuario',$idUsuario)
                 ->update($actualizar3);
 
         if($cambiado > 0)
             return response()->json([
-                'message'   => 'Los datos del estudiante han sido actualizado.'
+                'message'   => 'Los datos del profesor han sido actualizado.'
             ]);
         else
             return response()->json([
                 'message'   => 'No se ha actualizado ningun dato.'
             ]);
-
     }
 
     /**
@@ -268,23 +259,23 @@ class EstudianteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($idEstudiante)
+    public function destroy($idProfesor)
     {
         $afectado = DB::connection('directivo')
             ->table('usuarios')
-            ->where('idUsuario',$idEstudiante)
-            ->where('tipo',1)
+            ->where('idUsuario',$idProfesor)
+            ->where('tipo',2)
             ->update([
                 'delete' => date("Y-m-d H:i:s")
             ]);
 
         if($afectado > 0)
             return response()->json([
-                'message'   => 'El estudiante fue eliminado'
+                'message'   => 'El profesor fue eliminado'
             ]);
         else
             return response()->json([
-                'message'   => 'No existe este estudiante'
+                'message'   => 'No existe este profesor.'
             ]);
     }
 }

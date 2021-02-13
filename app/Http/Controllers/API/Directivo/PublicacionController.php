@@ -138,9 +138,16 @@ class PublicacionController extends Controller
      */
     public function destroy($idPublicacion)
     {
-        DB::connection('directivo')
+        $afectado = DB::connection('directivo')
             ->table('publicaciones')->where('idPublicacion', $idPublicacion)->delete();
         
-        return response()->json(['message' => 'Se borró la publicación']);
+        if($afectado > 0)
+            return response()->json([
+                'message'   => 'La publicacion fue eliminado.'
+            ]);
+        else
+            return response()->json([
+                'message'   => 'No existe la publicación.'
+            ]);
     }
 }
