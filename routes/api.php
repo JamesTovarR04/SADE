@@ -73,6 +73,16 @@ Route::group([
 
     Route::apiResource('publicaciones', 'PublicacionController');
     Route::apiResource('eventos', 'EventoController');
+    Route::get('eventosmes', 'EventoController@enMes');
+    Route::get('notificaciones', 'NotificacionController@index');
+    Route::get('notificaciones/{id}', 'NotificacionController@visto');
+    Route::get('numero/notificaciones', 'NotificacionController@numero');
+    Route::get('grupos', 'GrupoController@index');
+    Route::get('grupos/{id}', 'GrupoController@show');
+    Route::post('telefono', 'TelefonoController@store');
+    Route::delete('telefono/{id}', 'TelefonoController@destroy');
+    Route::put('usuario', 'UserController@update');
+    Route::get('usuario', 'UserController@show');
 
 });
 
@@ -85,13 +95,16 @@ Route::group([
 
     Route::apiResource('publicaciones', 'PublicacionController');
     Route::get('eventos', 'EventoController@index');
-    route::get('eventos/mes', 'EventoController@enMes');
+    Route::get('eventos/mes', 'EventoController@enMes');
     Route::get('notificaciones', 'NotificacionController@index');
     Route::get('notificaciones/{id}', 'NotificacionController@visto');
+    Route::get('numero/notificaciones', 'NotificacionController@numero');
     Route::get('grupos', 'GrupoController@index');
     Route::get('grupos/{id}', 'GrupoController@show');
     Route::get('migrupo', 'GrupoController@miGrupo');
     Route::put('usuario', 'UserController@update');
     Route::get('usuario', 'UserController@show');
-
+    Route::post('telefono', 'TelefonoController@store');
+    Route::delete('telefono/{id}', 'TelefonoController@destroy');
+    
 });

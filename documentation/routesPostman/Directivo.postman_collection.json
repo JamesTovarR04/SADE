@@ -201,6 +201,29 @@
 					},
 					"response": []
 				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
 		},
 		{
@@ -667,7 +690,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "sade.edu/api/directivo/grupos?buscar=401",
+							"raw": "sade.edu/api/directivo/grupos",
 							"host": [
 								"sade",
 								"edu"
@@ -676,12 +699,6 @@
 								"api",
 								"directivo",
 								"grupos"
-							],
-							"query": [
-								{
-									"key": "buscar",
-									"value": "401"
-								}
 							]
 						}
 					},
@@ -1411,7 +1428,183 @@
 		},
 		{
 			"name": "Telefonos",
-			"item": []
+			"item": [
+				{
+					"name": "agregar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/directivo/telefonos/1?telefono=397156454",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"telefonos",
+								"1"
+							],
+							"query": [
+								{
+									"key": "telefono",
+									"value": "397156454"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/directivo/telefonos/2",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"telefonos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjRmZGQ2NTAzNGFjYjM5OTI3ZDcxYTVjZmQ1ODQ3MDkxOWQyY2E5ZTU2NTYzYmE5ZWFhNjZmM2YwYmJkNzFjYWYzYmIwNjRkMThlN2ViNzUiLCJpYXQiOiIxNjEzMDcwMjc3Ljk1ODE1MCIsIm5iZiI6IjE2MTMwNzAyNzcuOTU4MTU4IiwiZXhwIjoiMTY0NDYwNjI3Ny45NDc2ODciLCJzdWIiOiI1MTEiLCJzY29wZXMiOltdfQ.ootvJUbs7Fz0s9X3x31XnCTfEqdaqTQrHPUWegg3T8rOplaA3o0dsX1PfbrlXv6G8fQgIolmH8W29E8DlF1WasuKuc581vSYUX1NyK6gMBmfipxTeA3oU1NFGxuETBB-2nCftfPonU7V3mRNxQowrTEnw9F7VTUJ0OyUz4OWO2-rzRsjDL0K7_dBIsjejx-H93xdWYUcmBsMXOxrvrR-FNq7Nl1bP1AuuT1fzPXzjwMZcRNZjQaHoWD1y1ydasEq9fB87iNGm7Lodnlxi2k5FuIERrxWBY6BpZdY3r6zFJOqGeSzc43wpArBQlez9cKsdbCv2AyiiaymcmOpyo5f9fKqMhppsK9PqHLhFoBg99MSVK2LelnXHg1vk7GVTcg3Sp1KQuA2V6GlQ7AcQgR14ywARmqBqI9TyEShjzWsVN7eRgWcbeWhjHthK1Dt_NzdqBAIfTjYZOzn8y__YZbJbgQrcIYqvD8znza_h6t70dNVtM-XcZmCp3gn54u-k0WbCA8y2pbvE61a9_1Q9_DWJG0Wgh1aAcbg2m6e-CLmpXux-muRCu5vWD_Ew74JToGiY5A0fUpi-xPr3xpubZuGoiT96-FgUDws3SOwq9a1aL0s3K7NLjozIsidKbfC0VA8d0Ql7Mxxm-fF-QQ3MuJEPUSDseHb6XhoYJ29ZXvJ1oo",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Notificaciones",
+			"item": [
+				{
+					"name": "ver",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/directivo/notificaciones",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"notificaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "visto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/directivo/notificaciones/1",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"notificaciones",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "numero",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/directivo/numero/notificaciones",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"numero",
+								"notificaciones"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjRmZGQ2NTAzNGFjYjM5OTI3ZDcxYTVjZmQ1ODQ3MDkxOWQyY2E5ZTU2NTYzYmE5ZWFhNjZmM2YwYmJkNzFjYWYzYmIwNjRkMThlN2ViNzUiLCJpYXQiOiIxNjEzMDcwMjc3Ljk1ODE1MCIsIm5iZiI6IjE2MTMwNzAyNzcuOTU4MTU4IiwiZXhwIjoiMTY0NDYwNjI3Ny45NDc2ODciLCJzdWIiOiI1MTEiLCJzY29wZXMiOltdfQ.ootvJUbs7Fz0s9X3x31XnCTfEqdaqTQrHPUWegg3T8rOplaA3o0dsX1PfbrlXv6G8fQgIolmH8W29E8DlF1WasuKuc581vSYUX1NyK6gMBmfipxTeA3oU1NFGxuETBB-2nCftfPonU7V3mRNxQowrTEnw9F7VTUJ0OyUz4OWO2-rzRsjDL0K7_dBIsjejx-H93xdWYUcmBsMXOxrvrR-FNq7Nl1bP1AuuT1fzPXzjwMZcRNZjQaHoWD1y1ydasEq9fB87iNGm7Lodnlxi2k5FuIERrxWBY6BpZdY3r6zFJOqGeSzc43wpArBQlez9cKsdbCv2AyiiaymcmOpyo5f9fKqMhppsK9PqHLhFoBg99MSVK2LelnXHg1vk7GVTcg3Sp1KQuA2V6GlQ7AcQgR14ywARmqBqI9TyEShjzWsVN7eRgWcbeWhjHthK1Dt_NzdqBAIfTjYZOzn8y__YZbJbgQrcIYqvD8znza_h6t70dNVtM-XcZmCp3gn54u-k0WbCA8y2pbvE61a9_1Q9_DWJG0Wgh1aAcbg2m6e-CLmpXux-muRCu5vWD_Ew74JToGiY5A0fUpi-xPr3xpubZuGoiT96-FgUDws3SOwq9a1aL0s3K7NLjozIsidKbfC0VA8d0Ql7Mxxm-fF-QQ3MuJEPUSDseHb6XhoYJ29ZXvJ1oo",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
 		}
 	]
 }

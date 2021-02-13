@@ -78,7 +78,7 @@ class PublicacionController extends Controller
         ];
         DB::connection('profesor')
             ->select('CALL p_prf_addPublicacion(?,?,?,?,?)',$publicacion);
-        return response()->json(['message'=>'Publicado con éxito']); 
+        return response()->json(['message'=>'Publicado con éxito'],201); 
 
     }
 

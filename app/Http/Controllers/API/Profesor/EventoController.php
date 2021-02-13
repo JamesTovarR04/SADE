@@ -84,7 +84,7 @@ class EventoController extends Controller
             ->select('CALL p_prf_addEvento(?,?,?,?)',$eventos);
             //->select('CALL p_prf_addEvento("2020-02-20 20:20:20","Prueba otra vez",482,1)',$eventos);
             
-        return response()->json(['message'=>'Evento agregado']); 
+        return response()->json(['message'=>'Evento agregado'],201); 
     }
 
     
@@ -99,7 +99,27 @@ class EventoController extends Controller
         //
     }
 
-    
+    public function enMes(Request $request)
+    {
+        $validacion = Validator::make($request->all(),[
+            'mes' => 'required|date_format:Y-m',
+        ]);
+
+        if($validacion->fails()){
+            return response(['errors' => $validacion->errors()->all()], 422);
+        }
+
+        //Se usa la funcion exple para separar el request ('mes')
+        $anhoMes = explode('-',$request['mes']);
+
+        $anho = $anhoMes[0];
+        $mes  = $anhoMes[1];
+
+        $eventos = DB::connection('profesor')
+            ->select('CALL p_prf_eventosMes(?,?,?)',[$request->user()->idUsuario,$mes,$anho]);
+        return response()->json($eventos);
+    }
+
     public function destroy(Request $request, $idEvento)
     {
         DB::connection('profesor')
