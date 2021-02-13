@@ -128,8 +128,9 @@ class DirectivoController extends Controller
         DB::connection('directivo')->commit();
 
         return response()->json([
-            'message'   => 'El directivo '.$request['nombres'].' fue registrado con exito'
-        ]);
+            'message'   => 'El directivo '.$request['nombres'].' fue registrado con exito',
+            'id'        => $idUsuario,
+        ],201);
     }
 
     /**
@@ -149,18 +150,11 @@ class DirectivoController extends Controller
                 'message'   => 'El directivo no existe'
             ],404);
         }
-        $telefonos = DB::connection('directivo')
+        $docente['telefonos']  = DB::connection('directivo')
             ->table('telefono')
-            ->select('telefono')
+            ->select('idTelefono','telefono')
             ->where('idUsuario',$idDirectivo)
             ->get();
-
-        $c = 0;
-        $docente['telefonos'] = [];
-        foreach ($telefonos as $value) {
-            $docente['telefonos'][$c] = $value->telefono;
-            $c++;
-        }
 
         return response()->json($docente);
     }
@@ -254,7 +248,7 @@ class DirectivoController extends Controller
         else
             return response()->json([
                 'message'   => 'No se ha actualizado ningun dato.'
-            ]);
+            ],404);
     }
 
     /**
@@ -280,6 +274,6 @@ class DirectivoController extends Controller
         else
             return response()->json([
                 'message'   => 'No existe este directivo.'
-            ]);
+            ],404);
     }
 }

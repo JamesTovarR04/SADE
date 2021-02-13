@@ -126,7 +126,8 @@ class ProfesorController extends Controller
         DB::connection('directivo')->commit();
 
         return response()->json([
-            'message'   => 'El profesor '.$request['nombres'].' fue registrado con exito'
+            'message'   => 'El profesor '.$request['nombres'].' fue registrado con exito',
+            'id'        => $idUsuario,
         ]);
     }
 
@@ -147,18 +148,11 @@ class ProfesorController extends Controller
                 'message'   => 'El profesor no existe'
             ],404);
         }
-        $telefonos = DB::connection('directivo')
+        $docente['telefonos'] = DB::connection('directivo')
             ->table('telefono')
-            ->select('telefono')
+            ->select('idTelefono','telefono')
             ->where('idUsuario',$idProfesor)
             ->get();
-
-        $c = 0;
-        $docente['telefonos'] = [];
-        foreach ($telefonos as $value) {
-            $docente['telefonos'][$c] = $value->telefono;
-            $c++;
-        }
 
         return response()->json($docente);
     }

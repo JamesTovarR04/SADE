@@ -129,8 +129,9 @@ class EstudianteController extends Controller
         DB::connection('directivo')->commit();
 
         return response()->json([
-            'message'   => 'El estudiante '.$request['nombres'].' fue registrado con exito'
-        ]);
+            'message'   => 'El estudiante '.$request['nombres'].' fue registrado con exito',
+            'id'        => $idUsuario,
+        ],201);
 
     }
 
@@ -151,18 +152,11 @@ class EstudianteController extends Controller
                 'message'   => 'El estudiante no existe'
             ],404);
         }
-        $telefonos = DB::connection('directivo')
+        $estudiante['telefonos'] = DB::connection('directivo')
             ->table('telefono')
-            ->select('telefono')
+            ->select('idTelefono','telefono')
             ->where('idUsuario',$idUsuario)
             ->get();
-
-        $c = 0;
-        $estudiante['telefonos'] = [];
-        foreach ($telefonos as $value) {
-            $estudiante['telefonos'][$c] = $value->telefono;
-            $c++;
-        }
 
         return response()->json($estudiante);
     }
@@ -258,7 +252,7 @@ class EstudianteController extends Controller
         else
             return response()->json([
                 'message'   => 'No se ha actualizado ningun dato.'
-            ]);
+            ],404);
 
     }
 
@@ -285,6 +279,6 @@ class EstudianteController extends Controller
         else
             return response()->json([
                 'message'   => 'No existe este estudiante'
-            ]);
+            ],404);
     }
 }

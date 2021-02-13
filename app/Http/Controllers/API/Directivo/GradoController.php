@@ -66,10 +66,13 @@ class GradoController extends Controller
             'director'  => $request['director']
         ];
 
-        DB::connection('directivo')
-            ->table('grupos')->insert($grupo);
+        $idGrupo = DB::connection('directivo')
+            ->table('grupos')->insertGetId($grupo);
 
-        return response()->json(['message'=>'Se agregó el grado grado'.$request['nombre']]);
+        return response()->json([
+            'message'   =>'Se agregó el grado grado'.$request['nombre'],
+            'id'        => $idGrupo
+        ],201);
     }
 
     /**
@@ -145,7 +148,7 @@ class GradoController extends Controller
         else
             return response()->json([
                 'message'   => 'No existe el grupo.'
-            ]);
+            ],404);
     }
 
     /**
@@ -166,6 +169,6 @@ class GradoController extends Controller
         else
             return response()->json([
                 'message'   => 'No existe el grupo.'
-            ]);
+            ],404);
     }
 }

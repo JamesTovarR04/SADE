@@ -119,7 +119,7 @@ class EventoController extends Controller
         DB::connection('directivo')
             ->table('eventos')->insert($evento);
 
-        return response()->json(['message'=>'Evento agregado']);
+        return response()->json(['message'=>'Evento agregado'],201);
     }
 
     /**
@@ -130,7 +130,7 @@ class EventoController extends Controller
      */
     public function show($id)
     {
-        return response()->json(['message'=>'Estamos trabajando en esto :/']);
+        return response()->json(['message'=>'Estamos trabajando en esto :/'],404);
     }
 
     /**
@@ -142,7 +142,7 @@ class EventoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return response()->json(['message'=>'Estamos trabajando en esto :/']);
+        return response()->json(['message'=>'Estamos trabajando en esto :/'],404);
     }
 
     /**
@@ -153,9 +153,16 @@ class EventoController extends Controller
      */
     public function destroy($idEvento)
     {
-        DB::connection('directivo')
-            ->table('eventos')->where('idEventos', $idEvento)->delete();
-        
-        return response()->json(['message' => 'Se canceló el evento']);
+        $afectado = DB::connection('directivo')
+                    ->table('eventos')->where('idEventos', $idEvento)->delete();
+
+        if($afectado > 0)
+            return response()->json([
+                'message'   => 'Se canceló el evento.'
+            ]);
+        else
+            return response()->json([
+                'message'   => 'No existe el evento.'
+            ],404);
     }
 }

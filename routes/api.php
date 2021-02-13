@@ -56,6 +56,11 @@ Route::group([
     Route::apiResource('profesores', 'ProfesorController');
     Route::apiResource('directivos', 'DirectivoController');
     Route::apiResource('grupos', 'GradoController');
+    Route::post('telefonos/{idUsuario}','TelefonoController@store');
+    Route::delete('telefonos/{idTelefono}','TelefonoController@destroy');
+    Route::get('notificaciones', 'NotificacionController@index');
+    Route::get('notificaciones/{id}', 'NotificacionController@visto');
+    Route::get('numero/notificaciones', 'NotificacionController@numero');
 
 });
 
@@ -86,6 +91,7 @@ Route::group([
     Route::get('grupos', 'GrupoController@index');
     Route::get('grupos/{id}', 'GrupoController@show');
     Route::get('migrupo', 'GrupoController@miGrupo');
-
+    Route::put('usuario', 'UserController@update');
+    Route::get('usuario', 'UserController@show');
 
 });

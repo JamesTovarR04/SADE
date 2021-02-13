@@ -85,7 +85,7 @@ class PublicacionController extends Controller
         DB::connection('directivo')
             ->table('publicaciones')->insert($publicacion);
 
-        return response()->json(['message'=>'Publicado con éxito']);
+        return response()->json(['message'=>'Publicado con éxito'],201);
     }
 
     /**
@@ -96,7 +96,7 @@ class PublicacionController extends Controller
      */
     public function show($id)
     {
-        return response()->json(['message'=>'Estamos trabajando en esto :/']);
+        return response()->json(['message'=>'Estamos trabajando en esto :/'],404);
     }
 
     /**
@@ -143,11 +143,11 @@ class PublicacionController extends Controller
         
         if($afectado > 0)
             return response()->json([
-                'message'   => 'La publicacion fue eliminado.'
+                'message'   => 'La publicacion fue eliminada.'
             ]);
         else
             return response()->json([
                 'message'   => 'No existe la publicación.'
-            ]);
+            ],404);
     }
 }
