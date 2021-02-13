@@ -17,7 +17,7 @@ class PublicacionController extends Controller
     public function index(Request $request)
     {
         $validacion = Validator::make($request->all(),[
-            'buscar' => 'string|min:4|max:150',
+            'buscar' => 'string|min:4|max:100',
         ]);
 
         if($validacion->fails()){

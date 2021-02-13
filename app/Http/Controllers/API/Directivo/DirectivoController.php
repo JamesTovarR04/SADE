@@ -19,18 +19,23 @@ class DirectivoController extends Controller
     public function index(Request $request)
     {
         $validacion = Validator::make($request->all(),[
-            'buscar' => 'string|min:4|max:100',
+            'buscar' => 'string|min:6|max:100',
+            'colorden'  => Rule::in(['nombre','documentoIdentidad','cargo']),
+            'orden'     => Rule::in(['asc','desc'])
         ]);
 
         if($validacion->fails()){
             return response(['errors' => $validacion->errors()->all()], 422);
         }
 
-        if($request['buscar'] == '')
+        if($request['buscar'] == ''){
+            $columna = ($request['colorden'] == '') ? 'idUsuario' : $request['colorden'];
+            $orden = ($request['orden'] == '') ? 'asc' : $request['orden'];
             $directivo = DB::connection('directivo')
                 ->table('vs_infodirectivos')
+                ->orderBy($columna, $orden)
                 ->paginate(15);
-        else
+        }else
             $directivo = DB::connection('directivo')
                 ->select('CALL p_dir_buscarDirectivo(?)',[$request['buscar']]);
 

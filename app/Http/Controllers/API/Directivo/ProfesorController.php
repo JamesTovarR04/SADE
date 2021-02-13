@@ -20,17 +20,22 @@ class ProfesorController extends Controller
     {
         $validacion = Validator::make($request->all(),[
             'buscar' => 'string|min:4|max:100',
+            'colorden'  => Rule::in(['nombre','documentoIdentidad','perfilAcademico']),
+            'orden'     => Rule::in(['asc','desc'])
         ]);
 
         if($validacion->fails()){
             return response(['errors' => $validacion->errors()->all()], 422);
         }
 
-        if($request['buscar'] == '')
+        if($request['buscar'] == ''){
+            $columna = ($request['colorden'] == '') ? 'idUsuario' : $request['colorden'];
+            $orden = ($request['orden'] == '') ? 'asc' : $request['orden'];
             $profesor = DB::connection('directivo')
                 ->table('vs_infodocentes')
+                ->orderBy($columna, $orden)
                 ->paginate(15);
-        else
+        }else
             $profesor = DB::connection('directivo')
                 ->select('CALL p_dir_buscarDocente(?)',[$request['buscar']]);
         

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "97581f43-6e64-4e53-a7c0-657972029a45",
+		"_postman_id": "9ace350e-195d-420b-90b3-b365ac57accd",
 		"name": "Directivo",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -9,18 +9,99 @@
 			"name": "Publicaciones",
 			"item": [
 				{
+					"name": "Utilidades",
+					"item": [
+						{
+							"name": "privacidad",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "sade.edu/api/directivo/privacidad/publicacion/31",
+									"host": [
+										"sade",
+										"edu"
+									],
+									"path": [
+										"api",
+										"directivo",
+										"privacidad",
+										"publicacion",
+										"31"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "propias",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "sade.edu/api/directivo/mispublicaciones",
+									"host": [
+										"sade",
+										"edu"
+									],
+									"path": [
+										"api",
+										"directivo",
+										"mispublicaciones"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "dislike",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "sade.edu/api/directivo/publicaciones/31/dislike",
+									"host": [
+										"sade",
+										"edu"
+									],
+									"path": [
+										"api",
+										"directivo",
+										"publicaciones",
+										"31",
+										"dislike"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "like",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "sade.edu/api/directivo/publicaciones/31/like",
+									"host": [
+										"sade",
+										"edu"
+									],
+									"path": [
+										"api",
+										"directivo",
+										"publicaciones",
+										"31",
+										"like"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "agregar",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODgwOGJiZjE3ODFlNjAzODRlYmQ4ZDczZTI0NWFlYTA5Mzg5ZThiMjc0YjY1NDY2YzA4NzhjYWMwMTc2NzIxNDI4YTY2ODE2MGUzMzBiNTEiLCJpYXQiOiIxNjEzMDEwNjA1LjI3MDg3NSIsIm5iZiI6IjE2MTMwMTA2MDUuMjcwODgzIiwiZXhwIjoiMTY0NDU0NjYwNS4yNTI0ODMiLCJzdWIiOiI1MTAiLCJzY29wZXMiOltdfQ.KcYg-K7HvejcSZO5AitjgnIke8RycwzspyIoYo8c93mpjaLYh3Klmw9XrXjDE1zx9cAXSrB2cHhfJ9nBYHl-VDYzOhSmf7s950hY27kbzD5j2qxhbincF-EOH64jWYHyACJiiuGkOa9vOEwIGEYmTJW0cN4IhnFOPYZt6Gl3ZpKPGNI3zZaBe2Imuge2UDaQ0SFPXrDLrnYzQXGPBscBgslDGw40xM_-8qQw7RRHL4VTfUsD795KIxO0W4IAxJanQSSb2M2yoI1rWS3ixAmNLiLUe7ONyBYLg1rVDN0IN2Ci2AQ5soUh09vKi4gCxTclsuuCN-g8z1vptYkzAzfEDrSmlxsoGzMrVEdRI2sxaOhgD4riJ9LGPdZ9OWJAXBLQxK6P6DVvh29kOOeoQBKn6ykCATxHlvfmnDufUjO34RQGZzC5WHW9wQ3O1aT_vKMWJHX1N9lvTdx-voJBHyNp6Z6fFKLD8IKJjb9m8xIU1MeDdxW2Im_ET5PtHOX0N3XnS9VjjU3o9h68gLxzVR3_cGBXGVEC_wtnmS4GLTXieV7VUiwPcaV1WZvEMOPa20xazonQkODOLP-_gvhMKyBkNU0H6uczRD1NeneDfsC9SaQHGwfsLpEzC3_Y4Qv2Uyvzz0i4TIH7NNRtH7ziz-SY_ek_oaEJ7WnaXJPgcrs0PiU",
-									"type": "string"
-								}
-							]
-						},
 						"method": "POST",
 						"header": [],
 						"url": {
@@ -67,20 +148,10 @@
 				{
 					"name": "borrar",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODgwOGJiZjE3ODFlNjAzODRlYmQ4ZDczZTI0NWFlYTA5Mzg5ZThiMjc0YjY1NDY2YzA4NzhjYWMwMTc2NzIxNDI4YTY2ODE2MGUzMzBiNTEiLCJpYXQiOiIxNjEzMDEwNjA1LjI3MDg3NSIsIm5iZiI6IjE2MTMwMTA2MDUuMjcwODgzIiwiZXhwIjoiMTY0NDU0NjYwNS4yNTI0ODMiLCJzdWIiOiI1MTAiLCJzY29wZXMiOltdfQ.KcYg-K7HvejcSZO5AitjgnIke8RycwzspyIoYo8c93mpjaLYh3Klmw9XrXjDE1zx9cAXSrB2cHhfJ9nBYHl-VDYzOhSmf7s950hY27kbzD5j2qxhbincF-EOH64jWYHyACJiiuGkOa9vOEwIGEYmTJW0cN4IhnFOPYZt6Gl3ZpKPGNI3zZaBe2Imuge2UDaQ0SFPXrDLrnYzQXGPBscBgslDGw40xM_-8qQw7RRHL4VTfUsD795KIxO0W4IAxJanQSSb2M2yoI1rWS3ixAmNLiLUe7ONyBYLg1rVDN0IN2Ci2AQ5soUh09vKi4gCxTclsuuCN-g8z1vptYkzAzfEDrSmlxsoGzMrVEdRI2sxaOhgD4riJ9LGPdZ9OWJAXBLQxK6P6DVvh29kOOeoQBKn6ykCATxHlvfmnDufUjO34RQGZzC5WHW9wQ3O1aT_vKMWJHX1N9lvTdx-voJBHyNp6Z6fFKLD8IKJjb9m8xIU1MeDdxW2Im_ET5PtHOX0N3XnS9VjjU3o9h68gLxzVR3_cGBXGVEC_wtnmS4GLTXieV7VUiwPcaV1WZvEMOPa20xazonQkODOLP-_gvhMKyBkNU0H6uczRD1NeneDfsC9SaQHGwfsLpEzC3_Y4Qv2Uyvzz0i4TIH7NNRtH7ziz-SY_ek_oaEJ7WnaXJPgcrs0PiU",
-									"type": "string"
-								}
-							]
-						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "sade.edu/api/directivo/publicaciones/8",
+							"raw": "sade.edu/api/directivo/publicaciones/31",
 							"host": [
 								"sade",
 								"edu"
@@ -89,7 +160,7 @@
 								"api",
 								"directivo",
 								"publicaciones",
-								"8"
+								"31"
 							]
 						}
 					},
@@ -98,16 +169,6 @@
 				{
 					"name": "editar",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODgwOGJiZjE3ODFlNjAzODRlYmQ4ZDczZTI0NWFlYTA5Mzg5ZThiMjc0YjY1NDY2YzA4NzhjYWMwMTc2NzIxNDI4YTY2ODE2MGUzMzBiNTEiLCJpYXQiOiIxNjEzMDEwNjA1LjI3MDg3NSIsIm5iZiI6IjE2MTMwMTA2MDUuMjcwODgzIiwiZXhwIjoiMTY0NDU0NjYwNS4yNTI0ODMiLCJzdWIiOiI1MTAiLCJzY29wZXMiOltdfQ.KcYg-K7HvejcSZO5AitjgnIke8RycwzspyIoYo8c93mpjaLYh3Klmw9XrXjDE1zx9cAXSrB2cHhfJ9nBYHl-VDYzOhSmf7s950hY27kbzD5j2qxhbincF-EOH64jWYHyACJiiuGkOa9vOEwIGEYmTJW0cN4IhnFOPYZt6Gl3ZpKPGNI3zZaBe2Imuge2UDaQ0SFPXrDLrnYzQXGPBscBgslDGw40xM_-8qQw7RRHL4VTfUsD795KIxO0W4IAxJanQSSb2M2yoI1rWS3ixAmNLiLUe7ONyBYLg1rVDN0IN2Ci2AQ5soUh09vKi4gCxTclsuuCN-g8z1vptYkzAzfEDrSmlxsoGzMrVEdRI2sxaOhgD4riJ9LGPdZ9OWJAXBLQxK6P6DVvh29kOOeoQBKn6ykCATxHlvfmnDufUjO34RQGZzC5WHW9wQ3O1aT_vKMWJHX1N9lvTdx-voJBHyNp6Z6fFKLD8IKJjb9m8xIU1MeDdxW2Im_ET5PtHOX0N3XnS9VjjU3o9h68gLxzVR3_cGBXGVEC_wtnmS4GLTXieV7VUiwPcaV1WZvEMOPa20xazonQkODOLP-_gvhMKyBkNU0H6uczRD1NeneDfsC9SaQHGwfsLpEzC3_Y4Qv2Uyvzz0i4TIH7NNRtH7ziz-SY_ek_oaEJ7WnaXJPgcrs0PiU",
-									"type": "string"
-								}
-							]
-						},
 						"method": "PUT",
 						"header": [],
 						"url": {
@@ -139,16 +200,6 @@
 				{
 					"name": "leer",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -161,6 +212,13 @@
 								"api",
 								"directivo",
 								"publicaciones"
+							],
+							"query": [
+								{
+									"key": "buscar",
+									"value": "elementum",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -172,12 +230,12 @@
 			"name": "Login",
 			"item": [
 				{
-					"name": "login-directivo",
+					"name": "User 1",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "sade.edu/api/auth/login?user=1215315891&password=123456",
+							"raw": "sade.edu/api/auth/login?user=miguelalejandro183@gmail.com&password=123456",
 							"host": [
 								"sade",
 								"edu"
@@ -190,7 +248,67 @@
 							"query": [
 								{
 									"key": "user",
-									"value": "1215315891"
+									"value": "miguelalejandro183@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/auth/login?user=juanguillermo925@gmail.com&password=123456",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "juanguillermo925@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User 3",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/auth/login?user=126839729&password=123456",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "126839729"
 								},
 								{
 									"key": "password",
@@ -232,20 +350,10 @@
 				{
 					"name": "agregar",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODgwOGJiZjE3ODFlNjAzODRlYmQ4ZDczZTI0NWFlYTA5Mzg5ZThiMjc0YjY1NDY2YzA4NzhjYWMwMTc2NzIxNDI4YTY2ODE2MGUzMzBiNTEiLCJpYXQiOiIxNjEzMDEwNjA1LjI3MDg3NSIsIm5iZiI6IjE2MTMwMTA2MDUuMjcwODgzIiwiZXhwIjoiMTY0NDU0NjYwNS4yNTI0ODMiLCJzdWIiOiI1MTAiLCJzY29wZXMiOltdfQ.KcYg-K7HvejcSZO5AitjgnIke8RycwzspyIoYo8c93mpjaLYh3Klmw9XrXjDE1zx9cAXSrB2cHhfJ9nBYHl-VDYzOhSmf7s950hY27kbzD5j2qxhbincF-EOH64jWYHyACJiiuGkOa9vOEwIGEYmTJW0cN4IhnFOPYZt6Gl3ZpKPGNI3zZaBe2Imuge2UDaQ0SFPXrDLrnYzQXGPBscBgslDGw40xM_-8qQw7RRHL4VTfUsD795KIxO0W4IAxJanQSSb2M2yoI1rWS3ixAmNLiLUe7ONyBYLg1rVDN0IN2Ci2AQ5soUh09vKi4gCxTclsuuCN-g8z1vptYkzAzfEDrSmlxsoGzMrVEdRI2sxaOhgD4riJ9LGPdZ9OWJAXBLQxK6P6DVvh29kOOeoQBKn6ykCATxHlvfmnDufUjO34RQGZzC5WHW9wQ3O1aT_vKMWJHX1N9lvTdx-voJBHyNp6Z6fFKLD8IKJjb9m8xIU1MeDdxW2Im_ET5PtHOX0N3XnS9VjjU3o9h68gLxzVR3_cGBXGVEC_wtnmS4GLTXieV7VUiwPcaV1WZvEMOPa20xazonQkODOLP-_gvhMKyBkNU0H6uczRD1NeneDfsC9SaQHGwfsLpEzC3_Y4Qv2Uyvzz0i4TIH7NNRtH7ziz-SY_ek_oaEJ7WnaXJPgcrs0PiU",
-									"type": "string"
-								}
-							]
-						},
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "sade.edu/api/directivo/eventos?hora=2021-02-06 12:30:00&descripcion=Nuevo evento 2&publico=1&directivo=0&profesor=0&estudiante=0",
+							"raw": "sade.edu/api/directivo/eventos?hora=2021-02-06 12:30:00&descripcion=Nuevo evento&publico=1&directivo=0&profesor=0&estudiante=0",
 							"host": [
 								"sade",
 								"edu"
@@ -262,7 +370,7 @@
 								},
 								{
 									"key": "descripcion",
-									"value": "Nuevo evento 2"
+									"value": "Nuevo evento"
 								},
 								{
 									"key": "publico",
@@ -288,20 +396,10 @@
 				{
 					"name": "borrar",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODgwOGJiZjE3ODFlNjAzODRlYmQ4ZDczZTI0NWFlYTA5Mzg5ZThiMjc0YjY1NDY2YzA4NzhjYWMwMTc2NzIxNDI4YTY2ODE2MGUzMzBiNTEiLCJpYXQiOiIxNjEzMDEwNjA1LjI3MDg3NSIsIm5iZiI6IjE2MTMwMTA2MDUuMjcwODgzIiwiZXhwIjoiMTY0NDU0NjYwNS4yNTI0ODMiLCJzdWIiOiI1MTAiLCJzY29wZXMiOltdfQ.KcYg-K7HvejcSZO5AitjgnIke8RycwzspyIoYo8c93mpjaLYh3Klmw9XrXjDE1zx9cAXSrB2cHhfJ9nBYHl-VDYzOhSmf7s950hY27kbzD5j2qxhbincF-EOH64jWYHyACJiiuGkOa9vOEwIGEYmTJW0cN4IhnFOPYZt6Gl3ZpKPGNI3zZaBe2Imuge2UDaQ0SFPXrDLrnYzQXGPBscBgslDGw40xM_-8qQw7RRHL4VTfUsD795KIxO0W4IAxJanQSSb2M2yoI1rWS3ixAmNLiLUe7ONyBYLg1rVDN0IN2Ci2AQ5soUh09vKi4gCxTclsuuCN-g8z1vptYkzAzfEDrSmlxsoGzMrVEdRI2sxaOhgD4riJ9LGPdZ9OWJAXBLQxK6P6DVvh29kOOeoQBKn6ykCATxHlvfmnDufUjO34RQGZzC5WHW9wQ3O1aT_vKMWJHX1N9lvTdx-voJBHyNp6Z6fFKLD8IKJjb9m8xIU1MeDdxW2Im_ET5PtHOX0N3XnS9VjjU3o9h68gLxzVR3_cGBXGVEC_wtnmS4GLTXieV7VUiwPcaV1WZvEMOPa20xazonQkODOLP-_gvhMKyBkNU0H6uczRD1NeneDfsC9SaQHGwfsLpEzC3_Y4Qv2Uyvzz0i4TIH7NNRtH7ziz-SY_ek_oaEJ7WnaXJPgcrs0PiU",
-									"type": "string"
-								}
-							]
-						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "sade.edu/api/directivo/eventos/3",
+							"raw": "sade.edu/api/directivo/eventos/1",
 							"host": [
 								"sade",
 								"edu"
@@ -310,7 +408,7 @@
 								"api",
 								"directivo",
 								"eventos",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -319,20 +417,10 @@
 				{
 					"name": "leer",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODgwOGJiZjE3ODFlNjAzODRlYmQ4ZDczZTI0NWFlYTA5Mzg5ZThiMjc0YjY1NDY2YzA4NzhjYWMwMTc2NzIxNDI4YTY2ODE2MGUzMzBiNTEiLCJpYXQiOiIxNjEzMDEwNjA1LjI3MDg3NSIsIm5iZiI6IjE2MTMwMTA2MDUuMjcwODgzIiwiZXhwIjoiMTY0NDU0NjYwNS4yNTI0ODMiLCJzdWIiOiI1MTAiLCJzY29wZXMiOltdfQ.KcYg-K7HvejcSZO5AitjgnIke8RycwzspyIoYo8c93mpjaLYh3Klmw9XrXjDE1zx9cAXSrB2cHhfJ9nBYHl-VDYzOhSmf7s950hY27kbzD5j2qxhbincF-EOH64jWYHyACJiiuGkOa9vOEwIGEYmTJW0cN4IhnFOPYZt6Gl3ZpKPGNI3zZaBe2Imuge2UDaQ0SFPXrDLrnYzQXGPBscBgslDGw40xM_-8qQw7RRHL4VTfUsD795KIxO0W4IAxJanQSSb2M2yoI1rWS3ixAmNLiLUe7ONyBYLg1rVDN0IN2Ci2AQ5soUh09vKi4gCxTclsuuCN-g8z1vptYkzAzfEDrSmlxsoGzMrVEdRI2sxaOhgD4riJ9LGPdZ9OWJAXBLQxK6P6DVvh29kOOeoQBKn6ykCATxHlvfmnDufUjO34RQGZzC5WHW9wQ3O1aT_vKMWJHX1N9lvTdx-voJBHyNp6Z6fFKLD8IKJjb9m8xIU1MeDdxW2Im_ET5PtHOX0N3XnS9VjjU3o9h68gLxzVR3_cGBXGVEC_wtnmS4GLTXieV7VUiwPcaV1WZvEMOPa20xazonQkODOLP-_gvhMKyBkNU0H6uczRD1NeneDfsC9SaQHGwfsLpEzC3_Y4Qv2Uyvzz0i4TIH7NNRtH7ziz-SY_ek_oaEJ7WnaXJPgcrs0PiU",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "sade.edu/api/directivo/eventos?dia=2021-02-07",
+							"raw": "sade.edu/api/directivo/eventos?dia=2021-02-06",
 							"host": [
 								"sade",
 								"edu"
@@ -345,7 +433,7 @@
 							"query": [
 								{
 									"key": "dia",
-									"value": "2021-02-07"
+									"value": "2021-02-06"
 								}
 							]
 						}
@@ -355,16 +443,6 @@
 				{
 					"name": "eventosMes",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjRmZGQ2NTAzNGFjYjM5OTI3ZDcxYTVjZmQ1ODQ3MDkxOWQyY2E5ZTU2NTYzYmE5ZWFhNjZmM2YwYmJkNzFjYWYzYmIwNjRkMThlN2ViNzUiLCJpYXQiOiIxNjEzMDcwMjc3Ljk1ODE1MCIsIm5iZiI6IjE2MTMwNzAyNzcuOTU4MTU4IiwiZXhwIjoiMTY0NDYwNjI3Ny45NDc2ODciLCJzdWIiOiI1MTEiLCJzY29wZXMiOltdfQ.ootvJUbs7Fz0s9X3x31XnCTfEqdaqTQrHPUWegg3T8rOplaA3o0dsX1PfbrlXv6G8fQgIolmH8W29E8DlF1WasuKuc581vSYUX1NyK6gMBmfipxTeA3oU1NFGxuETBB-2nCftfPonU7V3mRNxQowrTEnw9F7VTUJ0OyUz4OWO2-rzRsjDL0K7_dBIsjejx-H93xdWYUcmBsMXOxrvrR-FNq7Nl1bP1AuuT1fzPXzjwMZcRNZjQaHoWD1y1ydasEq9fB87iNGm7Lodnlxi2k5FuIERrxWBY6BpZdY3r6zFJOqGeSzc43wpArBQlez9cKsdbCv2AyiiaymcmOpyo5f9fKqMhppsK9PqHLhFoBg99MSVK2LelnXHg1vk7GVTcg3Sp1KQuA2V6GlQ7AcQgR14ywARmqBqI9TyEShjzWsVN7eRgWcbeWhjHthK1Dt_NzdqBAIfTjYZOzn8y__YZbJbgQrcIYqvD8znza_h6t70dNVtM-XcZmCp3gn54u-k0WbCA8y2pbvE61a9_1Q9_DWJG0Wgh1aAcbg2m6e-CLmpXux-muRCu5vWD_Ew74JToGiY5A0fUpi-xPr3xpubZuGoiT96-FgUDws3SOwq9a1aL0s3K7NLjozIsidKbfC0VA8d0Ql7Mxxm-fF-QQ3MuJEPUSDseHb6XhoYJ29ZXvJ1oo",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -399,7 +477,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "sade.edu/api/directivo/estudiantes?buscar=edilberto",
+							"raw": "sade.edu/api/directivo/estudiantes",
 							"host": [
 								"sade",
 								"edu"
@@ -412,7 +490,18 @@
 							"query": [
 								{
 									"key": "buscar",
-									"value": "edilberto"
+									"value": "zuleima",
+									"disabled": true
+								},
+								{
+									"key": "colorden",
+									"value": "nombre",
+									"disabled": true
+								},
+								{
+									"key": "orden",
+									"value": "desc",
+									"disabled": true
 								}
 							]
 						}
@@ -467,7 +556,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "sade.edu/api/directivo/estudiantes?nombres=Carla&apellido1=Gonzales&email=carla69@gmail.com&contrasena=carla1234&sexo=F&fechaNacimiento=2000-06-06&direccion=Calle 21 %2352-53&rh=AB%2B&tipoDocumento=CC&numeroDocumento=546654162&fechaExpedicion=2018-04-30&lugarExpedicion=Neiva - Huila",
+							"raw": "sade.edu/api/directivo/estudiantes?nombres=Carla&apellido1=Gonzales&email=carla99@gmail.com&contrasena=123456&sexo=F&fechaNacimiento=2000-06-06&rh=AB%2B&tipoDocumento=CC&numeroDocumento=546654162&fechaExpedicion=2018-04-30&lugarExpedicion=Neiva - Huila&direccion=Calle 21 %2352-53",
 							"host": [
 								"sade",
 								"edu"
@@ -493,11 +582,11 @@
 								},
 								{
 									"key": "email",
-									"value": "carla69@gmail.com"
+									"value": "carla99@gmail.com"
 								},
 								{
 									"key": "contrasena",
-									"value": "carla1234"
+									"value": "123456"
 								},
 								{
 									"key": "sexo",
@@ -506,10 +595,6 @@
 								{
 									"key": "fechaNacimiento",
 									"value": "2000-06-06"
-								},
-								{
-									"key": "direccion",
-									"value": "Calle 21 #52-53"
 								},
 								{
 									"key": "rh",
@@ -532,13 +617,12 @@
 									"value": "Neiva - Huila"
 								},
 								{
-									"key": "idGrupo",
-									"value": "",
-									"disabled": true
+									"key": "direccion",
+									"value": "Calle 21 %2352-53"
 								},
 								{
-									"key": "telefonos",
-									"value": "3220999999,3175564894",
+									"key": "idGrupo",
+									"value": "",
 									"disabled": true
 								},
 								{
@@ -650,16 +734,6 @@
 					"response": []
 				}
 			],
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjRmZGQ2NTAzNGFjYjM5OTI3ZDcxYTVjZmQ1ODQ3MDkxOWQyY2E5ZTU2NTYzYmE5ZWFhNjZmM2YwYmJkNzFjYWYzYmIwNjRkMThlN2ViNzUiLCJpYXQiOiIxNjEzMDcwMjc3Ljk1ODE1MCIsIm5iZiI6IjE2MTMwNzAyNzcuOTU4MTU4IiwiZXhwIjoiMTY0NDYwNjI3Ny45NDc2ODciLCJzdWIiOiI1MTEiLCJzY29wZXMiOltdfQ.ootvJUbs7Fz0s9X3x31XnCTfEqdaqTQrHPUWegg3T8rOplaA3o0dsX1PfbrlXv6G8fQgIolmH8W29E8DlF1WasuKuc581vSYUX1NyK6gMBmfipxTeA3oU1NFGxuETBB-2nCftfPonU7V3mRNxQowrTEnw9F7VTUJ0OyUz4OWO2-rzRsjDL0K7_dBIsjejx-H93xdWYUcmBsMXOxrvrR-FNq7Nl1bP1AuuT1fzPXzjwMZcRNZjQaHoWD1y1ydasEq9fB87iNGm7Lodnlxi2k5FuIERrxWBY6BpZdY3r6zFJOqGeSzc43wpArBQlez9cKsdbCv2AyiiaymcmOpyo5f9fKqMhppsK9PqHLhFoBg99MSVK2LelnXHg1vk7GVTcg3Sp1KQuA2V6GlQ7AcQgR14ywARmqBqI9TyEShjzWsVN7eRgWcbeWhjHthK1Dt_NzdqBAIfTjYZOzn8y__YZbJbgQrcIYqvD8znza_h6t70dNVtM-XcZmCp3gn54u-k0WbCA8y2pbvE61a9_1Q9_DWJG0Wgh1aAcbg2m6e-CLmpXux-muRCu5vWD_Ew74JToGiY5A0fUpi-xPr3xpubZuGoiT96-FgUDws3SOwq9a1aL0s3K7NLjozIsidKbfC0VA8d0Ql7Mxxm-fF-QQ3MuJEPUSDseHb6XhoYJ29ZXvJ1oo",
-						"type": "string"
-					}
-				]
-			},
 			"event": [
 				{
 					"listen": "prerequest",
@@ -685,7 +759,7 @@
 			"name": "Grupos",
 			"item": [
 				{
-					"name": "leerVarios",
+					"name": "verTodos",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -699,6 +773,23 @@
 								"api",
 								"directivo",
 								"grupos"
+							],
+							"query": [
+								{
+									"key": "colorden",
+									"value": "jornada",
+									"disabled": true
+								},
+								{
+									"key": "orden",
+									"value": "desc",
+									"disabled": true
+								},
+								{
+									"key": "grado",
+									"value": "5",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -774,7 +865,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "sade.edu/api/directivo/grupos/1103?jornada=Mañana&salon=402&grado=11",
+							"raw": "sade.edu/api/directivo/grupos/1103?jornada=Mañana&salon=402&grado=11&director=485",
 							"host": [
 								"sade",
 								"edu"
@@ -800,8 +891,7 @@
 								},
 								{
 									"key": "director",
-									"value": "485",
-									"disabled": true
+									"value": "485"
 								}
 							]
 						}
@@ -828,18 +918,36 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "addProfesor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/directivo/grupos/1103/profesor?idProfesor=482",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"grupos",
+								"1103",
+								"profesor"
+							],
+							"query": [
+								{
+									"key": "idProfesor",
+									"value": "482"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjRmZGQ2NTAzNGFjYjM5OTI3ZDcxYTVjZmQ1ODQ3MDkxOWQyY2E5ZTU2NTYzYmE5ZWFhNjZmM2YwYmJkNzFjYWYzYmIwNjRkMThlN2ViNzUiLCJpYXQiOiIxNjEzMDcwMjc3Ljk1ODE1MCIsIm5iZiI6IjE2MTMwNzAyNzcuOTU4MTU4IiwiZXhwIjoiMTY0NDYwNjI3Ny45NDc2ODciLCJzdWIiOiI1MTEiLCJzY29wZXMiOltdfQ.ootvJUbs7Fz0s9X3x31XnCTfEqdaqTQrHPUWegg3T8rOplaA3o0dsX1PfbrlXv6G8fQgIolmH8W29E8DlF1WasuKuc581vSYUX1NyK6gMBmfipxTeA3oU1NFGxuETBB-2nCftfPonU7V3mRNxQowrTEnw9F7VTUJ0OyUz4OWO2-rzRsjDL0K7_dBIsjejx-H93xdWYUcmBsMXOxrvrR-FNq7Nl1bP1AuuT1fzPXzjwMZcRNZjQaHoWD1y1ydasEq9fB87iNGm7Lodnlxi2k5FuIERrxWBY6BpZdY3r6zFJOqGeSzc43wpArBQlez9cKsdbCv2AyiiaymcmOpyo5f9fKqMhppsK9PqHLhFoBg99MSVK2LelnXHg1vk7GVTcg3Sp1KQuA2V6GlQ7AcQgR14ywARmqBqI9TyEShjzWsVN7eRgWcbeWhjHthK1Dt_NzdqBAIfTjYZOzn8y__YZbJbgQrcIYqvD8znza_h6t70dNVtM-XcZmCp3gn54u-k0WbCA8y2pbvE61a9_1Q9_DWJG0Wgh1aAcbg2m6e-CLmpXux-muRCu5vWD_Ew74JToGiY5A0fUpi-xPr3xpubZuGoiT96-FgUDws3SOwq9a1aL0s3K7NLjozIsidKbfC0VA8d0Ql7Mxxm-fF-QQ3MuJEPUSDseHb6XhoYJ29ZXvJ1oo",
-						"type": "string"
-					}
-				]
-			},
 			"event": [
 				{
 					"listen": "prerequest",
@@ -870,7 +978,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "sade.edu/api/directivo/directivos",
+							"raw": "sade.edu/api/directivo/directivos?colorden=cargo&orden=desc",
 							"host": [
 								"sade",
 								"edu"
@@ -885,6 +993,14 @@
 									"key": "bucar",
 									"value": "alejandro",
 									"disabled": true
+								},
+								{
+									"key": "colorden",
+									"value": "cargo"
+								},
+								{
+									"key": "orden",
+									"value": "desc"
 								}
 							]
 						}
@@ -1115,16 +1231,6 @@
 					"response": []
 				}
 			],
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjRmZGQ2NTAzNGFjYjM5OTI3ZDcxYTVjZmQ1ODQ3MDkxOWQyY2E5ZTU2NTYzYmE5ZWFhNjZmM2YwYmJkNzFjYWYzYmIwNjRkMThlN2ViNzUiLCJpYXQiOiIxNjEzMDcwMjc3Ljk1ODE1MCIsIm5iZiI6IjE2MTMwNzAyNzcuOTU4MTU4IiwiZXhwIjoiMTY0NDYwNjI3Ny45NDc2ODciLCJzdWIiOiI1MTEiLCJzY29wZXMiOltdfQ.ootvJUbs7Fz0s9X3x31XnCTfEqdaqTQrHPUWegg3T8rOplaA3o0dsX1PfbrlXv6G8fQgIolmH8W29E8DlF1WasuKuc581vSYUX1NyK6gMBmfipxTeA3oU1NFGxuETBB-2nCftfPonU7V3mRNxQowrTEnw9F7VTUJ0OyUz4OWO2-rzRsjDL0K7_dBIsjejx-H93xdWYUcmBsMXOxrvrR-FNq7Nl1bP1AuuT1fzPXzjwMZcRNZjQaHoWD1y1ydasEq9fB87iNGm7Lodnlxi2k5FuIERrxWBY6BpZdY3r6zFJOqGeSzc43wpArBQlez9cKsdbCv2AyiiaymcmOpyo5f9fKqMhppsK9PqHLhFoBg99MSVK2LelnXHg1vk7GVTcg3Sp1KQuA2V6GlQ7AcQgR14ywARmqBqI9TyEShjzWsVN7eRgWcbeWhjHthK1Dt_NzdqBAIfTjYZOzn8y__YZbJbgQrcIYqvD8znza_h6t70dNVtM-XcZmCp3gn54u-k0WbCA8y2pbvE61a9_1Q9_DWJG0Wgh1aAcbg2m6e-CLmpXux-muRCu5vWD_Ew74JToGiY5A0fUpi-xPr3xpubZuGoiT96-FgUDws3SOwq9a1aL0s3K7NLjozIsidKbfC0VA8d0Ql7Mxxm-fF-QQ3MuJEPUSDseHb6XhoYJ29ZXvJ1oo",
-						"type": "string"
-					}
-				]
-			},
 			"event": [
 				{
 					"listen": "prerequest",
@@ -1176,7 +1282,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "sade.edu/api/directivo/profesores?buscar=yova",
+							"raw": "sade.edu/api/directivo/profesores",
 							"host": [
 								"sade",
 								"edu"
@@ -1188,8 +1294,19 @@
 							],
 							"query": [
 								{
+									"key": "orden",
+									"value": "desc",
+									"disabled": true
+								},
+								{
 									"key": "buscar",
-									"value": "yova"
+									"value": "yova",
+									"disabled": true
+								},
+								{
+									"key": "colorden",
+									"value": "nombre",
+									"disabled": true
 								}
 							]
 						}
@@ -1395,16 +1512,6 @@
 					"response": []
 				}
 			],
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjRmZGQ2NTAzNGFjYjM5OTI3ZDcxYTVjZmQ1ODQ3MDkxOWQyY2E5ZTU2NTYzYmE5ZWFhNjZmM2YwYmJkNzFjYWYzYmIwNjRkMThlN2ViNzUiLCJpYXQiOiIxNjEzMDcwMjc3Ljk1ODE1MCIsIm5iZiI6IjE2MTMwNzAyNzcuOTU4MTU4IiwiZXhwIjoiMTY0NDYwNjI3Ny45NDc2ODciLCJzdWIiOiI1MTEiLCJzY29wZXMiOltdfQ.ootvJUbs7Fz0s9X3x31XnCTfEqdaqTQrHPUWegg3T8rOplaA3o0dsX1PfbrlXv6G8fQgIolmH8W29E8DlF1WasuKuc581vSYUX1NyK6gMBmfipxTeA3oU1NFGxuETBB-2nCftfPonU7V3mRNxQowrTEnw9F7VTUJ0OyUz4OWO2-rzRsjDL0K7_dBIsjejx-H93xdWYUcmBsMXOxrvrR-FNq7Nl1bP1AuuT1fzPXzjwMZcRNZjQaHoWD1y1ydasEq9fB87iNGm7Lodnlxi2k5FuIERrxWBY6BpZdY3r6zFJOqGeSzc43wpArBQlez9cKsdbCv2AyiiaymcmOpyo5f9fKqMhppsK9PqHLhFoBg99MSVK2LelnXHg1vk7GVTcg3Sp1KQuA2V6GlQ7AcQgR14ywARmqBqI9TyEShjzWsVN7eRgWcbeWhjHthK1Dt_NzdqBAIfTjYZOzn8y__YZbJbgQrcIYqvD8znza_h6t70dNVtM-XcZmCp3gn54u-k0WbCA8y2pbvE61a9_1Q9_DWJG0Wgh1aAcbg2m6e-CLmpXux-muRCu5vWD_Ew74JToGiY5A0fUpi-xPr3xpubZuGoiT96-FgUDws3SOwq9a1aL0s3K7NLjozIsidKbfC0VA8d0Ql7Mxxm-fF-QQ3MuJEPUSDseHb6XhoYJ29ZXvJ1oo",
-						"type": "string"
-					}
-				]
-			},
 			"event": [
 				{
 					"listen": "prerequest",
@@ -1478,16 +1585,6 @@
 					"response": []
 				}
 			],
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjRmZGQ2NTAzNGFjYjM5OTI3ZDcxYTVjZmQ1ODQ3MDkxOWQyY2E5ZTU2NTYzYmE5ZWFhNjZmM2YwYmJkNzFjYWYzYmIwNjRkMThlN2ViNzUiLCJpYXQiOiIxNjEzMDcwMjc3Ljk1ODE1MCIsIm5iZiI6IjE2MTMwNzAyNzcuOTU4MTU4IiwiZXhwIjoiMTY0NDYwNjI3Ny45NDc2ODciLCJzdWIiOiI1MTEiLCJzY29wZXMiOltdfQ.ootvJUbs7Fz0s9X3x31XnCTfEqdaqTQrHPUWegg3T8rOplaA3o0dsX1PfbrlXv6G8fQgIolmH8W29E8DlF1WasuKuc581vSYUX1NyK6gMBmfipxTeA3oU1NFGxuETBB-2nCftfPonU7V3mRNxQowrTEnw9F7VTUJ0OyUz4OWO2-rzRsjDL0K7_dBIsjejx-H93xdWYUcmBsMXOxrvrR-FNq7Nl1bP1AuuT1fzPXzjwMZcRNZjQaHoWD1y1ydasEq9fB87iNGm7Lodnlxi2k5FuIERrxWBY6BpZdY3r6zFJOqGeSzc43wpArBQlez9cKsdbCv2AyiiaymcmOpyo5f9fKqMhppsK9PqHLhFoBg99MSVK2LelnXHg1vk7GVTcg3Sp1KQuA2V6GlQ7AcQgR14ywARmqBqI9TyEShjzWsVN7eRgWcbeWhjHthK1Dt_NzdqBAIfTjYZOzn8y__YZbJbgQrcIYqvD8znza_h6t70dNVtM-XcZmCp3gn54u-k0WbCA8y2pbvE61a9_1Q9_DWJG0Wgh1aAcbg2m6e-CLmpXux-muRCu5vWD_Ew74JToGiY5A0fUpi-xPr3xpubZuGoiT96-FgUDws3SOwq9a1aL0s3K7NLjozIsidKbfC0VA8d0Ql7Mxxm-fF-QQ3MuJEPUSDseHb6XhoYJ29ZXvJ1oo",
-						"type": "string"
-					}
-				]
-			},
 			"event": [
 				{
 					"listen": "prerequest",
@@ -1538,7 +1635,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "sade.edu/api/directivo/notificaciones/1",
+							"raw": "sade.edu/api/directivo/notificaciones/1534",
 							"host": [
 								"sade",
 								"edu"
@@ -1547,7 +1644,7 @@
 								"api",
 								"directivo",
 								"notificaciones",
-								"1"
+								"1534"
 							]
 						}
 					},
@@ -1575,16 +1672,6 @@
 					"response": []
 				}
 			],
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjRmZGQ2NTAzNGFjYjM5OTI3ZDcxYTVjZmQ1ODQ3MDkxOWQyY2E5ZTU2NTYzYmE5ZWFhNjZmM2YwYmJkNzFjYWYzYmIwNjRkMThlN2ViNzUiLCJpYXQiOiIxNjEzMDcwMjc3Ljk1ODE1MCIsIm5iZiI6IjE2MTMwNzAyNzcuOTU4MTU4IiwiZXhwIjoiMTY0NDYwNjI3Ny45NDc2ODciLCJzdWIiOiI1MTEiLCJzY29wZXMiOltdfQ.ootvJUbs7Fz0s9X3x31XnCTfEqdaqTQrHPUWegg3T8rOplaA3o0dsX1PfbrlXv6G8fQgIolmH8W29E8DlF1WasuKuc581vSYUX1NyK6gMBmfipxTeA3oU1NFGxuETBB-2nCftfPonU7V3mRNxQowrTEnw9F7VTUJ0OyUz4OWO2-rzRsjDL0K7_dBIsjejx-H93xdWYUcmBsMXOxrvrR-FNq7Nl1bP1AuuT1fzPXzjwMZcRNZjQaHoWD1y1ydasEq9fB87iNGm7Lodnlxi2k5FuIERrxWBY6BpZdY3r6zFJOqGeSzc43wpArBQlez9cKsdbCv2AyiiaymcmOpyo5f9fKqMhppsK9PqHLhFoBg99MSVK2LelnXHg1vk7GVTcg3Sp1KQuA2V6GlQ7AcQgR14ywARmqBqI9TyEShjzWsVN7eRgWcbeWhjHthK1Dt_NzdqBAIfTjYZOzn8y__YZbJbgQrcIYqvD8znza_h6t70dNVtM-XcZmCp3gn54u-k0WbCA8y2pbvE61a9_1Q9_DWJG0Wgh1aAcbg2m6e-CLmpXux-muRCu5vWD_Ew74JToGiY5A0fUpi-xPr3xpubZuGoiT96-FgUDws3SOwq9a1aL0s3K7NLjozIsidKbfC0VA8d0Ql7Mxxm-fF-QQ3MuJEPUSDseHb6XhoYJ29ZXvJ1oo",
-						"type": "string"
-					}
-				]
-			},
 			"event": [
 				{
 					"listen": "prerequest",
@@ -1605,6 +1692,36 @@
 					}
 				}
 			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOTQwZTExZDhiYTMzOGViNjcwMTMyODZhZjZkN2YwN2JlNzZhYzBlN2ZjYTUwNzdiZGM2ZjVkNDgxZWVhNWU3Y2ZlNDIyNThiZjgxYTY3MjAiLCJpYXQiOiIxNjEzMTkyMDAzLjIxMjIwNCIsIm5iZiI6IjE2MTMxOTIwMDMuMjEyMjE0IiwiZXhwIjoiMTY0NDcyODAwMy4xOTcwOTEiLCJzdWIiOiI1MTAiLCJzY29wZXMiOltdfQ.Kdk2FheIBqp9bKwumiy7SlJ7FQG1El2U9Xqy1VaZr1qLZx3nbEwZHlICasISxTWOtMlGHa-gKt1P-Qby6XWPQ-j-gRid0xQ3-djPcFkYq1Q9Au57iHs_H0tg5U5e7xh8STJtJUvh4WBFYvHdfx19wrSUYO5qPKLVeJT4JIL5dWIxewdYv_ZmyA-O6Ozq9Kx5RK3cbs8EsXJvgnJfws4ar7HWY6kZ39T_1YTypBz-fo5FzLJrTVOGXLlureIdTlrdlVstauNRmbIf4Mx8fNrMG4YTePfqH75Ql6WpoCfkVV5ngp8s_ziuyIU0FN-PWPPoO3NCj0XneJKl8Z4gjvckQPMmImL7PAmQZS9dYQ57peYHItzibN7hQv3MAA7rRev8fixuKMvsOWFRD-w8FCEyXWEzFHRVT0dNY68Z0CjwZ888w3BkoSIPydr-NfBFAtyGIUrls7ERebsyEugBHAgp2-mht1MoIGG4viQiMqSoLanNWDcTqPhkX0DQkNmWdeXvGO4YkaTy55PkM_iZ2JLXtcWuM8U9ShIfNe5O21YiHYC0o9Bw7r3fkuCVTT0kLlk5-CxXRbAUeY1LaOHOS6imlz6IPHa_K4sttNp-v7PG_a_oZYWp1aTZLQ41k7xEpmLDFk1yfsbN1pIG-gCu448ioPdG1PC-veMyCevplyomZNM",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }

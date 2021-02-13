@@ -23,7 +23,6 @@ class PublicacionController extends Controller
             'idUsuario',
             'nombreCompleto',
             'tipo',
-            'foto',
             'nlikes',
             'ndislikes'
             )->where('docentes', 1)

@@ -21,7 +21,7 @@ class NotificacionController extends Controller
     public function visto(Request $request, $idNotificacion)
     {
         $visto = DB::connection('directivo')
-            ->select('CALL p_est_vistoNotificacion(?,?)',[$idNotificacion, $request->user()->idUsuario]);
+            ->select('CALL p_dir_vistoNotificacion(?,?)',[$idNotificacion, $request->user()->idUsuario]);
 
         return response()->json(['message'=> 'Se vio la notificación']);
     }

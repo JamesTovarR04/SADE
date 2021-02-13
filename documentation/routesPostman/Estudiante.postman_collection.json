@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "0cb4f723-f4da-40ce-b282-374d78f58cf5",
+		"_postman_id": "e2f715fd-fbe3-4390-921f-d8571863032d",
 		"name": "Estudiante",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -25,12 +25,15 @@
 			"name": "login",
 			"item": [
 				{
-					"name": "login-estudiante",
+					"name": "User 1",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "sade.edu/api/auth/login?user=edilberto234@gmail.com&password=123456",
+							"raw": "sade.edu/api/auth/login?user=carlosantonio786@gmail.com&password=123456",
 							"host": [
 								"sade",
 								"edu"
@@ -43,7 +46,73 @@
 							"query": [
 								{
 									"key": "user",
-									"value": "edilberto234@gmail.com"
+									"value": "carlosantonio786@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User 2",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/auth/login?user=giovanny992@gmail.com&password=123456",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "giovanny992@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User 3",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "sade.edu/api/auth/login?user=315365305&password=123456",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "315365305"
 								},
 								{
 									"key": "password",
@@ -62,16 +131,6 @@
 				{
 					"name": "numero",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMGFkNGJlNTZmODJmNWY4YjJiNDgxNGQ1MTkzZGM0ZDUyY2Y0M2RiOThjZjhjOWUwNTc1MjkwZWEyZGU5MzMyN2I2NDA3ZDIzMTUzZDNhMTEiLCJpYXQiOjE2MTMxNjg5MTUsIm5iZiI6MTYxMzE2ODkxNSwiZXhwIjoxNjQ0NzA0OTE1LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.ZPxvq4MxhK2LKOiblPsw1O6HqKN2Bob1C-_RErohfuQ3WsCcesjiUUzp0Ql2rExa6YZ5hoXttMPBfu7btKNzS5AoLV8tnvOCwDDC37bGU9KwiMKNo8qVxeaALS0H7m4pTFGOsdOeLl8gk4w_QmgU-15EOKYVM8mto8oa-kmZYM5lyy7-_L84FMfTFyiAgC3pfvC7G6J6f09Krrg6D7W5QpzyGxpOqB3ZGtZT1yd-J1vAkQ-BQCMyi4BCS3jRqOPtQUhRQGeJ655xYupYi0fKnXyTfuvRFXHHfm4BrVO7POnFczIiDxrrvTBrcBxFL_8eb-BCmM4FAyihnUunqd4daj8jHx2M_b5o23Sl-PQNyKOV0cFACJpZhsvrNrAI92YRzE1S2m8QCJb0JDvMub-k7ldEQRQMu0LhlmKAU8i9tZgot4tDZjcfXxbLjPe88Jkac76pxv2jTGVaEch_S5vjoPk_ZkgJ8gDFzqNKa33jfIkqaFzvuB18LmBrs6qsYtjP_W2JzKFBkmRlTJ27sY7lngEZJoIFzAppLKS7CR0pc5rcYUuzci8o16Uv69dy7RneBn3zBE68rfaeHGE6tHfgwWdzZNjdOe7DtXvia_ouDZsLGYc8ETMveVQlNS1OZCQChqp8OotdQm4c5sakc_mKpsnF67hAvLuVtrQUhGakK6k",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -98,16 +157,6 @@
 				{
 					"name": "agregar",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMGFkNGJlNTZmODJmNWY4YjJiNDgxNGQ1MTkzZGM0ZDUyY2Y0M2RiOThjZjhjOWUwNTc1MjkwZWEyZGU5MzMyN2I2NDA3ZDIzMTUzZDNhMTEiLCJpYXQiOjE2MTMxNjg5MTUsIm5iZiI6MTYxMzE2ODkxNSwiZXhwIjoxNjQ0NzA0OTE1LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.ZPxvq4MxhK2LKOiblPsw1O6HqKN2Bob1C-_RErohfuQ3WsCcesjiUUzp0Ql2rExa6YZ5hoXttMPBfu7btKNzS5AoLV8tnvOCwDDC37bGU9KwiMKNo8qVxeaALS0H7m4pTFGOsdOeLl8gk4w_QmgU-15EOKYVM8mto8oa-kmZYM5lyy7-_L84FMfTFyiAgC3pfvC7G6J6f09Krrg6D7W5QpzyGxpOqB3ZGtZT1yd-J1vAkQ-BQCMyi4BCS3jRqOPtQUhRQGeJ655xYupYi0fKnXyTfuvRFXHHfm4BrVO7POnFczIiDxrrvTBrcBxFL_8eb-BCmM4FAyihnUunqd4daj8jHx2M_b5o23Sl-PQNyKOV0cFACJpZhsvrNrAI92YRzE1S2m8QCJb0JDvMub-k7ldEQRQMu0LhlmKAU8i9tZgot4tDZjcfXxbLjPe88Jkac76pxv2jTGVaEch_S5vjoPk_ZkgJ8gDFzqNKa33jfIkqaFzvuB18LmBrs6qsYtjP_W2JzKFBkmRlTJ27sY7lngEZJoIFzAppLKS7CR0pc5rcYUuzci8o16Uv69dy7RneBn3zBE68rfaeHGE6tHfgwWdzZNjdOe7DtXvia_ouDZsLGYc8ETMveVQlNS1OZCQChqp8OotdQm4c5sakc_mKpsnF67hAvLuVtrQUhGakK6k",
-									"type": "string"
-								}
-							]
-						},
 						"method": "POST",
 						"header": [],
 						"url": {

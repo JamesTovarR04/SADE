@@ -20,17 +20,26 @@ class GradoController extends Controller
     {
         $validacion = Validator::make($request->all(),[
             'buscar' => 'string|min:1|max:100',
+            'colorden'  => Rule::in(['nombre','jornada','salon']),
+            'orden'     => Rule::in(['asc','desc']),
+            'grado'     => 'integer'
         ]);
 
         if($validacion->fails()){
             return response(['errors' => $validacion->errors()->all()], 422);
         }
 
-        if($request['buscar'] == '')
+        if($request['buscar'] == ''){
+            $columna = ($request['colorden'] == '') ? 'idGrupo' : $request['colorden'];
+            $orden = ($request['orden'] == '') ? 'asc' : $request['orden'];
+            $grado = ($request['grado'] == '') ? '0' : $request['grado'];
+            $comparar = ($request['grado'] == '') ? '>=' : '=';
             $grados = DB::connection('directivo')
                 ->table('grupos')
+                ->where('grado',$comparar,$grado)
+                ->orderBy($columna, $orden)
                 ->get();
-        else
+        }else
             $grados = DB::connection('directivo')
                 ->select('CALL p_dir_buscarGrupo(?)',[$request['buscar']]);
 
@@ -148,6 +157,39 @@ class GradoController extends Controller
         else
             return response()->json([
                 'message'   => 'No existe el grupo.'
+            ],404);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function addProfesor(Request $request, $idGrupo)
+    {
+        $validacion = Validator::make($request->all(),[
+            'idProfesor'  => 'exists:directivo.docentes,idUsuario'
+        ]);
+
+        if($validacion->fails()){
+            return response(['errors' => $validacion->errors()->all()], 422);
+        }
+
+        $afectado = DB::connection('directivo')
+            ->table('GruposDocentes')->insertOrIgnore([
+                'idGrupo' => $idGrupo, 
+                'idDocente' => $request['idProfesor']
+            ]);
+
+        if($afectado > 0)
+            return response()->json([
+                'message'   => 'Se agregó el profesor.'
+            ]);
+        else
+            return response()->json([
+                'message'   => 'No existe el grupo o el profesor ya esta en este grupo.'
             ],404);
     }
 

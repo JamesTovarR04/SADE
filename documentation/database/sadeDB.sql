@@ -1,5 +1,12 @@
 -- MySQL Workbench Forward Engineering
 
+-- begin attached script 'script6'
+# Eliminar usuarios en caso de que ya existan
+DROP USER IF EXISTS 'sade-directivo'@'%';
+DROP USER IF EXISTS 'sade-estudiante'@'%';
+DROP USER IF EXISTS 'sade-profesor'@'%';
+DROP USER IF EXISTS 'sade-publico'@'%';
+-- end attached script 'script6'
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
@@ -326,6 +333,84 @@ CREATE TABLE IF NOT EXISTS `sadeDB`.`VistasNotificaciones` (
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `sadeDB`.`oauth_access_tokens`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sadeDB`.`oauth_access_tokens` (
+  `id` VARCHAR(100) NOT NULL,
+  `user_id` BIGINT UNSIGNED NULL DEFAULT NULL,
+  `client_id` BIGINT UNSIGNED NOT NULL,
+  `name` VARCHAR(255) NULL DEFAULT NULL,
+  `scopes` TEXT NULL DEFAULT NULL,
+  `revoked` TINYINT(1) NOT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT NULL,
+  `updated_at` TIMESTAMP NULL DEFAULT NULL,
+  `expires_at` DATETIME NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `oauth_access_tokens_user_id_index` (`user_id` ASC) INVISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sadeDB`.`oauth_auth_codes`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sadeDB`.`oauth_auth_codes` (
+  `id` VARCHAR(100) NOT NULL,
+  `user_id` BIGINT UNSIGNED NOT NULL,
+  `client_id` BIGINT UNSIGNED NOT NULL,
+  `scopes` TEXT NULL DEFAULT NULL,
+  `revoked` TINYINT(1) NOT NULL,
+  `expires_at` DATETIME NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `oauth_auth_codes_user_id_index` (`user_id` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sadeDB`.`oauth_clients`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sadeDB`.`oauth_clients` (
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` BIGINT UNSIGNED NULL DEFAULT NULL,
+  `name` VARCHAR(255) NOT NULL,
+  `secret` VARCHAR(100) NULL DEFAULT NULL,
+  `provider` VARCHAR(255) NULL DEFAULT NULL,
+  `redirect` TEXT NOT NULL,
+  `personal_access_client` TINYINT(1) NOT NULL,
+  `password_client` TINYINT(1) NOT NULL,
+  `revoked` TINYINT(1) NOT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT NULL,
+  `updated_at` TIMESTAMP NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `oauth_clients_user_id_index` (`user_id` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sadeDB`.`oauth_personal_access_clients`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sadeDB`.`oauth_personal_access_clients` (
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `client_id` BIGINT UNSIGNED NOT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT NULL,
+  `updated_at` TIMESTAMP NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `sadeDB`.`oauth_refresh_tokens`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sadeDB`.`oauth_refresh_tokens` (
+  `id` VARCHAR(100) NOT NULL,
+  `access_token_id` VARCHAR(100) NOT NULL,
+  `revoked` TINYINT(1) NOT NULL,
+  `expires_at` DATETIME NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `oauth_refresh_tokens_access_token_id_index` (`access_token_id` ASC) VISIBLE)
+ENGINE = InnoDB;
+
 USE `sadeDB` ;
 
 -- -----------------------------------------------------
@@ -371,7 +456,7 @@ BEGIN
     NOT EXISTS(SELECT vi.*
 	FROM VistasNotificaciones vi 
     WHERE vi.idNotificacion = n.idNotificacion AND vi.idUsuario = arg_idUsuario
-    );
+    ) ORDER BY n.fecha DESC;
 END$$
 
 DELIMITER ;
@@ -650,7 +735,7 @@ DELIMITER ;
 
 DELIMITER $$
 USE `sadeDB`$$
-CREATE PROCEDURE `p_est_deletePublicacion` (IN arg_idPublicacon INT, IN arg_idUsuario INT)
+CREATE PROCEDURE `p_est_deletePublicacion` (IN arg_idPublicacion INT, IN arg_idUsuario INT)
 BEGIN
     IF tipoUsuarioSegunId(arg_idUsuario) = 1 THEN
 		DELETE FROM Publicaciones WHERE idPublicacion = arg_idPublicacion AND idUsuario = arg_idUsuario;
@@ -667,7 +752,7 @@ DELIMITER $$
 USE `sadeDB`$$
 CREATE PROCEDURE `p_est_editPublicacion` 
 (
-	IN arg_idPublicacon INT,
+	IN arg_idPublicacion INT,
     IN arg_idUsuario INT,
     IN arg_titulo VARCHAR(150), 
     IN arg_contenido TEXT(1000)
@@ -729,7 +814,7 @@ DELIMITER ;
 
 DELIMITER $$
 USE `sadeDB`$$
-CREATE PROCEDURE `p_prf_deletePublicacion` (IN arg_idPublicacon INT, IN arg_idUsuario INT)
+CREATE PROCEDURE `p_prf_deletePublicacion` (IN arg_idPublicacion INT, IN arg_idUsuario INT)
 BEGIN
     IF tipoUsuarioSegunId(arg_idUsuario) = 2 THEN
 		DELETE FROM Publicaciones WHERE idPublicacion = arg_idPublicacion AND idUsuario = arg_idUsuario;
@@ -761,7 +846,7 @@ DELIMITER $$
 USE `sadeDB`$$
 CREATE PROCEDURE `p_prf_editPublicacion` 
 (
-	IN arg_idPublicacon INT,
+	IN arg_idPublicacion INT,
     IN arg_idUsuario INT,
     IN arg_titulo VARCHAR(150), 
     IN arg_contenido TEXT(1000)
@@ -808,7 +893,7 @@ BEGIN
 		COUNT(*) AS Eventos
 	FROM Eventos e
     INNER JOIN Privacidad p ON p.idPrivacidad = e.idPrivacidad
-	WHERE MONTH(e.hora) = mes AND YEAR(e.hora) = anho AND (p.estudiantes = 2 OR e.idUsuario = arg_idUsuario)
+	WHERE MONTH(e.hora) = mes AND YEAR(e.hora) = anho AND (p.docentes = 1 OR e.idUsuario = arg_idUsuario)
 	GROUP BY DAY(e.hora);
 END$$
 
@@ -837,22 +922,9 @@ BEGIN
     IF arg_direccion IS NOT NULL OR arg_perfilAcademico IS NOT NULL THEN
 		UPDATE Docentes SET 
 			direccion = IF(arg_direccion IS NULL, direccion, arg_direccion),
-            perfilAcademico = IF(arg_perfilAcademico IS NULL, perfilAcademico, perfilAcademico)
+            perfilAcademico = IF(arg_perfilAcademico IS NULL, perfilAcademico, arg_perfilAcademico)
 		WHERE idUsuario = arg_idUsuario;
     END IF;
-END$$
-
-DELIMITER ;
-
--- -----------------------------------------------------
--- procedure p_prf_verDatosEstudiante
--- -----------------------------------------------------
-
-DELIMITER $$
-USE `sadeDB`$$
-CREATE PROCEDURE `p_prf_verDatosEstudiante` (IN arg_idUsuario INT)
-BEGIN
-	SELECT * FROM vs_datosdocentes WHERE idUsuario = arg_idUsuario LIMIT 1;
 END$$
 
 DELIMITER ;
@@ -936,7 +1008,7 @@ BEGIN
 		COUNT(*) AS Eventos
 	FROM Eventos e
     INNER JOIN Privacidad p ON p.idPrivacidad = e.idPrivacidad
-	WHERE MONTH(e.hora) = mes AND YEAR(e.hora) = anho AND (p.estudiantes = 3 OR e.idUsuario = arg_idUsuario)
+	WHERE MONTH(e.hora) = mes AND YEAR(e.hora) = anho AND (p.directivos = 1 OR e.idUsuario = arg_idUsuario)
 	GROUP BY DAY(e.hora);
 END$$
 
@@ -1260,7 +1332,7 @@ DELIMITER ;
 
 DELIMITER $$
 USE `sadeDB`$$
-CREATE PROCEDURE `p_dir_buscarDocente` (IN buscar VARCHAR(100))
+CREATE PROCEDURE `p_dir_buscarDocente` (IN busqueda VARCHAR(100))
 BEGIN
 	SELECT 
 		* 
@@ -1352,6 +1424,124 @@ END$$
 DELIMITER ;
 
 -- -----------------------------------------------------
+-- procedure p_prf_changeFotoPerfil
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `sadeDB`$$
+CREATE PROCEDURE `p_prf_changeFotoPerfil` 
+(
+	IN arg_idUsuario INT,
+    IN arg_fotoPerfil BLOB
+)
+BEGIN
+	IF tipoUsuarioSegunId(arg_idUsuario) = 2 THEN
+		UPDATE Usuarios 
+		SET fotoPerfil = arg_fotoPerfil
+		WHERE idUsuario = arg_idUsuario;
+	END IF;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure p_est_changeFotoPerfil
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `sadeDB`$$
+CREATE PROCEDURE `p_est_changeFotoPerfil` 
+(
+	IN arg_idUsuario INT,
+    IN arg_fotoPerfil BLOB
+)
+BEGIN
+	IF tipoUsuarioSegunId(arg_idUsuario) = 1 THEN
+		UPDATE Usuarios 
+		SET fotoPerfil = arg_fotoPerfil
+		WHERE idUsuario = arg_idUsuario;
+	END IF;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure p_dir_changeFotoPerfil
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `sadeDB`$$
+CREATE PROCEDURE `p_dir_changeFotoPerfil` 
+(
+	IN arg_idUsuario INT,
+    IN arg_fotoPerfil BLOB
+)
+BEGIN
+	UPDATE Usuarios 
+	SET fotoPerfil = arg_fotoPerfil
+	WHERE idUsuario = arg_idUsuario;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure p_prf_addEvento
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `sadeDB`$$
+CREATE PROCEDURE `p_prf_addEvento`(
+	IN arg_hora DATETIME,
+    IN arg_descripcion VARCHAR(100),
+    IN arg_idUsuario INT,
+    IN arg_idPrivacidad INT
+)
+BEGIN
+	IF tipoUsuarioSegunId(arg_idUsuario) = 2 THEN
+		INSERT INTO eventos 
+        (hora,descripcion,idUsuario,idPrivacidad)
+        VALUES
+        (arg_hora,arg_descripcion,arg_idUsuario,arg_idPrivacidad);
+    END IF;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure p_prf_deleteEvento
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `sadeDB`$$
+CREATE PROCEDURE `p_prf_deleteEvento`(
+	IN arg_idEvento INT,
+    IN arg_idUsuario INT
+)
+BEGIN
+	IF tipoUsuarioSegunId(arg_idUsuario) = 2 THEN
+		DELETE FROM Eventos 
+        WHERE 
+        idEventos = arg_idEvento
+        AND idUsuario = arg_idUsuario;
+    END IF;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure p_prf_verDatosDocente
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `sadeDB`$$
+CREATE PROCEDURE `p_prf_verDatosDocente`(IN arg_idUsuario INT)
+BEGIN
+	SELECT * FROM vs_datosdocentes WHERE idUsuario = arg_idUsuario LIMIT 1;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
 -- View `sadeDB`.`vs_infousuario`
 -- -----------------------------------------------------
 USE `sadeDB`;
@@ -1386,7 +1576,8 @@ SELECT
     pv.estudiantes
 FROM Publicaciones p
 INNER JOIN vs_infousuario viu ON viu.idUsuario = p.idUsuario
-INNER JOIN Privacidad pv ON pv.idPrivacidad = p.idPrivacidad;
+INNER JOIN Privacidad pv ON pv.idPrivacidad = p.idPrivacidad
+ORDER BY p.fecha DESC;
 
 -- -----------------------------------------------------
 -- View `sadeDB`.`vs_eventos`
@@ -1406,7 +1597,8 @@ SELECT
     pv.estudiantes
 FROM Eventos e
 INNER JOIN vs_infousuario viu ON viu.idUsuario = e.idUsuario
-INNER JOIN Privacidad pv ON pv.idPrivacidad = e.idPrivacidad;
+INNER JOIN Privacidad pv ON pv.idPrivacidad = e.idPrivacidad
+ORDER BY e.hora ASC;
 
 -- -----------------------------------------------------
 -- View `sadeDB`.`vs_datosUsuarios`
@@ -1487,11 +1679,9 @@ SELECT
     emailPublico,
     CONCAT_WS('-',tipoDocumento,numero) AS documentoIdentidad,
     cargo,
-    MAX(telefono) AS telefono
+    (SELECT telefono FROM Telefono t WHERE t.idUsuario = d.idUsuario LIMIT 1) AS telefono
 FROM Directivos d
-INNER JOIN vs_datosusuarios vdu ON vdu.idUsuario = d.idUsuario
-LEFT JOIN Telefono t ON t.idUsuario = d.idUsuario
-GROUP BY idTelefono;
+INNER JOIN vs_datosusuarios vdu ON vdu.idUsuario = d.idUsuario;
 
 -- -----------------------------------------------------
 -- View `sadeDB`.`vs_infodocentes`
@@ -1505,11 +1695,9 @@ SELECT
     email,
     CONCAT_WS('-',tipoDocumento,numero) AS documentoIdentidad,
     perfilAcademico,
-    MAX(telefono) AS telefono
+   (SELECT telefono FROM Telefono t WHERE t.idUsuario = d.idUsuario LIMIT 1) AS telefono
 FROM Docentes d
-INNER JOIN vs_datosusuarios vdu ON vdu.idUsuario = d.idUsuario
-LEFT JOIN Telefono t ON t.idUsuario = d.idUsuario
-GROUP BY idTelefono;
+INNER JOIN vs_datosusuarios vdu ON vdu.idUsuario = d.idUsuario;
 
 -- -----------------------------------------------------
 -- View `sadeDB`.`vs_infoestudiantes`
@@ -1525,12 +1713,10 @@ SELECT
     egresado,
     e.idGrupo,
     g.nombre AS nombreGrupo,
-    MAX(telefono) AS telefono
+    (SELECT telefono FROM Telefono t WHERE t.idUsuario = e.idUsuario LIMIT 1) AS telefono
 FROM Estudiantes e
 INNER JOIN vs_datosusuarios vdu ON vdu.idUsuario = e.idUsuario
-LEFT JOIN Telefono t ON t.idUsuario = e.idUsuario
-LEFT JOIN Grupos g ON g.idGrupo = e.idGrupo
-GROUP BY idTelefono;
+LEFT JOIN Grupos g ON g.idGrupo = e.idGrupo;
 
 -- -----------------------------------------------------
 -- View `sadeDB`.`vs_pub_publicaciones`
@@ -2225,6 +2411,11 @@ GRANT SELECT, UPDATE ON TABLE `sadeDB`.`Usuarios` TO 'sade-publico';
 GRANT EXECUTE ON procedure `sadeDB`.`p_pub_login` TO 'sade-publico';
 GRANT EXECUTE ON procedure `sadeDB`.`p_pub_buscarDirectivo` TO 'sade-publico';
 GRANT EXECUTE ON procedure `sadeDB`.`p_pub_buscarPublicacion` TO 'sade-publico';
+GRANT UPDATE, SELECT, INSERT, DELETE ON TABLE `sadeDB`.`oauth_access_tokens` TO 'sade-publico';
+GRANT UPDATE, SELECT, INSERT, DELETE ON TABLE `sadeDB`.`oauth_refresh_tokens` TO 'sade-publico';
+GRANT UPDATE, SELECT, INSERT, DELETE ON TABLE `sadeDB`.`oauth_clients` TO 'sade-publico';
+GRANT UPDATE, SELECT, INSERT, DELETE ON TABLE `sadeDB`.`oauth_personal_access_clients` TO 'sade-publico';
+GRANT DELETE, INSERT, SELECT, UPDATE ON TABLE `sadeDB`.`oauth_auth_codes` TO 'sade-publico';
 CREATE USER 'sade-directivo' IDENTIFIED BY '1234';
 
 GRANT INSERT, SELECT, UPDATE ON TABLE `sadeDB`.`Usuarios` TO 'sade-directivo';
@@ -2263,6 +2454,7 @@ GRANT EXECUTE ON procedure `sadeDB`.`p_dir_buscarEstudiante` TO 'sade-directivo'
 GRANT EXECUTE ON procedure `sadeDB`.`p_dir_buscarEvento` TO 'sade-directivo';
 GRANT EXECUTE ON procedure `sadeDB`.`p_dir_buscarGrupo` TO 'sade-directivo';
 GRANT EXECUTE ON procedure `sadeDB`.`p_dir_buscarPublicacion` TO 'sade-directivo';
+GRANT EXECUTE ON procedure `sadeDB`.`p_dir_changeFotoPerfil` TO 'sade-directivo';
 CREATE USER 'sade-profesor' IDENTIFIED BY '1234';
 
 GRANT SELECT ON TABLE `sadeDB`.`Grupos` TO 'sade-profesor';
@@ -2282,7 +2474,6 @@ GRANT EXECUTE ON procedure `sadeDB`.`p_prf_editPublicacion` TO 'sade-profesor';
 GRANT EXECUTE ON procedure `sadeDB`.`p_prf_editTelefono` TO 'sade-profesor';
 GRANT EXECUTE ON procedure `sadeDB`.`p_prf_eventosMes` TO 'sade-profesor';
 GRANT EXECUTE ON procedure `sadeDB`.`p_prf_updateDatos` TO 'sade-profesor';
-GRANT EXECUTE ON procedure `sadeDB`.`p_prf_verDatosEstudiante` TO 'sade-profesor';
 GRANT EXECUTE ON procedure `sadeDB`.`p_prf_verTelefonos` TO 'sade-profesor';
 GRANT EXECUTE ON procedure `sadeDB`.`p_prf_misGruposClases` TO 'sade-profesor';
 GRANT EXECUTE ON procedure `sadeDB`.`p_prf_misGruposDireccion` TO 'sade-profesor';
@@ -2297,6 +2488,13 @@ GRANT EXECUTE ON procedure `sadeDB`.`p_prf_buscarEstudiante` TO 'sade-profesor';
 GRANT EXECUTE ON procedure `sadeDB`.`p_prf_buscarEvento` TO 'sade-profesor';
 GRANT EXECUTE ON procedure `sadeDB`.`p_prf_buscarGrupo` TO 'sade-profesor';
 GRANT EXECUTE ON procedure `sadeDB`.`p_prf_buscarPublicacion` TO 'sade-profesor';
+GRANT EXECUTE ON procedure `sadeDB`.`p_prf_addPublicacion` TO 'sade-profesor';
+GRANT EXECUTE ON procedure `sadeDB`.`p_est_buscarDirectivo` TO 'sade-profesor';
+GRANT EXECUTE ON procedure `sadeDB`.`p_prf_vistoNotificacion` TO 'sade-profesor';
+GRANT EXECUTE ON procedure `sadeDB`.`p_prf_changeFotoPerfil` TO 'sade-profesor';
+GRANT EXECUTE ON procedure `sadeDB`.`p_prf_addEvento` TO 'sade-profesor';
+GRANT EXECUTE ON procedure `sadeDB`.`p_prf_deleteEvento` TO 'sade-profesor';
+GRANT EXECUTE ON procedure `sadeDB`.`p_prf_verDatosDocente` TO 'sade-profesor';
 CREATE USER 'sade-estudiante' IDENTIFIED BY '1234';
 
 GRANT SELECT ON TABLE `sadeDB`.`Grupos` TO 'sade-estudiante';
@@ -2320,18 +2518,14 @@ GRANT EXECUTE ON procedure `sadeDB`.`p_est_vistoNotificacion` TO 'sade-estudiant
 GRANT EXECUTE ON procedure `sadeDB`.`p_est_addPublicacion` TO 'sade-estudiante';
 GRANT EXECUTE ON procedure `sadeDB`.`p_est_deletePublicacion` TO 'sade-estudiante';
 GRANT EXECUTE ON procedure `sadeDB`.`p_est_editPublicacion` TO 'sade-estudiante';
-GRANT EXECUTE ON procedure `sadeDB`.`p_prf_vistoNotificacion` TO 'sade-estudiante';
-GRANT EXECUTE ON procedure `sadeDB`.`p_prf_addPublicacion` TO 'sade-estudiante';
 GRANT SELECT, SHOW VIEW ON TABLE `sadeDB`.`vs_publicaciones` TO 'sade-estudiante';
 GRANT SHOW VIEW, SELECT ON TABLE `sadeDB`.`vs_infousuario` TO 'sade-estudiante';
 GRANT SHOW VIEW, SELECT ON TABLE `sadeDB`.`vs_eventos` TO 'sade-estudiante';
 GRANT EXECUTE ON procedure `sadeDB`.`p_est_buscarEstudiante` TO 'sade-estudiante';
 GRANT EXECUTE ON procedure `sadeDB`.`p_est_buscarDocente` TO 'sade-estudiante';
-GRANT EXECUTE ON procedure `sadeDB`.`p_est_buscarDirectivo` TO 'sade-estudiante';
 GRANT EXECUTE ON procedure `sadeDB`.`p_est_buscarGrupo` TO 'sade-estudiante';
 GRANT EXECUTE ON procedure `sadeDB`.`p_est_buscarEvento` TO 'sade-estudiante';
-GRANT EXECUTE ON procedure `sadeDB`.`p_est_buscarPublicacion` TO 'sade-estudiante';
-GRANT EXECUTE ON procedure `sadeDB`.`p_prf_buscarDirectivo` TO 'sade-estudiante';
+GRANT EXECUTE ON procedure `sadeDB`.`p_est_changeFotoPerfil` TO 'sade-estudiante';
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
@@ -4670,3 +4864,7 @@ INSERT INTO `sadeDB`.`Publicaciones` (`idPublicacion`, `titulo`, `contenido`, `f
 
 COMMIT;
 
+-- begin attached script 'script5'
+# Actualizar contraseña a 123456
+UPDATE usuarios SET contrasenia='$2y$10$gB.y5i3Muc/oQn7yf6HRsuo537D89691uL4vZ1.bXY0DkfiQiQKme' WHERE idUsuario > 0;
+-- end attached script 'script5'
