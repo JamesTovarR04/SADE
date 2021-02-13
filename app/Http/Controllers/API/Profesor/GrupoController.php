@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API\Estudiante;
+namespace App\Http\Controllers\API\Profesor;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -21,12 +21,12 @@ class GrupoController extends Controller
         }
 
         if($request['buscar'] == '')
-            $grados = DB::connection('estudiante')
+            $grados = DB::connection('profesor')
                 ->table('grupos')
                 ->get();
         else
-            $grados = DB::connection('estudiante')
-                ->select('CALL p_est_buscarGrupo(?)',[$request['buscar']]);
+            $grados = DB::connection('profesor')
+                ->select('CALL p_pfr_buscarGrupo(?)',[$request['buscar']]);
 
 
         return response()->json($grados);  
@@ -35,7 +35,7 @@ class GrupoController extends Controller
     //ver grupo
     public function show (Request $request, $idGrupo)
     {
-        $grupo['info'] = DB::connection('estudiante')
+        $grupo['info'] = DB::connection('profesor')
             ->table('grupos')
             ->where('idGrupo',$idGrupo)
             ->first();
@@ -45,29 +45,21 @@ class GrupoController extends Controller
                 'message'   => 'No existe este grupo.'
             ],404);
 
-        $grupo['director'] = DB::connection('estudiante')
-            ->table('vs_est_infodocentes')
+        $grupo['director'] = DB::connection('profesor')
+            ->table('vs_prf_infodocentes')
             ->where('idUsuario',$grupo['info']->director)
             ->first();
 
-        $grupo['profesores'] = DB::connection('estudiante')
-            ->table('vs_est_gradosdocentes')
+        $grupo['profesores'] = DB::connection('profesor')
+            ->table('vs_prf_gradosdocentes')
             ->where('idGrupo',$idGrupo)
             ->get();
 
-        $grupo['estudiantes'] = DB::connection('estudiante')
-            ->table('vs_est_infoestudiantes')
+        $grupo['estudiantes'] = DB::connection('profesor')
+            ->table('vs_prf_infoestudiantes')
             ->where('idGrupo',$idGrupo)
             ->get();
 
         return response()->json($grupo);
-
-    }
-
-    //ver mi grupo
-    public function miGrupo (Request $request)
-    {
-        //pendiente esta madre :vV Visto prro
-        
     }
 }
