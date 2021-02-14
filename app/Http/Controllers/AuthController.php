@@ -14,7 +14,6 @@ class AuthController extends Controller
     /**
     * Inicio de sesión y creacion de token
     */
-
     public function login(Request $request)
     {
         $validacion = Validator::make($request->all(),[
@@ -88,7 +87,7 @@ class AuthController extends Controller
         $request->user()->token()->revoke();
 
         return response()->json([
-            'message' => 'Successfully logged out'
+            'message' => 'Se cerró la sesión correctamente.'
         ]);
     }
 
@@ -97,7 +96,27 @@ class AuthController extends Controller
      */
     public function user(Request $request)
     {
-        return response()->json($request->user());
+        $usuario = $request->user();
+        
+        switch ($usuario->tipo) {
+            case 1:
+                $usuario->grado = DB::connection('estudiante')
+                    ->table('vs_est_infoestudiantes')
+                    ->where('idUsuario',$usuario->idUsuario)
+                    ->value('idGrupo');
+                break;
+            case 2:
+                $usuario->grupo = DB::connection('profesor')
+                    ->table('grupos')
+                    ->where('director',$usuario->idUsuario)
+                    ->value('idGrupo');
+                $usuario->misGrupos = DB::connection('profesor')
+                    ->select('call p_prf_misGruposClases(?)',[$usuario->idUsuario]);
+                break;
+        }
+
+            
+        return response()->json($usuario);
     }
 
     /**

@@ -55,10 +55,22 @@ class GrupoController extends Controller
             ->where('idGrupo',$idGrupo)
             ->get();
 
-        $grupo['estudiantes'] = DB::connection('profesor')
-            ->table('vs_prf_infoestudiantes')
+        $grupoClase = DB::connection('profesor')
+            ->table('vs_prf_gradosdocentes')
             ->where('idGrupo',$idGrupo)
-            ->get();
+            ->where('idUsuario',$request->user()->idUsuario)
+            ->first();
+
+        if(is_null($grupoClase))
+            $grupo['estudiantes'] = DB::connection('profesor')
+                ->table('vs_prf_infoestudiantes')
+                ->where('idGrupo',$idGrupo)
+                ->get();
+        else
+            $grupo['estudiantes'] = DB::connection('profesor')
+                ->table('vs_prf_estudiantesclase')
+                ->where('idGrupo',$idGrupo)
+                ->get();
 
         return response()->json($grupo);
     }

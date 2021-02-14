@@ -399,7 +399,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "sade.edu/api/directivo/eventos/1",
+							"raw": "sade.edu/api/directivo/eventos/2",
 							"host": [
 								"sade",
 								"edu"
@@ -408,7 +408,7 @@
 								"api",
 								"directivo",
 								"eventos",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -865,7 +865,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "sade.edu/api/directivo/grupos/1103?jornada=Mañana&salon=402&grado=11&director=485",
+							"raw": "sade.edu/api/directivo/grupos/1103?jornada=Mañana&salon=402&grado=11&director=480",
 							"host": [
 								"sade",
 								"edu"
@@ -891,7 +891,7 @@
 								},
 								{
 									"key": "director",
-									"value": "485"
+									"value": "480"
 								}
 							]
 						}
@@ -1692,6 +1692,43 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "cargaFoto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/C:/Users/james/OneDrive/Desktop/daniela-kreimer.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "sade.edu/api/directivo/usuario/foto/2",
+							"host": [
+								"sade",
+								"edu"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"usuario",
+								"foto",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
@@ -1699,7 +1736,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOTQwZTExZDhiYTMzOGViNjcwMTMyODZhZjZkN2YwN2JlNzZhYzBlN2ZjYTUwNzdiZGM2ZjVkNDgxZWVhNWU3Y2ZlNDIyNThiZjgxYTY3MjAiLCJpYXQiOiIxNjEzMTkyMDAzLjIxMjIwNCIsIm5iZiI6IjE2MTMxOTIwMDMuMjEyMjE0IiwiZXhwIjoiMTY0NDcyODAwMy4xOTcwOTEiLCJzdWIiOiI1MTAiLCJzY29wZXMiOltdfQ.Kdk2FheIBqp9bKwumiy7SlJ7FQG1El2U9Xqy1VaZr1qLZx3nbEwZHlICasISxTWOtMlGHa-gKt1P-Qby6XWPQ-j-gRid0xQ3-djPcFkYq1Q9Au57iHs_H0tg5U5e7xh8STJtJUvh4WBFYvHdfx19wrSUYO5qPKLVeJT4JIL5dWIxewdYv_ZmyA-O6Ozq9Kx5RK3cbs8EsXJvgnJfws4ar7HWY6kZ39T_1YTypBz-fo5FzLJrTVOGXLlureIdTlrdlVstauNRmbIf4Mx8fNrMG4YTePfqH75Ql6WpoCfkVV5ngp8s_ziuyIU0FN-PWPPoO3NCj0XneJKl8Z4gjvckQPMmImL7PAmQZS9dYQ57peYHItzibN7hQv3MAA7rRev8fixuKMvsOWFRD-w8FCEyXWEzFHRVT0dNY68Z0CjwZ888w3BkoSIPydr-NfBFAtyGIUrls7ERebsyEugBHAgp2-mht1MoIGG4viQiMqSoLanNWDcTqPhkX0DQkNmWdeXvGO4YkaTy55PkM_iZ2JLXtcWuM8U9ShIfNe5O21YiHYC0o9Bw7r3fkuCVTT0kLlk5-CxXRbAUeY1LaOHOS6imlz6IPHa_K4sttNp-v7PG_a_oZYWp1aTZLQ41k7xEpmLDFk1yfsbN1pIG-gCu448ioPdG1PC-veMyCevplyomZNM",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNWQ1YmM1M2MyMDEwNDZjMGUyMWQxZGE0ZmE4MmY1YWFhYzk5MDllY2Q2NjVmZmJkMDAzNjE0MTliN2FlZmUyNTg2ODJhNzI5YmZhNWQ4MWUiLCJpYXQiOiIxNjEzMjgxNDE2LjYyMTQ2MSIsIm5iZiI6IjE2MTMyODE0MTYuNjIxNDY5IiwiZXhwIjoiMTY0NDgxNzQxNi42MTA1MzIiLCJzdWIiOiI1MTAiLCJzY29wZXMiOltdfQ.ZEoMRh3KwLSMiXD1d5-khtFU2QDgP5IPH_XGpfcNbU4L7SbghUJKbej3Oc5iz83pfhmOrdrm_i6405td55LRspGbD3_Q1-n20OcKhCwScHaslshURFVlqGY5ObM_Oe12m2fY7PUSaqv54GZ_h-X2qFANzjPToZ2OurzCb7EivFD24srIk-K8VM0g1SvccaD_I02k5HVVunZZvC52uV4jSETMgh4h6Wvtc9HTO8pbBqUTSZURT7KaHDMbtIW6DMYgZvlm_djj0XF0syedAvwsNC0OJ71MlztcjRVeWo8vYvw8dlR5P6Ra-Eo4eHx_IQxDlo6j7M9_3WtDsSPkYGXiGsSSfd6-LYYbR2_feszCV98Lg0QnPhyamV4F8572d3CKEr4t2mo273sji-3SQyYUYA05RuJ1wHkcOJrW0ycbEUttlWmXCta4BTORGBuP38JylWUuhtQpGCLmYXUC0GoE-_-DD2A7M9C_aoPo0CQ3Upp_00FufT2HcWV6STMKSx-jHXa8wmWUoqY9rDWzbA0m72y6gSp4v554pw1PTJrZLCl8Dk9sV4a1eHl8qTiUgnq13Q_VBunScPl7wO1mUxe3BR3jThzV3ZZk_3DfHSGTfQzthTpf1BKmDC0t0oBqKOJiiGfbwllTqQ7_xwkYgLSNE-5f_aHx9_jBdfK6czwFmr0",
 				"type": "string"
 			}
 		]

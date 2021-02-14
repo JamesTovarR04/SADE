@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\API\Estudiante;
+namespace App\Http\Controllers\API\Directivo;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -14,63 +13,11 @@ class UserController extends Controller
 {
     
     /**
-     * Actualizar Datos
-     * 
-     * @param Request $request
-     */
-    public function update(Request $request){
-
-        $validacion = Validator::make($request->all(),[
-            'direccion'     => 'string|max:45',
-            'email'         => 'unique:directivo.usuarios,email|email|max:45',
-            'contrasena'    => 'string|min:5|max:40'
-        ]);
-
-        if($validacion->fails()){
-            return response(['errors' => $validacion->errors()->all()], 422);
-        }
-
-        $contrasena = NULL;
-        if($request['contrasena'] != '')
-            $contrasena = Hash::make($request['contrasena']);
-
-        DB::connection('estudiante')
-            ->select('CALL p_est_updateDatos(?,?,?,?)',[
-                $request->user()->idUsuario,
-                $request['direccion'],
-                $request['email'],
-                $contrasena
-            ]);
-
-        return response()->json([
-            'message'   => 'Se actualizaron los datos.'
-        ]);
-
-    }
-
-    /**
-     * Ver mis datos
-     * 
-     * @param Request $request
-     */
-    public function show(Request $request){
-
-        $datos['datos'] = DB::connection('estudiante')
-            ->select('CALL p_est_verDatosEstudiante(?)',[$request->user()->idUsuario]);
-
-        $datos['telefonos'] = DB::connection('estudiante')
-            ->select('CALL p_est_verTelefonos(?)',[$request->user()->idUsuario]);
-
-        return response()->json($datos);
-
-    }
-
-    /**
      * Cargar Foto de perfil
      * 
      * @param Request $request
      */
-    public function cargarFoto(Request $request){
+    public function cargarFoto(Request $request, $idUsuario){
 
         $validacion = Validator::make($request->all(),[
             'foto' => 'required|mimes:jpeg,jpg,png',     
@@ -81,17 +28,23 @@ class UserController extends Controller
         }
 
         if ($request->hasFile('foto')) {
-            $usuario = $request->user();
+            $fotoPerfil = DB::connection('directivo')
+                ->table('usuarios')
+                ->where('idUsuario',$idUsuario)
+                ->value('fotoPerfil');
 
             $image = $request->file('foto');
 
-            if(is_null($usuario->fotoPerfil)){
-                $fileName = uniqid().$usuario->idUsuario;
-                $usuario->fotoPerfil = $fileName;
-                DB::connection('estudiante')
-                    ->select('CALL p_est_changeFotoPerfil(?,?)',[$usuario->idUsuario,$fileName]);
+            if(is_null($fotoPerfil)){
+                $fileName = uniqid().$idUsuario;
+                DB::connection('directivo')
+                    ->table('usuarios')
+                    ->where('idUsuario',$idUsuario)
+                    ->update([
+                        'fotoPerfil' => $fileName
+                    ]);
             }else{
-                $fileName = $usuario->fotoPerfil;
+                $fileName = $fotoPerfil;
                 Storage::delete('images/fotos/'.$fileName.'.jpg');
             }
 
@@ -132,6 +85,5 @@ class UserController extends Controller
         ],422);
 
     }
-
 
 }

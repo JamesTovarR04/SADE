@@ -9,28 +9,181 @@ use Illuminate\Support\Facades\Validator;
 
 class PublicacionController extends Controller
 {
-   
-//Mostrar Publicacion
+
+    //Mostrar Publicacion
     public function index(Request $request)
     {
-       $publicaciones = DB::connection('profesor')
-            ->table('vs_publicaciones')
-            ->select(
-            'idPublicacion',
-            'titulo',
-            'contenido',
-            'fecha',
-            'idUsuario',
-            'nombreCompleto',
-            'tipo',
-            'nlikes',
-            'ndislikes'
-            )->where('docentes', 1)
-            ->orWhere('idUsuario', $request->user()->idUsuario)
-            ->orderBy('fecha','desc')
-            ->paginate(4);
+        $validacion = Validator::make($request->all(),[
+            'buscar' => 'string|min:4|max:100',
+        ]);
+
+        if($validacion->fails()){
+            return response(['errors' => $validacion->errors()->all()], 422);
+        }
+
+        $idUsuario = $request->user()->idUsuario;
+
+        if($request['buscar']=='')
+            $publicaciones = DB::connection('profesor')
+                ->table('vs_publicaciones')
+                ->select(
+                    'idPublicacion',
+                    'titulo',
+                    'contenido',
+                    'fecha',
+                    'idUsuario',
+                    'nombreCompleto',
+                    'tipo',
+                    'nlikes',
+                    'ndislikes',
+                    DB::raw("EXISTS(SELECT * FROM Likes l WHERE l.idPublicacion=vs_publicaciones.idPublicacion AND l.idUsuario=$idUsuario) AS conlike"),
+                    DB::raw("EXISTS(SELECT * FROM Dislike d WHERE d.idPublicacion=vs_publicaciones.idPublicacion AND d.idUsuario=$idUsuario) AS condislike")
+                )->where('docentes', 1)
+                ->orWhere('idUsuario',$idUsuario)
+                ->orderBy('fecha', 'desc')
+                ->paginate(5);
+        else
+            $publicaciones = DB::connection('profesor')
+                ->select('CALL p_prf_buscarPublicacion(?)',[$request['buscar']]);
 
         return response()->json($publicaciones);
+
+    }
+
+    /**
+     * Ver publicaciones de usuario.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function delUsuario(Request $request)
+    {
+        $publicaciones = DB::connection('profesor')
+            ->table('vs_publicaciones')
+            ->select(
+                'idPublicacion',
+                'titulo',
+                'contenido',
+                'fecha',
+                'idUsuario',
+                'nombreCompleto',
+                'tipo',
+                'nlikes',
+                'ndislikes'
+            )
+            ->where('idUsuario',$request->user()->idUsuario)
+            ->orderBy('fecha', 'desc')
+            ->paginate(5);
+
+        return response()->json($publicaciones);
+    }
+
+    /**
+     * Ver privacidad de publicaciones de usuario.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $idPublicacion
+     * @return \Illuminate\Http\Response
+     */
+    public function privacidad(Request $request, $idPublicacion)
+    {
+        $privacidad = DB::connection('profesor')
+            ->table('vs_publicaciones')
+            ->select(
+                'publico',
+                'directivos',
+                'docentes',
+                'estudiantes'
+            )
+            ->where('idPublicacion',$idPublicacion)
+            ->where('idUsuario',$request->user()->idUsuario)
+            ->first();
+        
+        if(!is_null($privacidad))
+            return response()->json($privacidad);
+        else
+            return response()->json([
+                'message'   => 'No existe la publicación.'
+            ],404);
+    }
+
+    /**
+     * Like a publicacion.
+     * 
+     * FEXME: el usuario puede dar like a cualquier publicacion
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $idPublicacion
+     * @return \Illuminate\Http\Response
+     */
+    public function like(Request $request, $idPublicacion)
+    {
+        $idUsuario = $request->user()->idUsuario;
+
+        $like = DB::connection('profesor')
+            ->table('likes')
+            ->where('idPublicacion',$idPublicacion)
+            ->where('idUsuario',$idUsuario)
+            ->first();
+
+        if(is_null($like)){
+            DB::connection('profesor')
+                ->table('likes')
+                ->insert([
+                    'idPublicacion' => $idPublicacion,
+                    'idUsuario'     => $idUsuario
+                ]);
+        }else{
+            DB::connection('profesor')
+                ->table('likes')
+                ->where('idPublicacion',$idPublicacion)
+                ->where('idUsuario',$idUsuario)
+                ->delete();
+        }
+
+        return response()->json([
+            'like'  => is_null($like)
+        ]);
+
+    }
+
+    /**
+     * disLike a publicacion.
+     * 
+     * FEXME: el usuario puede dar dislike a cualquier publicacion
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $idPublicacion
+     * @return \Illuminate\Http\Response
+     */
+    public function dislike(Request $request, $idPublicacion)
+    {
+        $idUsuario = $request->user()->idUsuario;
+
+        $like = DB::connection('profesor')
+            ->table('dislike')
+            ->where('idPublicacion',$idPublicacion)
+            ->where('idUsuario',$idUsuario)
+            ->first();
+
+        if(is_null($like)){
+            DB::connection('profesor')
+                ->table('dislike')
+                ->insert([
+                    'idPublicacion' => $idPublicacion,
+                    'idUsuario'     => $idUsuario
+                ]);
+        }else{
+            DB::connection('profesor')
+                ->table('dislike')
+                ->where('idPublicacion',$idPublicacion)
+                ->where('idUsuario',$idUsuario)
+                ->delete();
+        }
+
+        return response()->json([
+            'dislike'  => is_null($like)
+        ]);
 
     }
 

@@ -1,6 +1,9 @@
 -- MySQL Workbench Forward Engineering
 
 -- begin attached script 'script6'
+# Eliminar base de datos
+DROP SCHEMA IF EXISTS sadedb;
+
 # Eliminar usuarios en caso de que ya existan
 DROP USER IF EXISTS 'sade-directivo'@'%';
 DROP USER IF EXISTS 'sade-estudiante'@'%';
@@ -41,10 +44,11 @@ CREATE TABLE IF NOT EXISTS `sadeDB`.`Usuarios` (
   `fechaRegistro` DATETIME NOT NULL DEFAULT NOW(),
   `contrasenia` VARCHAR(500) NULL,
   `remember_token` VARCHAR(100) NULL,
-  `fotoPerfil` BLOB NULL,
+  `fotoPerfil` VARCHAR(100) NULL,
   `delete` DATETIME NULL,
   PRIMARY KEY (`idUsuario`),
-  UNIQUE INDEX `email_Usuarios_UNIQUE` (`email` ASC) VISIBLE)
+  UNIQUE INDEX `email_Usuarios_UNIQUE` (`email` ASC) VISIBLE,
+  INDEX `fotoPerfil` (`fotoPerfil` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
@@ -1432,7 +1436,7 @@ USE `sadeDB`$$
 CREATE PROCEDURE `p_prf_changeFotoPerfil` 
 (
 	IN arg_idUsuario INT,
-    IN arg_fotoPerfil BLOB
+    IN arg_fotoPerfil VARCHAR(100)
 )
 BEGIN
 	IF tipoUsuarioSegunId(arg_idUsuario) = 2 THEN
@@ -1453,7 +1457,7 @@ USE `sadeDB`$$
 CREATE PROCEDURE `p_est_changeFotoPerfil` 
 (
 	IN arg_idUsuario INT,
-    IN arg_fotoPerfil BLOB
+    IN arg_fotoPerfil VARCHAR(100)
 )
 BEGIN
 	IF tipoUsuarioSegunId(arg_idUsuario) = 1 THEN
@@ -1474,7 +1478,7 @@ USE `sadeDB`$$
 CREATE PROCEDURE `p_dir_changeFotoPerfil` 
 (
 	IN arg_idUsuario INT,
-    IN arg_fotoPerfil BLOB
+    IN arg_fotoPerfil VARCHAR(100)
 )
 BEGIN
 	UPDATE Usuarios 
@@ -1542,6 +1546,25 @@ END$$
 DELIMITER ;
 
 -- -----------------------------------------------------
+-- procedure p_dir_vistoNotificacion
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `sadeDB`$$
+CREATE PROCEDURE `p_dir_vistoNotificacion`(IN arg_idNotificacion INT, IN arg_idUsuario INT)
+BEGIN
+	IF tipoUsuarioSegunId(arg_idUsuario) = 3 THEN
+		INSERT INTO VistasNotificaciones (idUsuario, idNotificacion)
+		SELECT * FROM (SELECT arg_idUsuario, arg_idNotificacion) AS tmp
+		WHERE NOT EXISTS (
+			SELECT * FROM VistasNotificaciones WHERE idUsuario=arg_idUsuario AND idNotificacion=arg_idNotificacion
+		) LIMIT 1;
+    END IF;
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
 -- View `sadeDB`.`vs_infousuario`
 -- -----------------------------------------------------
 USE `sadeDB`;
@@ -1549,12 +1572,12 @@ CREATE  OR REPLACE VIEW `vs_infousuario` AS
 SELECT 
 	idUsuario, 
     CONCAT_WS(' ',nombres,apellido1) AS nombreCompleto, 
+    fotoPerfil,
     CASE tipo 
 		WHEN 1 THEN 'estudiante'
         WHEN 2 THEN 'profesor'
         WHEN 3 THEN 'directivo'
-    END AS tipo,
-    fotoPerfil AS foto
+    END AS tipo
 FROM Usuarios;
 
 -- -----------------------------------------------------
@@ -1612,10 +1635,10 @@ SELECT
     u.apellido2,
     u.email,
     u.tipo,
+    u.fotoPerfil,
     u.sexo,
     u.fechaNacimiento,
     u.fechaRegistro,
-    u.fotoPerfil,
     di.tipoDocumento,
     di.numero,
     di.fechaExpedicion,
@@ -1674,8 +1697,8 @@ CREATE  OR REPLACE VIEW `vs_infodirectivos` AS
 SELECT
 	d.idUsuario,
     CONCAT_WS(' ',nombres, apellido1, apellido2) AS nombre,
-    fotoPerfil,
     email,
+    fotoPerfil,
     emailPublico,
     CONCAT_WS('-',tipoDocumento,numero) AS documentoIdentidad,
     cargo,
@@ -1691,8 +1714,8 @@ CREATE  OR REPLACE VIEW `vs_infodocentes` AS
 SELECT
 	d.idUsuario,
     CONCAT_WS(' ',nombres, apellido1, apellido2) AS nombre,
-    fotoPerfil,
     email,
+    fotoPerfil,
     CONCAT_WS('-',tipoDocumento,numero) AS documentoIdentidad,
     perfilAcademico,
    (SELECT telefono FROM Telefono t WHERE t.idUsuario = d.idUsuario LIMIT 1) AS telefono
@@ -1707,8 +1730,8 @@ CREATE  OR REPLACE VIEW `vs_infoestudiantes` AS
 SELECT
 	e.idUsuario,
     CONCAT_WS(' ',nombres, apellido1, apellido2) AS nombre,
-    fotoPerfil,
     email,
+    fotoPerfil,
     CONCAT_WS('-',tipoDocumento,numero) AS documentoIdentidad,
     egresado,
     e.idGrupo,
@@ -1730,7 +1753,7 @@ SELECT
     fecha,
     nombreCompleto,
     tipo,
-    foto,
+    fotoPerfil,
     nlikes,
     ndislikes
 FROM vs_publicaciones
@@ -1757,8 +1780,8 @@ USE `sadeDB`;
 CREATE  OR REPLACE VIEW `vs_pub_directivos` AS
 SELECT
 	nombre,
-    fotoPerfil,
     emailPublico,
+    fotoPerfil,
     cargo
 FROM vs_infodirectivos;
 
@@ -1775,7 +1798,7 @@ SELECT
     idUsuario,
     nombreCompleto,
     tipo,
-    foto,
+    fotoPerfil,
     nlikes,
     ndislikes
 FROM vs_publicaciones
@@ -1794,7 +1817,7 @@ SELECT
     idUsuario,
     nombreCompleto,
     tipo,
-    foto,
+    fotoPerfil,
     nlikes,
     ndislikes
 FROM vs_publicaciones
@@ -1813,7 +1836,7 @@ SELECT
     idUsuario,
     nombreCompleto,
     tipo,
-    foto,
+    fotoPerfil,
     nlikes,
     ndislikes
 FROM vs_publicaciones
@@ -1907,7 +1930,6 @@ CREATE  OR REPLACE VIEW `vs_prf_infodocentes` AS
 SELECT
 	idUsuario,
     nombre,
-    fotoPerfil,
     email,
     perfilAcademico
 FROM vs_infodocentes;
@@ -1920,7 +1942,6 @@ CREATE  OR REPLACE VIEW `vs_prf_infodirectivo` AS
 SELECT 
 	idUsuario,
     nombre,
-    fotoPerfil,
     email,
     emailPublico,
     cargo,
@@ -1935,7 +1956,6 @@ CREATE  OR REPLACE VIEW `vs_prf_infoestudiantes` AS
 SELECT
 	idUsuario,
     nombre,
-    fotoPerfil,
     email,
     egresado,
     idGrupo,
@@ -1980,9 +2000,9 @@ SELECT
 	nombres,
 	apellido1,
 	apellido2,
+    fotoPerfil,
 	email,
 	RH,
-    fotoPerfil,
     idGrupo
 FROM vs_datosestudiantes;
 
@@ -1998,7 +2018,6 @@ SELECT
 	de.apellido2,
 	de.email,
 	de.RH,
-    de.fotoPerfil,
     de.tipoDocumento,
     de.numero AS numeroDocumento,
     de.direccion,
@@ -2455,6 +2474,7 @@ GRANT EXECUTE ON procedure `sadeDB`.`p_dir_buscarEvento` TO 'sade-directivo';
 GRANT EXECUTE ON procedure `sadeDB`.`p_dir_buscarGrupo` TO 'sade-directivo';
 GRANT EXECUTE ON procedure `sadeDB`.`p_dir_buscarPublicacion` TO 'sade-directivo';
 GRANT EXECUTE ON procedure `sadeDB`.`p_dir_changeFotoPerfil` TO 'sade-directivo';
+GRANT EXECUTE ON procedure `sadeDB`.`p_dir_vistoNotificacion` TO 'sade-directivo';
 CREATE USER 'sade-profesor' IDENTIFIED BY '1234';
 
 GRANT SELECT ON TABLE `sadeDB`.`Grupos` TO 'sade-profesor';
@@ -2525,6 +2545,7 @@ GRANT EXECUTE ON procedure `sadeDB`.`p_est_buscarEstudiante` TO 'sade-estudiante
 GRANT EXECUTE ON procedure `sadeDB`.`p_est_buscarDocente` TO 'sade-estudiante';
 GRANT EXECUTE ON procedure `sadeDB`.`p_est_buscarGrupo` TO 'sade-estudiante';
 GRANT EXECUTE ON procedure `sadeDB`.`p_est_buscarEvento` TO 'sade-estudiante';
+GRANT EXECUTE ON procedure `sadeDB`.`p_est_buscarPublicacion` TO 'sade-estudiante';
 GRANT EXECUTE ON procedure `sadeDB`.`p_est_changeFotoPerfil` TO 'sade-estudiante';
 
 SET SQL_MODE=@OLD_SQL_MODE;

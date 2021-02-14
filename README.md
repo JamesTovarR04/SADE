@@ -1,4 +1,4 @@
-<p align="center"><a href="https://github.com/JamesTovarR04/SADE" target="_blank"><img src="https://github.com/JamesTovarR04/SADE/blob/main/documentation/logo/Image/Recurso%202.png" width="400"></a></p>
+<p align="center"><a href="https://github.com/JamesTovarR04/SADE" target="_blank"><img src="https://github.com/JamesTovarR04/SADE/blob/main/documentation/logo/Image/Recurso%202.png" width="300"></a></p>
 
 ## About SADE
 

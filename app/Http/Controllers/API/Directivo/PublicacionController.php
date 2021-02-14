@@ -34,7 +34,7 @@ class PublicacionController extends Controller
                     'titulo',
                     'contenido',
                     'fecha',
-                    'vs_publicaciones.idUsuario',
+                    'idUsuario',
                     'nombreCompleto',
                     'tipo',
                     'nlikes',
@@ -42,7 +42,7 @@ class PublicacionController extends Controller
                     DB::raw("EXISTS(SELECT * FROM Likes l WHERE l.idPublicacion=vs_publicaciones.idPublicacion AND l.idUsuario=$idUsuario) AS conlike"),
                     DB::raw("EXISTS(SELECT * FROM Dislike d WHERE d.idPublicacion=vs_publicaciones.idPublicacion AND d.idUsuario=$idUsuario) AS condislike")
                 )->where('directivos',1)
-                ->orWhere('vs_publicaciones.idUsuario',$idUsuario)
+                ->orWhere('idUsuario',$idUsuario)
                 ->orderBy('fecha', 'desc')
                 ->paginate(5);
         else

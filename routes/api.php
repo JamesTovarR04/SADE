@@ -34,6 +34,7 @@ Route::group([
     Route::get('publicaciones', 'PublicacionController@index');
     Route::get('eventos', 'EventoController@index');
     Route::get('eventos/mes', 'EventoController@enMes');
+    Route::get('usuario/foto/{id}', 'UserController@descargarFoto');
     Route::group([
         'prefix' => 'info',
     ], function () {
@@ -61,6 +62,7 @@ Route::group([
     Route::apiResource('estudiantes', 'EstudianteController');
     Route::apiResource('profesores', 'ProfesorController');
     Route::apiResource('directivos', 'DirectivoController');
+    Route::post('usuario/foto/{id}', 'UserController@cargarFoto');
 
     Route::apiResource('grupos', 'GradoController');
     Route::post('grupos/{id}/profesor', 'GradoController@addProfesor');
@@ -82,17 +84,30 @@ Route::group([
 ], function () {
 
     Route::apiResource('publicaciones', 'PublicacionController');
+    Route::get('publicaciones/{id}/like', 'PublicacionController@like');
+    Route::get('publicaciones/{id}/dislike', 'PublicacionController@dislike');
+    Route::get('mispublicaciones', 'PublicacionController@delUsuario');
+    Route::get('privacidad/publicacion/{id}', 'PublicacionController@privacidad');
+
     Route::apiResource('eventos', 'EventoController');
     Route::get('eventosmes', 'EventoController@enMes');
+
     Route::get('notificaciones', 'NotificacionController@index');
     Route::get('notificaciones/{id}', 'NotificacionController@visto');
     Route::get('numero/notificaciones', 'NotificacionController@numero');
+
     Route::get('grupos', 'GrupoController@index');
     Route::get('grupos/{id}', 'GrupoController@show');
+
+    Route::get('estudiantes/director/{idGrupo}', 'EstudiantesController@listadoGrupoDirectivo');
+    Route::get('estudiantes/misgrupos/{idGrupo}', 'EstudiantesController@listadoGrupo');
+
     Route::post('telefono', 'TelefonoController@store');
     Route::delete('telefono/{id}', 'TelefonoController@destroy');
+
     Route::put('usuario', 'UserController@update');
     Route::get('usuario', 'UserController@show');
+    Route::post('usuario/foto', 'UserController@cargarFoto');
 
 });
 
@@ -104,16 +119,26 @@ Route::group([
 ], function () {
 
     Route::apiResource('publicaciones', 'PublicacionController');
+    Route::get('publicaciones/{id}/like', 'PublicacionController@like');
+    Route::get('publicaciones/{id}/dislike', 'PublicacionController@dislike');
+    Route::get('mispublicaciones', 'PublicacionController@delUsuario');
+    Route::get('privacidad/publicacion/{id}', 'PublicacionController@privacidad');
+
     Route::get('eventos', 'EventoController@index');
     Route::get('eventos/mes', 'EventoController@enMes');
+
     Route::get('notificaciones', 'NotificacionController@index');
     Route::get('notificaciones/{id}', 'NotificacionController@visto');
     Route::get('numero/notificaciones', 'NotificacionController@numero');
+
     Route::get('grupos', 'GrupoController@index');
     Route::get('grupos/{id}', 'GrupoController@show');
     Route::get('migrupo', 'GrupoController@miGrupo');
+
     Route::put('usuario', 'UserController@update');
     Route::get('usuario', 'UserController@show');
+    Route::post('usuario/foto', 'UserController@cargarFoto');
+
     Route::post('telefono', 'TelefonoController@store');
     Route::delete('telefono/{id}', 'TelefonoController@destroy');
     
