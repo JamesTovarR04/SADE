@@ -27,7 +27,7 @@ class PublicacionController extends Controller
         if($request['buscar']=='')
             $publicaciones = DB::connection('publico')
                 ->table('vs_pub_publicaciones')
-                ->get();
+                ->paginate(5);
         else
             $publicaciones = DB::connection('publico')
                 ->select('CALL p_pub_buscarPublicacion(?)',[$request['buscar']]);
