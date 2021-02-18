@@ -2054,6 +2054,25 @@ exports.push([module.i, ".navbar {\r\n    border-bottom: 1px solid #01A99A;\r\n}
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/publico/styles/informacion.css":
+/*!*************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/postcss-loader/src??ref--5-2!./resources/js/publico/styles/informacion.css ***!
+  \*************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".imagencol {\r\n    background-image: url(/images/infocol.jpg);\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    background-position: center;\r\n}\r\n    \r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/publico/styles/publicacion.css":
 /*!*************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--5-1!./node_modules/postcss-loader/src??ref--5-2!./resources/js/publico/styles/publicacion.css ***!
@@ -37048,6 +37067,33 @@ if (document.getElementById('appSade')) {
 
 /***/ }),
 
+/***/ "./resources/js/publico/components/botonLogin.jsx":
+/*!********************************************************!*\
+  !*** ./resources/js/publico/components/botonLogin.jsx ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var BotonLogin = function BotonLogin() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn btn-primary rounded-pill",
+    style: {
+      backgroundColor: "#0088DE"
+    }
+  }, "Iniciar Sesion");
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (BotonLogin);
+
+/***/ }),
+
 /***/ "./resources/js/publico/components/calendarios.jsx":
 /*!*********************************************************!*\
   !*** ./resources/js/publico/components/calendarios.jsx ***!
@@ -37601,6 +37647,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _styles_header_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styles/header.css */ "./resources/js/publico/styles/header.css");
 /* harmony import */ var _styles_header_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_styles_header_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _botonLogin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./botonLogin */ "./resources/js/publico/components/botonLogin.jsx");
+
 
 
 
@@ -37620,7 +37668,7 @@ var Header = function Header() {
     className: "collapse navbar-collapse justify-content-end mr-4",
     id: "navbarNav"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-    className: "navbar-nav"
+    className: "navbar-nav mr-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "nav-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
@@ -37637,7 +37685,7 @@ var Header = function Header() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
     to: "/contacto",
     className: "nav-link mx-2"
-  }, "Contacto")))));
+  }, "Contacto"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_botonLogin__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);
@@ -38017,7 +38065,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Contacto = function Contacto() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Contacto");
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "h5 pl-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-phone-alt"
+  }), " Contacto"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("iframe", {
+    src: "https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d4992.010427185254!2d-75.25930142778772!3d2.9415166104178914!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sco!4v1613627142795!5m2!1ses!2sco",
+    width: "600",
+    height: "450",
+    frameBorder: "0",
+    allowfullscreen: "",
+    "aria-hidden": "false",
+    tabindex: "0"
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Contacto);
@@ -38035,31 +38095,101 @@ var Contacto = function Contacto() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _styles_informacion_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../styles/informacion.css */ "./resources/js/publico/styles/informacion.css");
+/* harmony import */ var _styles_informacion_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_informacion_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utils_peticion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/peticion */ "./resources/js/publico/utils/peticion.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
 
 
 var Informacion = function Informacion() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      estudiantes = _useState2[0],
+      setEstudiantes = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+      _useState4 = _slicedToArray(_useState3, 2),
+      egresados = _useState4[0],
+      setEgresados = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+      _useState6 = _slicedToArray(_useState5, 2),
+      profesores = _useState6[0],
+      setProfesores = _useState6[1];
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+      _useState8 = _slicedToArray(_useState7, 2),
+      directivos = _useState8[0],
+      setDirectivos = _useState8[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    Object(_utils_peticion__WEBPACK_IMPORTED_MODULE_2__["default"])('info/usuarios', 'GET').then(function (data) {
+      setEstudiantes(data.estudiantes);
+      setEgresados(data.egresados);
+      setProfesores(data.docentes);
+      setDirectivos(data.directivos);
+    });
+  }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card mb-3"
+    className: "py-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "h5 pl-3 mb-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-info-circle"
+  }), " Informacion"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card m-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row g-0"
+    className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-md-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: "/images/col.jpg",
-    alt: "..."
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-md-8"
+    className: "col-md-5 imagencol"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-7"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-body"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
     className: "card-title"
   }, "Nombre Completo De La Escuela"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "card-text"
   }, "Pocas escuelas son tan exitosas como la Academia Kunugigaoka. Es m\xE1s conocida como una secundaria, pero tambi\xE9n tiene una preparatoria para los alumnos con mejores calificaciones. Lo que hace a esta academia diferente es que es la \xFAnica escuela que maneja un sistema de avance a costa de otros alumnos."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "card-text"
+  }, "Si tu deporte favorito es el b\xE1squetbol, entonces definitivamente tienes que estudiar en la Secundaria Teiko. Esta escuela de Tokio tiene un club de b\xE1squetbol de m\xE1s de 100 miembros, y en una generaci\xF3n tuvo a la llamada \u201Cgeneraci\xF3n milagro\u201D, cinco jugadores tan talentosos que eran pr\xE1cticamente invencibles. Por supuesto, esto hace que su programa de deportes sea muy solicitado, y el entrar a estudiar ah\xED no sea nada f\xE1cil. Adem\xE1s, debido a lo competitivo de su equipo, cualquier jugador que no pueda juntar 20 puntos en un juego, debe tener entrenamiento extra."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "card-text"
+  }, " Secundaria Teiko es un lugar aburrido. Justamente por los triunfos del equipo, la escuela tiene un fuerte esp\xEDritu escolar, y todos los alumnos est\xE1n ah\xED listos para apoyar a sus compa\xF1eros. Despu\xE9s de todo, hay cierto orgullo en ser parte de una escuela con un equipo campe\xF3n, incluso si uno no es parte del mismo."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "card-text text-center mb-1"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
     className: "text-muted"
-  }, "Last updated 3 mins ago"))))));
+  }, "Usuarios Registrados")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "mx-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-user-edit"
+  }), " ", estudiantes, " Estudiantes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "mx-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-user-graduate"
+  }), " ", egresados, " Egresados"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "mx-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-user"
+  }), " ", profesores, " Profesores"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "mx-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-user-tie"
+  }), " ", directivos, " Directivos")))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Informacion);
@@ -38212,6 +38342,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./resources/js/publico/styles/informacion.css":
+/*!*****************************************************!*\
+  !*** ./resources/js/publico/styles/informacion.css ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--5-1!../../../../node_modules/postcss-loader/src??ref--5-2!./informacion.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/publico/styles/informacion.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./resources/js/publico/styles/publicacion.css":
 /*!*****************************************************!*\
   !*** ./resources/js/publico/styles/publicacion.css ***!
@@ -38322,7 +38482,7 @@ function peticion(url) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\SAPC\resources\js\publico\app.jsx */"./resources/js/publico/app.jsx");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\sapc\resources\js\publico\app.jsx */"./resources/js/publico/app.jsx");
 
 
 /***/ })

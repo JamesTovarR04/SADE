@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 
 import '../styles/header.css';
+import BotonLogin from './botonLogin';
 
 const Header = () => {
 
@@ -10,7 +11,7 @@ const Header = () => {
             <img src="/images/logo-azul.svg" height="35" className="d-inline-block align-top" alt="SADE"/>
         </a>
         <div className="collapse navbar-collapse justify-content-end mr-4" id="navbarNav">
-            <ul className="navbar-nav">
+            <ul className="navbar-nav mr-3">
                 <li className="nav-item">
                     <NavLink exact to="/" className='nav-link mx-2'>Inicio</NavLink>
                 </li>
@@ -21,6 +22,7 @@ const Header = () => {
                     <NavLink to="/contacto" className='nav-link mx-2'>Contacto</NavLink>
                 </li>
             </ul>
+            <BotonLogin/>
         </div>
     </nav>;
 
