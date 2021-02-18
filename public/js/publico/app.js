@@ -38038,7 +38038,28 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Informacion = function Informacion() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Informacion");
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row g-0"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "/images/col.jpg",
+    alt: "..."
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-md-8"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-body"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+    className: "card-title"
+  }, "Nombre Completo De La Escuela"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "card-text"
+  }, "Pocas escuelas son tan exitosas como la Academia Kunugigaoka. Es m\xE1s conocida como una secundaria, pero tambi\xE9n tiene una preparatoria para los alumnos con mejores calificaciones. Lo que hace a esta academia diferente es que es la \xFAnica escuela que maneja un sistema de avance a costa de otros alumnos."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "card-text"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+    className: "text-muted"
+  }, "Last updated 3 mins ago"))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Informacion);
@@ -38301,7 +38322,7 @@ function peticion(url) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\sapc\resources\js\publico\app.jsx */"./resources/js/publico/app.jsx");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\SAPC\resources\js\publico\app.jsx */"./resources/js/publico/app.jsx");
 
 
 /***/ })
