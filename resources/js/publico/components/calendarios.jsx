@@ -5,7 +5,7 @@ import '../styles/calendario.css';
 /* Calendario de eventos
 *
 *   props:
-*       fechas: Array(Objs), objExamp: {inicio:'yyyy/mm/dd',fin:'yyyy/mm/dd',color:'#fff',todos:bool}
+*       fechas: Array(Objs), objExamp: {dia:5, eventos:7}
 *       clickDia: func(year,month,day)
 *       cambioMes: func(year,month)
 */
@@ -64,34 +64,15 @@ const Calendario = (props) => {
     useEffect(() => {
         var listaFechas = []
         if(props.fechas !== undefined){
-            props.fechas.forEach(f => {
-                var startCiclo = 1
-                var endCiclo = new Date(year,month + 1,0).getDate()
-                let mesInicio = new Date(f.inicio).getMonth()
-                let mesFin = new Date(f.fin).getMonth()
-
-                if(mesInicio == month)
-                    startCiclo = new Date(f.inicio).getDate()
-
-                if(mesFin == month)
-                    endCiclo = new Date(f.fin).getDate()
-
-                if(mesInicio == month || mesFin == month){
-                    if(f.todos || f.todos === undefined){
-                        for (let i = startCiclo; i <= endCiclo; i++) {
-                            listaFechas[i] = (listaFechas[i] === undefined) ? f.color :'#666'
-                        }
-                    }else{
-                        if(mesInicio == month){
-                            listaFechas[startCiclo] = (listaFechas[startCiclo] === undefined) ? f.color :'#666'
-                        }
-                        if(mesFin == month){
-                            listaFechas[endCiclo] = (listaFechas[endCiclo] === undefined) ? f.color :'#666'
-                        }
-                    }
-                }
-                setFechas(listaFechas)
+            props.fechas.forEach(fecha => {
+                let color = "#2f9728";
+                if(fecha.Eventos > 5)
+                    color = "#d11d14";
+                else if(fecha.Eventos > 3)
+                    color = "#e06414";
+                listaFechas[fecha.Dia] = color;
             })
+            setFechas(listaFechas);
         }
     },[props.fechas,month])
 
@@ -159,9 +140,9 @@ const Calendario = (props) => {
                     <div style={celdas}>Vie</div>
                     <div style={celdas}>Sáb</div>
                 </div>
-                {tabla.map(w =>
-                    <div key={w[0]} className='calendario-week' style={fila}>
-                        {w.map((d,i,a) => (d == -1)? <div key={i} style={celdas}></div> :
+                {tabla.map(week =>
+                    <div key={week[0]} className='calendario-week' style={fila}>
+                        {week.map((d,i,a) => (d == -1)? <div key={i} style={celdas}></div> :
                             <div key={i} className='calendario-day' style={celdas}>
                                 <button
                                 className={(hoy == (year+'/'+month+'/'+d))?'calendario-today':''}

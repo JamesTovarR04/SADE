@@ -37078,7 +37078,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 /* Calendario de eventos
 *
 *   props:
-*       fechas: Array(Objs), objExamp: {inicio:'yyyy/mm/dd',fin:'yyyy/mm/dd',color:'#fff',todos:bool}
+*       fechas: Array(Objs), objExamp: {dia:5, eventos:7}
 *       clickDia: func(year,month,day)
 *       cambioMes: func(year,month)
 */
@@ -37158,32 +37158,12 @@ var Calendario = function Calendario(props) {
     var listaFechas = [];
 
     if (props.fechas !== undefined) {
-      props.fechas.forEach(function (f) {
-        var startCiclo = 1;
-        var endCiclo = new Date(year, month + 1, 0).getDate();
-        var mesInicio = new Date(f.inicio).getMonth();
-        var mesFin = new Date(f.fin).getMonth();
-        if (mesInicio == month) startCiclo = new Date(f.inicio).getDate();
-        if (mesFin == month) endCiclo = new Date(f.fin).getDate();
-
-        if (mesInicio == month || mesFin == month) {
-          if (f.todos || f.todos === undefined) {
-            for (var i = startCiclo; i <= endCiclo; i++) {
-              listaFechas[i] = listaFechas[i] === undefined ? f.color : '#666';
-            }
-          } else {
-            if (mesInicio == month) {
-              listaFechas[startCiclo] = listaFechas[startCiclo] === undefined ? f.color : '#666';
-            }
-
-            if (mesFin == month) {
-              listaFechas[endCiclo] = listaFechas[endCiclo] === undefined ? f.color : '#666';
-            }
-          }
-        }
-
-        setFechas(listaFechas);
+      props.fechas.forEach(function (fecha) {
+        var color = "#2f9728";
+        if (fecha.Eventos > 5) color = "#d11d14";else if (fecha.Eventos > 3) color = "#e06414";
+        listaFechas[fecha.Dia] = color;
       });
+      setFechas(listaFechas);
     }
   }, [props.fechas, month]); // cambio mes
 
@@ -37263,12 +37243,12 @@ var Calendario = function Calendario(props) {
     style: celdas
   }, "Vie"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: celdas
-  }, "S\xE1b")), tabla.map(function (w) {
+  }, "S\xE1b")), tabla.map(function (week) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      key: w[0],
+      key: week[0],
       className: "calendario-week",
       style: fila
-    }, w.map(function (d, i, a) {
+    }, week.map(function (d, i, a) {
       return d == -1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         key: i,
         style: celdas
@@ -37333,6 +37313,70 @@ var Cargando = function Cargando() {
 
 /***/ }),
 
+/***/ "./resources/js/publico/components/evento.jsx":
+/*!****************************************************!*\
+  !*** ./resources/js/publico/components/evento.jsx ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+var Evento = function Evento(props) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('bg-secondary'),
+      _useState2 = _slicedToArray(_useState, 2),
+      color = _useState2[0],
+      setColor = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('00:00 --'),
+      _useState4 = _slicedToArray(_useState3, 2),
+      hora = _useState4[0],
+      setHora = _useState4[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    var colors = ['bg-info', 'bg-success', 'bg-primary'];
+    setColor(colors[Math.floor(Math.random() * colors.length)]);
+    var fecha = new Date(props.hora);
+    var horaF = '';
+
+    if (fecha.getHours() > 12 || fecha.getHours() == 0) {
+      horaF = Math.abs(fecha.getHours() - 12) + ":" + (fecha.getMinutes() < 10 ? '0' : '') + fecha.getMinutes() + (fecha.getHours() == 0 ? ' a.m.' : ' p.m');
+    } else {
+      horaF = fecha.getHours() + ":" + (fecha.getMinutes() < 10 ? '0' : '') + fecha.getMinutes() + " a.m.";
+    }
+
+    setHora(horaF);
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: color + " card mt-2 p-3 text-white",
+    style: {
+      borderRadius: "20px"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
+    className: "d-block text-center"
+  }, hora), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, props.descripcion));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Evento);
+
+/***/ }),
+
 /***/ "./resources/js/publico/components/eventos.jsx":
 /*!*****************************************************!*\
   !*** ./resources/js/publico/components/eventos.jsx ***!
@@ -37344,7 +37388,11 @@ var Cargando = function Cargando() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _calendarios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./calendarios */ "./resources/js/publico/components/calendarios.jsx");
+/* harmony import */ var _utils_peticion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/peticion */ "./resources/js/publico/utils/peticion.js");
+/* harmony import */ var _calendarios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./calendarios */ "./resources/js/publico/components/calendarios.jsx");
+/* harmony import */ var _evento__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./evento */ "./resources/js/publico/components/evento.jsx");
+/* harmony import */ var _utils_fecha__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/fecha */ "./resources/js/publico/utils/fecha.js");
+/* harmony import */ var _cargando__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./cargando */ "./resources/js/publico/components/cargando.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -37360,16 +37408,72 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
+
+
 var Eventos = function Eventos() {
+  var today = new Date();
+
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
       _useState2 = _slicedToArray(_useState, 2),
       fechas = _useState2[0],
       setFechas = _useState2[1];
 
-  function obtenerFechas(year, month) {// TODO: Obtener fechas y enviarlas al componente calendario
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(today.getDate()),
+      _useState4 = _slicedToArray(_useState3, 2),
+      dia = _useState4[0],
+      setDia = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(today.getMonth()),
+      _useState6 = _slicedToArray(_useState5, 2),
+      mes = _useState6[0],
+      setMes = _useState6[1];
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(today.getFullYear()),
+      _useState8 = _slicedToArray(_useState7, 2),
+      ano = _useState8[0],
+      setAno = _useState8[1];
+
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+      _useState10 = _slicedToArray(_useState9, 2),
+      cargando = _useState10[0],
+      setCargando = _useState10[1];
+
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState12 = _slicedToArray(_useState11, 2),
+      eventos = _useState12[0],
+      setEventos = _useState12[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    obtenerEventos(ano, mes, dia);
+  }, [dia]);
+
+  function obtenerEventos(year, month, day) {
+    month++;
+    var mes = (month < 10 ? '0' : '') + month;
+    var dia = (day < 10 ? '0' : '') + day;
+    Object(_utils_peticion__WEBPACK_IMPORTED_MODULE_1__["default"])('eventos', 'GET', {
+      'dia': year + '-' + mes + '-' + dia
+    }).then(function (data) {
+      setEventos(data);
+      setCargando(false);
+    });
   }
 
-  function clickDia(year, month, day) {// TODO: mostrar eventos dia
+  function obtenerFechas(year, month) {
+    var data = {
+      'mes': year + '-' + (month < 10 ? '0' : '') + month
+    };
+    Object(_utils_peticion__WEBPACK_IMPORTED_MODULE_1__["default"])('eventos/mes', 'GET', data, true).then(function (data) {
+      setFechas(data);
+    });
+  }
+
+  function clickDia(year, month, day) {
+    setDia(day);
+    setMes(month - 1);
+    setAno(year); //obtenerEventos(year,month,day)
   }
 
   function cambioMes(year, month) {
@@ -37384,11 +37488,23 @@ var Eventos = function Eventos() {
     className: "fas fa-calendar-alt mr-1"
   }), " Eventos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card shadow p-3 mt-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_calendarios__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_calendarios__WEBPACK_IMPORTED_MODULE_2__["default"], {
     fechas: fechas,
     clickDia: clickDia,
     cambioMes: cambioMes
-  })));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "mt-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "d-block text-center h5 mb-3"
+  }, "Eventos ", dia, " de ", _utils_fecha__WEBPACK_IMPORTED_MODULE_4__["meses"][mes]), cargando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_cargando__WEBPACK_IMPORTED_MODULE_5__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, eventos.length == 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "text-center text-muted"
+  }, "No hay eventos para este dia") : eventos.map(function (evento) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_evento__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      key: evento.idEventos,
+      hora: evento.hora,
+      descripcion: evento.descripcion
+    });
+  }))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Eventos);
@@ -37755,7 +37871,6 @@ var Publicaciones = function Publicaciones() {
     Object(_utils_peticion__WEBPACK_IMPORTED_MODULE_2__["default"])('publicaciones', 'GET', {
       'page': page
     }).then(function (data) {
-      console.log(data.data);
       setPublicaciones(data);
       setCargando(false);
     });

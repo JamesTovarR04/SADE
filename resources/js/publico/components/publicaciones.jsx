@@ -14,7 +14,6 @@ const Publicaciones = () => {
     useEffect(() => {
         peticion('publicaciones','GET',{'page':page})
         .then(data => {
-            console.log(data.data)
             setPublicaciones(data)
             setCargando(false)
         })

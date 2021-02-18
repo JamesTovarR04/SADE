@@ -19,20 +19,20 @@ function AppSadePublico(){
     return <Router>
       <Header/>
       <div style={{minHeight:"90vh", marginTop:"62px"}}>
-      <Switch>
-        <Route exact path="/">
-          <Inicio/>
-        </Route>
-        <Route exact path="/info">
-          <Informacion/>
-        </Route>
-        <Route exact path="/contacto">
-          <Contacto/>
-        </Route>
-        <Route exact path="/login">
-          <Login/>
-        </Route>
-      </Switch>
+        <Switch>
+          <Route exact path="/">
+            <Inicio/>
+          </Route>
+          <Route exact path="/info">
+            <Informacion/>
+          </Route>
+          <Route exact path="/contacto">
+            <Contacto/>
+          </Route>
+          <Route exact path="/login">
+            <Login/>
+          </Route>
+        </Switch>
       </div>
       <Footer/>
     </Router>;
