@@ -5,7 +5,6 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import Footer from './components/footer';
 
 // Importando componentes
 import Header from './components/header';
@@ -13,6 +12,8 @@ import Contacto from './pages/contacto';
 import Informacion from './pages/informacion';
 import Inicio from './pages/inicio';
 import Login from './pages/login';
+import EstaLogeado from './components/estaLogeado';
+import Footer from './components/footer';
 
 function AppSadePublico(){
 
@@ -29,9 +30,9 @@ function AppSadePublico(){
           <Route exact path="/contacto">
             <Contacto/>
           </Route>
-          <Route exact path="/login">
+          <EstaLogeado path="/login">
             <Login/>
-          </Route>
+          </EstaLogeado>
         </Switch>
       </div>
       <Footer/>

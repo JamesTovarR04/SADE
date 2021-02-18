@@ -22,7 +22,7 @@ const Header = () => {
                     <NavLink to="/contacto" className='nav-link mx-2'>Contacto</NavLink>
                 </li>
             </ul>
-            <BotonLogin/>
+            <BotonLogin public={true}/>
         </div>
     </nav>;
 

@@ -1,3 +1,6 @@
 {
+    "/js/directivo/app.js": "/js/directivo/app.js",
+    "/js/estudiante/app.js": "/js/estudiante/app.js",
+    "/js/profesor/app.js": "/js/profesor/app.js",
     "/js/publico/app.js": "/js/publico/app.js"
 }

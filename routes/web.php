@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 // Las rutas estan siendo manejadas por ReactRouter
 Route::get('/{path?}/{path2?}/{path3?}', function ($path = null) {
     switch ($path) {
-        case 'Directivo':
+        case 'directivo':
             return view('directivo');
-        case 'Profesor':
+        case 'profesor':
             return view('profesor');
-        case 'Estudiante':
+        case 'estudiante':
             return view('estudiante');
         default:
             return view('publico');

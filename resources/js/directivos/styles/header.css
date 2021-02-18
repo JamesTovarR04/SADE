@@ -1,0 +1,18 @@
+.navbar {
+    background-color: #00B8A8;
+    border-bottom: 1px solid #00a093;
+}
+
+.nav-link{
+    font-size: 1.4em;
+    color: rgb(205, 252, 241) !important;
+}
+
+.nav-link:hover{
+    color: rgb(230, 255, 249) !important;
+}
+
+.nav-link.active{
+    font-size: 1.4em;
+    color: #fff !important;
+}

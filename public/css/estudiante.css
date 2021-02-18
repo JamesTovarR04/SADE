@@ -12,7 +12,7 @@
 }
 
 h2 {
-    color: #00B8A8;
+    color: #2ABB47;
     overflow: hidden;
 }
 
@@ -21,13 +21,18 @@ h2::after{
     display: inline-block;
     width: 100%;
     height:0.3em;
-    border-top: solid 1px #01A99A;
+    border-top: solid 1px #2ABB47;
     margin-right: -100%;
     margin-left: 0.5em;
 }
 
-.color-sade-2{
-    color: #01A99A;
+.color-sade-1{
+    color: #2ABB47;
+}
+
+.dropdown-item:active{
+    background-color: #fff1ea !important;
+    color: #001614;
 }
 
 #enlaces-sugeridos {
@@ -65,7 +70,7 @@ h2::after{
 }
 
 #MenuFooter{
-    background-color: #0088DE;
+    background-color: #2ABB47;
     color: white;
 }
 
@@ -85,5 +90,5 @@ h2::after{
 }
 
 cite{
-    background-color: #0a6299;
+    background-color: #0D8D26;
 }
