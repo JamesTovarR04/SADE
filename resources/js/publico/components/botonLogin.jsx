@@ -5,8 +5,9 @@ import { isLogin, logout } from '../utils/login';
 const BotonLogin = (props) =>{
 
     function closeSession(){
-        logout();
-        window.location.assign('/');
+        logout().then( res => {
+            window.location.assign('/');
+        });
     }
 
     function plataforma(){

@@ -15,6 +15,11 @@ const Publicaciones = () => {
         peticion('publicaciones','GET',{'page':page})
         .then(data => {
             setPublicaciones(data)
+        })
+        .catch(err => {
+            alert("Ocurrió un error en el servidor")
+        })
+        .then(() => {
             setCargando(false)
         })
     },[page])

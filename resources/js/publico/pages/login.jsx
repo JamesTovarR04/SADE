@@ -3,6 +3,7 @@ import { URL_SERVER } from '../config';
 import axios from 'axios';
 
 import "../styles/login.css";
+import { saveDataUser } from '../utils/login';
 
 const Login = () => {
 
@@ -43,7 +44,9 @@ const Login = () => {
                 user: userData
             };
             localStorage["session"] = JSON.stringify(appState);
-            window.location.assign('/'+res.data.rol);
+            saveDataUser().then(res2 => {
+                window.location.assign('/'+res.data.rol);
+            });
         }).catch(err => {
             if (err.response) {
                 setCodeError(err.response.data.code);

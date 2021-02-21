@@ -2016,9 +2016,6 @@ exports.push([module.i, ".calendario button:focus{\r\n    outline: none;\r\n}\r\
 
 /***/ }),
 
-<<<<<<< HEAD
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/publico/styles/header.css":
-=======
 /***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/publico/styles/contacto.css":
 /*!**********************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--5-1!./node_modules/postcss-loader/src??ref--5-2!./resources/js/publico/styles/contacto.css ***!
@@ -2038,8 +2035,7 @@ exports.push([module.i, ".info{\r\n    text-align:center;\r\n    margin-top: 12%
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/publico/styles/footer.css":
->>>>>>> 892e4ca3ed8c15f51a3c500fa2a72cd90c3315da
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./resources/js/publico/styles/header.css":
 /*!********************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--5-1!./node_modules/postcss-loader/src??ref--5-2!./resources/js/publico/styles/header.css ***!
   \********************************************************************************************************************************/
@@ -37110,8 +37106,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var BotonLogin = function BotonLogin(props) {
   function closeSession() {
-    Object(_utils_login__WEBPACK_IMPORTED_MODULE_2__["logout"])();
-    window.location.assign('/');
+    Object(_utils_login__WEBPACK_IMPORTED_MODULE_2__["logout"])().then(function (res) {
+      window.location.assign('/');
+    });
   }
 
   function plataforma() {
@@ -37626,6 +37623,9 @@ var Eventos = function Eventos() {
       'dia': year + '-' + mes + '-' + dia
     }).then(function (data) {
       setEventos(data);
+    })["catch"](function (err) {
+      alert("Ocurrió un error en el servidor");
+    }).then(function () {
       setCargando(false);
     });
   }
@@ -38042,6 +38042,9 @@ var Publicaciones = function Publicaciones() {
       'page': page
     }).then(function (data) {
       setPublicaciones(data);
+    })["catch"](function (err) {
+      alert("Ocurrió un error en el servidor");
+    }).then(function () {
       setCargando(false);
     });
   }, [page]);
@@ -38197,7 +38200,7 @@ var Contacto = function Contacto() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fas fa-phone-alt"
   }), " Contacto"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "container-fluid card my-4 border border-info"
+    className: "container-fluid card my-4 border shadow"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -38305,7 +38308,7 @@ var Informacion = function Informacion() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fas fa-info-circle"
   }), " Informacion"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card m-3"
+    className: "card m-3 shadow"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -38402,6 +38405,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _styles_login_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../styles/login.css */ "./resources/js/publico/styles/login.css");
 /* harmony import */ var _styles_login_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_styles_login_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _utils_login__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/login */ "./resources/js/publico/utils/login.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -38419,6 +38423,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -38468,7 +38473,9 @@ var Login = function Login() {
         user: userData
       };
       localStorage["session"] = JSON.stringify(appState);
-      window.location.assign('/' + res.data.rol);
+      Object(_utils_login__WEBPACK_IMPORTED_MODULE_4__["saveDataUser"])().then(function (res2) {
+        window.location.assign('/' + res.data.rol);
+      });
     })["catch"](function (err) {
       if (err.response) {
         setCodeError(err.response.data.code);
@@ -38607,9 +38614,6 @@ if(false) {}
 
 /***/ }),
 
-<<<<<<< HEAD
-/***/ "./resources/js/publico/styles/header.css":
-=======
 /***/ "./resources/js/publico/styles/contacto.css":
 /*!**************************************************!*\
   !*** ./resources/js/publico/styles/contacto.css ***!
@@ -38640,8 +38644,7 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./resources/js/publico/styles/footer.css":
->>>>>>> 892e4ca3ed8c15f51a3c500fa2a72cd90c3315da
+/***/ "./resources/js/publico/styles/header.css":
 /*!************************************************!*\
   !*** ./resources/js/publico/styles/header.css ***!
   \************************************************/
@@ -38803,12 +38806,13 @@ function fecha() {
 /*!*********************************************!*\
   !*** ./resources/js/publico/utils/login.js ***!
   \*********************************************/
-/*! exports provided: isLogin, logout */
+/*! exports provided: isLogin, saveDataUser, logout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isLogin", function() { return isLogin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveDataUser", function() { return saveDataUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
@@ -38818,8 +38822,24 @@ __webpack_require__.r(__webpack_exports__);
 function isLogin() {
   if (localStorage["session"] === undefined) return false;else return JSON.parse(localStorage["session"]).isLoggedIn;
 }
+function saveDataUser() {
+  var options = {
+    method: 'GET',
+    url: _config__WEBPACK_IMPORTED_MODULE_1__["URL_SERVER"] + '/api/auth/user',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': JSON.parse(localStorage["session"]).user.access_token
+    }
+  };
+  return axios__WEBPACK_IMPORTED_MODULE_0___default()(options).then(function (res) {
+    localStorage["user-data"] = JSON.stringify(res.data);
+  })["catch"](function (err) {
+    alert('Ocurrió un error al cargar los datos de la sesion');
+  });
+}
 function logout() {
-  var logout = {
+  var options = {
     method: 'GET',
     url: _config__WEBPACK_IMPORTED_MODULE_1__["URL_SERVER"] + '/api/auth/logout',
     headers: {
@@ -38827,13 +38847,12 @@ function logout() {
       'Authorization': JSON.parse(localStorage["session"]).user.access_token
     }
   };
-  axios__WEBPACK_IMPORTED_MODULE_0___default()(logout);
-  var appState = {
-    isLoggedIn: false,
-    user: {}
-  };
-  localStorage["session"] = JSON.stringify(appState);
-  console.log("cerró sesion");
+  return axios__WEBPACK_IMPORTED_MODULE_0___default()(options).then(function (res) {
+    localStorage.removeItem('session');
+    localStorage.removeItem('user-data');
+  })["catch"](function (err) {
+    alert('Ocurrió un error al cerrar la sesion :(');
+  });
 }
 
 /***/ }),
@@ -38880,7 +38899,7 @@ function peticion(url) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\SAPC\resources\js\publico\app.jsx */"./resources/js/publico/app.jsx");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\sapc\resources\js\publico\app.jsx */"./resources/js/publico/app.jsx");
 
 
 /***/ })

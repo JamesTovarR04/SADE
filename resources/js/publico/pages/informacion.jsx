@@ -22,7 +22,7 @@ const Informacion = () => {
 
     return <div className="py-4">
         <h2 className="h5 pl-3 mb-4"><i className="fas fa-info-circle"></i> Informacion</h2>
-        <div className="card m-3">
+        <div className="card m-3 shadow">
             <div className="row">
                 <div className="col-md-5 imagencol"></div>
                 <div className="col-md-7">

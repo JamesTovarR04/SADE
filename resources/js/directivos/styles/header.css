@@ -16,3 +16,14 @@
     font-size: 1.4em;
     color: #fff !important;
 }
+
+#num-notificaciones {
+    position: absolute;
+    top: 0;
+    right: -1.2em;
+    font-size: 0.46em;
+    padding: 1px;
+    width: 1.8em;
+    height: 1.8em;
+    text-align: center;
+}

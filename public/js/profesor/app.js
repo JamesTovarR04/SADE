@@ -36952,8 +36952,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var BotonLogin = function BotonLogin(props) {
   function closeSession() {
-    Object(_publico_utils_login__WEBPACK_IMPORTED_MODULE_2__["logout"])();
-    window.location.assign('/');
+    Object(_publico_utils_login__WEBPACK_IMPORTED_MODULE_2__["logout"])().then(function (res) {
+      window.location.assign('/');
+    });
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -37281,12 +37282,13 @@ var URL_SERVER = 'http://sade.edu';
 /*!*********************************************!*\
   !*** ./resources/js/publico/utils/login.js ***!
   \*********************************************/
-/*! exports provided: isLogin, logout */
+/*! exports provided: isLogin, saveDataUser, logout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isLogin", function() { return isLogin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveDataUser", function() { return saveDataUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
@@ -37296,8 +37298,24 @@ __webpack_require__.r(__webpack_exports__);
 function isLogin() {
   if (localStorage["session"] === undefined) return false;else return JSON.parse(localStorage["session"]).isLoggedIn;
 }
+function saveDataUser() {
+  var options = {
+    method: 'GET',
+    url: _config__WEBPACK_IMPORTED_MODULE_1__["URL_SERVER"] + '/api/auth/user',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': JSON.parse(localStorage["session"]).user.access_token
+    }
+  };
+  return axios__WEBPACK_IMPORTED_MODULE_0___default()(options).then(function (res) {
+    localStorage["user-data"] = JSON.stringify(res.data);
+  })["catch"](function (err) {
+    alert('Ocurrió un error al cargar los datos de la sesion');
+  });
+}
 function logout() {
-  var logout = {
+  var options = {
     method: 'GET',
     url: _config__WEBPACK_IMPORTED_MODULE_1__["URL_SERVER"] + '/api/auth/logout',
     headers: {
@@ -37305,13 +37323,12 @@ function logout() {
       'Authorization': JSON.parse(localStorage["session"]).user.access_token
     }
   };
-  axios__WEBPACK_IMPORTED_MODULE_0___default()(logout);
-  var appState = {
-    isLoggedIn: false,
-    user: {}
-  };
-  localStorage["session"] = JSON.stringify(appState);
-  console.log("cerró sesion");
+  return axios__WEBPACK_IMPORTED_MODULE_0___default()(options).then(function (res) {
+    localStorage.removeItem('session');
+    localStorage.removeItem('user-data');
+  })["catch"](function (err) {
+    alert('Ocurrió un error al cerrar la sesion :(');
+  });
 }
 
 /***/ }),

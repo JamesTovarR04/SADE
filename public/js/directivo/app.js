@@ -2009,7 +2009,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".navbar {\r\n    background-color: #00B8A8;\r\n    border-bottom: 1px solid #00a093;\r\n}\r\n\r\n.nav-link{\r\n    font-size: 1.4em;\r\n    color: rgb(205, 252, 241) !important;\r\n}\r\n\r\n.nav-link:hover{\r\n    color: rgb(230, 255, 249) !important;\r\n}\r\n\r\n.nav-link.active{\r\n    font-size: 1.4em;\r\n    color: #fff !important;\r\n}", ""]);
+exports.push([module.i, ".navbar {\r\n    background-color: #00B8A8;\r\n    border-bottom: 1px solid #00a093;\r\n}\r\n\r\n.nav-link{\r\n    font-size: 1.4em;\r\n    color: rgb(205, 252, 241) !important;\r\n}\r\n\r\n.nav-link:hover{\r\n    color: rgb(230, 255, 249) !important;\r\n}\r\n\r\n.nav-link.active{\r\n    font-size: 1.4em;\r\n    color: #fff !important;\r\n}\r\n\r\n#num-notificaciones {\r\n    position: absolute;\r\n    top: 0;\r\n    right: -1.2em;\r\n    font-size: 0.46em;\r\n    padding: 1px;\r\n    width: 1.8em;\r\n    height: 1.8em;\r\n    text-align: center;\r\n}", ""]);
 
 // exports
 
@@ -2028,7 +2028,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".publicacion{\r\n    border-bottom-right-radius: 20px;\r\n    border-top-right-radius: 20px;\r\n}\r\n\r\nh3{\r\n    color: #0088DE;\r\n}\r\n\r\np{\r\n    line-height: 1.2em;\r\n    color: #333;\r\n}\r\n\r\n.icon-like{\r\n    font-size: 1.3em;\r\n    opacity: 0.7;\r\n}\r\n\r\n.name-user{\r\n    line-height: 1em;\r\n    font-size: 1em;\r\n}\r\n\r\n.image-user{\r\n    width: 30px;\r\n    height: 30px;\r\n    border: 2px solid #666;\r\n}\r\n\r\nem{\r\n    line-height: 1.4;\r\n    font-size: 0.6em;\r\n}", ""]);
+exports.push([module.i, ".publicacion{\r\n    border-bottom-right-radius: 20px;\r\n    border-top-right-radius: 20px;\r\n}\r\n\r\nh3{\r\n    color: #0088DE;\r\n}\r\n\r\np{\r\n    line-height: 1.2em;\r\n    color: #333;\r\n}\r\n\r\n.icon-like{\r\n    font-size: 1.3em;\r\n    cursor: pointer;\r\n    transition: 0.3s;\r\n}\r\n\r\n.icon-like:hover{\r\n    color: rgb(255, 172, 172);\r\n    transition: 0.3s;\r\n}\r\n\r\n.name-user{\r\n    line-height: 1em;\r\n    font-size: 1em;\r\n}\r\n\r\n.image-user{\r\n    width: 30px;\r\n    height: 30px;\r\n    border: 2px solid #666;\r\n}\r\n\r\nem{\r\n    line-height: 1.4;\r\n    font-size: 0.6em;\r\n}\r\n\r\n.icon-option{\r\n    color: #666;\r\n    cursor: pointer;\r\n    transition: 0.5s;\r\n}\r\n\r\n.icon-option:hover{\r\n    color: #222;\r\n    transition: 0.5s;\r\n}", ""]);
 
 // exports
 
@@ -37030,8 +37030,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var BotonLogin = function BotonLogin(props) {
   function closeSession() {
-    Object(_publico_utils_login__WEBPACK_IMPORTED_MODULE_2__["logout"])();
-    window.location.assign('/');
+    Object(_publico_utils_login__WEBPACK_IMPORTED_MODULE_2__["logout"])().then(function (res) {
+      window.location.assign('/');
+    });
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -37089,6 +37090,107 @@ var BotonLogin = function BotonLogin(props) {
 
 /***/ }),
 
+/***/ "./resources/js/directivos/components/evento.jsx":
+/*!*******************************************************!*\
+  !*** ./resources/js/directivos/components/evento.jsx ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_peticion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/peticion */ "./resources/js/directivos/utils/peticion.js");
+/* harmony import */ var _modalConfirmar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modalConfirmar */ "./resources/js/directivos/components/modalConfirmar.jsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+var Evento = function Evento(props) {
+  var idUsuario = JSON.parse(localStorage["user-data"]).idUsuario;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('bg-secondary'),
+      _useState2 = _slicedToArray(_useState, 2),
+      color = _useState2[0],
+      setColor = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('00:00 --'),
+      _useState4 = _slicedToArray(_useState3, 2),
+      hora = _useState4[0],
+      setHora = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(idUsuario == props.idUsuario),
+      _useState6 = _slicedToArray(_useState5, 2),
+      propiedad = _useState6[0],
+      setPropiedad = _useState6[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    var colors = ['bg-info', 'bg-success', 'bg-primary'];
+    setColor(colors[Math.floor(Math.random() * colors.length)]);
+    var fecha = new Date(props.hora);
+    var horaF = '';
+
+    if (fecha.getHours() > 12 || fecha.getHours() == 0) {
+      horaF = Math.abs(fecha.getHours() - 12) + ":" + (fecha.getMinutes() < 10 ? '0' : '') + fecha.getMinutes() + (fecha.getHours() == 0 ? ' a.m.' : ' p.m');
+    } else {
+      horaF = fecha.getHours() + ":" + (fecha.getMinutes() < 10 ? '0' : '') + fecha.getMinutes() + " a.m.";
+    }
+
+    setHora(horaF);
+  }, []);
+
+  var eliminar = function eliminar() {
+    var URL = 'eventos/' + props.id;
+    Object(_utils_peticion__WEBPACK_IMPORTED_MODULE_1__["default"])(URL, 'DELETE').then(function (res) {
+      props.recargar();
+    })["catch"](function (err) {
+      alert("No se pudo elimar el recurso");
+    });
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: color + " card mt-2",
+    style: {
+      borderRadius: "20px"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-header text-white d-flex"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "flex-grow-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, hora)), propiedad && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-times",
+    "data-toggle": "modal",
+    "data-target": "#deleteEvent",
+    style: {
+      cursor: "pointer"
+    }
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-body text-white"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, props.descripcion)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modalConfirmar__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    id: "deleteEvent",
+    text: "\xBFQuieres cancelar este evento?",
+    eliminar: true,
+    confirm: eliminar
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Evento);
+
+/***/ }),
+
 /***/ "./resources/js/directivos/components/eventos.jsx":
 /*!********************************************************!*\
   !*** ./resources/js/directivos/components/eventos.jsx ***!
@@ -37103,8 +37205,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_peticion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/peticion */ "./resources/js/directivos/utils/peticion.js");
 /* harmony import */ var _publico_utils_fecha__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../publico/utils/fecha */ "./resources/js/publico/utils/fecha.js");
 /* harmony import */ var _publico_components_cargando__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../publico/components/cargando */ "./resources/js/publico/components/cargando.jsx");
-/* harmony import */ var _publico_components_evento__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../publico/components/evento */ "./resources/js/publico/components/evento.jsx");
+/* harmony import */ var _evento__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./evento */ "./resources/js/directivos/components/evento.jsx");
 /* harmony import */ var _publico_components_calendarios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../publico/components/calendarios */ "./resources/js/publico/components/calendarios.jsx");
+/* harmony import */ var _nuevoEvento__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./nuevoEvento */ "./resources/js/directivos/components/nuevoEvento.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -37116,6 +37219,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -37169,6 +37273,9 @@ var Eventos = function Eventos() {
       'dia': year + '-' + mes + '-' + dia
     }).then(function (data) {
       setEventos(data);
+    })["catch"](function (err) {
+      alert("Ocurrió un error en el servidor");
+    }).then(function () {
       setCargando(false);
     });
   }
@@ -37205,16 +37312,28 @@ var Eventos = function Eventos() {
     clickDia: clickDia,
     cambioMes: cambioMes
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "mt-2"
+    className: "mt-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "d-block text-center h5 mb-3"
-  }, "Eventos ", dia, " de ", _publico_utils_fecha__WEBPACK_IMPORTED_MODULE_2__["meses"][mes]), cargando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_publico_components_cargando__WEBPACK_IMPORTED_MODULE_3__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, eventos.length == 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Eventos ", dia, " de ", _publico_utils_fecha__WEBPACK_IMPORTED_MODULE_2__["meses"][mes]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nuevoEvento__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    ano: ano,
+    mes: mes,
+    dia: dia,
+    obtenerFechas: obtenerFechas,
+    obtenerEventos: obtenerEventos
+  }), cargando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_publico_components_cargando__WEBPACK_IMPORTED_MODULE_3__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, eventos.length == 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "text-center text-muted"
   }, "No hay eventos para este dia") : eventos.map(function (evento) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_publico_components_evento__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_evento__WEBPACK_IMPORTED_MODULE_4__["default"], {
       key: evento.idEventos,
+      id: evento.idEventos,
+      idUsuario: evento.idUsuario,
       hora: evento.hora,
-      descripcion: evento.descripcion
+      descripcion: evento.descripcion,
+      recargar: function recargar() {
+        obtenerFechas(ano, mes + 1);
+        obtenerEventos(ano, mes, dia);
+      }
     });
   }))));
 };
@@ -37243,7 +37362,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var Header = function Header() {
+var Header = function Header(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
     className: "navbar navbar-expand-lg navbar-dark shadow fixed-top"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
@@ -37279,12 +37398,478 @@ var Header = function Header() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
     to: "/directivo/notificaciones",
     className: "nav-link mx-2 py-0"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "position-relative"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fas fa-bell"
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_botonLogin__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
+  }), props.notificaciones > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    id: "num-notificaciones",
+    className: "bg-danger text-white rounded-circle d-block"
+  }, props.notificaciones))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_botonLogin__WEBPACK_IMPORTED_MODULE_3__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);
+
+/***/ }),
+
+/***/ "./resources/js/directivos/components/modalConfirmar.jsx":
+/*!***************************************************************!*\
+  !*** ./resources/js/directivos/components/modalConfirmar.jsx ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var ModalConfirmar = function ModalConfirmar(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal fade",
+    "data-backdrop": "static",
+    "data-keyboard": "false",
+    tabIndex: "-1",
+    id: props.id,
+    "aria-labelledby": props.id + "Label"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-dialog modal-dialog-centered"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-content"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-header justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+    className: "modal-title"
+  }, props.text)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-footer justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn btn-secondary",
+    "data-dismiss": "modal"
+  }, "Cancelar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn " + (props.eliminar ? "btn-danger" : "btn-primary"),
+    onClick: props.confirm,
+    "data-dismiss": "modal"
+  }, props.eliminar ? "Eliminar" : "Aceptar")))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ModalConfirmar);
+
+/***/ }),
+
+/***/ "./resources/js/directivos/components/modalPriv.jsx":
+/*!**********************************************************!*\
+  !*** ./resources/js/directivos/components/modalPriv.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+var ModalPriv = function ModalPriv(props) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.privacidad),
+      _useState2 = _slicedToArray(_useState, 2),
+      valores = _useState2[0],
+      setValores = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.privacidad.publico),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isPublico = _useState4[0],
+      setIsPublico = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+      _useState6 = _slicedToArray(_useState5, 2),
+      aprobado = _useState6[0],
+      setAprobado = _useState6[1];
+
+  var aceptar = function aceptar() {
+    props.setPrivacidad(valores);
+  };
+
+  var handleInputChange = function handleInputChange(event) {
+    if (event.target.name == "publico" && event.target.checked) {
+      setIsPublico(true);
+      setValores({
+        publico: true,
+        estudiante: true,
+        profesor: true,
+        directivo: true
+      });
+    } else {
+      setIsPublico(false);
+      setValores(_objectSpread(_objectSpread({}, valores), {}, _defineProperty({}, event.target.name, event.target.checked)));
+    }
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    if (!valores.publico && !valores.directivo && !valores.profesor && !valores.estudiante) setAprobado(false);else setAprobado(true);
+  }, [valores]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal fade",
+    "data-backdrop": "static",
+    "data-keyboard": "false",
+    tabIndex: "-1",
+    id: props.id,
+    "aria-labelledby": props.id + "Label"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-dialog modal-dialog-centered"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-content"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-header justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+    className: "modal-title"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-unlock-alt mr-2"
+  }), " Privacidad")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-body text-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\xBFQuienes pueden ver esta publicaci\xF3n?"), props.onlyView ? valores.publico == 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-inline-block mx-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-globe-americas mr-2"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "P\xFAblico")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-check form-check-inline"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "form-check-input",
+    type: "checkbox",
+    id: "inlineCheckbox1",
+    value: "option1",
+    name: "publico",
+    onChange: handleInputChange,
+    checked: valores.publico
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "form-check-label",
+    htmlFor: "inlineCheckbox1"
+  }, "P\xFAblico")), props.onlyView ? valores.directivo == 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-inline-block mx-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-user-tie mr-2"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Directivos")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-check form-check-inline"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "form-check-input",
+    type: "checkbox",
+    id: "inlineCheckbox2",
+    value: "option2",
+    name: "directivo",
+    onChange: handleInputChange,
+    checked: valores.directivo,
+    disabled: isPublico
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "form-check-label",
+    htmlFor: "inlineCheckbox2"
+  }, "Directivos")), props.onlyView ? valores.profesor == 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-inline-block mx-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-user mr-2"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Profesores")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-check form-check-inline"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "form-check-input",
+    type: "checkbox",
+    id: "inlineCheckbox3",
+    value: "option3",
+    name: "profesor",
+    onChange: handleInputChange,
+    checked: valores.profesor,
+    disabled: isPublico
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "form-check-label",
+    htmlFor: "inlineCheckbox3"
+  }, "Profesores")), props.onlyView ? valores.estudiante == 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-inline-block mx-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-user-graduate mr-2"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Estudiantes")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-check form-check-inline"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "form-check-input",
+    type: "checkbox",
+    id: "inlineCheckbox3",
+    value: "option3",
+    name: "estudiante",
+    onChange: handleInputChange,
+    checked: valores.estudiante,
+    disabled: isPublico
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "form-check-label",
+    htmlFor: "inlineCheckbox3"
+  }, "Estudiantes"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-footer"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn btn-primary btn-sn",
+    disabled: !aprobado,
+    "data-dismiss": "modal",
+    onClick: aceptar
+  }, "Aceptar")))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ModalPriv);
+
+/***/ }),
+
+/***/ "./resources/js/directivos/components/notificacion.jsx":
+/*!*************************************************************!*\
+  !*** ./resources/js/directivos/components/notificacion.jsx ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _publico_utils_fecha__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../publico/utils/fecha */ "./resources/js/publico/utils/fecha.js");
+
+
+
+var Notificacion = function Notificacion(props) {
+  var eliminar = function eliminar() {
+    props.eliminar(props.id);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card shadow mb-2",
+    style: {
+      borderRadius: "20px"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-body pt-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex mb-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "flex-grow-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "ml-2 text-muted"
+  }, Object(_publico_utils_fecha__WEBPACK_IMPORTED_MODULE_1__["default"])(props.fecha, true))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "text-muted"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-times",
+    style: {
+      cursor: "pointer"
+    },
+    onClick: eliminar
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, props.descripcion)));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Notificacion);
+
+/***/ }),
+
+/***/ "./resources/js/directivos/components/nuevoEvento.jsx":
+/*!************************************************************!*\
+  !*** ./resources/js/directivos/components/nuevoEvento.jsx ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_peticion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/peticion */ "./resources/js/directivos/utils/peticion.js");
+/* harmony import */ var _modalPriv__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modalPriv */ "./resources/js/directivos/components/modalPriv.jsx");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+var NuevoEvento = function NuevoEvento(props) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    hora: '13:00',
+    descripcion: ''
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      datos = _useState2[0],
+      setDatos = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      validar = _useState4[0],
+      setValidar = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      cargando = _useState6[0],
+      setCargando = _useState6[1];
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    publico: true,
+    estudiante: true,
+    profesor: true,
+    directivo: true
+  }),
+      _useState8 = _slicedToArray(_useState7, 2),
+      privacidad = _useState8[0],
+      setPrivacidad = _useState8[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    var expHora = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+    setValidar(datos.descripcion.length > 4 && expHora.test(datos.hora));
+  }, [datos]);
+
+  var handleInputChange = function handleInputChange(event) {
+    setDatos(_objectSpread(_objectSpread({}, datos), {}, _defineProperty({}, event.target.name, event.target.value)));
+  };
+
+  var agregar = function agregar(event) {
+    event.preventDefault();
+    setValidar(false);
+    setCargando(true);
+    var month = props.mes + 1;
+    var fecha = props.ano + '-' + ((month < 10 ? '0' : '') + month) + '-' + (props.dia < 10 ? '0' : '') + props.dia;
+    var datosEnv = {
+      hora: fecha + ' ' + datos.hora + ':00',
+      descripcion: datos.descripcion,
+      publico: privacidad.publico ? 1 : 0,
+      directivo: privacidad.directivo ? 1 : 0,
+      profesor: privacidad.profesor ? 1 : 0,
+      estudiante: privacidad.estudiante ? 1 : 0
+    };
+    Object(_utils_peticion__WEBPACK_IMPORTED_MODULE_1__["default"])('eventos', 'POST', datosEnv).then(function (res) {
+      setDatos({
+        hora: '13:00',
+        descripcion: ''
+      });
+      props.obtenerEventos(props.ano, props.mes, props.dia);
+      props.obtenerFechas(props.ano, props.mes + 1);
+      setValidar(false);
+    })["catch"](function (err) {
+      setValidar(true);
+    }).then(function () {
+      setCargando(false);
+    });
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "accordion mb-3",
+    id: "accordionNewEvent"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card",
+    style: {
+      borderRadius: "20px"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-header p-0",
+    id: "headingOne"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-block btn-primary text-center",
+    type: "button",
+    "data-toggle": "collapse",
+    "data-target": "#newEvent",
+    "aria-expanded": "true",
+    "aria-controls": "newEvent"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-plus mr-2"
+  }), " Nuevo Evento")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "newEvent",
+    className: "collapse",
+    "aria-labelledby": "headingOne",
+    "data-parent": "#accordionNewEvent"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: agregar
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-body py-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group row mb-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "staticEmail",
+    className: "col-sm-4 col-form-label text-right"
+  }, "Hora:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-8"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "time",
+    name: "hora",
+    className: "form-control",
+    value: datos.hora,
+    onChange: handleInputChange,
+    placeholder: "HH:MM"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group mb-0"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+    className: "form-control",
+    name: "descripcion",
+    rows: "2",
+    onChange: handleInputChange,
+    value: datos.descripcion,
+    placeholder: "Evento...",
+    maxLength: "100"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex justify-content-between mt-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+    className: "text-muted"
+  }, datos.descripcion.length, "/100"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn btn-outline-secondary btn-sm px-3",
+    "data-toggle": "modal",
+    "data-target": "#privEvento"
+  }, privacidad.publico ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-globe-americas mr-2"
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-users mr-2"
+  }), "Privacidad"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-footer p-0",
+    id: "headingOne"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-block btn-primary text-center",
+    type: "submit",
+    disabled: !validar
+  }, cargando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "spinner-border spinner-border-sm mr-2",
+    role: "status",
+    "aria-hidden": "true"
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-share mr-2"
+  }), "Agregar"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modalPriv__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    id: "privEvento",
+    privacidad: privacidad,
+    setPrivacidad: setPrivacidad
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (NuevoEvento);
 
 /***/ }),
 
@@ -37301,27 +37886,253 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _styles_publicacion_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../styles/publicacion.css */ "./resources/js/directivos/styles/publicacion.css");
 /* harmony import */ var _styles_publicacion_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_publicacion_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utils_peticion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/peticion */ "./resources/js/directivos/utils/peticion.js");
+/* harmony import */ var _modalConfirmar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modalConfirmar */ "./resources/js/directivos/components/modalConfirmar.jsx");
+/* harmony import */ var _modalPriv__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modalPriv */ "./resources/js/directivos/components/modalPriv.jsx");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
 
 
 
 var Publicacion = function Publicacion(props) {
+  var idUsuario = JSON.parse(localStorage["user-data"]).idUsuario;
+  var URL = 'publicaciones/' + props.id;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.conlike),
+      _useState2 = _slicedToArray(_useState, 2),
+      like = _useState2[0],
+      setLike = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.condislike),
+      _useState4 = _slicedToArray(_useState3, 2),
+      dislike = _useState4[0],
+      setDislike = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.likes),
+      _useState6 = _slicedToArray(_useState5, 2),
+      totalLikes = _useState6[0],
+      setTotalLikes = _useState6[1];
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.dislikes),
+      _useState8 = _slicedToArray(_useState7, 2),
+      totalDislikes = _useState8[0],
+      setTotalDislikes = _useState8[1];
+
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(idUsuario == props.idUsuario),
+      _useState10 = _slicedToArray(_useState9, 2),
+      propiedad = _useState10[0],
+      setPropiedad = _useState10[1];
+
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState12 = _slicedToArray(_useState11, 2),
+      editando = _useState12[0],
+      setEditando = _useState12[1];
+
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    titulo: props.titulo,
+    contenido: props.contenido
+  }),
+      _useState14 = _slicedToArray(_useState13, 2),
+      datos = _useState14[0],
+      setDatos = _useState14[1];
+
+  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    publico: false,
+    estudiante: false,
+    profesor: false,
+    directivo: false,
+    load: false
+  }),
+      _useState16 = _slicedToArray(_useState15, 2),
+      privacidad = _useState16[0],
+      setPrivacidad = _useState16[1];
+
+  var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState18 = _slicedToArray(_useState17, 2),
+      cargando = _useState18[0],
+      setCargando = _useState18[1];
+
+  var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState20 = _slicedToArray(_useState19, 2),
+      enviar = _useState20[0],
+      setEnviar = _useState20[1];
+
+  var _useState21 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+      _useState22 = _slicedToArray(_useState21, 2),
+      foco = _useState22[0],
+      setFoco = _useState22[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    if (propiedad) {
+      var URL_priv = 'privacidad/publicacion/' + props.id;
+      Object(_utils_peticion__WEBPACK_IMPORTED_MODULE_2__["default"])(URL_priv).then(function (res) {
+        var valores = {
+          publico: res.publico,
+          estudiante: res.estudiantes,
+          profesor: res.docentes,
+          directivo: res.directivos,
+          load: true
+        };
+        setPrivacidad(valores);
+      })["catch"](function (err) {
+        setEditando(false);
+      });
+    }
+  }, []);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    setEnviar(datos.titulo.length > 4 && datos.contenido.length > 0);
+  }, [datos]);
+
+  var eliminar = function eliminar() {
+    Object(_utils_peticion__WEBPACK_IMPORTED_MODULE_2__["default"])(URL, 'DELETE').then(function (res) {
+      props.recargar();
+    })["catch"](function (err) {
+      alert("No se pudo elimar el recurso");
+    });
+  };
+
+  var guardarCambios = function guardarCambios(event) {
+    event.preventDefault();
+
+    if (datos.titulo != props.titulo || datos.contenido != props.contenido) {
+      setCargando(true);
+      var data = {
+        titulo: datos.titulo,
+        contenido: datos.contenido
+      };
+      Object(_utils_peticion__WEBPACK_IMPORTED_MODULE_2__["default"])(URL, 'PUT', data).then(function (res) {
+        setEditando(false);
+      });
+      setCargando(false);
+    } else {
+      setEditando(false);
+    }
+  };
+
+  var handleInputChange = function handleInputChange(event) {
+    setDatos(_objectSpread(_objectSpread({}, datos), {}, _defineProperty({}, event.target.name, event.target.value)));
+  };
+
+  var sendLike = function sendLike() {
+    if (dislike) sendDislike();
+    setLike(!like);
+    Object(_utils_peticion__WEBPACK_IMPORTED_MODULE_2__["default"])(URL + '/like').then(function (res) {
+      setLike(res.like);
+      if (res.like) setTotalLikes(totalLikes + 1);else setTotalLikes(totalLikes - 1);
+    })["catch"](function (err) {
+      setTotalLikes(props.like);
+    });
+  };
+
+  var sendDislike = function sendDislike() {
+    if (like) sendLike();
+    setDislike(!dislike);
+    Object(_utils_peticion__WEBPACK_IMPORTED_MODULE_2__["default"])(URL + '/dislike').then(function (res) {
+      setDislike(res.dislike);
+      if (res.dislike) setTotalDislikes(totalDislikes + 1);else setTotalDislikes(totalDislikes - 1);
+    })["catch"](function (err) {
+      setTotalLikes(props.dislike);
+    });
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card publicacion shadow bg-white mt-2 py-4 px-5"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: guardarCambios
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container-fluid"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-9 p-0"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: "p-0 " + (propiedad ? "col-7" : "col-8")
+  }, editando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "form-control mb-3",
+    maxLength: "150",
+    type: "text",
+    placeholder: "Titulo",
+    name: "titulo",
+    onChange: handleInputChange,
+    onFocus: function onFocus() {
+      setFoco(1);
+    },
+    onBlur: function onBlur() {
+      setFoco(0);
+    },
+    value: datos.titulo
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "h5"
-  }, props.titulo)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-3 p-0 text-right"
+  }, datos.titulo)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "p-0 text-right " + (propiedad ? "col-5" : "col-4")
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "text-muted"
-  }, props.fecha)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }, props.fecha), propiedad && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-inline-block"
+  }, privacidad.publico ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-globe-americas ml-3 icon-option",
+    "data-toggle": "modal",
+    "data-target": "#privPublico-" + props.id
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-users ml-3 icon-option",
+    "data-toggle": "modal",
+    "data-target": "#privPublico-" + props.id
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-edit mx-3 icon-option",
+    onClick: function onClick() {
+      setEditando(!editando);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-trash-alt icon-option",
+    "data-toggle": "modal",
+    "data-target": "#deletePub"
+  }))))), editando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+    className: "form-control mb-3",
+    maxLength: "1000",
+    name: "contenido",
+    onChange: handleInputChange,
+    onFocus: function onFocus() {
+      setFoco(2);
+    },
+    onBlur: function onBlur() {
+      setFoco(0);
+    },
+    placeholder: "Contenido...",
+    value: datos.contenido
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "mb-3 text-justify"
-  }, props.contenido), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, datos.contenido), editando && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex justify-content-end mb-3"
+  }, foco != 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "mr-2 text-muted pt-1"
+  }, foco == 1 ? datos.titulo.length : datos.contenido.length, "/", foco == 1 ? "150" : "1000"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit",
+    className: "btn btn-sm px-4 bg-info text-light",
+    disabled: !enviar
+  }, cargando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "spinner-border spinner-border-sm mr-2",
+    role: "status",
+    "aria-hidden": "true"
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-check mr-2"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Aceptar")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container-fluid"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
@@ -37351,16 +38162,27 @@ var Publicacion = function Publicacion(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mr-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "fas fa-heart icon-like"
+    className: "fas fa-heart icon-like " + (like ? "text-danger" : ""),
+    onClick: sendLike
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mr-3 mb-1"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, props.likes)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, totalLikes)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mr-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "fas fa-heart-broken icon-like"
+    className: "fas fa-heart-broken icon-like " + (dislike ? "text-danger" : ""),
+    onClick: sendDislike
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mb-1 mr-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, props.dislikes))))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, totalDislikes))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modalConfirmar__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    id: "deletePub",
+    text: "\xBFQuieres eliminar esta publicaci\xF3n?",
+    eliminar: true,
+    confirm: eliminar
+  }), privacidad.load && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modalPriv__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    id: "privPublico-" + props.id,
+    onlyView: true,
+    privacidad: privacidad
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Publicacion);
@@ -37381,7 +38203,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _publico_components_cargando__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../publico/components/cargando */ "./resources/js/publico/components/cargando.jsx");
 /* harmony import */ var _publico_components_paginacion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../publico/components/paginacion */ "./resources/js/publico/components/paginacion.jsx");
 /* harmony import */ var _publico_utils_fecha__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../publico/utils/fecha */ "./resources/js/publico/utils/fecha.js");
-/* harmony import */ var _publico_utils_peticion__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../publico/utils/peticion */ "./resources/js/publico/utils/peticion.js");
+/* harmony import */ var _utils_peticion__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/peticion */ "./resources/js/directivos/utils/peticion.js");
 /* harmony import */ var _publicacion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./publicacion */ "./resources/js/directivos/components/publicacion.jsx");
 /* harmony import */ var _publicar__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./publicar */ "./resources/js/directivos/components/publicar.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -37400,7 +38222,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
- //import peticion from '../utils/peticion';
 
 
 
@@ -37426,11 +38247,13 @@ var Publicaciones = function Publicaciones() {
   }, [page]);
 
   function cargarDatos() {
-    console.log("recargo");
-    Object(_publico_utils_peticion__WEBPACK_IMPORTED_MODULE_4__["default"])('publicaciones', 'GET', {
+    Object(_utils_peticion__WEBPACK_IMPORTED_MODULE_4__["default"])('publicaciones', 'GET', {
       'page': page
     }).then(function (data) {
       setPublicaciones(data);
+    })["catch"](function (err) {
+      alert("Ocurrió un error en el servidor");
+    }).then(function () {
       setCargando(false);
     });
   }
@@ -37454,13 +38277,18 @@ var Publicaciones = function Publicaciones() {
   }, publicaciones.data.map(function (publicacion) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_publicacion__WEBPACK_IMPORTED_MODULE_5__["default"], {
       key: publicacion.idPublicacion,
+      id: publicacion.idPublicacion,
       titulo: publicacion.titulo,
       contenido: publicacion.contenido,
+      idUsuario: publicacion.idUsuario,
       usuario: publicacion.nombreCompleto,
       tipo: publicacion.tipo,
       likes: publicacion.nlikes,
       dislikes: publicacion.ndislikes,
-      fecha: Object(_publico_utils_fecha__WEBPACK_IMPORTED_MODULE_3__["default"])(publicacion.fecha, true)
+      conlike: publicacion.conlike,
+      condislike: publicacion.condislike,
+      fecha: Object(_publico_utils_fecha__WEBPACK_IMPORTED_MODULE_3__["default"])(publicacion.fecha, true),
+      recargar: cargarDatos
     });
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_publico_components_paginacion__WEBPACK_IMPORTED_MODULE_2__["default"], {
     pagina: pagina,
@@ -37485,6 +38313,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _utils_peticion__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/peticion */ "./resources/js/directivos/utils/peticion.js");
+/* harmony import */ var _modalPriv__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modalPriv */ "./resources/js/directivos/components/modalPriv.jsx");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -37506,6 +38335,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Publicar = function Publicar(props) {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     titulo: '',
@@ -37515,20 +38345,50 @@ var Publicar = function Publicar(props) {
       datos = _useState2[0],
       setDatos = _useState2[1];
 
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    publico: true,
+    estudiante: true,
+    profesor: true,
+    directivo: true
+  }),
+      _useState4 = _slicedToArray(_useState3, 2),
+      privacidad = _useState4[0],
+      setPrivacidad = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      cargando = _useState6[0],
+      setCargando = _useState6[1];
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      enviar = _useState8[0],
+      setEnviar = _useState8[1];
+
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+      _useState10 = _slicedToArray(_useState9, 2),
+      foco = _useState10[0],
+      setFoco = _useState10[1];
+
   var handleInputChange = function handleInputChange(event) {
     setDatos(_objectSpread(_objectSpread({}, datos), {}, _defineProperty({}, event.target.name, event.target.value)));
   };
 
-  var enviarDatos = function enviarDatos(event) {
-    event.preventDefault(); //setCargando(true);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    setEnviar(datos.titulo.length > 4 && datos.contenido.length > 0);
+  }, [datos]);
 
+  var enviarDatos = function enviarDatos(event) {
+    event.preventDefault();
+    setCargando(true);
+    setEnviar(false);
     var enviardatos = {
       titulo: datos.titulo,
       contenido: datos.contenido,
-      publico: 1,
-      directivo: 0,
-      profesor: 0,
-      estudiante: 0
+      publico: privacidad.publico ? 1 : 0,
+      directivo: privacidad.directivo ? 1 : 0,
+      profesor: privacidad.profesor ? 1 : 0,
+      estudiante: privacidad.estudiante ? 1 : 0
     };
     Object(_utils_peticion__WEBPACK_IMPORTED_MODULE_1__["default"])('publicaciones', 'POST', enviardatos).then(function (res) {
       setDatos({
@@ -37538,51 +38398,81 @@ var Publicar = function Publicar(props) {
       props.recargar();
     })["catch"](function (err) {
       if (err.response) {}
-    }).then(function () {//setCargando(false);
+    }).then(function () {
+      setCargando(false);
     });
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card publicacion shadow bg-white mt-2 py-4 px-5"
+    className: "card publicacion shadow bg-white mt-2 py-3 px-5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     onSubmit: enviarDatos
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex bd-highlight"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    htmlFor: "staticEmail",
-    className: "p-2 color-sade-1"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    className: "fas fa-user-circle",
-    style: {
-      fontSize: "2em"
-    }
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "pl-2 py-2 w-100 bd-highlight"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "rounded-circle",
+    src: "/images/notUser.jpg",
+    height: "38px"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "pl-2 pb-2 w-100 bd-highlight"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "form-control",
+    maxLength: "150",
     type: "text",
     placeholder: "Titulo",
     name: "titulo",
     onChange: handleInputChange,
-    value: datos.titulo,
-    required: true
+    onFocus: function onFocus() {
+      setFoco(1);
+    },
+    onBlur: function onBlur() {
+      setFoco(0);
+    },
+    value: datos.titulo
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "form-group"
+    className: "form-group mb-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
     className: "form-control",
-    id: "exampleFormControlTextarea1",
+    maxLength: "1000",
     name: "contenido",
     onChange: handleInputChange,
+    onFocus: function onFocus() {
+      setFoco(2);
+    },
+    onBlur: function onBlur() {
+      setFoco(0);
+    },
     rows: "1",
     placeholder: "Contenido...",
-    value: datos.contenido,
-    required: true
+    value: datos.contenido
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex justify-content-end"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, foco != 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "mr-2 text-muted pt-1"
+  }, foco == 1 ? datos.titulo.length : datos.contenido.length, "/", foco == 1 ? "150" : "1000"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn btn-outline-secondary btn-sm px-3 mr-2",
+    "data-toggle": "modal",
+    "data-target": "#privPublico"
+  }, privacidad.publico ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-globe-americas mr-2"
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-users mr-2"
+  }), "Privacidad"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "submit",
-    className: "btn btn-primary px-5 bg-info"
-  }, "Publicar"))));
+    className: "btn btn-sm px-4 btn-primary text-light",
+    disabled: !enviar
+  }, cargando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "spinner-border spinner-border-sm mr-2",
+    role: "status",
+    "aria-hidden": "true"
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-share mr-2"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Publicar")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modalPriv__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    id: "privPublico",
+    privacidad: privacidad,
+    setPrivacidad: setPrivacidad
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Publicar);
@@ -37622,6 +38512,101 @@ var Inicio = function Inicio() {
 
 /***/ }),
 
+/***/ "./resources/js/directivos/pages/notificaciones.jsx":
+/*!**********************************************************!*\
+  !*** ./resources/js/directivos/pages/notificaciones.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _publico_components_cargando__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../publico/components/cargando */ "./resources/js/publico/components/cargando.jsx");
+/* harmony import */ var _components_notificacion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/notificacion */ "./resources/js/directivos/components/notificacion.jsx");
+/* harmony import */ var _utils_peticion__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/peticion */ "./resources/js/directivos/utils/peticion.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+var Notificaciones = function Notificaciones(props) {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      notificaciones = _useState2[0],
+      setNotificaciones = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+      _useState4 = _slicedToArray(_useState3, 2),
+      cargando = _useState4[0],
+      setCargando = _useState4[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    Object(_utils_peticion__WEBPACK_IMPORTED_MODULE_3__["default"])('notificaciones').then(function (res) {
+      setNotificaciones(res);
+    })["catch"](function (res) {
+      alert("Ocurrió un error en el servidor");
+    }).then(function () {
+      setCargando(false);
+    });
+  }, []);
+
+  var eliminar = function eliminar(id) {
+    Object(_utils_peticion__WEBPACK_IMPORTED_MODULE_3__["default"])('notificaciones/' + id).then(function (res) {
+      var ntfs = notificaciones.filter(function (n) {
+        return n.idNotificacion !== id;
+      });
+      setNotificaciones(ntfs);
+      props.setNumNotif(props.numNotificaciones - 1);
+    })["catch"](function (res) {
+      alert("No se pudo eliminar");
+    });
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "pt-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "h5 pl-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-bell"
+  }), " (", props.numNotificaciones, ") Notificaciones"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "mx-auto px-4 my-4",
+    style: {
+      maxWidth: "1200PX"
+    }
+  }, cargando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_publico_components_cargando__WEBPACK_IMPORTED_MODULE_1__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, notificaciones.length > 0 ? notificaciones.map(function (ntf, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_notificacion__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      key: ntf.idNotificacion,
+      index: index,
+      id: ntf.idNotificacion,
+      fecha: ntf.fecha,
+      descripcion: ntf.descripcion,
+      eliminar: eliminar
+    });
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "text-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "h5 text-muted"
+  }, "No tienes notificaciones")))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Notificaciones);
+
+/***/ }),
+
 /***/ "./resources/js/directivos/rutas.jsx":
 /*!*******************************************!*\
   !*** ./resources/js/directivos/rutas.jsx ***!
@@ -37637,6 +38622,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _publico_components_footer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../publico/components/footer */ "./resources/js/publico/components/footer.jsx");
 /* harmony import */ var _components_header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/header */ "./resources/js/directivos/components/header.jsx");
 /* harmony import */ var _pages_inicio__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/inicio */ "./resources/js/directivos/pages/inicio.jsx");
+/* harmony import */ var _pages_notificaciones__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/notificaciones */ "./resources/js/directivos/pages/notificaciones.jsx");
+/* harmony import */ var _utils_peticion__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils/peticion */ "./resources/js/directivos/utils/peticion.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
 
 
 
@@ -37644,7 +38645,29 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Rutas = function Rutas() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_header__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      notificaciones = _useState2[0],
+      setNotificaciones = _useState2[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    obtenerNotificaciones();
+    startClock();
+  }, []);
+
+  var startClock = function startClock() {
+    setInterval(obtenerNotificaciones, 1000 * 30);
+  };
+
+  var obtenerNotificaciones = function obtenerNotificaciones() {
+    Object(_utils_peticion__WEBPACK_IMPORTED_MODULE_6__["default"])('numero/notificaciones').then(function (res) {
+      setNotificaciones(res.notificaciones);
+    })["catch"](function (err) {});
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_header__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    notificaciones: notificaciones
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     style: {
       minHeight: "90vh",
       marginTop: "62px"
@@ -37655,7 +38678,10 @@ var Rutas = function Rutas() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_inicio__WEBPACK_IMPORTED_MODULE_4__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/directivo/notificaciones"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Notificaciones")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_notificaciones__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    numNotificaciones: notificaciones,
+    setNumNotif: setNotificaciones
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/directivo/administrar"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Administrar")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
@@ -38029,70 +39055,6 @@ var Cargando = function Cargando() {
 
 /***/ }),
 
-/***/ "./resources/js/publico/components/evento.jsx":
-/*!****************************************************!*\
-  !*** ./resources/js/publico/components/evento.jsx ***!
-  \****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-var Evento = function Evento(props) {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('bg-secondary'),
-      _useState2 = _slicedToArray(_useState, 2),
-      color = _useState2[0],
-      setColor = _useState2[1];
-
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('00:00 --'),
-      _useState4 = _slicedToArray(_useState3, 2),
-      hora = _useState4[0],
-      setHora = _useState4[1];
-
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    var colors = ['bg-info', 'bg-success', 'bg-primary'];
-    setColor(colors[Math.floor(Math.random() * colors.length)]);
-    var fecha = new Date(props.hora);
-    var horaF = '';
-
-    if (fecha.getHours() > 12 || fecha.getHours() == 0) {
-      horaF = Math.abs(fecha.getHours() - 12) + ":" + (fecha.getMinutes() < 10 ? '0' : '') + fecha.getMinutes() + (fecha.getHours() == 0 ? ' a.m.' : ' p.m');
-    } else {
-      horaF = fecha.getHours() + ":" + (fecha.getMinutes() < 10 ? '0' : '') + fecha.getMinutes() + " a.m.";
-    }
-
-    setHora(horaF);
-  }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: color + " card mt-2 p-3 text-white",
-    style: {
-      borderRadius: "20px"
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
-    className: "d-block text-center"
-  }, hora), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, props.descripcion));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Evento);
-
-/***/ }),
-
 /***/ "./resources/js/publico/components/footer.jsx":
 /*!****************************************************!*\
   !*** ./resources/js/publico/components/footer.jsx ***!
@@ -38345,12 +39307,13 @@ function fecha() {
 /*!*********************************************!*\
   !*** ./resources/js/publico/utils/login.js ***!
   \*********************************************/
-/*! exports provided: isLogin, logout */
+/*! exports provided: isLogin, saveDataUser, logout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isLogin", function() { return isLogin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveDataUser", function() { return saveDataUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
@@ -38360,8 +39323,24 @@ __webpack_require__.r(__webpack_exports__);
 function isLogin() {
   if (localStorage["session"] === undefined) return false;else return JSON.parse(localStorage["session"]).isLoggedIn;
 }
+function saveDataUser() {
+  var options = {
+    method: 'GET',
+    url: _config__WEBPACK_IMPORTED_MODULE_1__["URL_SERVER"] + '/api/auth/user',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': JSON.parse(localStorage["session"]).user.access_token
+    }
+  };
+  return axios__WEBPACK_IMPORTED_MODULE_0___default()(options).then(function (res) {
+    localStorage["user-data"] = JSON.stringify(res.data);
+  })["catch"](function (err) {
+    alert('Ocurrió un error al cargar los datos de la sesion');
+  });
+}
 function logout() {
-  var logout = {
+  var options = {
     method: 'GET',
     url: _config__WEBPACK_IMPORTED_MODULE_1__["URL_SERVER"] + '/api/auth/logout',
     headers: {
@@ -38369,47 +39348,11 @@ function logout() {
       'Authorization': JSON.parse(localStorage["session"]).user.access_token
     }
   };
-  axios__WEBPACK_IMPORTED_MODULE_0___default()(logout);
-  var appState = {
-    isLoggedIn: false,
-    user: {}
-  };
-  localStorage["session"] = JSON.stringify(appState);
-  console.log("cerró sesion");
-}
-
-/***/ }),
-
-/***/ "./resources/js/publico/utils/peticion.js":
-/*!************************************************!*\
-  !*** ./resources/js/publico/utils/peticion.js ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return peticion; });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../config */ "./resources/js/publico/config.js");
-
-
-function peticion(url) {
-  var method = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'GET';
-  var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-  var headers = {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  };
-  var peticion = {
-    method: method,
-    url: _config__WEBPACK_IMPORTED_MODULE_1__["URL_SERVER"] + '/api/publico/' + url,
-    headers: headers,
-    params: data
-  };
-  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.request(peticion).then(function (result) {
-    return result.data;
+  return axios__WEBPACK_IMPORTED_MODULE_0___default()(options).then(function (res) {
+    localStorage.removeItem('session');
+    localStorage.removeItem('user-data');
+  })["catch"](function (err) {
+    alert('Ocurrió un error al cerrar la sesion :(');
   });
 }
 

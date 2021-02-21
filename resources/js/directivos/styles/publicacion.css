@@ -14,7 +14,13 @@ p{
 
 .icon-like{
     font-size: 1.3em;
-    opacity: 0.7;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.icon-like:hover{
+    color: rgb(255, 172, 172);
+    transition: 0.3s;
 }
 
 .name-user{
@@ -31,4 +37,15 @@ p{
 em{
     line-height: 1.4;
     font-size: 0.6em;
+}
+
+.icon-option{
+    color: #666;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.icon-option:hover{
+    color: #222;
+    transition: 0.5s;
 }

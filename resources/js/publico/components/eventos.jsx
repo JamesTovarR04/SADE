@@ -28,6 +28,11 @@ const Eventos = () => {
             'dia' : year + '-' + mes + '-' + dia
         }).then(data => { 
             setEventos(data)
+        })
+        .catch(err => {
+            alert("Ocurrió un error en el servidor")
+        })
+        .then(() => {
             setCargando(false)
         })
     }

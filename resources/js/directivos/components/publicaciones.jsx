@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Cargando from '../../publico/components/cargando';
 import Paginacion from '../../publico/components/paginacion';
 import fecha from '../../publico/utils/fecha';
-import peticion from '../../publico/utils/peticion';
-//import peticion from '../utils/peticion';
+import peticion from '../utils/peticion';
 import Publicacion from './publicacion';
 import Publicar from './publicar';
 
@@ -18,10 +17,14 @@ const Publicaciones = () => {
     },[page])
 
     function cargarDatos(){
-        console.log("recargo");
         peticion('publicaciones','GET',{'page':page})
         .then(data => {
             setPublicaciones(data)
+        })
+        .catch(err => {
+            alert("Ocurrió un error en el servidor")
+        })
+        .then(() => {
             setCargando(false)
         })
     }
@@ -40,13 +43,18 @@ const Publicaciones = () => {
                 {publicaciones.data.map(publicacion => (
                     <Publicacion 
                         key={publicacion.idPublicacion}
+                        id={publicacion.idPublicacion}
                         titulo={publicacion.titulo}
                         contenido={publicacion.contenido}
+                        idUsuario={publicacion.idUsuario}
                         usuario={publicacion.nombreCompleto}
                         tipo={publicacion.tipo}
                         likes={publicacion.nlikes}
                         dislikes={publicacion.ndislikes}
+                        conlike={publicacion.conlike}
+                        condislike={publicacion.condislike}
                         fecha={fecha(publicacion.fecha, true)}
+                        recargar={cargarDatos}
                     />
                 ))}
                 </div>

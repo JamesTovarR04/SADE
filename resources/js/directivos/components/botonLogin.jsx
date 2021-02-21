@@ -5,8 +5,9 @@ import { logout } from '../../publico/utils/login';
 const BotonLogin = (props) =>{
 
     function closeSession(){
-        logout();
-        window.location.assign('/');
+        logout().then( res => {
+            window.location.assign('/');
+        });
     }
 
     return <div className="btn-group">

@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import peticion from '../utils/peticion';
 import { meses } from '../../publico/utils/fecha';
 import Cargando from '../../publico/components/cargando';
-import Evento from '../../publico/components/evento';
+import Evento from './evento';
 import Calendario from '../../publico/components/calendarios';
+import NuevoEvento from './nuevoEvento';
 
 const Eventos = () => {
 
@@ -22,12 +23,17 @@ const Eventos = () => {
 
     function obtenerEventos(year,month,day){
         month++;
-        let mes = (month < 10 ? '0' : '') + month;
+        let mes = (month < 10  ? '0' : '') + month;
         let dia = (day < 10  ? '0' : '') + day;
         peticion('eventos','GET',{
             'dia' : year + '-' + mes + '-' + dia
         }).then(data => { 
             setEventos(data)
+        })
+        .catch(err => {
+            alert("Ocurrió un error en el servidor")
+        })
+        .then(() => {
             setCargando(false)
         })
     }
@@ -55,17 +61,32 @@ const Eventos = () => {
 
     return <div className="my-3">
         <h2 className="h5"><i className="fas fa-calendar-alt mr-1"></i> Eventos</h2>
-        <div className="card shadow p-3 mt-3"><Calendario fechas={fechas} clickDia={clickDia} cambioMes={cambioMes}/></div>
-        <div className="mt-2">
+        <div className="card shadow p-3 mt-3">
+            <Calendario fechas={fechas} clickDia={clickDia} cambioMes={cambioMes}/>
+        </div>
+        <div className="mt-3">
             <span className="d-block text-center h5 mb-3">Eventos {dia} de {meses[mes]}</span>
+            <NuevoEvento 
+                ano={ano}
+                mes={mes}
+                dia={dia}
+                obtenerFechas={obtenerFechas}
+                obtenerEventos={obtenerEventos}
+            />
             {cargando ? <Cargando/>
             : <div>
                 {eventos.length == 0 ? <div className="text-center text-muted">No hay eventos para este dia</div>
                 : eventos.map(evento => (
                     <Evento
                     key={evento.idEventos}
+                    id={evento.idEventos}
+                    idUsuario={evento.idUsuario}
                     hora={evento.hora}
                     descripcion={evento.descripcion}
+                    recargar={() => {
+                        obtenerFechas(ano, mes + 1);
+                        obtenerEventos(ano, mes, dia)
+                    }}
                     />
                 ))}
             </div>

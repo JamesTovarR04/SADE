@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import '../styles/header.css';
 import BotonLogin from './botonLogin';
 
-const Header = () => {
+const Header = (props) => {
 
     return <nav className="navbar navbar-expand-lg navbar-dark shadow fixed-top">
         <a className="navbar-brand ml-4" href="/">
@@ -24,7 +24,12 @@ const Header = () => {
                 </li>
                 <li className="nav-item">
                     <NavLink to="/directivo/notificaciones" className='nav-link mx-2 py-0'>
-                        <i className="fas fa-bell"></i>
+                        <div className="position-relative">
+                            <i className="fas fa-bell"></i>
+                            { props.notificaciones > 0 &&
+                                <span id="num-notificaciones" className="bg-danger text-white rounded-circle d-block">{props.notificaciones}</span>
+                            }
+                        </div>
                     </NavLink>
                 </li>
             </ul>

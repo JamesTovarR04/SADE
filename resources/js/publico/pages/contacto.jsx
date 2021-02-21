@@ -5,7 +5,7 @@ const Contacto = () => {
 
     return <div className="py-4">
         <h2 className="h5 pl-3"><i className="fas fa-phone-alt"></i> Contacto</h2>
-        <div className="container-fluid card my-4 border border-info">
+        <div className="container-fluid card my-4 border shadow">
             <div className="row">
                 <div className="col d-flex justify-content-center aling-items-center">
                     <div className="container">

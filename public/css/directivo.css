@@ -14,16 +14,25 @@
 h2 {
     color: #00B8A8;
     overflow: hidden;
+    text-align: center;
 }
 
-h2::after{
+h2::after,h2::before{
     content: "";
     display: inline-block;
     width: 100%;
     height:0.3em;
     border-top: solid 1px #01A99A;
+}
+
+h2::before{
+    margin-left: -100%;
+    margin-right: 10px;
+}
+
+h2::after{
     margin-right: -100%;
-    margin-left: 0.5em;
+    margin-left: 10px;
 }
 
 .color-sade-1{
