@@ -20,7 +20,7 @@ class ProfesorController extends Controller
     {
         $validacion = Validator::make($request->all(),[
             'buscar' => 'string|min:4|max:100',
-            'colorden'  => Rule::in(['nombre','documentoIdentidad','perfilAcademico']),
+            'colorden'  => Rule::in(['','nombre','documentoIdentidad','perfilAcademico']),
             'orden'     => Rule::in(['asc','desc'])
         ]);
 

@@ -2,14 +2,11 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import peticion from '../../../utils/peticion';
-import SelectGrupo from './selectGrupo';
 
-const RegistrarEstudiante = () => {
+const RegistrarProfesor = () => {
 
     const { register, handleSubmit, errors, getValues, clearErrors, setError} = useForm();
 
-    const [grupo, setGrupo] = useState('');
-    const [egresado, setEgresado] = useState(false);
     const [idRegistrado, setIdRegistrado] = useState(0);
     const [nombreRegistrado, setNombreRegistrado] = useState('');
     const [cargando, setCargando] = useState(false);
@@ -17,10 +14,8 @@ const RegistrarEstudiante = () => {
 
     const onSubmit = (data) => {
         if(data.apellido2 == '') delete data.apellido2;
-        if(grupo != '') data.idGrupo = grupo;
-        data.egresado = data.egresado ? 1 : 0;
         setCargando(true);
-        peticion('estudiantes','POST',data)
+        peticion('profesores','POST',data)
         .then(res => {
             setIdRegistrado(res.id);
             setNombreRegistrado(data.nombres + ' ' + data.apellido1);
@@ -43,9 +38,9 @@ const RegistrarEstudiante = () => {
             <img src="/images/notUser.jpg" className="rounded-circle mr-4" alt="register" height="80px"/>
             <div>
                 <h3 className="h4 text-primary">Usuario Registrado</h3>
-                <p>El estudiante <strong>{nombreRegistrado}</strong> fue registrado con exito.</p>
+                <p>El profesor <strong>{nombreRegistrado}</strong> fue registrado con exito.</p>
                 <div className="flex justify-content-center">
-                    <Link className="btn btn-primary mr-2 px-3 btn-sm" to={'/directivo/administrar/estudiantes/ver/' + idRegistrado}>
+                    <Link className="btn btn-primary mr-2 px-3 btn-sm" to={'/directivo/administrar/profesores/ver/' + idRegistrado}>
                         <i className="fas fa-eye mr-2"></i>
                         Ver
                     </Link>
@@ -103,26 +98,19 @@ const RegistrarEstudiante = () => {
                         </div>
                     </div>
                 </div>
-                <h2 className="h6"><i className="fas fa-cube mr-2 ml-3"></i> Información de Grado</h2>
+                <h2 className="h6"><i className="fas fa-user-astronaut mr-2 ml-3"></i> Perfil del docente</h2>
                 <div className="form-row">
-                    <div className="form-group col-1 text-center">
-                        <label htmlFor="egresado" className='text-muted small mb-1'>Egresado</label>
-                        <div className="form-check">
-                            <input 
-                                ref={register({ required: false })} 
-                                className="form-check-input mt-2" 
-                                type="checkbox" 
-                                id="egresado" 
-                                name="egresado"
-                                onClick={e => {setEgresado(e.target.checked)}}
-                            />
-                        </div>
-                    </div>
-                    <div className="form-group col-auto">
-                        <SelectGrupo
-                            disabled={egresado}
-                            setGrupo={setGrupo}
+                    <div className="form-group col-12">
+                        <label htmlFor="perfil" className='text-muted small ml-2 mb-1'>Perfil</label>
+                        <input type="text" 
+                            name="perfil" 
+                            ref={register({ required: false })}
+                            maxLength="255"
+                            placeholder='Ej: Licenciado en ciencias naturales...'
+                            className={errors.perfil ? 'form-control is-invalid' : 'form-control'} 
+                            id="perfil" 
                         />
+                        {errors.perfil && <div className='invalid-feedback d-block'>El perfil es requerido</div>}
                     </div>
                 </div>
                 <h2 className="h6"><i className="fas fa-id-card mr-2 ml-3"></i> Documento de identidad</h2>
@@ -183,7 +171,7 @@ const RegistrarEstudiante = () => {
                 </div>
                 <h2 className="h6"><i className="fas fa-user mr-2 ml-3"></i> Datos personales</h2>
                 <div className="form-row justify-content-center">
-                    <div className="form-group col-4">
+                    <div className="form-group col-6">
                         <label htmlFor="sexo" className='text-muted small ml-2 mb-1'>Sexo</label>
                         <select 
                             name="sexo" 
@@ -198,7 +186,7 @@ const RegistrarEstudiante = () => {
                         </select>
                         {errors.sexo && <div className='invalid-feedback d-block'>El sexo es requerido</div>}
                     </div>
-                    <div className="form-group col-4">
+                    <div className="form-group col-6">
                         <label htmlFor="fechaNacimiento" className='text-muted small ml-2 mb-1'>Fecha Nacimiento</label>
                         <input type="date" 
                             name="fechaNacimiento" 
@@ -210,27 +198,6 @@ const RegistrarEstudiante = () => {
                         />
                         {errors.fechaNacimiento && <div className='invalid-feedback d-block'>La fecha es requerida</div>}
                     </div>
-                    <div className="form-group col-4">
-                        <label htmlFor="rh" className='text-muted small ml-2 mb-1'>RH (Tipo de sangre)</label>
-                        <select 
-                            name="rh" 
-                            id="rh"
-                            ref={register({ required: true })}
-                            defaultValue=""
-                            className={errors.rh ? 'form-control custom-select is-invalid' : 'custom-select form-control'} 
-                        >
-                            <option value="" hidden>Seleccione...</option>
-                            <option value="0+">0+</option>
-                            <option value="0-">0-</option>
-                            <option value="A+">A+</option>
-                            <option value="A-">A-</option>
-                            <option value="B+">B+</option>
-                            <option value="B-">B-</option>
-                            <option value="AB+">AB+</option>
-                            <option value="AB-">AB-</option>
-                        </select>
-                        {errors.rh && <div className='invalid-feedback d-block'>El tipo de sangre es requerido</div>}
-                    </div>
                 </div>
                 <h2 className="h6"><i className="fas fa-phone mr-2 ml-3"></i> Datos de contacto</h2>
                 <div className="form-row">
@@ -238,7 +205,7 @@ const RegistrarEstudiante = () => {
                         <label htmlFor="direccion" className='text-muted small ml-2 mb-1'>Direccion</label>
                         <input type="text" 
                             name="direccion" 
-                            ref={register({ required: true })}
+                            ref={register({ required: false })}
                             maxLength="45"
                             placeholder='Ej: Calle N #0-00'
                             className={errors.direccion ? 'form-control is-invalid' : 'form-control'} 
@@ -311,4 +278,4 @@ const RegistrarEstudiante = () => {
 
 }
 
-export default RegistrarEstudiante;
+export default RegistrarProfesor;
