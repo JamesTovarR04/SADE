@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Las rutas estan siendo manejadas por ReactRouter
-Route::get('/{path?}/{path2?}/{path3?}', function ($path = null) {
+Route::get('/{path?}/{path2?}/{path3?}/{path4?}/{path5?}/{path6?}', function ($path = null) {
     switch ($path) {
         case 'directivo':
             return view('directivo');

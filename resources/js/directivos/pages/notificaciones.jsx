@@ -33,7 +33,7 @@ const Notificaciones = (props) => {
         })
     }
 
-    return <div className="pt-4">
+    return <div className="pt-3">
         <h2 className="h5 pl-3"><i className="fas fa-bell"></i> ({props.numNotificaciones}) Notificaciones</h2>
         <div className="mx-auto px-4 my-4" style={{maxWidth: "1200PX"}}>
             { cargando ? 
@@ -52,7 +52,9 @@ const Notificaciones = (props) => {
                         />
                     ))
                     :
-                    <div className="text-center"><span className="h5 text-muted">No tienes notificaciones</span></div>
+                    <div className="text-center">
+                        <span className="h5 text-muted">No tienes notificaciones</span>
+                    </div>
                     }
                 </div>
             }

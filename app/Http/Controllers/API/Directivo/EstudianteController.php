@@ -19,8 +19,8 @@ class EstudianteController extends Controller
     public function index(Request $request)
     {
         $validacion = Validator::make($request->all(),[
-            'buscar'    => 'string|min:6|max:100',
-            'colorden'  => Rule::in(['nombre','documentoIdentidad','grupo']),
+            'buscar'    => 'string|min:4|max:100',
+            'colorden'  => Rule::in(['','nombre','documentoIdentidad','nombreGrupo']),
             'orden'     => Rule::in(['asc','desc'])
         ]);
 
@@ -189,7 +189,7 @@ class EstudianteController extends Controller
             'tipoDocumento'     => [Rule::in(['CC','CE','RC','TI','NS'])],
             'numeroDocumento'   => 'integer',
             'fechaExpedicion'   => 'date_format:Y-m-d',
-            'fechaExpedicion'   => 'string|max:45',
+            'lugarExpedicion'   => 'string|max:45',
             'idGrupo'           => 'exists:directivo.grupos,idGrupo',
             'egresado'          => 'boolean'
         ]);

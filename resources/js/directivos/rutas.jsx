@@ -6,6 +6,7 @@ import {
   } from "react-router-dom";
 import Footer from '../publico/components/footer';
 import Header from './components/header';
+import Administrar from './pages/administrar';
 import Inicio from './pages/inicio';
 import Notificaciones from './pages/notificaciones';
 import peticion from './utils/peticion';
@@ -43,8 +44,8 @@ const Rutas = () => {
                 <Route exact path="/directivo/notificaciones">
                     <Notificaciones numNotificaciones={notificaciones} setNumNotif={setNotificaciones}/>
                 </Route>
-                <Route exact path="/directivo/administrar">
-                    <h1>Administrar</h1>
+                <Route path="/directivo/administrar">
+                    <Administrar/>
                 </Route>
                 <Route exact path="/directivo/perfil">
                     <h1>Perfil</h1>
