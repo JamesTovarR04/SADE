@@ -10,12 +10,12 @@ import Telefonos from './telefonos';
  * TODO: Descomponer en componentes mas pequeños
  * No esta validado si el correo ya existe
  */
-const VerProfesor = () => {
+const VerDirectivo = () => {
 
     let { id, option } = useParams();
     const { register, handleSubmit, errors, getValues, clearErrors, setError} = useForm();
 
-    const [profesor, setProfesor] = useState({});
+    const [directivo, setDirectivo] = useState({});
     const [cargando, setCargando] = useState(true);
     const [editando, setEditando] = useState(option == "edit");
 
@@ -25,9 +25,9 @@ const VerProfesor = () => {
 
     const cargarDatos = () => {
         setCargando(true);
-        peticion('profesores/' + id)
+        peticion('directivos/' + id)
         .then(res => {
-            setProfesor(res);
+            setDirectivo(res);
         })
         .catch(err => {
             alert('Error al actualizar los datos')
@@ -41,7 +41,7 @@ const VerProfesor = () => {
         if(data.contrasena == '') delete data.contrasena;
         if(data.email == '') delete data.email;
         if(data.apellido2 == '') delete data.apellido2;
-        peticion('profesores/' + id, 'PUT', data)
+        peticion('directivos/' + id, 'PUT', data)
         .then(res => {
             cargarDatos();
             setEditando(false);
@@ -56,10 +56,10 @@ const VerProfesor = () => {
 
     return <div>
         { cargando ? <Cargando />
-        : profesor.data !== undefined &&
+        : directivo.data !== undefined &&
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="d-flex justify-content-center align-items-center">
-                    <img src="/images/notUser.jpg" className="rounded-circle mr-5" alt={profesor.data.nombres} width="120px" height="120px"/>
+                    <img src="/images/notUser.jpg" className="rounded-circle mr-5" alt={directivo.data.nombres} width="120px" height="120px"/>
                     <div style={{minWidth:"200px"}}>
                         <div className="form-group mb-1">
                             <label htmlFor="nombre" className="text-muted small mb-1">Nombres</label>
@@ -71,9 +71,9 @@ const VerProfesor = () => {
                                 placeholder='Nombres'
                                 className={errors.nombres ? 'form-control is-invalid' : 'form-control'} 
                                 id="nombre" 
-                                defaultValue={profesor.data.nombres} 
+                                defaultValue={directivo.data.nombres} 
                             />
-                            : <p className="my-1 font-weight-bolder">{profesor.data.nombres}</p>
+                            : <p className="my-1 font-weight-bolder">{directivo.data.nombres}</p>
                             }
                             {errors.nombres && <div className='invalid-feedback d-block'>El nombre es requerido</div>}
                         </div>
@@ -88,9 +88,9 @@ const VerProfesor = () => {
                                     placeholder='Apellido 1'
                                     className={errors.apellido1 ? 'form-control is-invalid' : 'form-control'} 
                                     id="apellido1" 
-                                    defaultValue={profesor.data.apellido1} 
+                                    defaultValue={directivo.data.apellido1} 
                                 />
-                                : <p className="my-1 font-weight-bolder">{profesor.data.apellido1}</p>
+                                : <p className="my-1 font-weight-bolder">{directivo.data.apellido1}</p>
                                 }
                                 {errors.apellido1 && <div className='invalid-feedback d-block'>El primer apellido es requerido</div>}
                             </div>
@@ -104,32 +104,48 @@ const VerProfesor = () => {
                                     placeholder='Apellido 2'
                                     className={errors.apellido2 ? 'form-control is-invalid' : 'form-control'} 
                                     id="apellido2" 
-                                    defaultValue={profesor.data.apellido2} 
+                                    defaultValue={directivo.data.apellido2} 
                                 />
-                                : <p className="my-1 font-weight-bolder">{profesor.data.apellido2}</p>
+                                : <p className="my-1 font-weight-bolder">{directivo.data.apellido2}</p>
                                 }
                                 {errors.apellido2 && <div className='invalid-feedback d-block'>El primer apellido es requerido</div>}
                             </div>
                         </div>
                     </div>
                 </div>
-                <h2 className="h6"><i className="fas fa-user-astronaut mr-2 ml-3"></i> Perfil del docente</h2>
+                <h2 className="h6"><i className="fas fa-paste mr-2 ml-3"></i> Cargo</h2>
                 <div className="form-row">
-                    <div className="form-group col-12">
-                        <label htmlFor="perfil" className='text-muted small ml-2 mb-1'>Perfil</label>
+                    <div className="form-group col-6">
+                        <label htmlFor="cargo" className='text-muted small ml-2 mb-1'>Cargo</label>
                         { editando ? 
                         <input type="text" 
-                            name="perfil" 
-                            ref={register({ required: false })}
+                            name="cargo" 
+                            ref={register({ required: true })}
                             maxLength="255"
-                            placeholder='Ej: Licenciado en ciencias naturales...'
-                            className={errors.perfil ? 'form-control is-invalid' : 'form-control'} 
-                            id="perfil" 
-                            defaultValue={profesor.data.perfilAcademico} 
+                            placeholder='Ej: Coordinador en sede...'
+                            className={errors.cargo ? 'form-control is-invalid' : 'form-control'} 
+                            id="cargo" 
+                            defaultValue={directivo.data.cargo} 
                         />
-                        : <p className="my-1 font-weight-bolder">{profesor.data.perfilAcademico}</p>
+                        : <p className="my-1 font-weight-bolder">{directivo.data.cargo}</p>
                         }
-                        {errors.perfil && <div className='invalid-feedback d-block'>El perfil es requerido</div>}
+                        {errors.cargo && <div className='invalid-feedback d-block'>El cargo es requerido</div>}
+                    </div>
+                    <div className="form-group col-6">
+                        <label htmlFor="emailPublico" className='text-muted small ml-2 mb-1'>Email Público</label>
+                        { editando ? 
+                        <input type="email" 
+                            name="emailPublico" 
+                            ref={register({ required: true })}
+                            maxLength="255"
+                            placeholder='example@gmail.com'
+                            className={errors.emailPublico ? 'form-control is-invalid' : 'form-control'} 
+                            id="emailPublico" 
+                            defaultValue={directivo.data.emailPublico} 
+                        />
+                        : <p className="my-1 font-weight-bolder">{directivo.data.emailPublico}</p>
+                        }
+                        {errors.emailPublico && <div className='invalid-feedback d-block'>El email publico es requerido</div>}
                     </div>
                 </div>
                 <h2 className="h6"><i className="fas fa-id-card mr-2 ml-3"></i> Documento de identidad</h2>
@@ -141,7 +157,7 @@ const VerProfesor = () => {
                             name="tipoDocumento" 
                             id="tipoDocumento"
                             ref={register({ required: true })}
-                            defaultValue={profesor.data.tipoDocumento} 
+                            defaultValue={directivo.data.tipoDocumento} 
                             className={errors.tipoDocumento ? 'form-control custom-select is-invalid' : 'custom-select form-control'} 
                         >
                             <option value="CC">Cédula de ciudadanía</option>
@@ -149,7 +165,7 @@ const VerProfesor = () => {
                             <option value="RC">Registro Civil</option>
                             <option value="TI">Tarjeta de identidad</option>
                         </select>
-                        : <p className="my-1 font-weight-bolder">{tipoDocumento(profesor.data.tipoDocumento)}</p>
+                        : <p className="my-1 font-weight-bolder">{tipoDocumento(directivo.data.tipoDocumento)}</p>
                         }
                         {errors.tipoDocumento && <div className='invalid-feedback d-block'>El tipo de documento es requerido</div>}
                     </div>
@@ -163,9 +179,9 @@ const VerProfesor = () => {
                             placeholder='Número de documento'
                             className={errors.numeroDocumento ? 'form-control is-invalid' : 'form-control'} 
                             id="numeroDocumento" 
-                            defaultValue={profesor.data.numero} 
+                            defaultValue={directivo.data.numero} 
                         />
-                        : <p className="my-1 font-weight-bolder">{profesor.data.numero}</p>
+                        : <p className="my-1 font-weight-bolder">{directivo.data.numero}</p>
                         }
                         {errors.numeroDocumento && <div className='invalid-feedback d-block'>El número es requerido</div>}
                     </div>
@@ -179,9 +195,9 @@ const VerProfesor = () => {
                             placeholder='AAAA-MM-DD'
                             className={errors.fechaExpedicion ? 'form-control is-invalid' : 'form-control'} 
                             id="fechaExpedicion" 
-                            defaultValue={profesor.data.fechaExpedicion} 
+                            defaultValue={directivo.data.fechaExpedicion} 
                         />
-                        : <p className="my-1 font-weight-bolder">{profesor.data.fechaExpedicion}</p>
+                        : <p className="my-1 font-weight-bolder">{directivo.data.fechaExpedicion}</p>
                         }
                         {errors.fechaExpedicion && <div className='invalid-feedback d-block'>La fecha es requerida</div>}
                     </div>
@@ -195,9 +211,9 @@ const VerProfesor = () => {
                             placeholder='Lugar de expedición'
                             className={errors.lugarExpedicion ? 'form-control is-invalid' : 'form-control'} 
                             id="lugarExpedicion" 
-                            defaultValue={profesor.data.lugarExpedicion} 
+                            defaultValue={directivo.data.lugarExpedicion} 
                         />
-                        : <p className="my-1 font-weight-bolder">{profesor.data.lugarExpedicion}</p>
+                        : <p className="my-1 font-weight-bolder">{directivo.data.lugarExpedicion}</p>
                         }
                         {errors.lugarExpedicion && <div className='invalid-feedback d-block'>El lugar es requerido</div>}
                     </div>
@@ -211,13 +227,13 @@ const VerProfesor = () => {
                             name="sexo" 
                             id="sexo"
                             ref={register({ required: true })}
-                            defaultValue={profesor.data.sexo} 
+                            defaultValue={directivo.data.sexo} 
                             className={errors.sexo ? 'form-control custom-select is-invalid' : 'custom-select form-control'} 
                         >
                             <option value="M">Masculino</option>
                             <option value="F">Femenino</option>
                         </select>
-                        : <p className="my-1 font-weight-bolder">{profesor.data.sexo == "M" ? 'Masculino' : 'Femenino'}</p>
+                        : <p className="my-1 font-weight-bolder">{directivo.data.sexo == "M" ? 'Masculino' : 'Femenino'}</p>
                         }
                         {errors.sexo && <div className='invalid-feedback d-block'>El sexo es requerido</div>}
                     </div>
@@ -231,9 +247,9 @@ const VerProfesor = () => {
                             placeholder='AAAA-MM-DD'
                             className={errors.fechaNacimiento ? 'form-control is-invalid' : 'form-control'} 
                             id="fechaNacimiento" 
-                            defaultValue={profesor.data.fechaNacimiento} 
+                            defaultValue={directivo.data.fechaNacimiento} 
                         />
-                        : <p className="my-1 font-weight-bolder">{profesor.data.fechaNacimiento}</p>
+                        : <p className="my-1 font-weight-bolder">{directivo.data.fechaNacimiento}</p>
                         }
                         {errors.fechaNacimiento && <div className='invalid-feedback d-block'>La fecha es requerida</div>}
                     </div>
@@ -250,16 +266,16 @@ const VerProfesor = () => {
                             placeholder='Ej: Calle N #0-00'
                             className={errors.direccion ? 'form-control is-invalid' : 'form-control'} 
                             id="direccion" 
-                            defaultValue={profesor.data.direccion} 
+                            defaultValue={directivo.data.direccion} 
                         />
-                        : <p className="my-1 font-weight-bolder">{profesor.data.direccion}</p>
+                        : <p className="my-1 font-weight-bolder">{directivo.data.direccion}</p>
                         }
                         {errors.direccion && <div className='invalid-feedback d-block'>La direccion es requerida</div>}
                     </div>
                     <div className="form-group col-auto">
                         <label htmlFor="telefono" className='text-muted small ml-2 mb-1'>Telefonos</label>
                         <div className="d-block">
-                            <Telefonos telefonos={profesor.telefonos}/>
+                            <Telefonos telefonos={directivo.telefonos}/>
                         </div>
                     </div>
                 </div>
@@ -272,17 +288,17 @@ const VerProfesor = () => {
                             name="email" 
                             ref={register({ required: false })}
                             maxLength="45"
-                            placeholder={profesor.data.email} 
+                            placeholder={directivo.data.email} 
                             className={errors.email ? 'form-control is-invalid' : 'form-control'} 
                             id="email" 
                         />
-                        : <p className="my-1 font-weight-bolder">{profesor.data.email}</p>
+                        : <p className="my-1 font-weight-bolder">{directivo.data.email}</p>
                         }
                         {errors.email && <div className='invalid-feedback d-block'>La email es requerido</div>}
                     </div>
                     <div className="form-group col-auto">
                         <label htmlFor="fechaNacimiento" className='text-muted small ml-2 mb-1'>Fecha Registro</label>
-                        <p className="my-1 font-weight-bolder">{profesor.data.fechaRegistro}</p>
+                        <p className="my-1 font-weight-bolder">{directivo.data.fechaRegistro}</p>
                     </div>
                 </div>
                 { editando &&
@@ -346,4 +362,4 @@ const VerProfesor = () => {
 
 }
 
-export default VerProfesor;
+export default VerDirectivo;

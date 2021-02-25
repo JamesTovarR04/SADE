@@ -202,7 +202,7 @@ class EstudianteController extends Controller
         $actualizar1['apellido1']       = $request['apellido1'];
         $actualizar1['apellido2']       = $request['apellido2'];
         $actualizar1['email']           = $request['email'];
-        $actualizar1['contrasenia']     = Hash::make($request['contrasena']);
+        $actualizar1['contrasenia']     = (is_null($request['contrasena'])) ? $request['contrasena'] : Hash::make($request['contrasena']);
         $actualizar1['sexo']            = $request['sexo'];
         $actualizar1['fechaNacimiento'] = $request['fechaNacimiento'];
 

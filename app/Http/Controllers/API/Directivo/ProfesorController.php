@@ -19,7 +19,7 @@ class ProfesorController extends Controller
     public function index(Request $request)
     {
         $validacion = Validator::make($request->all(),[
-            'buscar' => 'string|min:4|max:100',
+            'buscar' => 'string|min:3|max:100',
             'colorden'  => Rule::in(['','nombre','documentoIdentidad','perfilAcademico']),
             'orden'     => Rule::in(['asc','desc'])
         ]);
@@ -195,7 +195,7 @@ class ProfesorController extends Controller
         $actualizar1['apellido1']       = $request['apellido1'];
         $actualizar1['apellido2']       = $request['apellido2'];
         $actualizar1['email']           = $request['email'];
-        $actualizar1['contrasenia']     = Hash::make($request['contrasena']);
+        $actualizar1['contrasenia']     = (is_null($request['contrasena'])) ? $request['contrasena'] : Hash::make($request['contrasena']);
         $actualizar1['sexo']            = $request['sexo'];
         $actualizar1['fechaNacimiento'] = $request['fechaNacimiento'];
 

@@ -1,4 +1,8 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
+import ListaDirectivos from './components/listaDirectivos';
+import RegistrarDirectivo from './components/registrarDirectivo';
+import VerDirectivo from './components/verDirectivo';
 
 const Directivos = () => {
 
@@ -7,7 +11,15 @@ const Directivos = () => {
             <h5 className="card-title"><i className="fas fa-user-tie mr-2 ml-3"></i> Directivos</h5>
         </div>
         <div className="card-body">
-
+            <Route exact path="/directivo/administrar/directivos">
+                <ListaDirectivos />
+            </Route>
+            <Route exact path="/directivo/administrar/directivos/ver/:id/:option?">
+                <VerDirectivo />
+            </Route>
+            <Route path="/directivo/administrar/directivos/registrar">
+                <RegistrarDirectivo />
+            </Route>
         </div>
     </div>
 

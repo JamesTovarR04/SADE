@@ -39338,7 +39338,7 @@ var Header = function Header(props) {
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "nav-item"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-    to: "/directivo/administrar",
+    to: "/directivo/administrar/estudiantes",
     className: "nav-link mx-2 py-0"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fas fa-folder-open"
@@ -40682,6 +40682,290 @@ var Notificaciones = function Notificaciones(props) {
 
 /***/ }),
 
+/***/ "./resources/js/directivos/pages/subpages/components/listaDirectivos.jsx":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/directivos/pages/subpages/components/listaDirectivos.jsx ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _publico_components_cargando__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../publico/components/cargando */ "./resources/js/publico/components/cargando.jsx");
+/* harmony import */ var _publico_components_paginacion__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../publico/components/paginacion */ "./resources/js/publico/components/paginacion.jsx");
+/* harmony import */ var _components_modalConfirmar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../components/modalConfirmar */ "./resources/js/directivos/components/modalConfirmar.jsx");
+/* harmony import */ var _utils_peticion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../utils/peticion */ "./resources/js/directivos/utils/peticion.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+var ListaDirectivos = function ListaDirectivos() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      directivos = _useState2[0],
+      setDirectivos = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+      _useState4 = _slicedToArray(_useState3, 2),
+      cargando = _useState4[0],
+      setCargando = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(1),
+      _useState6 = _slicedToArray(_useState5, 2),
+      page = _useState6[0],
+      setPage = _useState6[1];
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('asc'),
+      _useState8 = _slicedToArray(_useState7, 2),
+      orden = _useState8[0],
+      setOrden = _useState8[1];
+
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState10 = _slicedToArray(_useState9, 2),
+      columna = _useState10[0],
+      setColumna = _useState10[1];
+
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState12 = _slicedToArray(_useState11, 2),
+      buscar = _useState12[0],
+      setBuscar = _useState12[1];
+
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+      _useState14 = _slicedToArray(_useState13, 2),
+      contador = _useState14[0],
+      setContador = _useState14[1];
+
+  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState16 = _slicedToArray(_useState15, 2),
+      nombreEliminar = _useState16[0],
+      setNombreEliminar = _useState16[1];
+
+  var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+      _useState18 = _slicedToArray(_useState17, 2),
+      idEliminar = _useState18[0],
+      setIdEliminar = _useState18[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    var datos = {
+      orden: orden,
+      colorden: columna,
+      page: page
+    };
+    cargarDirectivos(datos);
+  }, [orden, columna, page]);
+
+  var cargarDirectivos = function cargarDirectivos(datos) {
+    setCargando(true);
+    Object(_utils_peticion__WEBPACK_IMPORTED_MODULE_5__["default"])('directivos', 'GET', datos).then(function (res) {
+      if (res.data === undefined) setDirectivos({
+        data: res,
+        total: res.length
+      });else setDirectivos(res);
+    })["catch"](function (err) {//
+    }).then(function () {
+      setCargando(false);
+    });
+  };
+
+  var buscarChange = function buscarChange(event) {
+    setBuscar(event.target.value);
+
+    if (buscar.length > 3) {
+      var datos = {
+        buscar: buscar
+      };
+      cargarDirectivos(datos);
+      setContador(0);
+    }
+
+    if (event.target.value == '') {
+      cargarDirectivos();
+    }
+  };
+
+  function pagina(page) {
+    setPage(page);
+    setContador((page - 1) * directivos.per_page);
+  }
+
+  var eliminar = function eliminar() {
+    Object(_utils_peticion__WEBPACK_IMPORTED_MODULE_5__["default"])('directivos/' + idEliminar, 'DELETE').then(function (res) {
+      var estud = directivos.data.filter(function (e) {
+        return e.idUsuario !== idEliminar;
+      });
+      setDirectivos(_objectSpread(_objectSpread({}, directivos), {}, {
+        data: estud,
+        total: directivos.total - 1
+      }));
+    })["catch"](function (err) {
+      alert('No se pudo eliminar');
+    });
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "flex-grow-1 d-flex"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/directivo/administrar/directivos/registrar",
+    className: "btn btn-primary mr-2 px-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-user-plus mr-2"
+  }), "Registrar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group",
+    style: {
+      maxWidth: "300px"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group-prepend"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group-text"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-search"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    className: "form-control",
+    id: "inlineFormInputGroupUsername",
+    placeholder: "Buscar",
+    onChange: buscarChange,
+    value: buscar
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-check form-check-inline"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "form-check-input",
+    onChange: function onChange() {
+      return setOrden('asc');
+    },
+    type: "radio",
+    name: "orden",
+    value: "asc",
+    defaultChecked: true
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "form-check-label",
+    htmlFor: "inlineRadio1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-sort-alpha-down"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-check form-check-inline"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "form-check-input",
+    onChange: function onChange() {
+      return setOrden('desc');
+    },
+    type: "radio",
+    name: "orden",
+    value: "desc"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "form-check-label",
+    htmlFor: "inlineRadio2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-sort-alpha-down-alt"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    className: "custom-select mr-sm-2",
+    id: "inlineFormCustomSelect",
+    onChange: function onChange(e) {
+      return setColumna(e.target.value);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "",
+    defaultValue: true
+  }, "Orden..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "nombre"
+  }, "Nombre"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "documentoIdentidad"
+  }, "N\xFAmero de documento"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "cargo"
+  }, "Cargo")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "border-bottom border-secondary pl-3 py-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, directivos.total), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "text-muted"
+  }, " directivos")), cargando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_publico_components_cargando__WEBPACK_IMPORTED_MODULE_2__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "table-responsive",
+    style: {
+      height: '60vh'
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+    className: "table table-striped table-sm table-hover"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+    scope: "col"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+    scope: "col"
+  }, "Nombre"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+    scope: "col"
+  }, "Email"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+    scope: "col"
+  }, "Doc. Identidad"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+    scope: "col"
+  }, "Cargo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+    scope: "col"
+  }, "Telefono"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+    scope: "col"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, directivos.data !== undefined && directivos.data.map(function (directivo, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      key: directivo.idUsuario
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, index + 1 + contador), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      className: "text-decoration-none text-body",
+      to: '/directivo/administrar/directivos/ver/' + directivo.idUsuario
+    }, directivo.nombre)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, directivo.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, directivo.documentoIdentidad), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, directivo.cargo.substr(0, 10) + '...'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, directivo.telefono), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "d-flex"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      className: "btn btn-success btn-sm py-0 mr-2",
+      to: '/directivo/administrar/directivos/ver/' + directivo.idUsuario + '/edit'
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-edit"
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "btn btn-danger py-0 btn-sm",
+      "data-toggle": "modal",
+      "data-target": "#deleteEst",
+      onClick: function onClick() {
+        setNombreEliminar(directivo.nombre);
+        setIdEliminar(directivo.idUsuario);
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      className: "fas fa-trash-alt"
+    })))));
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_publico_components_paginacion__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    pagina: pagina,
+    last: directivos.last_page,
+    current: directivos.current_page
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_modalConfirmar__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    id: "deleteEst",
+    text: '¿Quieres eliminar a ' + nombreEliminar + '?',
+    eliminar: true,
+    confirm: eliminar
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ListaDirectivos);
+
+/***/ }),
+
 /***/ "./resources/js/directivos/pages/subpages/components/listaEstudiantes.jsx":
 /*!********************************************************************************!*\
   !*** ./resources/js/directivos/pages/subpages/components/listaEstudiantes.jsx ***!
@@ -41250,6 +41534,458 @@ var ListaProfesores = function ListaProfesores() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ListaProfesores);
+
+/***/ }),
+
+/***/ "./resources/js/directivos/pages/subpages/components/registrarDirectivo.jsx":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/directivos/pages/subpages/components/registrarDirectivo.jsx ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _utils_peticion__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils/peticion */ "./resources/js/directivos/utils/peticion.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+var RegistrarDirectivo = function RegistrarDirectivo() {
+  var _useForm = Object(react_hook_form__WEBPACK_IMPORTED_MODULE_1__["useForm"])(),
+      register = _useForm.register,
+      handleSubmit = _useForm.handleSubmit,
+      errors = _useForm.errors,
+      getValues = _useForm.getValues,
+      clearErrors = _useForm.clearErrors,
+      setError = _useForm.setError;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      idRegistrado = _useState2[0],
+      setIdRegistrado = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      nombreRegistrado = _useState4[0],
+      setNombreRegistrado = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      cargando = _useState6[0],
+      setCargando = _useState6[1];
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+      _useState8 = _slicedToArray(_useState7, 2),
+      enRegistro = _useState8[0],
+      setEnRegistro = _useState8[1];
+
+  var onSubmit = function onSubmit(data) {
+    if (data.apellido2 == '') delete data.apellido2;
+    setCargando(true);
+    Object(_utils_peticion__WEBPACK_IMPORTED_MODULE_3__["default"])('directivos', 'POST', data).then(function (res) {
+      setIdRegistrado(res.id);
+      setNombreRegistrado(data.nombres + ' ' + data.apellido1);
+      setEnRegistro(false);
+    })["catch"](function (res) {
+      alert('Ocurrió un error');
+    }).then(function () {
+      setCargando(false);
+    });
+  };
+
+  var reiniciar = function reiniciar() {
+    setEnRegistro(true);
+  };
+
+  if (!enRegistro) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex justify-content-center align-items-center my-5 py-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "/images/notUser.jpg",
+    className: "rounded-circle mr-4",
+    alt: "register",
+    height: "80px"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: "h4 text-primary"
+  }, "Usuario Registrado"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "El directivo ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, nombreRegistrado), " fue registrado con exito."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "flex justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+    className: "btn btn-primary mr-2 px-3 btn-sm",
+    to: '/directivo/administrar/directivos/ver/' + idRegistrado
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-eye mr-2"
+  }), "Ver"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn btn-secondary mr-2 px-3 btn-sm",
+    onClick: reiniciar
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-user-plus mr-2"
+  }), "Nuevo registro"))));else return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "h5 pb-1"
+  }, "Registrar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: handleSubmit(onSubmit)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex justify-content-center align-items-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "/images/notUser.jpg",
+    className: "rounded-circle mr-5",
+    alt: "Image-user",
+    width: "120px",
+    height: "120px"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      minWidth: "200px"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group mb-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "nombre",
+    className: "text-muted small mb-1"
+  }, "Nombres"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "nombres",
+    ref: register({
+      required: true,
+      minLength: 3
+    }),
+    maxLength: "60",
+    placeholder: "Nombres",
+    className: errors.nombres ? 'form-control is-invalid' : 'form-control',
+    id: "nombre"
+  }), errors.nombres && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "El nombre es requerido")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "apellido1",
+    className: "text-muted small mb-1"
+  }, "Apellido 1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "apellido1",
+    ref: register({
+      required: true,
+      minLength: 3
+    }),
+    maxLength: "45",
+    placeholder: "Apellido 1",
+    className: errors.apellido1 ? 'form-control is-invalid' : 'form-control',
+    id: "apellido1"
+  }), errors.apellido1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "El primer apellido es requerido")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "apellido2",
+    className: "text-muted small mb-1"
+  }, "Apellido 2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "apellido2",
+    ref: register({
+      required: false,
+      minLength: 3
+    }),
+    maxLength: "45",
+    placeholder: "Apellido 2",
+    className: errors.apellido2 ? 'form-control is-invalid' : 'form-control',
+    id: "apellido2"
+  }), errors.apellido2 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "El primer apellido es requerido"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "h6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-paste mr-2 ml-3"
+  }), " Cargo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "cargo",
+    className: "text-muted small ml-2 mb-1"
+  }, "Cargo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "cargo",
+    ref: register({
+      required: true
+    }),
+    maxLength: "255",
+    placeholder: "Ej: Coordinador en sede...",
+    className: errors.cargo ? 'form-control is-invalid' : 'form-control',
+    id: "cargo"
+  }), errors.cargo && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "El cargo es requerido")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "emailPublico",
+    className: "text-muted small ml-2 mb-1"
+  }, "Email P\xFAblico"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "email",
+    name: "emailPublico",
+    ref: register({
+      required: true
+    }),
+    maxLength: "255",
+    placeholder: "example@gmail.com",
+    className: errors.emailPublico ? 'form-control is-invalid' : 'form-control',
+    id: "emailPublico"
+  }), errors.emailPublico && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "El email publico es requerido"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "h6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-id-card mr-2 ml-3"
+  }), " Documento de identidad"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-row justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "tipoDocumento",
+    className: "text-muted small ml-2 mb-1"
+  }, "Tipo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    name: "tipoDocumento",
+    id: "tipoDocumento",
+    ref: register({
+      required: true
+    }),
+    defaultValue: "",
+    className: errors.tipoDocumento ? 'form-control custom-select is-invalid' : 'custom-select form-control'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    hidden: true,
+    value: ""
+  }, "Seleccione..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "CC"
+  }, "C\xE9dula de ciudadan\xEDa"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "CE"
+  }, "C\xE9dula de extranjer\xEDa"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "RC"
+  }, "Registro Civil"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "TI"
+  }, "Tarjeta de identidad")), errors.tipoDocumento && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "El tipo de documento es requerido")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "numeroDocumento",
+    className: "text-muted small ml-2 mb-1"
+  }, "Numero"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    name: "numeroDocumento",
+    ref: register({
+      required: true
+    }),
+    maxLength: "15",
+    placeholder: "N\xFAmero de documento",
+    className: errors.numeroDocumento ? 'form-control is-invalid' : 'form-control',
+    id: "numeroDocumento"
+  }), errors.numeroDocumento && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "El n\xFAmero es requerido")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "fechaExpedicion",
+    className: "text-muted small ml-2 mb-1"
+  }, "Fecha Expedici\xF3n"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "date",
+    name: "fechaExpedicion",
+    ref: register({
+      required: true
+    }),
+    maxLength: "15",
+    placeholder: "AAAA-MM-DD",
+    className: errors.fechaExpedicion ? 'form-control is-invalid' : 'form-control',
+    id: "fechaExpedicion"
+  }), errors.fechaExpedicion && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "La fecha es requerida")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "lugarExpedicion",
+    className: "text-muted small ml-2 mb-1"
+  }, "Lugar Expedici\xF3n"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "lugarExpedicion",
+    ref: register({
+      required: true
+    }),
+    maxLength: "45",
+    placeholder: "Lugar de expedici\xF3n",
+    className: errors.lugarExpedicion ? 'form-control is-invalid' : 'form-control',
+    id: "lugarExpedicion"
+  }), errors.lugarExpedicion && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "El lugar es requerido"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "h6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-user mr-2 ml-3"
+  }), " Datos personales"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-row justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "sexo",
+    className: "text-muted small ml-2 mb-1"
+  }, "Sexo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    name: "sexo",
+    id: "sexo",
+    ref: register({
+      required: true
+    }),
+    defaultValue: "",
+    className: errors.sexo ? 'form-control custom-select is-invalid' : 'custom-select form-control'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "",
+    hidden: true
+  }, "Seleccione..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "M"
+  }, "Masculino"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "F"
+  }, "Femenino")), errors.sexo && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "El sexo es requerido")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "fechaNacimiento",
+    className: "text-muted small ml-2 mb-1"
+  }, "Fecha Nacimiento"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "date",
+    name: "fechaNacimiento",
+    ref: register({
+      required: true
+    }),
+    maxLength: "15",
+    placeholder: "AAAA-MM-DD",
+    className: errors.fechaNacimiento ? 'form-control is-invalid' : 'form-control',
+    id: "fechaNacimiento"
+  }), errors.fechaNacimiento && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "La fecha es requerida"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "h6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-phone mr-2 ml-3"
+  }), " Datos de contacto"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "direccion",
+    className: "text-muted small ml-2 mb-1"
+  }, "Direccion"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "direccion",
+    ref: register({
+      required: false
+    }),
+    maxLength: "45",
+    placeholder: "Ej: Calle N #0-00",
+    className: errors.direccion ? 'form-control is-invalid' : 'form-control',
+    id: "direccion"
+  }), errors.direccion && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "La direccion es requerida"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "h6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-database mr-2 ml-3"
+  }), " Datos de usuario"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-12"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "email",
+    className: "text-muted small ml-2 mb-1"
+  }, "E-mail"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "email",
+    name: "email",
+    ref: register({
+      required: true
+    }),
+    maxLength: "45",
+    placeholder: "email",
+    className: errors.email ? 'form-control is-invalid' : 'form-control',
+    id: "email"
+  }), errors.email && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "El email es requerido"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "contrasena",
+    className: "text-muted small ml-2 mb-1"
+  }, "Contrase\xF1a"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "password",
+    name: "contrasena",
+    ref: register({
+      required: true,
+      minLength: 5
+    }),
+    maxLength: "45",
+    placeholder: "Contrase\xF1a",
+    className: errors.contrasena ? 'form-control is-invalid' : 'form-control',
+    id: "contrasena"
+  }), errors.contrasena && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "Contrase\xF1a invalida")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "confPassword",
+    className: "text-muted small ml-2 mb-1"
+  }, "Confirmar contrase\xF1a"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "password",
+    name: "confPassword",
+    ref: register({
+      required: getValues('contrasena') != '',
+      minLength: 5
+    }),
+    maxLength: "25",
+    placeholder: "Confirmar Contrase\xF1a",
+    className: errors.noPass ? 'form-control is-invalid' : 'form-control',
+    id: "password",
+    onChange: function onChange(e) {
+      var pass = getValues('contrasena');
+
+      if (e.target.value === pass) {
+        clearErrors('noPass');
+      } else {
+        setError('noPass', 'No Coinciden');
+      }
+    }
+  }), errors.noPass && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "No Coinciden las contrase\xF1as"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group text-center mt-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "reset",
+    className: "btn btn-secondary mr-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-eraser mr-2"
+  }), "Cancelar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit",
+    className: "btn btn-primary px-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-user-plus mr-2"
+  }), "Registrar"))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (RegistrarDirectivo);
 
 /***/ }),
 
@@ -42331,6 +43067,512 @@ var Telefonos = function Telefonos(props) {
 
 /***/ }),
 
+/***/ "./resources/js/directivos/pages/subpages/components/verDirectivo.jsx":
+/*!****************************************************************************!*\
+  !*** ./resources/js/directivos/pages/subpages/components/verDirectivo.jsx ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _publico_components_cargando__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../publico/components/cargando */ "./resources/js/publico/components/cargando.jsx");
+/* harmony import */ var _utils_peticion__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../utils/peticion */ "./resources/js/directivos/utils/peticion.js");
+/* harmony import */ var _utils_tipoDocumento__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../utils/tipoDocumento */ "./resources/js/directivos/utils/tipoDocumento.js");
+/* harmony import */ var _telefonos__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./telefonos */ "./resources/js/directivos/pages/subpages/components/telefonos.jsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+/**
+ * TODO: Descomponer en componentes mas pequeños
+ * No esta validado si el correo ya existe
+ */
+
+var VerDirectivo = function VerDirectivo() {
+  var _useParams = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["useParams"])(),
+      id = _useParams.id,
+      option = _useParams.option;
+
+  var _useForm = Object(react_hook_form__WEBPACK_IMPORTED_MODULE_1__["useForm"])(),
+      register = _useForm.register,
+      handleSubmit = _useForm.handleSubmit,
+      errors = _useForm.errors,
+      getValues = _useForm.getValues,
+      clearErrors = _useForm.clearErrors,
+      setError = _useForm.setError;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+      _useState2 = _slicedToArray(_useState, 2),
+      directivo = _useState2[0],
+      setDirectivo = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+      _useState4 = _slicedToArray(_useState3, 2),
+      cargando = _useState4[0],
+      setCargando = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(option == "edit"),
+      _useState6 = _slicedToArray(_useState5, 2),
+      editando = _useState6[0],
+      setEditando = _useState6[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    cargarDatos();
+  }, []);
+
+  var cargarDatos = function cargarDatos() {
+    setCargando(true);
+    Object(_utils_peticion__WEBPACK_IMPORTED_MODULE_4__["default"])('directivos/' + id).then(function (res) {
+      setDirectivo(res);
+    })["catch"](function (err) {
+      alert('Error al actualizar los datos');
+    }).then(function () {
+      setCargando(false);
+    });
+  };
+
+  var onSubmit = function onSubmit(data) {
+    if (data.contrasena == '') delete data.contrasena;
+    if (data.email == '') delete data.email;
+    if (data.apellido2 == '') delete data.apellido2;
+    Object(_utils_peticion__WEBPACK_IMPORTED_MODULE_4__["default"])('directivos/' + id, 'PUT', data).then(function (res) {
+      cargarDatos();
+      setEditando(false);
+    })["catch"](function (err) {
+      alert('error al actualizar los datos');
+    }).then(function () {//
+    });
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, cargando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_publico_components_cargando__WEBPACK_IMPORTED_MODULE_3__["default"], null) : directivo.data !== undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: handleSubmit(onSubmit)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex justify-content-center align-items-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "/images/notUser.jpg",
+    className: "rounded-circle mr-5",
+    alt: directivo.data.nombres,
+    width: "120px",
+    height: "120px"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    style: {
+      minWidth: "200px"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group mb-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "nombre",
+    className: "text-muted small mb-1"
+  }, "Nombres"), editando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "nombres",
+    ref: register({
+      required: true,
+      minLength: 3
+    }),
+    maxLength: "60",
+    placeholder: "Nombres",
+    className: errors.nombres ? 'form-control is-invalid' : 'form-control',
+    id: "nombre",
+    defaultValue: directivo.data.nombres
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "my-1 font-weight-bolder"
+  }, directivo.data.nombres), errors.nombres && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "El nombre es requerido")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "apellido1",
+    className: "text-muted small mb-1"
+  }, "Apellido 1"), editando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "apellido1",
+    ref: register({
+      required: true,
+      minLength: 3
+    }),
+    maxLength: "45",
+    placeholder: "Apellido 1",
+    className: errors.apellido1 ? 'form-control is-invalid' : 'form-control',
+    id: "apellido1",
+    defaultValue: directivo.data.apellido1
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "my-1 font-weight-bolder"
+  }, directivo.data.apellido1), errors.apellido1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "El primer apellido es requerido")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "apellido2",
+    className: "text-muted small mb-1"
+  }, "Apellido 2"), editando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "apellido2",
+    ref: register({
+      required: false,
+      minLength: 3
+    }),
+    maxLength: "45",
+    placeholder: "Apellido 2",
+    className: errors.apellido2 ? 'form-control is-invalid' : 'form-control',
+    id: "apellido2",
+    defaultValue: directivo.data.apellido2
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "my-1 font-weight-bolder"
+  }, directivo.data.apellido2), errors.apellido2 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "El primer apellido es requerido"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "h6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-paste mr-2 ml-3"
+  }), " Cargo"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "cargo",
+    className: "text-muted small ml-2 mb-1"
+  }, "Cargo"), editando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "cargo",
+    ref: register({
+      required: true
+    }),
+    maxLength: "255",
+    placeholder: "Ej: Coordinador en sede...",
+    className: errors.cargo ? 'form-control is-invalid' : 'form-control',
+    id: "cargo",
+    defaultValue: directivo.data.cargo
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "my-1 font-weight-bolder"
+  }, directivo.data.cargo), errors.cargo && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "El cargo es requerido")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "emailPublico",
+    className: "text-muted small ml-2 mb-1"
+  }, "Email P\xFAblico"), editando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "email",
+    name: "emailPublico",
+    ref: register({
+      required: true
+    }),
+    maxLength: "255",
+    placeholder: "example@gmail.com",
+    className: errors.emailPublico ? 'form-control is-invalid' : 'form-control',
+    id: "emailPublico",
+    defaultValue: directivo.data.emailPublico
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "my-1 font-weight-bolder"
+  }, directivo.data.emailPublico), errors.emailPublico && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "El email publico es requerido"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "h6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-id-card mr-2 ml-3"
+  }), " Documento de identidad"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-row justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "tipoDocumento",
+    className: "text-muted small ml-2 mb-1"
+  }, "Tipo"), editando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    name: "tipoDocumento",
+    id: "tipoDocumento",
+    ref: register({
+      required: true
+    }),
+    defaultValue: directivo.data.tipoDocumento,
+    className: errors.tipoDocumento ? 'form-control custom-select is-invalid' : 'custom-select form-control'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "CC"
+  }, "C\xE9dula de ciudadan\xEDa"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "CE"
+  }, "C\xE9dula de extranjer\xEDa"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "RC"
+  }, "Registro Civil"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "TI"
+  }, "Tarjeta de identidad")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "my-1 font-weight-bolder"
+  }, Object(_utils_tipoDocumento__WEBPACK_IMPORTED_MODULE_5__["default"])(directivo.data.tipoDocumento)), errors.tipoDocumento && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "El tipo de documento es requerido")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "numeroDocumento",
+    className: "text-muted small ml-2 mb-1"
+  }, "Numero"), editando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    name: "numeroDocumento",
+    ref: register({
+      required: true
+    }),
+    maxLength: "15",
+    placeholder: "N\xFAmero de documento",
+    className: errors.numeroDocumento ? 'form-control is-invalid' : 'form-control',
+    id: "numeroDocumento",
+    defaultValue: directivo.data.numero
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "my-1 font-weight-bolder"
+  }, directivo.data.numero), errors.numeroDocumento && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "El n\xFAmero es requerido")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "fechaExpedicion",
+    className: "text-muted small ml-2 mb-1"
+  }, "Fecha Expedici\xF3n"), editando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "date",
+    name: "fechaExpedicion",
+    ref: register({
+      required: true
+    }),
+    maxLength: "15",
+    placeholder: "AAAA-MM-DD",
+    className: errors.fechaExpedicion ? 'form-control is-invalid' : 'form-control',
+    id: "fechaExpedicion",
+    defaultValue: directivo.data.fechaExpedicion
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "my-1 font-weight-bolder"
+  }, directivo.data.fechaExpedicion), errors.fechaExpedicion && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "La fecha es requerida")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "lugarExpedicion",
+    className: "text-muted small ml-2 mb-1"
+  }, "Lugar Expedici\xF3n"), editando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "lugarExpedicion",
+    ref: register({
+      required: true
+    }),
+    maxLength: "45",
+    placeholder: "Lugar de expedici\xF3n",
+    className: errors.lugarExpedicion ? 'form-control is-invalid' : 'form-control',
+    id: "lugarExpedicion",
+    defaultValue: directivo.data.lugarExpedicion
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "my-1 font-weight-bolder"
+  }, directivo.data.lugarExpedicion), errors.lugarExpedicion && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "El lugar es requerido"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "h6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-user mr-2 ml-3"
+  }), " Datos personales"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-row justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "sexo",
+    className: "text-muted small ml-2 mb-1"
+  }, "Sexo"), editando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    name: "sexo",
+    id: "sexo",
+    ref: register({
+      required: true
+    }),
+    defaultValue: directivo.data.sexo,
+    className: errors.sexo ? 'form-control custom-select is-invalid' : 'custom-select form-control'
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "M"
+  }, "Masculino"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "F"
+  }, "Femenino")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "my-1 font-weight-bolder"
+  }, directivo.data.sexo == "M" ? 'Masculino' : 'Femenino'), errors.sexo && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "El sexo es requerido")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "fechaNacimiento",
+    className: "text-muted small ml-2 mb-1"
+  }, "Fecha Nacimiento"), editando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "date",
+    name: "fechaNacimiento",
+    ref: register({
+      required: true
+    }),
+    maxLength: "15",
+    placeholder: "AAAA-MM-DD",
+    className: errors.fechaNacimiento ? 'form-control is-invalid' : 'form-control',
+    id: "fechaNacimiento",
+    defaultValue: directivo.data.fechaNacimiento
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "my-1 font-weight-bolder"
+  }, directivo.data.fechaNacimiento), errors.fechaNacimiento && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "La fecha es requerida"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "h6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-phone mr-2 ml-3"
+  }), " Datos de contacto"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "direccion",
+    className: "text-muted small ml-2 mb-1"
+  }, "Direccion"), editando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    name: "direccion",
+    ref: register({
+      required: true
+    }),
+    maxLength: "45",
+    placeholder: "Ej: Calle N #0-00",
+    className: errors.direccion ? 'form-control is-invalid' : 'form-control',
+    id: "direccion",
+    defaultValue: directivo.data.direccion
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "my-1 font-weight-bolder"
+  }, directivo.data.direccion), errors.direccion && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "La direccion es requerida")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-auto"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "telefono",
+    className: "text-muted small ml-2 mb-1"
+  }, "Telefonos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-block"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_telefonos__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    telefonos: directivo.telefonos
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "h6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-database mr-2 ml-3"
+  }), " Datos de usuario"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "email",
+    className: "text-muted small ml-2 mb-1"
+  }, "E-mail"), editando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "email",
+    name: "email",
+    ref: register({
+      required: false
+    }),
+    maxLength: "45",
+    placeholder: directivo.data.email,
+    className: errors.email ? 'form-control is-invalid' : 'form-control',
+    id: "email"
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "my-1 font-weight-bolder"
+  }, directivo.data.email), errors.email && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "La email es requerido")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-auto"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "fechaNacimiento",
+    className: "text-muted small ml-2 mb-1"
+  }, "Fecha Registro"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "my-1 font-weight-bolder"
+  }, directivo.data.fechaRegistro))), editando && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "contrasena",
+    className: "text-muted small ml-2 mb-1"
+  }, "Contrase\xF1a"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "password",
+    name: "contrasena",
+    ref: register({
+      required: false,
+      minLength: 5
+    }),
+    maxLength: "45",
+    placeholder: "Contrase\xF1a",
+    className: errors.contrasena ? 'form-control is-invalid' : 'form-control',
+    id: "contrasena"
+  }), errors.contrasena && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "Contrase\xF1a invalida")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group col-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "confPassword",
+    className: "text-muted small ml-2 mb-1"
+  }, "Confirmar contrase\xF1a"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "password",
+    name: "confPassword",
+    ref: register({
+      required: getValues('contrasena') != '',
+      minLength: 5
+    }),
+    maxLength: "25",
+    placeholder: "Confirmar Contrase\xF1a",
+    className: errors.noPass ? 'form-control is-invalid' : 'form-control',
+    id: "password",
+    onChange: function onChange(e) {
+      var pass = getValues('contrasena');
+
+      if (e.target.value === pass) {
+        clearErrors('noPass');
+      } else {
+        setError('noPass', 'No Coinciden');
+      }
+    }
+  }), errors.noPass && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "invalid-feedback d-block"
+  }, "No Coinciden las contrase\xF1as"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-group text-center mt-3"
+  }, editando ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: ""
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "reset",
+    className: "btn btn-secondary mr-3",
+    onClick: function onClick() {
+      return setEditando(false);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-eraser mr-2"
+  }), "Cancelar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit",
+    className: "btn btn-primary px-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-edit mr-2"
+  }), "Actualizar")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit",
+    className: "btn btn-primary px-4",
+    onClick: function onClick() {
+      return setEditando(true);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-edit mr-2"
+  }), "Editar datos"))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (VerDirectivo);
+
+/***/ }),
+
 /***/ "./resources/js/directivos/pages/subpages/components/verEstudiante.jsx":
 /*!*****************************************************************************!*\
   !*** ./resources/js/directivos/pages/subpages/components/verEstudiante.jsx ***!
@@ -42906,8 +44148,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _publico_components_cargando__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../publico/components/cargando */ "./resources/js/publico/components/cargando.jsx");
 /* harmony import */ var _utils_peticion__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../utils/peticion */ "./resources/js/directivos/utils/peticion.js");
 /* harmony import */ var _utils_tipoDocumento__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../utils/tipoDocumento */ "./resources/js/directivos/utils/tipoDocumento.js");
-/* harmony import */ var _selectGrupo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./selectGrupo */ "./resources/js/directivos/pages/subpages/components/selectGrupo.jsx");
-/* harmony import */ var _telefonos__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./telefonos */ "./resources/js/directivos/pages/subpages/components/telefonos.jsx");
+/* harmony import */ var _telefonos__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./telefonos */ "./resources/js/directivos/pages/subpages/components/telefonos.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -42919,7 +44160,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -43265,7 +44505,7 @@ var VerProfesor = function VerProfesor() {
     className: "text-muted small ml-2 mb-1"
   }, "Telefonos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-block"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_telefonos__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_telefonos__WEBPACK_IMPORTED_MODULE_6__["default"], {
     telefonos: profesor.telefonos
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "h6"
@@ -43389,6 +44629,14 @@ var VerProfesor = function VerProfesor() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _components_listaDirectivos__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/listaDirectivos */ "./resources/js/directivos/pages/subpages/components/listaDirectivos.jsx");
+/* harmony import */ var _components_registrarDirectivo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/registrarDirectivo */ "./resources/js/directivos/pages/subpages/components/registrarDirectivo.jsx");
+/* harmony import */ var _components_verDirectivo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/verDirectivo */ "./resources/js/directivos/pages/subpages/components/verDirectivo.jsx");
+
+
+
+
 
 
 var Directivos = function Directivos() {
@@ -43402,7 +44650,15 @@ var Directivos = function Directivos() {
     className: "fas fa-user-tie mr-2 ml-3"
   }), " Directivos")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-body"
-  }));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/directivo/administrar/directivos"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_listaDirectivos__WEBPACK_IMPORTED_MODULE_2__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/directivo/administrar/directivos/ver/:id/:option?"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_verDirectivo__WEBPACK_IMPORTED_MODULE_4__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/directivo/administrar/directivos/registrar"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_registrarDirectivo__WEBPACK_IMPORTED_MODULE_3__["default"], null))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Directivos);

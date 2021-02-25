@@ -18,7 +18,7 @@ const Header = (props) => {
                     </NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink to="/directivo/administrar" className='nav-link mx-2 py-0'>
+                    <NavLink to="/directivo/administrar/estudiantes" className='nav-link mx-2 py-0'>
                         <i className="fas fa-folder-open"></i>
                     </NavLink>
                 </li>
