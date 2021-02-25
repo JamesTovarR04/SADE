@@ -20,7 +20,7 @@ class GradoController extends Controller
     {
         $validacion = Validator::make($request->all(),[
             'buscar' => 'string|min:1|max:100',
-            'colorden'  => Rule::in(['nombre','jornada','salon']),
+            'colorden'  => Rule::in(['','nombre','jornada','salon']),
             'orden'     => Rule::in(['asc','desc']),
             'grado'     => 'integer'
         ]);
@@ -58,7 +58,7 @@ class GradoController extends Controller
         $validacion = Validator::make($request->all(),[
             'nombre'    => 'required|string|max:10',
             'jornada'   => ['required', Rule::in(['Mañana', 'Tarde', 'Nocturno', 'Mixto'])],
-            'salon'     => 'required|string',
+            'salon'     => 'required|integer',
             'grado'     => 'required|integer|min:0|max:15',
             'director'  => 'exists:directivo.docentes,idUsuario'
         ]);
