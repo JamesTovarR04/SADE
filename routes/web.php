@@ -15,4 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+})->name('login');
+
+// Private Routes
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::get('private', function () {
+        return view('private');
+    });
 });

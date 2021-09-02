@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Sade</title>
+        <title>Laravel</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -21,7 +21,14 @@
         </style>
     </head>
     <body class="antialiased">
-        <div id="example"></div>
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <h1>Esta es una ruta privada</h1>
+        <button onclick="logout()">Cerrar sesion</button>
+        <script>
+            function logout(){
+                fetch('api/auth/logout')
+                .then(response => response.json())
+                .then(data => console.log(data));
+            }
+        </script>
     </body>
 </html>
