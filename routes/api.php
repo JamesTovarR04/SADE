@@ -19,13 +19,14 @@ Route::group([
     'prefix' => 'auth',
 ], function () {
     Route::post('login',[AuthController::class, 'login']);
-    //Route::get('notAuth', 'AuthController@notAuth')->name('notLogin');
 
     Route::group([
         'middleware' => 'auth:sanctum'
     ], function () {
         Route::get('logout', [AuthController::class, 'logout']);
-        //Route::get('user', 'AuthController@user');
+        Route::get('user', [AuthController::class, 'getUser']);
+        Route::get('tokens', [AuthController::class, 'getTokens']);
+        Route::delete('tokens', [AuthController::class, 'deleteTokens']);
     });
 });
 

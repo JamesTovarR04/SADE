@@ -29,7 +29,7 @@ class AuthController extends Controller
             return response(['errors' => $validacion->errors()->all()], 422);
 
         /**
-         * Llamar a procedimiento para buscar idUusario por email o numero de documento
+         * Llamar a procedimiento para buscar idUsuario por email o numero de documento
          */
         $dataLogin = DB::select('CALL p_pub_login(?)', [$request['user']]);
 
@@ -64,12 +64,7 @@ class AuthController extends Controller
                 'intentosConexion' => 0
             ]);
 
-        $user = $request->user();
-
-        $response = [
-            'rol'           => $user->rol(),
-            'usuario'       => $user->nombres,
-        ];
+        $response['user'] = $this->dataUser($request);
 
         if($request['create_token'])
             $response['token'] = $request->user()->createToken('sade-token')->plainTextToken;
@@ -85,17 +80,81 @@ class AuthController extends Controller
      */
     public function logout(Request $request)
     {
-
-        if((array)$request->user()->currentAccessToken())
+        if((array)$request->user()->currentAccessToken()) {
             $request->user()->currentAccessToken()->delete();
-        else {
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
+            return response()->json([
+                'message' => 'Se cerró la sesión correctamente.'
+            ]);
         }
 
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('login');
+    }
+
+    /**
+     * Tokens de autenticacion
+     * 
+     * @return Response
+     */
+    public function getTokens(Request $request)
+    {
+        return response()->json($request->user()->tokens);
+    }
+
+    /**
+     * Borrar tokens de autenticacion
+     * 
+     * @return Response
+     */
+    public function deleteTokens(Request $request)
+    {
+        $request->user()->tokens()->delete();
+
         return response()->json([
-            'message' => 'Se cerró la sesión correctamente.'
+            'message' => 'Se borraron todos los tokens.'
         ]);
+    }
+
+    /**
+     * Cierre de sesión
+     * 
+     * @return Response
+     */
+    public function getUser(Request $request)
+    {
+        $usuario = $this->dataUser($request);
+        return response()->json($usuario);
+    }
+
+    /**
+     * Información de usuario
+     * 
+     * @return array
+     */
+    private function dataUser(Request $request)
+    {
+        $usuario = $request->user();
+
+        switch ($usuario->tipo) {
+            case 1:
+                $usuario->grado = DB::connection('estudiante')
+                ->table('vs_est_infoestudiantes')
+                ->where('idUsuario', $usuario->idUsuario)
+                    ->value('idGrupo');
+                break;
+            case 2:
+                $usuario->grupo = DB::connection('profesor')
+                ->table('grupos')
+                    ->where('director', $usuario->idUsuario)
+                    ->value('idGrupo');
+                $usuario->misGrupos = DB::connection('profesor')
+                ->select('call p_prf_misGruposClases(?)', [$usuario->idUsuario]);
+                break;
+        }
+
+        return $usuario;
     }
 
 }
