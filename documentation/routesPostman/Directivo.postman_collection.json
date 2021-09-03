@@ -1,0 +1,1732 @@
+{
+	"info": {
+		"_postman_id": "9ace350e-195d-420b-90b3-b365ac57accd",
+		"name": "Directivo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Publicaciones",
+			"item": [
+				{
+					"name": "Utilidades",
+					"item": [
+						{
+							"name": "privacidad",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/directivo/privacidad/publicacion/31",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"directivo",
+										"privacidad",
+										"publicacion",
+										"31"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "propias",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/directivo/mispublicaciones",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"directivo",
+										"mispublicaciones"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "dislike",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/directivo/publicaciones/31/dislike",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"directivo",
+										"publicaciones",
+										"31",
+										"dislike"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "like",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/directivo/publicaciones/54/like",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"directivo",
+										"publicaciones",
+										"54",
+										"like"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "agregar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/publicaciones?titulo=Ejemplo titulo&contenido=Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en demostraciones de tipografías o de borradores de diseño para probar el diseño visual antes de insertar el texto final.&publico=0&directivo=0&profesor=1&estudiante=0",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"publicaciones"
+							],
+							"query": [
+								{
+									"key": "titulo",
+									"value": "Ejemplo titulo"
+								},
+								{
+									"key": "contenido",
+									"value": "Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en demostraciones de tipografías o de borradores de diseño para probar el diseño visual antes de insertar el texto final."
+								},
+								{
+									"key": "publico",
+									"value": "0"
+								},
+								{
+									"key": "directivo",
+									"value": "0"
+								},
+								{
+									"key": "profesor",
+									"value": "1"
+								},
+								{
+									"key": "estudiante",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/publicaciones/31",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"publicaciones",
+								"31"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/publicaciones/9?titulo=Titulo que ha sido cambiado&contenido=Contenido modificado",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"publicaciones",
+								"9"
+							],
+							"query": [
+								{
+									"key": "titulo",
+									"value": "Titulo que ha sido cambiado"
+								},
+								{
+									"key": "contenido",
+									"value": "Contenido modificado"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "leer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/publicaciones",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"publicaciones"
+							],
+							"query": [
+								{
+									"key": "buscar",
+									"value": "elementum",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "User 1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/auth/login?user=miguelalejandro183@gmail.com&password=123456&create_token=1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "miguelalejandro183@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								},
+								{
+									"key": "create_token",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/auth/login?user=juanguillermo925@gmail.com&password=123456",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "juanguillermo925@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User 3",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/auth/login?user=126839729&password=123456",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "126839729"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Eventos",
+			"item": [
+				{
+					"name": "agregar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/eventos?hora=2021-02-07 12:30:00&descripcion=Nuevo evento&publico=1&directivo=0&profesor=0&estudiante=0",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"eventos"
+							],
+							"query": [
+								{
+									"key": "hora",
+									"value": "2021-02-07 12:30:00"
+								},
+								{
+									"key": "descripcion",
+									"value": "Nuevo evento"
+								},
+								{
+									"key": "publico",
+									"value": "1"
+								},
+								{
+									"key": "directivo",
+									"value": "0"
+								},
+								{
+									"key": "profesor",
+									"value": "0"
+								},
+								{
+									"key": "estudiante",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/eventos/2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"eventos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "leer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/eventos?dia=2021-02-06",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"eventos"
+							],
+							"query": [
+								{
+									"key": "dia",
+									"value": "2021-02-06"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eventosMes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/eventosmes?mes=2021-02",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"eventosmes"
+							],
+							"query": [
+								{
+									"key": "mes",
+									"value": "2021-02"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Estudiantes",
+			"item": [
+				{
+					"name": "LeerVarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/estudiantes",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"estudiantes"
+							],
+							"query": [
+								{
+									"key": "buscar",
+									"value": "zuleima",
+									"disabled": true
+								},
+								{
+									"key": "colorden",
+									"value": "nombre",
+									"disabled": true
+								},
+								{
+									"key": "orden",
+									"value": "desc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LeerUno",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/estudiantes/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"estudiantes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/estudiantes/2000",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"estudiantes",
+								"2000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "agregar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/estudiantes?nombres=Carla&apellido1=Gonzales&email=carla99@gmail.com&contrasena=123456&sexo=F&fechaNacimiento=2000-06-06&rh=AB%2B&tipoDocumento=CC&numeroDocumento=546654162&fechaExpedicion=2018-04-30&lugarExpedicion=Neiva - Huila&direccion=Calle 21 %2352-53",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"estudiantes"
+							],
+							"query": [
+								{
+									"key": "nombres",
+									"value": "Carla"
+								},
+								{
+									"key": "apellido1",
+									"value": "Gonzales"
+								},
+								{
+									"key": "apellido2",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "carla99@gmail.com"
+								},
+								{
+									"key": "contrasena",
+									"value": "123456"
+								},
+								{
+									"key": "sexo",
+									"value": "F"
+								},
+								{
+									"key": "fechaNacimiento",
+									"value": "2000-06-06"
+								},
+								{
+									"key": "rh",
+									"value": "AB%2B"
+								},
+								{
+									"key": "tipoDocumento",
+									"value": "CC"
+								},
+								{
+									"key": "numeroDocumento",
+									"value": "546654162"
+								},
+								{
+									"key": "fechaExpedicion",
+									"value": "2018-04-30"
+								},
+								{
+									"key": "lugarExpedicion",
+									"value": "Neiva - Huila"
+								},
+								{
+									"key": "direccion",
+									"value": "Calle 21 %2352-53"
+								},
+								{
+									"key": "idGrupo",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "egresado",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/estudiantes/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"estudiantes",
+								"1"
+							],
+							"query": [
+								{
+									"key": "nombres",
+									"value": "Carla",
+									"disabled": true
+								},
+								{
+									"key": "apellido1",
+									"value": "Gonzales",
+									"disabled": true
+								},
+								{
+									"key": "apellido2",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "contrasena",
+									"value": "carla1234",
+									"disabled": true
+								},
+								{
+									"key": "sexo",
+									"value": "F",
+									"disabled": true
+								},
+								{
+									"key": "fechaNacimiento",
+									"value": "2000-06-06",
+									"disabled": true
+								},
+								{
+									"key": "rh",
+									"value": "AB%2B",
+									"disabled": true
+								},
+								{
+									"key": "tipoDocumento",
+									"value": "CC",
+									"disabled": true
+								},
+								{
+									"key": "fechaExpedicion",
+									"value": "2018-04-30",
+									"disabled": true
+								},
+								{
+									"key": "lugarExpedicion",
+									"value": "Neiva - Huila",
+									"disabled": true
+								},
+								{
+									"key": "idGrupo",
+									"value": "1101",
+									"disabled": true
+								},
+								{
+									"key": "egresado",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "direccion",
+									"value": "Calle 21 %2352-53",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "marleny110@gmail.com",
+									"disabled": true
+								},
+								{
+									"key": "numeroDocumento",
+									"value": "77554555",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Grupos",
+			"item": [
+				{
+					"name": "verTodos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/grupos",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"grupos"
+							],
+							"query": [
+								{
+									"key": "colorden",
+									"value": "jornada",
+									"disabled": true
+								},
+								{
+									"key": "orden",
+									"value": "desc",
+									"disabled": true
+								},
+								{
+									"key": "grado",
+									"value": "5",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verGrupo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/grupos/1103",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"grupos",
+								"1103"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "agregar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/grupos?nombre=1105&jornada=Mañana&salon=102&grado=11",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"grupos"
+							],
+							"query": [
+								{
+									"key": "nombre",
+									"value": "1105"
+								},
+								{
+									"key": "jornada",
+									"value": "Mañana"
+								},
+								{
+									"key": "salon",
+									"value": "102"
+								},
+								{
+									"key": "grado",
+									"value": "11"
+								},
+								{
+									"key": "director",
+									"value": "12",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/grupos/1103?jornada=Mañana&salon=402&grado=11&director=480",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"grupos",
+								"1103"
+							],
+							"query": [
+								{
+									"key": "jornada",
+									"value": "Mañana"
+								},
+								{
+									"key": "salon",
+									"value": "402"
+								},
+								{
+									"key": "grado",
+									"value": "11"
+								},
+								{
+									"key": "director",
+									"value": "480"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/grupos/1104",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"grupos",
+								"1104"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addProfesor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/grupos/1103/profesor?idProfesor=482",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"grupos",
+								"1103",
+								"profesor"
+							],
+							"query": [
+								{
+									"key": "idProfesor",
+									"value": "482"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Directivos",
+			"item": [
+				{
+					"name": "LeerVarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/directivos?colorden=cargo&orden=desc",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"directivos"
+							],
+							"query": [
+								{
+									"key": "bucar",
+									"value": "alejandro",
+									"disabled": true
+								},
+								{
+									"key": "colorden",
+									"value": "cargo"
+								},
+								{
+									"key": "orden",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LeerUno",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/directivos/510",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"directivos",
+								"510"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "agregar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/directivos?nombres=Luis Carlos&apellido1=Torres&email=luis159@gmail.com&contrasena=123456&sexo=M&fechaNacimiento=1994-06-06&tipoDocumento=CC&numeroDocumento=151222546&fechaExpedicion=2018-04-30&lugarExpedicion=Neiva - Huila&direccion=Calle 21 %2352-53&cargo=Coordinador&emailPublico=example@sade.edu",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"directivos"
+							],
+							"query": [
+								{
+									"key": "nombres",
+									"value": "Luis Carlos"
+								},
+								{
+									"key": "apellido1",
+									"value": "Torres"
+								},
+								{
+									"key": "apellido2",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "luis159@gmail.com"
+								},
+								{
+									"key": "contrasena",
+									"value": "123456"
+								},
+								{
+									"key": "sexo",
+									"value": "M"
+								},
+								{
+									"key": "fechaNacimiento",
+									"value": "1994-06-06"
+								},
+								{
+									"key": "tipoDocumento",
+									"value": "CC"
+								},
+								{
+									"key": "numeroDocumento",
+									"value": "151222546"
+								},
+								{
+									"key": "fechaExpedicion",
+									"value": "2018-04-30"
+								},
+								{
+									"key": "lugarExpedicion",
+									"value": "Neiva - Huila"
+								},
+								{
+									"key": "telefonos",
+									"value": "3220999999,3175564894",
+									"disabled": true
+								},
+								{
+									"key": "direccion",
+									"value": "Calle 21 %2352-53"
+								},
+								{
+									"key": "cargo",
+									"value": "Coordinador"
+								},
+								{
+									"key": "emailPublico",
+									"value": "example@sade.edu"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/directivos/529?cargo=Consejero",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"directivos",
+								"529"
+							],
+							"query": [
+								{
+									"key": "nombres",
+									"value": "Carla",
+									"disabled": true
+								},
+								{
+									"key": "apellido1",
+									"value": "Gonzales",
+									"disabled": true
+								},
+								{
+									"key": "apellido2",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "contrasena",
+									"value": "carla1234",
+									"disabled": true
+								},
+								{
+									"key": "sexo",
+									"value": "F",
+									"disabled": true
+								},
+								{
+									"key": "fechaNacimiento",
+									"value": "2000-06-06",
+									"disabled": true
+								},
+								{
+									"key": "tipoDocumento",
+									"value": "CC",
+									"disabled": true
+								},
+								{
+									"key": "fechaExpedicion",
+									"value": "2018-04-30",
+									"disabled": true
+								},
+								{
+									"key": "lugarExpedicion",
+									"value": "Neiva - Huila",
+									"disabled": true
+								},
+								{
+									"key": "idGrupo",
+									"value": "1101",
+									"disabled": true
+								},
+								{
+									"key": "egresado",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "direccion",
+									"value": "Calle 21 %2352-53",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "marleny110@gmail.com",
+									"disabled": true
+								},
+								{
+									"key": "numeroDocumento",
+									"value": "77554555",
+									"disabled": true
+								},
+								{
+									"key": "cargo",
+									"value": "Consejero"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/directivos/530",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"directivos",
+								"530"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Profesores",
+			"item": [
+				{
+					"name": "borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/profesores/526",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"profesores",
+								"526"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LeerVarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/profesores",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"profesores"
+							],
+							"query": [
+								{
+									"key": "orden",
+									"value": "desc",
+									"disabled": true
+								},
+								{
+									"key": "buscar",
+									"value": "yova",
+									"disabled": true
+								},
+								{
+									"key": "colorden",
+									"value": "nombre",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LeerUno",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/profesores/528",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"profesores",
+								"528"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "agregar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/profesores?nombres=Luis Carlos&apellido1=Torres&email=luis000@gmail.com&contrasena=123456&sexo=M&fechaNacimiento=1994-06-06&tipoDocumento=CC&numeroDocumento=151222546&fechaExpedicion=2018-04-30&lugarExpedicion=Neiva - Huila&direccion=Calle 21 %2352-53&perfil=Licenciado en matemáticas",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"profesores"
+							],
+							"query": [
+								{
+									"key": "nombres",
+									"value": "Luis Carlos"
+								},
+								{
+									"key": "apellido1",
+									"value": "Torres"
+								},
+								{
+									"key": "apellido2",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "luis000@gmail.com"
+								},
+								{
+									"key": "contrasena",
+									"value": "123456"
+								},
+								{
+									"key": "sexo",
+									"value": "M"
+								},
+								{
+									"key": "fechaNacimiento",
+									"value": "1994-06-06"
+								},
+								{
+									"key": "tipoDocumento",
+									"value": "CC"
+								},
+								{
+									"key": "numeroDocumento",
+									"value": "151222546"
+								},
+								{
+									"key": "fechaExpedicion",
+									"value": "2018-04-30"
+								},
+								{
+									"key": "lugarExpedicion",
+									"value": "Neiva - Huila"
+								},
+								{
+									"key": "telefonos",
+									"value": "3220999999,3175564894",
+									"disabled": true
+								},
+								{
+									"key": "direccion",
+									"value": "Calle 21 %2352-53"
+								},
+								{
+									"key": "perfil",
+									"value": "Licenciado en matemáticas"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/profesores/528?apellido1=Gonzales",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"profesores",
+								"528"
+							],
+							"query": [
+								{
+									"key": "nombres",
+									"value": "Carla",
+									"disabled": true
+								},
+								{
+									"key": "apellido1",
+									"value": "Gonzales"
+								},
+								{
+									"key": "apellido2",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "contrasena",
+									"value": "carla1234",
+									"disabled": true
+								},
+								{
+									"key": "sexo",
+									"value": "F",
+									"disabled": true
+								},
+								{
+									"key": "fechaNacimiento",
+									"value": "2000-06-06",
+									"disabled": true
+								},
+								{
+									"key": "rh",
+									"value": "AB%2B",
+									"disabled": true
+								},
+								{
+									"key": "tipoDocumento",
+									"value": "CC",
+									"disabled": true
+								},
+								{
+									"key": "fechaExpedicion",
+									"value": "2018-04-30",
+									"disabled": true
+								},
+								{
+									"key": "lugarExpedicion",
+									"value": "Neiva - Huila",
+									"disabled": true
+								},
+								{
+									"key": "idGrupo",
+									"value": "1101",
+									"disabled": true
+								},
+								{
+									"key": "egresado",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "direccion",
+									"value": "Calle 21 %2352-53",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "marleny110@gmail.com",
+									"disabled": true
+								},
+								{
+									"key": "numeroDocumento",
+									"value": "77554555",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Telefonos",
+			"item": [
+				{
+					"name": "agregar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/telefonos/1?telefono=397156454",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"telefonos",
+								"1"
+							],
+							"query": [
+								{
+									"key": "telefono",
+									"value": "397156454"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/telefonos/2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"telefonos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Notificaciones",
+			"item": [
+				{
+					"name": "ver",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/notificaciones",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"notificaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "visto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/notificaciones/1534",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"notificaciones",
+								"1534"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "numero",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/directivo/numero/notificaciones",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"numero",
+								"notificaciones"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "cargaFoto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/C:/Users/james/OneDrive/Desktop/daniela-kreimer.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/directivo/usuario/foto/2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"directivo",
+								"usuario",
+								"foto",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "9|Qv5kQtIrWYEyFkHcao1XwNq3vUSMtEkZasEcqry5",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "127.0.0.1:8000"
+		}
+	]
+}

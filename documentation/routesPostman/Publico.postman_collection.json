@@ -1,0 +1,283 @@
+{
+	"info": {
+		"_postman_id": "83a01dfb-f7cf-4a9a-b1c2-36acd1d6d48e",
+		"name": "Publico",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "logout",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "3|KLJ2UcigpZthZgvPGEyhuXXFr10NuhkxNNAiajgZ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/auth/logout",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "dataUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYWU2NTVhMGQyOWVhMWVmZmEzZmIzOGFjMWU1MDM0ZDk3ODQ5OWNkZGFkNTc4MzVkNzUxNmFkNWQzNjMxMWIxY2E1ODJmNTQyOTE0MjQzZWMiLCJpYXQiOiIxNjEzMjc4NzUzLjEwNzQwMSIsIm5iZiI6IjE2MTMyNzg3NTMuMTA3NDA5IiwiZXhwIjoiMTY0NDgxNDc1My4wOTMwNTYiLCJzdWIiOiI0ODAiLCJzY29wZXMiOltdfQ.yvsqnFQzL8hjj7RILKcIErb9zYmZznqAoVUgMTawZYy1eRKvybLmWVP7BRMDpkwkxJUCtCFeO_1D05ezOZPXbcZMfsXbDSVAez4geGTzJ3yc7T2F9v-Hvbb2tk8dcfW4kz3iYJR-V1KoIvwnR7JENVQhkXVAeUiDi1JgpeQ4c_CYy2-8sTy0hvrSCbMBaJkqYzQV4dwdHhNbZmLfqH8hDuKecD6tB7ZrRDxrm_yGYwaS8-mJW3oPsGcfrMzL8o8SYNTqQrIaBMzmPyvLc9PTMiT09IaxPbx06rF1SIud9dBYbvX0fDgsLxA1xh7Vl9pjeCng2AJ9KGoBo1HsfiIBfj-cKvuoM9mTBMgYe1GIAGDQxVAwd-HczzQCmh4XGXq3kEFSjFnX0gmGKOZSU0OmhTz0WQZwc7mXRjz0ma3juyVXEVcpbiHo2aKGdiHmmjqmgdNHCItK0Uigvp_UFb3mQtb1LGy6G13DZtLeh7GFziNmbiEJ77wRGmy2xCCme2n_-8cU42YN8xiSf4kUre3mDW1FFQ2NZLNOuLRsKc1ZE5QaOz9EwDsZXyEc3agpkrBpH9Sxl-UK2P-oNGq5eThmdv1PkrtfedRXrKma7-fl5R0uuLY3Na8xRp4QI1C3e4mQsKXQQLIEgN2aiAiU-TCfU-zwwaVVFyUxVZwkA-NGpoE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/auth/user",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteTokens",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/auth/tokens",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"tokens"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tokens",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/auth/tokens",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"tokens"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Publicaciones",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/publico/publicaciones",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"publico",
+						"publicaciones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Directivos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/publico/info/directivos?buscar=consejero",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"publico",
+						"info",
+						"directivos"
+					],
+					"query": [
+						{
+							"key": "buscar",
+							"value": "consejero"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NumeroUsuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/publico/info/usuarios",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"publico",
+						"info",
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eventos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/publico/eventos?dia=2021-02-04",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"publico",
+						"eventos"
+					],
+					"query": [
+						{
+							"key": "dia",
+							"value": "2021-02-04"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EventosMes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/publico/eventos/mes?mes=2021-02",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"publico",
+						"eventos",
+						"mes"
+					],
+					"query": [
+						{
+							"key": "mes",
+							"value": "2021-02"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "descargarFoto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/publico/usuario/foto/6028aec79b164480",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"publico",
+						"usuario",
+						"foto",
+						"6028aec79b164480"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "127.0.0.1:8000"
+		}
+	]
+}

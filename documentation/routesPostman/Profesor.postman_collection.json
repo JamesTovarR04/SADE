@@ -1,0 +1,782 @@
+{
+	"info": {
+		"_postman_id": "3018c5d8-5fe9-4b3f-8be5-aa6406ebafd3",
+		"name": "Profesor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Publicaciones",
+			"item": [
+				{
+					"name": "Utilidades",
+					"item": [
+						{
+							"name": "privacidad",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/profesor/privacidad/publicacion/35",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"profesor",
+										"privacidad",
+										"publicacion",
+										"35"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "propias",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/profesor/mispublicaciones",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"profesor",
+										"mispublicaciones"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "dislike",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/profesor/publicaciones/35/dislike",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"profesor",
+										"publicaciones",
+										"35",
+										"dislike"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "like",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/profesor/publicaciones/35/like",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"profesor",
+										"publicaciones",
+										"35",
+										"like"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "agregar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/profesor/publicaciones?titulo=ESTE ES UN TITULO&contenido=Nuevo contenido &publico=0&directivo=0&profesor=1&estudiante=0",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"publicaciones"
+							],
+							"query": [
+								{
+									"key": "titulo",
+									"value": "ESTE ES UN TITULO"
+								},
+								{
+									"key": "contenido",
+									"value": "Nuevo contenido "
+								},
+								{
+									"key": "publico",
+									"value": "0"
+								},
+								{
+									"key": "directivo",
+									"value": "0"
+								},
+								{
+									"key": "profesor",
+									"value": "1"
+								},
+								{
+									"key": "estudiante",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/profesor/publicaciones/36",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"publicaciones",
+								"36"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/profesor/publicaciones/37?titulo=Este titulo fue modificado a las 11:35&contenido=Este contenido fue modificado de nuevo a las 11:35",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"publicaciones",
+								"37"
+							],
+							"query": [
+								{
+									"key": "titulo",
+									"value": "Este titulo fue modificado a las 11:35"
+								},
+								{
+									"key": "contenido",
+									"value": "Este contenido fue modificado de nuevo a las 11:35"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vista",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/profesor/publicaciones",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"publicaciones"
+							],
+							"query": [
+								{
+									"key": "buscar",
+									"value": "Jeffrey",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "User 1",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/auth/login?user=jeffrey855@gmail.com&password=123456&create_token=1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "jeffrey855@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								},
+								{
+									"key": "create_token",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User 2",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/auth/login?user=ingridkatherine266@gmail.com&password=123456",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "ingridkatherine266@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User 3",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/auth/login?user=386703180&password=123456",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "386703180"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Eventos",
+			"item": [
+				{
+					"name": "agregar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/profesor/eventos",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"eventos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/profesor/eventos/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"eventos",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "VistaEvento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/profesor/eventos?dia=2021-02-09",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"eventos"
+							],
+							"query": [
+								{
+									"key": "dia",
+									"value": "2021-02-09"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "VistaEventoPorMes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/profesor/eventosmes?mes=2021-02",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"eventosmes"
+							],
+							"query": [
+								{
+									"key": "mes",
+									"value": "2021-02"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notificaciones",
+			"item": [
+				{
+					"name": "Ver",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/profesor/notificaciones",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"notificaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver/VistoN",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/profesor/notificaciones/486",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"notificaciones",
+								"486"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "numero",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/profesor/numero/notificaciones",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"numero",
+								"notificaciones"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Grupos",
+			"item": [
+				{
+					"name": "VerGrupoGeneral",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/profesor/grupos",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"grupos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "VerGrupoEspecifico",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/profesor/grupos/1003",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"grupos",
+								"1003"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verGrupoComoDirector",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/profesor/estudiantes/director/1103",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"estudiantes",
+								"director",
+								"1103"
+							],
+							"query": [
+								{
+									"key": "buscar",
+									"value": "816320582",
+									"disabled": true
+								},
+								{
+									"key": "colorden",
+									"value": "apellido1",
+									"disabled": true
+								},
+								{
+									"key": "orden",
+									"value": "desc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verGrupoComoProfesor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/profesor/estudiantes/misgrupos/1003",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"estudiantes",
+								"misgrupos",
+								"1003"
+							],
+							"query": [
+								{
+									"key": "buscar",
+									"value": "816320582",
+									"disabled": true
+								},
+								{
+									"key": "colorden",
+									"value": "apellido1",
+									"disabled": true
+								},
+								{
+									"key": "orden",
+									"value": "desc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Telefono",
+			"item": [
+				{
+					"name": "agregar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/profesor/telefono?telefono=3108773870",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"telefono"
+							],
+							"query": [
+								{
+									"key": "telefono",
+									"value": "3108773870"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/profesor/telefono/518",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"telefono",
+								"518"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "updateDatos",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/profesor/usuario?direccion=Calle 23 N° 9-36&perfil=Biologa de la naturaleza&email=saray79@gmail.com&contrasena=123456",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"usuario"
+							],
+							"query": [
+								{
+									"key": "direccion",
+									"value": "Calle 23 N° 9-36"
+								},
+								{
+									"key": "perfil",
+									"value": "Biologa de la naturaleza"
+								},
+								{
+									"key": "email",
+									"value": "saray79@gmail.com"
+								},
+								{
+									"key": "contrasena",
+									"value": "123456"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "VerDatos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/profesor/usuario",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cargaFoto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/C:/Users/james/OneDrive/Desktop/F100012528.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/profesor/usuario/foto",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"profesor",
+								"usuario",
+								"foto"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "10|tU8U4kptZbMFJmAFdIyo2d7260aKFPxzs6JXiLLk",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "127.0.0.1:8000"
+		}
+	]
+}

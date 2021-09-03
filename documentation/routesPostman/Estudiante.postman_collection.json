@@ -1,0 +1,672 @@
+{
+	"info": {
+		"_postman_id": "e2f715fd-fbe3-4390-921f-d8571863032d",
+		"name": "Estudiante",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "publicaciones",
+			"item": [
+				{
+					"name": "Utilidades",
+					"item": [
+						{
+							"name": "privacidad",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/estudiante/privacidad/publicacion/34",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"estudiante",
+										"privacidad",
+										"publicacion",
+										"34"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "propias",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/estudiante/mispublicaciones",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"estudiante",
+										"mispublicaciones"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "dislike",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/estudiante/publicaciones/2/dislike",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"estudiante",
+										"publicaciones",
+										"2",
+										"dislike"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "like",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/estudiante/publicaciones/2/like",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"estudiante",
+										"publicaciones",
+										"2",
+										"like"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "publicaciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/estudiante/publicaciones",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"publicaciones"
+							],
+							"query": [
+								{
+									"key": "buscar",
+									"value": "titulo-1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/estudiante/publicaciones/34?titulo=Titulo que ha sido cambiado&contenido=Contenido modificado",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"publicaciones",
+								"34"
+							],
+							"query": [
+								{
+									"key": "titulo",
+									"value": "Titulo que ha sido cambiado"
+								},
+								{
+									"key": "contenido",
+									"value": "Contenido modificado"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "agregar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/estudiante/publicaciones?titulo=Ejemplo titulo Estudiante&contenido=Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en demostraciones de tipografías o de borradores de diseño para probar el diseño visual antes de insertar el texto final.&directivo=0&profesor=1&estudiante=0",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"publicaciones"
+							],
+							"query": [
+								{
+									"key": "titulo",
+									"value": "Ejemplo titulo Estudiante"
+								},
+								{
+									"key": "contenido",
+									"value": "Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en demostraciones de tipografías o de borradores de diseño para probar el diseño visual antes de insertar el texto final."
+								},
+								{
+									"key": "directivo",
+									"value": "0"
+								},
+								{
+									"key": "profesor",
+									"value": "1"
+								},
+								{
+									"key": "estudiante",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "borrar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/estudiante/publicaciones/34",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"publicaciones",
+								"34"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "User 1",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/auth/login?user=carlosantonio786@gmail.com&password=123456&create_token=1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "carlosantonio786@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								},
+								{
+									"key": "create_token",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User 2",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/auth/login?user=giovanny992@gmail.com&password=123456",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "giovanny992@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User 3",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/auth/login?user=315365305&password=123456",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "315365305"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notificaciones",
+			"item": [
+				{
+					"name": "numero",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/estudiante/numero/notificaciones",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"numero",
+								"notificaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/estudiante/notificaciones",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"notificaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ver/VistoN",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/estudiante/notificaciones/486",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"notificaciones",
+								"486"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Telefono",
+			"item": [
+				{
+					"name": "agregar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/estudiante/telefono?telefono=3157518470",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"telefono"
+							],
+							"query": [
+								{
+									"key": "telefono",
+									"value": "3157518470"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMGFkNGJlNTZmODJmNWY4YjJiNDgxNGQ1MTkzZGM0ZDUyY2Y0M2RiOThjZjhjOWUwNTc1MjkwZWEyZGU5MzMyN2I2NDA3ZDIzMTUzZDNhMTEiLCJpYXQiOjE2MTMxNjg5MTUsIm5iZiI6MTYxMzE2ODkxNSwiZXhwIjoxNjQ0NzA0OTE1LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.ZPxvq4MxhK2LKOiblPsw1O6HqKN2Bob1C-_RErohfuQ3WsCcesjiUUzp0Ql2rExa6YZ5hoXttMPBfu7btKNzS5AoLV8tnvOCwDDC37bGU9KwiMKNo8qVxeaALS0H7m4pTFGOsdOeLl8gk4w_QmgU-15EOKYVM8mto8oa-kmZYM5lyy7-_L84FMfTFyiAgC3pfvC7G6J6f09Krrg6D7W5QpzyGxpOqB3ZGtZT1yd-J1vAkQ-BQCMyi4BCS3jRqOPtQUhRQGeJ655xYupYi0fKnXyTfuvRFXHHfm4BrVO7POnFczIiDxrrvTBrcBxFL_8eb-BCmM4FAyihnUunqd4daj8jHx2M_b5o23Sl-PQNyKOV0cFACJpZhsvrNrAI92YRzE1S2m8QCJb0JDvMub-k7ldEQRQMu0LhlmKAU8i9tZgot4tDZjcfXxbLjPe88Jkac76pxv2jTGVaEch_S5vjoPk_ZkgJ8gDFzqNKa33jfIkqaFzvuB18LmBrs6qsYtjP_W2JzKFBkmRlTJ27sY7lngEZJoIFzAppLKS7CR0pc5rcYUuzci8o16Uv69dy7RneBn3zBE68rfaeHGE6tHfgwWdzZNjdOe7DtXvia_ouDZsLGYc8ETMveVQlNS1OZCQChqp8OotdQm4c5sakc_mKpsnF67hAvLuVtrQUhGakK6k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/estudiante/telefono/519",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"telefono",
+								"519"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Eventos",
+			"item": [
+				{
+					"name": "VistaEvento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/estudiante/eventos?dia=2021-02-09",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"eventos"
+							],
+							"query": [
+								{
+									"key": "dia",
+									"value": "2021-02-09"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "VistaEventoPorMes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/estudiante/eventosmes?mes=2021-02",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"eventosmes"
+							],
+							"query": [
+								{
+									"key": "mes",
+									"value": "2021-02"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "updateDatos",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/estudiante/usuario",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"usuario"
+							],
+							"query": [
+								{
+									"key": "direccion",
+									"value": "Calle 23 N° 9-36",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "saray79@gmail.com",
+									"disabled": true
+								},
+								{
+									"key": "contrasena",
+									"value": "123456",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "VerDatos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/estudiante/usuario",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cargaFoto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/C:/Users/james/OneDrive/Desktop/fdg.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/api/estudiante/usuario/foto",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"usuario",
+								"foto"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Grupos",
+			"item": [
+				{
+					"name": "VerGrupoGeneral",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/estudiante/grupos",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"grupos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "VerGrupoEspecifico",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/estudiante/grupos/1003",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"estudiante",
+								"grupos",
+								"1003"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "11|e1yvyxsmnjTyDsqPUx59d3VkxHIojI2pcmnItev4",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "127.0.0.1:8000"
+		}
+	]
+}
