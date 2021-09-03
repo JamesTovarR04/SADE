@@ -9,6 +9,12 @@ use App\Http\Controllers\API\Directivo\ProfesorController;
 use App\Http\Controllers\API\Directivo\PublicacionController as DirectivoPublicacionController;
 use App\Http\Controllers\API\Directivo\TelefonoController;
 use App\Http\Controllers\API\Directivo\UserController as DirectivoUserController;
+use App\Http\Controllers\API\Estudiante\EventoController as EstudianteEventoController;
+use App\Http\Controllers\API\Estudiante\GrupoController as EstudianteGrupoController;
+use App\Http\Controllers\API\Estudiante\NotificacionController as EstudianteNotificacionController;
+use App\Http\Controllers\API\Estudiante\PublicacionController as EstudiantePublicacionController;
+use App\Http\Controllers\API\Estudiante\TelefonoController as EstudianteTelefonoController;
+use App\Http\Controllers\API\Estudiante\UserController as EstudianteUserController;
 use App\Http\Controllers\API\Profesor\EstudiantesController;
 use App\Http\Controllers\API\Profesor\EventoController as ProfesorEventoController;
 use App\Http\Controllers\API\Profesor\GrupoController;
@@ -133,4 +139,35 @@ Route::group([
     Route::get('usuario', [ProfesorUserController::class, 'show']);
     Route::post('usuario/foto', [ProfesorUserController::class, 'cargarFoto']);
 
+});
+
+//Aquí van las rutas de los Estudiantes
+Route::group([
+    'prefix' => 'estudiante',
+    'middleware' => ['auth:sanctum', 'role:estudiante']
+], function () {
+
+    Route::apiResource('publicaciones', EstudiantePublicacionController::class);
+    Route::get('publicaciones/{id}/like', [EstudiantePublicacionController::class, 'like']);
+    Route::get('publicaciones/{id}/dislike', [EstudiantePublicacionController::class, 'dislike']);
+    Route::get('mispublicaciones', [EstudiantePublicacionController::class, 'delUsuario']);
+    Route::get('privacidad/publicacion/{id}', [EstudiantePublicacionController::class, 'privacidad']);
+
+    Route::get('eventos', [EstudianteEventoController::class, 'index']);
+    Route::get('eventos/mes', [EstudianteEventoController::class, 'enMes']);
+
+    Route::get('notificaciones', [EstudianteNotificacionController::class, 'index']);
+    Route::get('notificaciones/{id}', [EstudianteNotificacionController::class, 'visto']);
+    Route::get('numero/notificaciones', [EstudianteNotificacionController::class, 'numero']);
+
+    Route::get('grupos', [EstudianteGrupoController::class, 'index']);
+    Route::get('grupos/{id}', [EstudianteGrupoController::class, 'show']);
+    Route::get('migrupo', [EstudianteGrupoController::class, 'miGrupo']);
+
+    Route::put('usuario', [EstudianteUserController::class, 'update']);
+    Route::get('usuario', [EstudianteUserController::class, 'show']);
+    Route::post('usuario/foto', [EstudianteUserController::class, 'cargarFoto']);
+
+    Route::post('telefono',  [EstudianteTelefonoController::class , 'store']);
+    Route::delete('telefono/{id}', [EstudianteTelefonoController::class, 'destroy']);
 });
