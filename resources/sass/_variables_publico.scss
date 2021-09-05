@@ -1,0 +1,10 @@
+$primary:       $publico;
+$secondary:     $publico-2;
+
+$theme-colors: map-merge(
+  (
+    "primary":    $primary,
+    "secondary":  $secondary,
+  ),
+  $theme-colors
+);
