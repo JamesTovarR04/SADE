@@ -88,7 +88,7 @@ php artisan serve
 ```
 
 ## Developers
-Para contribuir al desarrollo del proyecto lea la [guia de desarrollo](https://github.com/JamesTovarR04/SADE/blob/main/DEVELOP.md).
+Para contribuir al desarrollo del proyecto lea la [guia de desarrollo](https://github.com/JamesTovarR04/SADE/blob/develop/DEVELOP.md).
 
 ### Principales desarrolladores
 
