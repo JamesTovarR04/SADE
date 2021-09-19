@@ -1,0 +1,15 @@
+.btn-user {
+
+    min-width: 130px;
+
+    > div:nth-child( 1 ) {
+        font-size: 30px;
+        line-height: 0;
+    }
+
+    div {
+        line-height: 1.1em;
+        text-align: left;
+    }
+
+}

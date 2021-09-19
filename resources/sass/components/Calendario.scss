@@ -1,0 +1,60 @@
+.calendario {
+    button:focus{
+        outline: none;
+    }
+
+    h4{
+        font-size: 1.2em;
+    }
+}
+
+.calendario-btn-change{
+    border-radius: 50%;
+    font-family: monospace;
+    font-weight: bold;
+    border: 0;
+    width: 1.8em;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #fff;
+
+    &:hover{
+        color: $primary;
+    }
+}
+
+.calendario-header{
+    margin-bottom: 10px;
+}
+
+.calendario-week-header{
+    color: $primary;
+}
+
+.calendario-day{
+    padding: 2px;
+
+    button{
+        width: 100%;
+        border: none;
+        padding-top: 5px;
+        padding-bottom: 1px;
+        border-bottom: 4px solid #fff;
+        background-color: #fff;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    button:hover{
+        background-color: #eee;
+        border-bottom: 4px solid #eee;
+    }
+}
+
+.calendario-week-header{
+    margin-bottom: 10px;
+}
+
+.calendario-today{
+    font-weight: bold;
+}
