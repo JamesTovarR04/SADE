@@ -8,20 +8,20 @@ $font-family-base: $font-family-sans-serif;
 $font-size-sm: $font-size-base * .8125;
 $font-size-mc: $font-size-base * .625;
 
-$h1-font-size:                $font-size-base * 1.5;
-$h2-font-size:                $font-size-base * 1.25;
-$h3-font-size:                $font-size-base * 1.125;
-$h4-font-size:                $font-size-base * 1.1;
-$h5-font-size:                $font-size-base * 1.0;
-$h6-font-size:                $font-size-base !default;
+$h1-font-size: $font-size-base * 1.5;
+$h2-font-size: $font-size-base * 1.25;
+$h3-font-size: $font-size-base * 1.125;
+$h4-font-size: $font-size-base * 1.1;
+$h5-font-size: $font-size-base * 1.0;
+$h6-font-size: $font-size-base !default;
 
 // Colors
 $publico: #0088DE;
 $publico-2: #0065A5;
 $directivo: #00B8A8;
 $directivo-2: #00887C;
-$docente: #FF6D3F;
-$docente-2: #B05526;
+$profesor: #FF6D3F;
+$profesor-2: #B05526;
 $estudiante: #24BB47;
 $estudiante-2: #1B7C2E;
 $texto: #2F2F2F;
@@ -30,17 +30,17 @@ $texto-disabled: #969696;
 $user_colors: (
     "publico":        $publico,
     "directivo":      $directivo,
-    "docente":        $docente,
+    "profesor":        $profesor,
     "estudiante":     $estudiante,
     "publico-2":      $publico-2,
     "directivo-2":    $directivo-2,
-    "docente-2":      $docente-2,
+    "profesor-2":      $profesor-2,
     "estudiante-2":   $estudiante-2
 );
 
 $success:       $estudiante;
 $info:          $directivo;
-$warning:       $docente;
+$warning:       $profesor;
 
 $theme-colors : map-merge(
   (

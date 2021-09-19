@@ -11,7 +11,7 @@
     <body>
         <noscript>Necesitas habilitar javascript en tu navegador.</noscript>
         <!-- Esta página esta realizada con react -->
-        <div id="example"></div>
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <div id="app"></div>
+        <script src="{{ asset('js/publico/app.js') }}" defer></script>
     </body>
 </html>

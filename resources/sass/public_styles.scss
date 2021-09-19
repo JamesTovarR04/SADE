@@ -43,3 +43,9 @@
 @import '~bootstrap/scss/spinners';
 @import '~bootstrap/scss/utilities';
 @import '~bootstrap/scss/print';
+
+// Estilos adicionels
+@import 'adicionales';
+// Componentes
+@import 'components/BtnUser';
+@import 'components/Calendario';

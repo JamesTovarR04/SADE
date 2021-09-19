@@ -8,3 +8,6 @@ $theme-colors: map-merge(
   ),
   $theme-colors
 );
+
+// Nav
+$navbar-light-active-color: $primary;
