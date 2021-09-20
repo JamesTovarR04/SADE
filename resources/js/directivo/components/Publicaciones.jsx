@@ -1,17 +1,20 @@
+import axios from 'axios'
 import React from 'react'
 
-import Paginacion from "../../components/Paginacion"
 import Cargando from '../../components/Cargando'
+import NuevaPublicacion from '../../components/NuevaPublicacion'
+import Paginacion from '../../components/Paginacion'
 import Publicacion from '../../components/Publicacion'
 import fecha from '../../helpers/fecha'
 import usePublicaciones from '../../hooks/usePublicaciones'
 
 const Publicaciones = () => {
 
-    const [publicaciones, cargando, error, setPage] = usePublicaciones('publico')
+    const [publicaciones, cargando, error, setPage] = usePublicaciones('directivo')
 
     return <>
         <h2 className="line-title text-primary"><i className="fas fa-newspaper mr-1"></i> Publicaciones</h2>
+        <NuevaPublicacion/>
         <div className="mt-3">
             {cargando ? <Cargando error={error}/>
             : <div>
@@ -26,6 +29,8 @@ const Publicaciones = () => {
                         likes={publicacion.nlikes}
                         dislikes={publicacion.ndislikes}
                         fecha={fecha(publicacion.fecha, true)}
+                        idPublicacion={publicacion.idPublicacion}
+                        idUsuario={publicacion.idUsuario}
                     />
                 ))}
                 </div>

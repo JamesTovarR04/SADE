@@ -23,7 +23,7 @@ const Header = ({
     if(white)
         styleColors = `navbar-light bg-white border-bottom border-${usuario}`
     else
-        styleColors = `navbar-dark bg-${user}`
+        styleColors = `navbar-dark bg-${usuario}`
 
     const clickBtnUser = () => {
         if (tipoUsuario == "publico") {

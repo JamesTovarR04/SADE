@@ -1,0 +1,18 @@
+$primary:       $directivo;
+$secondary:     $directivo-2;
+
+$theme-colors: map-merge(
+  (
+    "primary":    $primary,
+    "secondary":  $secondary,
+  ),
+  $theme-colors
+);
+
+// Nav
+$navbar-light-active-color: $primary;
+
+// Pagination
+$pagination-active-bg: $primary;
+$pagination-active-border-color: $primary;
+$pagination-color: $primary;

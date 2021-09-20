@@ -6,7 +6,7 @@
 
 // Custom Variables
 @import 'variables_globales';
-@import 'publico/variables_publico';
+@import 'directivo/variables_directivo';
 
 // Optional bootstrap
 @import '~bootstrap/scss/root';
@@ -46,7 +46,7 @@
 
 // Estilos adicionels
 @import 'adicionales';
-@import 'publico/adicionales_publico';
 // Componentes
 @import 'components/BtnUser';
 @import 'components/Calendario';
+@import 'components/IconoNotificaciones'

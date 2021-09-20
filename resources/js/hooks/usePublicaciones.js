@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-const usePublicaciones = () => {
+const usePublicaciones = (usuario) => {
     const [publicaciones,setPublicaciones] = useState([])
     const [cargando, setCargando] = useState(true)
     const [error, setError] = useState(false)
@@ -9,7 +9,7 @@ const usePublicaciones = () => {
     useEffect(() => {
         setCargando(true)
         setError(false)
-        axios.get('/api/publico/publicaciones?page=' + page)
+        axios.get('/api/' + usuario + '/publicaciones?page=' + page)
         .then((response) => {
             // handle success
             if(response.headers["content-type"] == "application/json" && response.data !== undefined){

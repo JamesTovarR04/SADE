@@ -64,7 +64,7 @@ Route::group([
     function () {
         Route::get('publicaciones', [PublicacionController::class,'index']);
         Route::get('eventos', [EventoController::class, 'index']);
-        Route::get('eventos/mes', [EventoController::class, 'enMes']);
+        Route::get('eventosmes', [EventoController::class, 'enMes']);
         Route::get('usuario/foto/{id}', [UserController::class, 'descargarFoto']);
         Route::group([
             'prefix' => 'info',
@@ -154,7 +154,7 @@ Route::group([
     Route::get('privacidad/publicacion/{id}', [EstudiantePublicacionController::class, 'privacidad']);
 
     Route::get('eventos', [EstudianteEventoController::class, 'index']);
-    Route::get('eventos/mes', [EstudianteEventoController::class, 'enMes']);
+    Route::get('eventosmes', [EstudianteEventoController::class, 'enMes']);
 
     Route::get('notificaciones', [EstudianteNotificacionController::class, 'index']);
     Route::get('notificaciones/{id}', [EstudianteNotificacionController::class, 'visto']);

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useEventos = () => {
+const useEventos = (usuario) => {
 
     let today = new Date();
 
@@ -22,7 +22,7 @@ const useEventos = () => {
         let dia = (day < 10  ? '0' : '') + day;
         setCargando(true)
         setError(false)
-        axios.get('/api/publico/eventos', {
+        axios.get('/api/' + usuario + '/eventos', {
             params: {'dia' : year + '-' + mes + '-' + dia}
         })
         .then((response) => {
@@ -42,7 +42,7 @@ const useEventos = () => {
         let data = {
             'mes' : year + '-' + (month < 10 ? '0' : '') + month,
         }
-        axios.get('/api/publico/eventos/mes', {
+        axios.get('/api/' + usuario + '/eventosmes', {
             params: data
         })
         .then((response) => {
@@ -66,7 +66,7 @@ const useEventos = () => {
         obtenerFechas(year,month)
     }
 
-    return [fechas, clickDia, cambioMes, dia, mes, eventos, cargando, error]
+    return [fechas, clickDia, cambioMes, dia, mes, ano, eventos, cargando, error, obtenerEventos, obtenerFechas]
 
 }
 

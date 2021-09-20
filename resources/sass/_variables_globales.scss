@@ -55,3 +55,7 @@ $theme-colors : map-merge(
   ),
   $user_colors
 );
+
+// Nav Color
+$navbar-dark-color:       rgba($white, .7);
+$navbar-dark-hover-color: rgba($white, .8);
