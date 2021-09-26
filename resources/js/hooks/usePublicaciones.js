@@ -7,6 +7,10 @@ const usePublicaciones = (usuario) => {
     const [page, setPage] = useState(1)
 
     useEffect(() => {
+        cargarPublicaciones()
+    }, [page])
+
+    const cargarPublicaciones = () => {
         setCargando(true)
         setError(false)
         axios.get('/api/' + usuario + '/publicaciones?page=' + page)
@@ -21,9 +25,9 @@ const usePublicaciones = (usuario) => {
         .catch((error) => {
             setError(true)
         })
-    }, [page])
+    }
 
-    return [publicaciones, cargando, error, setPage]
+    return [publicaciones, cargando, error, setPage, cargarPublicaciones]
 }
 
 export default usePublicaciones

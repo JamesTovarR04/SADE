@@ -1,14 +1,16 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import ModalPrivacidad from './Modales/ModalPrivacidad';
 import Button from '../components/Button';
+import { GlobalContext } from '../context/GlobalState';
 
 const NuevoEvento = (props) => {
 
+    const { tipoUsuario } = useContext(GlobalContext)
     const [datos, setDatos] = useState({
         hora : '13:00',
         descripcion : ''
-    });
+    })
     const [validar,setValidar] = useState(false);
     const [cargando,setCargando] = useState(false);
     const [privacidad, setPrivacidad] = useState({
@@ -16,7 +18,7 @@ const NuevoEvento = (props) => {
         estudiante : true,
         profesor : true,
         directivo :true
-    });
+    })
 
     useEffect(() => {
         let expHora = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/
@@ -44,7 +46,7 @@ const NuevoEvento = (props) => {
             profesor: privacidad.profesor ? 1 : 0,
             estudiante:privacidad.estudiante ? 1 : 0,
         }
-        axios.post('/api/directivo/eventos', datosEnv)
+        axios.post('/api/' + tipoUsuario + '/eventos', datosEnv)
         .then(res => {
             setDatos({
                 hora : '13:00',

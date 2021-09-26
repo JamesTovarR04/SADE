@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import propTypes from 'prop-types'
 import axios from 'axios';
 
-import ModalPrivacidad from '../components/Modales/ModalPrivacidad'
+import ModalPrivacidad from './Modales/ModalPrivacidad'
 import Button from '../components/Button'
+import { GlobalContext } from '../context/GlobalState';
 
 const NuevaPublicacion = ({
     recargar = () => {}
 }) => {
+    const { tipoUsuario } = useContext(GlobalContext)
     const [datos, setDatos] = useState({
         titulo: '',
         contenido: ''
@@ -47,13 +49,15 @@ const NuevaPublicacion = ({
             estudiante:privacidad.estudiante ? 1 : 0,
         }
 
-        axios.post('/api/directivo/publicaciones',enviardatos)
+        axios.post('/api/' + tipoUsuario + '/publicaciones',enviardatos)
         .then(res => {
-            setDatos({
-                titulo: '',
-                contenido: ''
-            })
-            props.recargar();
+            if(res.status == 201){
+                setDatos({
+                    titulo: '',
+                    contenido: ''
+                })
+                recargar();
+            }
         }).catch(err => {
             if (err.response) {
 
