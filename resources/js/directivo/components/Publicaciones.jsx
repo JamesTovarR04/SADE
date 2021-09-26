@@ -1,4 +1,3 @@
-import axios from 'axios'
 import React from 'react'
 
 import Cargando from '../../components/Cargando'
@@ -10,11 +9,11 @@ import usePublicaciones from '../../hooks/usePublicaciones'
 
 const Publicaciones = () => {
 
-    const [publicaciones, cargando, error, setPage] = usePublicaciones('directivo')
+    const [publicaciones, cargando, error, setPage, cargarPublicaciones] = usePublicaciones('directivo')
 
     return <>
         <h2 className="line-title text-primary"><i className="fas fa-newspaper mr-1"></i> Publicaciones</h2>
-        <NuevaPublicacion/>
+        <NuevaPublicacion recargar={cargarPublicaciones} />
         <div className="mt-3">
             {cargando ? <Cargando error={error}/>
             : <div>
@@ -31,6 +30,9 @@ const Publicaciones = () => {
                         fecha={fecha(publicacion.fecha, true)}
                         idPublicacion={publicacion.idPublicacion}
                         idUsuario={publicacion.idUsuario}
+                        conlike={Boolean(publicacion.conlike)}
+                        condislike={Boolean(publicacion.condislike)}
+                        recargar={cargarPublicaciones}
                     />
                 ))}
                 </div>
