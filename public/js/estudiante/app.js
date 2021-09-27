@@ -4077,6 +4077,11 @@ var userReducer = function userReducer(state, action) {
         notificaciones: action.payload.notificaciones
       });
 
+    case "SUBTRACT_NOTIFICATIONS":
+      return _objectSpread(_objectSpread({}, state), {}, {
+        notificaciones: state.notificaciones - 1
+      });
+
     default:
       return state;
   }
@@ -4159,8 +4164,16 @@ var UserProvider = function UserProvider(_ref) {
     });
   };
 
+  var disminuirNotificaciones = function disminuirNotificaciones() {
+    dispatch({
+      type: "SUBTRACT_NOTIFICATIONS"
+    });
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(UserContext.Provider, {
-    value: _objectSpread({}, state),
+    value: _objectSpread(_objectSpread({}, state), {}, {
+      disminuirNotificaciones: disminuirNotificaciones
+    }),
     children: children
   });
 };

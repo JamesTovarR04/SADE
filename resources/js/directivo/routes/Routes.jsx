@@ -8,6 +8,8 @@ import {
 import Footer from '../../components/Footer'
 import DirectivoHeader from '../components/DirectivoHeader'
 
+import AdministrarPage from '../pages/AdministrarPage'
+import NotificacionesPage from '../pages/NotificacionesPage'
 import PublicacionsPage from '../pages/PublicacionesPage'
 
 const Routes = () => {
@@ -17,6 +19,8 @@ const Routes = () => {
             <div className="page-container">
                 <Switch>
                     <Route exact path="/directivo"><PublicacionsPage/></Route>
+                    <Route path="/directivo/administrar"><AdministrarPage/></Route>
+                    <Route exact path="/directivo/notificaciones"><NotificacionesPage/></Route>
                 </Switch>
             </div>
             <Footer/>

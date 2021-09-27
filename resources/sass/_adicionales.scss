@@ -29,3 +29,7 @@
         margin-left: 10px;
     }
 }
+
+.select-search__input {
+    @extend .form-control;
+}

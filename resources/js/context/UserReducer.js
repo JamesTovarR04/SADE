@@ -6,6 +6,11 @@ export const userReducer = (state, action) => {
                 ...state,
                 notificaciones: action.payload.notificaciones,
             };
+        case "SUBTRACT_NOTIFICATIONS":
+            return {
+                ...state,
+                notificaciones: state.notificaciones - 1,
+            };
         default:
             return state;
     }
