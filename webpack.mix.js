@@ -13,8 +13,8 @@ const mix = require('laravel-mix');
 
 // Estilos
 // mix.sass('resources/sass/public_styles.scss','public/css');
-// mix.sass('resources/sass/directivo_styles.scss','public/css');
+mix.sass('resources/sass/directivo_styles.scss','public/css');
 
 // Scripts js
-mix.js('resources/js/publico/app.js', 'public/js/publico').react();
+//mix.js('resources/js/publico/app.js', 'public/js/publico').react();
 mix.js('resources/js/directivo/app.js', 'public/js/directivo').react();

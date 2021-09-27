@@ -37,7 +37,13 @@ export const UserProvider = ({ children }) => {
         })
     }
 
-    return <UserContext.Provider value={{...state}}>
+    const disminuirNotificaciones = () => {
+        dispatch({
+            type: "SUBTRACT_NOTIFICATIONS",
+        });
+    }
+
+    return <UserContext.Provider value={{...state, disminuirNotificaciones}}>
         {children}
     </UserContext.Provider>
 
