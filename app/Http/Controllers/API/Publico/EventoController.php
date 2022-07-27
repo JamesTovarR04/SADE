@@ -25,12 +25,17 @@ class EventoController extends Controller
             return response(['errors' => $validacion->errors()->all()], 422);
         }
 
+        $fecha = $request['dia'];
+
         $eventos = DB::connection('publico')
             ->table('vs_pub_eventos')
-            ->whereDate('hora', $request['dia'])
-            ->get();
+            ->whereDate('hora', $fecha);
 
-        return response()->json($eventos);
+        if($fecha == date('Y-m-d')) {
+            $eventos = $eventos->whereTime('hora', '>',date('h:i:s'));
+        }
+
+        return response()->json($eventos->get());
     }
 
     /**

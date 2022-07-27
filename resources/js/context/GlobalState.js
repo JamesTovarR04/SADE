@@ -23,60 +23,60 @@ export const GlobalProvider = ({ children }) => {
         });
 
         axios.get('/api/auth/user')
-        .then((response) => {
-            // handle success
-            if (response.status == 200){
-                dispatch({
-                    type: "LOAD_USER",
-                    payload: {
-                        usuario: response.data,
-                        tipo: typeUser(response.data.tipo)
-                    }
-                });
-            }
+            .then((response) => {
+                // handle success
+                if (response.status == 200) {
+                    dispatch({
+                        type: "LOAD_USER",
+                        payload: {
+                            usuario: response.data,
+                            tipo: typeUser(response.data.tipo)
+                        }
+                    });
+                }
 
-        })
-        .catch((error) => {
-            // handle error
-        })
-        .then(() => {
-            dispatch({
-                type: "LOADING_USER",
-                payload: false
             })
-        })
-        
+            .catch((error) => {
+                // handle error
+            })
+            .then(() => {
+                dispatch({
+                    type: "LOADING_USER",
+                    payload: false
+                })
+            })
+
     }, [])
 
-    const logout = () => {
+    const logout = async () => {
 
         dispatch({
             type: "LOADING_USER",
             payload: true
         });
 
-        axios.get('/api/auth/logout')
-        .then((response) => {
-            // handle success
-            if (response.status == 200){
-                dispatch({
-                    type: "LOGOUT_USER",
-                });
-            }
+        await axios.get('/api/auth/logout')
+            .then((response) => {
+                // handle success
+                if (response.status == 200) {
+                    dispatch({
+                        type: "LOGOUT_USER",
+                    });
+                }
 
-        })
-        .catch((error) => {
-            // handle error
-        })
-        .then(() => {
-            dispatch({
-                type: "LOADING_USER",
-                payload: false
             })
-        })
+            .catch((error) => {
+                // handle error
+            })
+            .then(() => {
+                dispatch({
+                    type: "LOADING_USER",
+                    payload: false
+                })
+            })
     }
 
-    return <GlobalContext.Provider value={{...state, logout}}>
+    return <GlobalContext.Provider value={{ ...state, logout }}>
         {children}
     </GlobalContext.Provider>
 

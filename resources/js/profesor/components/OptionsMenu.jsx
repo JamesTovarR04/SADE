@@ -5,22 +5,22 @@ const OptionsMenuUser = () => {
 
     const { logout } = useContext(GlobalContext)
 
-    const logoutAndExit = () => {
-        logout()
+    const logoutAndExit = async () => {
+        await logout()
         window.location.assign('/login')
     }
- 
+
     return (
-    <>
-        <button className="dropdown-item" type="button">
-            <i className="fas fa-cogs mr-3 text-secondary"></i>
-            Perfil
-        </button>
-        <button className="dropdown-item" type="button" onClick={logoutAndExit}>
-            <i className="fas fa-sign-out-alt mr-3 text-secondary"></i>
-            Cerrar Sesión
-        </button>
-    </>
+        <>
+            <button className="dropdown-item" type="button">
+                <i className="fas fa-cogs mr-3 text-secondary"></i>
+                Perfil
+            </button>
+            <button className="dropdown-item" type="button" onClick={logoutAndExit}>
+                <i className="fas fa-sign-out-alt mr-3 text-secondary"></i>
+                Cerrar Sesión
+            </button>
+        </>
     )
 }
 
